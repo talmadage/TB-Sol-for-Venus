@@ -1,0 +1,83 @@
+\documentclass[10pt,twocolumn]{article}
+
+% Pacchetti per font e formattazione
+\usepackage{times}        % Times New Roman
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\geometry{a4paper, margin=2cm}
+\usepackage{titlesec}
+\usepackage{multicol}
+\usepackage{cite}
+
+% Titoli sezioni (formato)
+\titleformat{\section}{\bfseries\fontsize{12}{14}\selectfont}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\bfseries\fontsize{11}{13}\selectfont}{\thesubsection.}{0.5em}{}
+
+% Dati frontespizio
+\title{\textbf{Project Title}\\[0.5em]
+\large Project subtitle if any}
+
+\author{
+Author #1 (auth #1 Email address), Author #2 (Email address), …
+}
+
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section*{Abstract}
+<Contains short summary of the paper>\\
+Main body – Double column format\\
+Text – Font – Times New Rom, 10 pts\\
+Section Headers – Bold Font – Times New Roman, 12 pts\\
+Subsection Headers – Bold font – Times new Roman, 11 pts\\
+Paper length target 4-6 pages.
+
+\section*{Keywords}
+<optional section to help search engines to find the paper>
+
+% Sezioni principali
+\section{Introduction}
+<Answers the question: Why do I do this research? The section may also contain which methodology have been used? Any research ethics? Sustainability issues?>
+
+\section{Related Work}
+<Answers the question: What have others done previously in do this research topc?>\\
+<Literature study, refer to each reference [1] where it makes sense>
+\subsection{riscv}
+Researchers from TU graz developed FazyRV[1], a minimal-area open-source RV32I RISC-V core targeting IoT and low-workload applications, addressing the problem that 32-bit RISC-V processor cores reach a boundary on their minimal size. Their goal was to minimize area demand while fulfilling performance requirements and close the gap between prevalent 32-bit and 1-bit-serial RISC-V cores.\\
+Qian Wei and his colleagues created a comprehensive survey of RISC-V instruction set architecture extensions because while RISC-V is popular for embedded processors [2], there is still a gap between RISC-V's capabilities and the requirements of various emerging computing scenarios like artificial intelligence and cloud computing.
+
+\subsection{processors for venus}
+
+\subsection{FPGA}
+
+\section{Specification}
+<Outlines the constraints this work has, if any>\\
+
+\section{Architecture}
+<How do I/we plan to build this gadget given the constraints I have?. This section is sometimes split into subsections like Hardware and Software>
+
+\section{Experiments}
+<What experiments have I done? This is more or less a specification of the experiments.>
+
+\section{Results}
+<What results did I get from the experiments. This section is sometimes merged with the experiments section>
+
+\section{Conclusion}
+<This is a retrospective look at the introduction, and should present answers to the questions asked there and throughout the paper.>
+
+\subsection{Future Work}
+<Optional section that describe possible future work>
+
+\section*{References}
+[1] FazyRV: Closing the Gap between 32-Bit and Bit-Serial RISC-V Cores with a Scalable Implementation. / Kissich, Meinhard; Baunach, Marcel Carsten.
+Proceedings of the 21st ACM International Conference on Computing Frontiers, CF 2024. Association for Computing Machinery (ACM), 2024. p. 240-248 (Proceedings of the 21st ACM International Conference on Computing Frontiers, CF 2024).
+Research output: Chapter in Book/Report/Conference proceeding › Conference paper ›
+[2] E. Cui, T. Li and Q. Wei, "RISC-V Instruction Set Architecture Extensions: A Survey," in IEEE Access, vol. 11, pp. 24696-24711, 2023, doi: 10.1109/ACCESS.2023.3246491.
+keywords: {Instruction sets;Microprocessors;Computer architecture;Task analysis;Graphics processing units;Cloud computing;Artificial intelligence;RISC-V;instruction set architecture;extensions;survey},
+[3] 
+
+\end{document}
