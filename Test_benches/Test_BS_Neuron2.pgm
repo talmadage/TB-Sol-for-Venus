@@ -1,0 +1,96 @@
+%% // Header Section
+%{
+use work.BS_Neuron_package.all;
+%}
+
+%internal Input bit
+%internal Output [bit]16
+%internal q bit
+%internal clk bit
+%internal ares bit
+%internal res bit
+%start test_Neuron(res) clock(clk)
+%start test_result(res) clock(clk)
+%start test_reset(clk) clock(clk)
+
+%% // Constants
+ZERO16 0000 0000 0000 0000
+ZERO32 [0]32
+INPUT1 1000 0000 0000 0000 // bit-serial numbers in bit_reversed order...
+%% // Memory Section
+%{
+   component BS_Neuron
+   generic(N:integer:=8);
+   port(clk,ares,reset:In std_logic;
+        Input:IN std_logic_vector(N-1 downto 0);
+        weight:IN Neuron_weight_vector(N-1 downto 0);
+        q:out std_logic);
+   end component;
+   constant weight:Neuron_Weight_vector:=(("00000001"),
+                                          ("00000010"),
+                                          ("00000100"),
+                                          ("00001000"),
+                                          ("00010000"),
+                                          ("00100000"),
+                                          ("01000000"),
+                                          ("00000100"));
+
+   function sum(A:Neuron_weight_vector) return integer is
+      variable tmp,tmp_sum:integer:=0;
+   begin
+      for i in A'range loop
+	 tmp_sum:=ieee.std_logic_arith.conv_integer(signed(A(i)));
+         tmp:=tmp+tmp_sum;
+      end loop;
+      return tmp;
+   end sum;
+
+   signal Input_vector:std_logic_vector(7 downto 0);
+   signal muladd,mul1,mul2,add1,exp,minmax:integer;
+%}
+%% // Action Macro Section
+%% // Grammar Section
+
+%{
+
+DUT: BS_Neuron port map(clk(0),ares(0),res(0),Input_vector,weight, q(0));
+
+   process
+   begin
+      clk<="0";
+      wait for 5 ns;
+      clk<="1";
+      wait for 5 ns;
+   end process;
+   ares(0)<='1', '0' after 16 ns;
+
+
+   Input_vector<=(others=>Input(0));
+   Muladd<=sum(weight);
+   minmax<=0 when muladd<0 else muladd;
+   mul1<=-muladd*7222;
+   mul2<=muladd*mul1;
+   add1<=32011+mul2;
+   exp<=muladd*add1;
+%}
+
+// Inputs
+test_Neuron: 0 [bit]15 { Input=INPUT1; } wait_for_reset
+   | 1 { Input=0; }
+;
+
+data: [bit]16
+;
+
+wait_for_reset: 0 wait_for_reset
+| 1
+;
+
+// Outputs
+test_result: 0 [bit]37 (q)data { Output=$<data>1[15..0]; } (res) wait_for_reset
+   | 1 { Output=ZERO16; }
+;
+
+// Reset
+test_reset: bit { res=1; } [bit]68 { res=111 [0]65; }
+;

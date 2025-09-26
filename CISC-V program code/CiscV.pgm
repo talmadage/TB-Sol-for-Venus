@@ -1,0 +1,291 @@
+// Include Section
+%% // Header section
+%input clk bit
+%input sreset bit
+%output address bit // 16 bit serial address
+%output read bit
+%output write bit
+%output dataout bit
+%input datain bit
+// ctrl inputs
+%output first_bit bit
+%output data_instr bit
+// %input slave_data [bit]8
+// %input slave_write 
+// %output wait_req_grant bit
+// %input data_wait_req bit
+// %input instr_wait_req bit
+// %input wait_req bit 
+
+%internal rd_data [bit]5
+%internal rs1_data [bit]5
+%internal rs2_data [bit]5
+%internal rs_sel [bit]2
+%internal result_bus [bit]32
+%internal op1_bus [bit]32
+%internal op1_alt [bit]32
+%internal op2_bus [bit]32
+%internal op2_alt [bit]32
+%internal imm5_data [bit]5
+%internal wr_reg bit
+%internal next_instr_address [bit]8
+%internal next_data_address [bit]8
+%internal go [bit]2
+%internal result [bit]32 // 32*32 bit registers
+%internal alu_ctrl [bit]3
+%internal pc [bit]32
+
+
+
+%start CiscV(datain) clock(clk)
+%start DataFetch(go) clock(clk)
+
+%% // Constants Section
+// Bis are mirrored compared to description
+// bit 0..31
+
+// Instruction groups
+LUI    011 0111
+AUIPC  001 0111
+JAL    110 1111
+JALR   110 0111
+BR     110 0011
+LD     000 0011
+ST     010 0011
+ALUI   001 0011
+ALU    011 0011
+FEN    000 1111
+EXT    111 0011
+CS     111 0011
+
+// Sub instruction groups
+BEQ    000
+BNE    001
+BLT    100
+BGE    101
+BLTU   110
+BGEU   111
+
+LB     000
+LH     001
+LW     010
+LBU    100
+LHU    101
+
+SB     000
+SH     001
+SW     010
+
+ADD   000
+SUB   000
+SLL   001
+SLT   010
+SLTU  011
+XOR   100
+SRL   101
+SRA   101
+OR    110
+AND   111
+
+ADDI  000
+SLTI   010
+SLTIU  011
+XORI   100
+ORI    110
+ANDI   111
+SLLI   001
+SRLI   101
+SRAI   101
+
+FENSE   000
+FENSEI   001
+
+CSRRW   001
+CSRRS   010
+CSRRC   011
+CSRRWI  101
+CSRRSI  110
+CSRRCI  111
+
+// Third field
+NO     000 0000
+SP     010 0000
+
+
+%% // Memory Section
+%{
+   type memory_array_type is array (natural range <>) of std_logic_vector(31 downto 0);
+   signal regs:memory_array_type(31 downto 0);
+%}
+%% // Action Macro Section
+%% // Grammar Section
+
+//CiscV: reset(sreset) reset_sequence
+//    | funct7 rs2 rs1 funct3 rd opcode_R_type
+//    | imm12      rs1 funct3 rd opcode_I_type 
+//    | imm7  rs2  rs1 funct3 imm5 opcode_S_type
+//    | imm7  rs2  rs1 funct3 imm5 opcode_B_type 
+//    | imm20                   rd opcode_U_type
+//    | imm20                   rd opcode_J_type  
+//;
+//CiscV: reset(sreset) reset_sequence
+//    | R_type rd funct3 rs1 rs2 funct7
+//    | I_type rd funct2 rs1 imm12
+//    | S_type imm5 funct3 rs1 imm7
+//    | B_type imm5 funct3 rs1 rs2 imm7 rs2 
+//    | U_type rd imm20
+//    | J_type rd imm20 
+//;
+
+CiscV: reset(sreset) reset_sequence
+   | LUI rd { rd_data=$<rd>1; } imm20 { result_bus=$<imm20>1 [0]12; rs_sel=00; go=00; }
+   | AUIPC rd { rd_data=$<rd>1; } imm20 { op1_alt=pc; op2_alt=$<imm20>1 [0]12; rs_sel=11; go=1000; }
+   | JAL rd { rd_data=$<rd>1; } imm20 { op1_alt=pc; go=1000; }
+   | JALR rd { rd_data=$<rd>1; } 000 rs1 imm12 { go=1000; }
+   | br_code { go=1000; }
+   | ld_code { go=1000; }
+   | st_code { go=1000; }
+   | alui_code { go=1000; }
+   | alu_code { go=1000; }
+//   | FEN [0]5 FENCE  [0]5 succ pred 0000
+//   | FEN [0]5 FENCEI [0]5 0000 0000 0000
+//   | EXT [0]5 000 [0]5 ECALL
+//   | EXT [0]5 000 [0]5 EBREAK
+//   | css_code
+//   | [others]32 // Erroneous instruction
+;
+
+br_code: BR imm5 { imm5_data=$<imm5>1; } BEQ rs1 { rs1_data=$<rs1>1; } rs2 { rs2_data=$<rs2>1; } imm7
+   | BR imm5 { imm5_data=$<imm5>1; } BNE rs1 rs2 imm7
+   | BR imm5 { imm5_data=$<imm5>1; } BLT rs1 rs2 imm7
+   | BR imm5 { imm5_data=$<imm5>1; } BGE rs1 rs2 imm7
+   | BR imm5 { imm5_data=$<imm5>1; } BLTU rs1 rs2 imm7   
+   | BR imm5 { imm5_data=$<imm5>1; } BGEU rs1 rs2 imm7
+;
+
+ld_code: LD rd { rd_data=$<rd>1; } LB rs1 { rs1_data=$<rs1>1; } imm12
+   | LD rd { rd_data=$<rd>1; } LH  rs1  { rs1_data=$<rs1>1; } imm12
+   | LD rd { rd_data=$<rd>1; } LW rs1  { rs1_data=$<rs1>1; } imm12
+   | LD rd { rd_data=$<rd>1; } LBU rs1  { rs1_data=$<rs1>1; } imm12
+   | LD rd { rd_data=$<rd>1; } LHU rs1  { rs1_data=$<rs1>1; } imm12
+;
+
+alui_code: ALUI rd ADDI rs1 imm12
+   | ALUI rd SLTI rs1 imm12
+   | ALUI rd SLTIU rs1 imm12
+   | ALUI rd XORI rs1 imm12
+   | ALUI rd ORI rs1 imm12
+   | ALUI rd ANDI rs1 imm12
+   | ALUI rd SLLI rs1 shamt NO
+   | ALUI rd SRLI rs1 shamt NO 
+   | ALUI rd SRAI rs1 shamt SP
+;
+
+alu_code: ALU rd { rd_data=$<rd>1; } ADD rs1 { rs1_data=$<rs1>1; } rs2 { rs2_data=$<rs2>1; alu_ctrl=000; }  NO { wr_reg=10; }
+   | ALU rd { rd_data=$<rd>1; } SUB  rs1  { rs1_data=$<rs1>1; } rs2 { rs2_data=$<rs2>1; alu_ctrl=000; } SP { wr_reg=10; } 
+   | ALU rd { rd_data=$<rd>1; } SLL rs1 { rs1_data=$<rs1>1; } rs2 { rs2_data=$<rs2>1; alu_ctrl=001; } NO { wr_reg=10; }
+   | ALU rd { rd_data=$<rd>1; } SLT rs1 rs2 NO
+   | ALU rd { rd_data=$<rd>1; } SLTU rs1 rs2 NO
+   | ALU rd { rd_data=$<rd>1; } XOR rs1 rs2 NO
+//   | ALU rd { rd_data=$<rd>1; } SLL rs1 rs2 NO
+   | ALU rd { rd_data=$<rd>1; } SRL rs1 rs2 NO 
+   | ALU rd { rd_data=$<rd>1; } SRA rs1 rs2 SP
+   | ALU rd { rd_data=$<rd>1; } OR rs1 rs2 NO
+   | ALU rd { rd_data=$<rd>1; } AND rs1 rs2 NO
+ ;
+
+st_code: ST imm5 SB rs1 rs2 imm7
+   | ST imm5 SH rs1 rs2 imm7
+   | ST imm5 SW rs1 rs2 imm7
+;
+
+css_code: CS rd CSRRW rs1 csr
+   | CS rd CSRRS rs1 csr
+   | CS rd CSRRC rs1 csr
+   | CS rd CSRRWI zimm csr
+   | CS rd CSRRSI zimm csr
+   | CS rd CSRRCI zimm csr
+;
+
+
+imm20: [bit]20
+;
+
+imm12: [bit]12
+;
+
+imm5: [bit]5
+;
+
+imm4: [bit]4
+;
+
+imm7: [bit]7
+;
+
+rs1: [bit]5
+;
+
+rs2: [bit]5
+;
+
+rd: [bit]5
+;
+
+zimm: [bit]5
+;
+
+csr: [bit]12
+;
+
+shamt: [bit]5
+;
+
+reset_sequence: 1 { go=00; } reset_sequence
+   | 00 { go=10 00; }
+;
+
+DataFetch: 11 [bit]32 { address=next_data_address; first_bit=1 [0]15; data_instr=[1]16; }
+    | 10 [bit]32 { address=next_instr_address; first_bit=1 [0]15; data_instr=[0]16; }
+	| 0 bit { address=0; first_bit=0; data_instr=0; }
+;
+
+%{
+   process(clk)
+   begin
+      if rising_edge(clk) then
+	     case alu_ctrl is 
+		    when "000" =>
+			   result_bus<=op1_bus + op2_bus;
+			when "001" =>
+			   result_bus<=SLL(op1_bus); -- op2_bus
+			when others =>
+	           result_bus <= "00000000000000000000000000000000";
+		end case;
+	  end if;
+   end process;
+
+   process(CLK)
+   begin             
+	  if rising_edge(clk) then	
+		if (rs_sel(0)='0') then
+		    op1_bus<=regs(conv_integer(rs1_data));
+	    else
+		   op1_bus<=op1_alt;
+		end if;
+        if (rs_sel(1)='0') then
+		    op2_bus<=regs(conv_integer(rs2_data));
+		else
+		    op2_bus<=op2_alt;
+		end if;
+		if (wr_reg="1") then
+		   regs(conv_integer(rd_data))<=result_bus;
+		end if;
+	  end if;
+   end process;
+%}
+
+AluOp: 000 {{ result_bus=op1_bus + op2_bus; }}
+   | 001 {{ result_bus=op1_bus - op2_bus; }}
+   | [others]3
+;
