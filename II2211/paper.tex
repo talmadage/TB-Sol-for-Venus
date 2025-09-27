@@ -54,6 +54,7 @@ Qian Wei and his colleagues created a comprehensive survey of RISC-V instruction
 Current research on high-temperature electronics for Venus has shown that SiC ICs can sustain operation for over a year at 500 °C and for months in simulated Venus conditions, supporting sensors and simple microprocessors. This demonstrates the feasibility of long-duration surface missions and motivates concepts like LLISSE targeting low-power seismic monitoring.[3] \\
 At the processor level, studies of SiC-based computing infrastructures reveal that current prototypes achieve significantly lower throughput than space-proven silicon systems, yet provide guidelines at the microarchitecture and ISA levels for developing processors able to operate under Venus’s extreme environment.[4]\\
 \subsection{FPGA}
+One verification strategy is co-emulation, where the RTL design on the FPGA is run in parallel with a trusted software model, such as the Spike simulator[5], on a host PC. This allows for high-speed verification by comparing the core's architectural state against the simulator in real-time. Furthermore, using FPGAs with RISC-V is advantageous as it allows for optimized hardware, where the FPGA is configured with only the peripherals required for a specific application[6].
 
 \section{Specification}
 <Outlines the constraints this work has, if any>\\
@@ -81,6 +82,8 @@ Research output: Chapter in Book/Report/Conference proceeding › Conference pap
 keywords: {Instruction sets;Microprocessors;Computer architecture;Task analysis;Graphics processing units;Cloud computing;Artificial intelligence;RISC-V;instruction set architecture;extensions;survey},
 [3] H. Kim, J. Bagherzadeh and R. G. Dreslinski, "SiC Processors for Extreme High- Temperature Venus Surface Exploration," 2022 Design, Automation & Test in Europe Conference & Exhibition (DATE), Antwerp, Belgium, 2022, pp. 406-411, doi: 10.23919/DATE54114.2022.9774769.
 [4] Kremic, T. (2021). High Temperature Electronics for Venus Surface Applications: A Summary of Recent Technical Advances. https://doi.org/10.3847/25C2CFEB.E3883E19
+[5] A. Moreno, et al., “An FPGA verification, debug and performance platform for RISC-V cores,” in RISC-V Summit Europe 2023 Proceedings, 2023. 
+[6] Efinix Inc., “RISC-V and FPGAs,” Efinix Blog. [Online]. Available: https://www.efinixinc.com/blog/riscv-and-fpgas.html.
 
 \end{document}
 
