@@ -56,6 +56,15 @@ At the processor level, studies of SiC-based computing infrastructures reveal th
 \subsection{FPGA}
 One verification strategy is co-emulation, where the RTL design on the FPGA is run in parallel with a trusted software model, such as the Spike simulator[5], on a host PC. This allows for high-speed verification by comparing the core's architectural state against the simulator in real-time. Furthermore, using FPGAs with RISC-V is advantageous as it allows for optimized hardware, where the FPGA is configured with only the peripherals required for a specific application[6].
 
+\subsection{FPGA-Based Verification Frameworks}
+
+Kim [7] demonstrated the importance of FPGA-based acceleration for RTL evaluation by introducing automated flows that generate cycle-accurate simulators directly from RTL. This approach reduces the engineering effort compared to earlier manual FPGA frameworks and enables both faster and more reliable pre-silicon verification. 
+
+Building on this direction, Qin \textit{et al.} [8] proposed FERIVer, an FPGA-assisted framework for verifying RISC-V processors. Their method exploits the heterogeneous architecture of SoC FPGAs, running an instruction set simulator on the processing system in parallel with the RTL core on the programmable logic. By cross-checking execution states, FERIVer achieves significant speedups over traditional software simulators while maintaining accuracy. 
+
+Together, these works highlight how FPGA-based infrastructures provide an effective foundation for validating processor designs before costly SoC fabrication, a goal directly aligned with the testbench methodology developed in this project.
+
+
 \section{Specification}
 <Outlines the constraints this work has, if any>\\
 
@@ -75,15 +84,22 @@ One verification strategy is co-emulation, where the RTL design on the FPGA is r
 <Optional section that describe possible future work>
 
 \section*{References}
-[1] FazyRV: Closing the Gap between 32-Bit and Bit-Serial RISC-V Cores with a Scalable Implementation. / Kissich, Meinhard; Baunach, Marcel Carsten.
-Proceedings of the 21st ACM International Conference on Computing Frontiers, CF 2024. Association for Computing Machinery (ACM), 2024. p. 240-248 (Proceedings of the 21st ACM International Conference on Computing Frontiers, CF 2024).
-Research output: Chapter in Book/Report/Conference proceeding › Conference paper ›
-[2] E. Cui, T. Li and Q. Wei, "RISC-V Instruction Set Architecture Extensions: A Survey," in IEEE Access, vol. 11, pp. 24696-24711, 2023, doi: 10.1109/ACCESS.2023.3246491.
-keywords: {Instruction sets;Microprocessors;Computer architecture;Task analysis;Graphics processing units;Cloud computing;Artificial intelligence;RISC-V;instruction set architecture;extensions;survey},
-[3] H. Kim, J. Bagherzadeh and R. G. Dreslinski, "SiC Processors for Extreme High- Temperature Venus Surface Exploration," 2022 Design, Automation & Test in Europe Conference & Exhibition (DATE), Antwerp, Belgium, 2022, pp. 406-411, doi: 10.23919/DATE54114.2022.9774769.
-[4] Kremic, T. (2021). High Temperature Electronics for Venus Surface Applications: A Summary of Recent Technical Advances. https://doi.org/10.3847/25C2CFEB.E3883E19
-[5] A. Moreno, et al., “An FPGA verification, debug and performance platform for RISC-V cores,” in RISC-V Summit Europe 2023 Proceedings, 2023. 
-[6] Efinix Inc., “RISC-V and FPGAs,” Efinix Blog. [Online]. Available: https://www.efinixinc.com/blog/riscv-and-fpgas.html.
+
+[1] M. Kissich and M. C. Baunach, “FazyRV: Closing the Gap between 32-Bit and Bit-Serial RISC-V Cores with a Scalable Implementation,” in *Proc. 21st ACM Int. Conf. on Computing Frontiers (CF ’24)*, Ischia, Italy, May 2024, pp. 240–248, doi: 10.1145/3625135.3655876.  
+
+[2] E. Cui, T. Li, and Q. Wei, “RISC-V Instruction Set Architecture Extensions: A Survey,” *IEEE Access*, vol. 11, pp. 24696–24711, 2023, doi: 10.1109/ACCESS.2023.3246491.  
+
+[3] H. Kim, J. Bagherzadeh, and R. G. Dreslinski, “SiC Processors for Extreme High-Temperature Venus Surface Exploration,” in *Proc. Design, Automation \& Test in Europe Conf. \& Exhibition (DATE)*, Antwerp, Belgium, 2022, pp. 406–411, doi: 10.23919/DATE54114.2022.9774769.  
+
+[4] T. Kremic, “High Temperature Electronics for Venus Surface Applications: A Summary of Recent Technical Advances,” *The Planetary Science Journal*, vol. 2, no. 1, 2021, doi: 10.3847/25C2CFEB.E3883E19.  
+
+[5] A. Moreno *et al.*, “An FPGA Verification, Debug and Performance Platform for RISC-V Cores,” in *Proc. RISC-V Summit Europe*, Barcelona, Spain, 2023.  
+
+[6] Efinix Inc., “RISC-V and FPGAs,” *Efinix Blog*, Jul. 2023. [Online]. Available: https://www.efinixinc.com/blog/riscv-and-fpgas.html. [Accessed: Sep. 26, 2025].  
+
+[7] D. Kim, *FPGA-Accelerated Evaluation and Verification of RTL Designs*, Ph.D. dissertation, Dept. Comput. Sci., Univ. California, Berkeley, Berkeley, CA, USA, Tech. Rep. UCB/EECS-2019-57, May 2019.  
+
+[8] K. Qin, X. Guo, M. Schulz, and C. Trinitis, “FERIVer: An FPGA-assisted Emulated Framework for RTL Verification of RISC-V Processors,” *arXiv preprint* arXiv:2504.05284, Apr. 2025.  
 
 \end{document}
 
