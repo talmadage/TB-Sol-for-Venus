@@ -15,12 +15,13 @@
 \titleformat{\subsection}{\bfseries\fontsize{11}{13}\selectfont}{\thesubsection.}{0.5em}{}
 
 % Dati frontespizio
-\title{\textbf{Project Title}\\[0.5em]
-\large Project subtitle if any}
+\title{\textbf{TB for Venus RISC-V}\\[0.5em]}
 
-\author{
-Author #1 (auth #1 Email address), Author #2 (Email address), …
-}
+\author{Chinmay Purandare\\
+Department of Electronics\\
+KTH Royal Institute of Technology\\
+Stockholm, Sweden\\
+Emails: \{chinmayp\}@kth.se}
 
 \date{}
 
@@ -44,23 +45,26 @@ Paper length target 4-6 pages.
 <Answers the question: Why do I do this research? The section may also contain which methodology have been used? Any research ethics? Sustainability issues?>
 
 \section{Related Work}
-<Answers the question: What have others done previously in do this research topc?>\\
-<Literature study, refer to each reference [1] where it makes sense>
-\subsection{riscv}
-Researchers from TU graz developed FazyRV[1], a minimal-area open-source RV32I RISC-V core targeting IoT and low-workload applications, addressing the problem that 32-bit RISC-V processor cores reach a boundary on their minimal size. Their goal was to minimize area demand while fulfilling performance requirements and close the gap between prevalent 32-bit and 1-bit-serial RISC-V cores.\\
-Qian Wei and his colleagues created a comprehensive survey of RISC-V instruction set architecture extensions because while RISC-V is popular for embedded processors [2], there is still a gap between RISC-V's capabilities and the requirements of various emerging computing scenarios like artificial intelligence and cloud computing.
+This section reviews research relevant to developing a testbench for bit-serial RISC-V processors targeting Venus surface applications. We examine RISC-V architectures, high-temperature electronics, FPGA implementation methods, and verification frameworks. These foundations inform the design of a testbench capable of validating processor functionality under extreme environmental constraints.
 
-\subsection{processors for venus}
-Current research on high-temperature electronics for Venus has shown that SiC ICs can sustain operation for over a year at 500 °C and for months in simulated Venus conditions, supporting sensors and simple microprocessors. This demonstrates the feasibility of long-duration surface missions and motivates concepts like LLISSE targeting low-power seismic monitoring.[3] \\
-At the processor level, studies of SiC-based computing infrastructures reveal that current prototypes achieve significantly lower throughput than space-proven silicon systems, yet provide guidelines at the microarchitecture and ISA levels for developing processors able to operate under Venus’s extreme environment.[4]\\
+\subsection{RISC-V}
+Researchers from TU graz developed FazyRV \cite{kissich2024fazyrv}, a minimal-area open-source RV32I RISC-V core targeting IoT and low-workload applications, addressing the problem that 32-bit RISC-V processor cores reach a boundary on their minimal size. Their goal was to minimize area demand while fulfilling performance requirements and close the gap between prevalent 32-bit and 1-bit-serial RISC-V cores.\\
+Qian Wei and his colleagues created a comprehensive survey of RISC-V instruction set architecture extensions because while RISC-V is popular for embedded processors \cite{cui2023riscv}, there is still a gap between RISC-V's capabilities and the requirements of various emerging computing scenarios like artificial intelligence and cloud computing.\\
+Gautschi et al. conducted a comprehensive comparison of ultra-low-power RISC-V cores for Internet-of-Things applications \cite{gautschi2017slow}, analyzing the trade-offs between performance and energy efficiency in resource-constrained environments. Their work provides valuable insights into processor design considerations for applications with tight area and power constraints, which directly supports the rationale for bit-serial processor implementations in challenging deployment scenarios such as the 12-pad limitation required for Venus surface operations.
+
+\subsection{Processors for Venus}
+Current research on high-temperature electronics for Venus has shown that SiC ICs can sustain operation for over a year at 500 °C and for months in simulated Venus conditions, supporting sensors and simple microprocessors. This demonstrates the feasibility of long-duration surface missions and motivates concepts like LLISSE targeting low-power seismic monitoring \cite{kim2022sic}. \\
+At the processor level, studies of SiC-based computing infrastructures reveal that current prototypes achieve significantly lower throughput than space-proven silicon systems, yet provide guidelines at the microarchitecture and ISA levels for developing processors able to operate under Venus's extreme environment \cite{kremic2021temperature}.\\
+Pradhan and colleagues provided a comprehensive review of materials for high-temperature digital electronics \cite{pradhan2024materials}, highlighting the challenges and solutions for electronic systems operating at temperatures as high as 500°C and beyond. Their work emphasizes the critical importance of developing new material solutions beyond conventional silicon-based devices for applications including space exploration, with specific attention to the extreme conditions encountered in Venus surface missions.
+
 \subsection{FPGA}
-One verification strategy is co-emulation, where the RTL design on the FPGA is run in parallel with a trusted software model, such as the Spike simulator[5], on a host PC. This allows for high-speed verification by comparing the core's architectural state against the simulator in real-time. Furthermore, using FPGAs with RISC-V is advantageous as it allows for optimized hardware, where the FPGA is configured with only the peripherals required for a specific application[6].
+One verification strategy is co-emulation, where the RTL design on the FPGA is run in parallel with a trusted software model, such as the Spike simulator \cite{moreno2023fpga}, on a host PC. This allows for high-speed verification by comparing the core's architectural state against the simulator in real-time. Furthermore, using FPGAs with RISC-V is advantageous as it allows for optimized hardware, where the FPGA is configured with only the peripherals required for a specific application \cite{efinix2023riscv}.
 
 \subsection{FPGA-Based Verification Frameworks}
 
-Kim [7] demonstrated the importance of FPGA-based acceleration for RTL evaluation by introducing automated flows that generate cycle-accurate simulators directly from RTL. This approach reduces the engineering effort compared to earlier manual FPGA frameworks and enables both faster and more reliable pre-silicon verification. 
+Kim \cite{kim2019fpga} demonstrated the importance of FPGA-based acceleration for RTL evaluation by introducing automated flows that generate cycle-accurate simulators directly from RTL. This approach reduces the engineering effort compared to earlier manual FPGA frameworks and enables both faster and more reliable pre-silicon verification. 
 
-Building on this direction, Qin \textit{et al.} [8] proposed FERIVer, an FPGA-assisted framework for verifying RISC-V processors. Their method exploits the heterogeneous architecture of SoC FPGAs, running an instruction set simulator on the processing system in parallel with the RTL core on the programmable logic. By cross-checking execution states, FERIVer achieves significant speedups over traditional software simulators while maintaining accuracy. 
+Building on this direction, Qin \textit{et al.} \cite{qin2025feriver} proposed FERIVer, an FPGA-assisted framework for verifying RISC-V processors. Their method exploits the heterogeneous architecture of SoC FPGAs, running an instruction set simulator on the processing system in parallel with the RTL core on the programmable logic. By cross-checking execution states, FERIVer achieves significant speedups over traditional software simulators while maintaining accuracy. 
 
 Together, these works highlight how FPGA-based infrastructures provide an effective foundation for validating processor designs before costly SoC fabrication, a goal directly aligned with the testbench methodology developed in this project.
 
@@ -83,23 +87,7 @@ Together, these works highlight how FPGA-based infrastructures provide an effect
 \subsection{Future Work}
 <Optional section that describe possible future work>
 
-\section*{References}
-
-[1] M. Kissich and M. C. Baunach, “FazyRV: Closing the Gap between 32-Bit and Bit-Serial RISC-V Cores with a Scalable Implementation,” in *Proc. 21st ACM Int. Conf. on Computing Frontiers (CF ’24)*, Ischia, Italy, May 2024, pp. 240–248, doi: 10.1145/3625135.3655876.  
-
-[2] E. Cui, T. Li, and Q. Wei, “RISC-V Instruction Set Architecture Extensions: A Survey,” *IEEE Access*, vol. 11, pp. 24696–24711, 2023, doi: 10.1109/ACCESS.2023.3246491.  
-
-[3] H. Kim, J. Bagherzadeh, and R. G. Dreslinski, “SiC Processors for Extreme High-Temperature Venus Surface Exploration,” in *Proc. Design, Automation \& Test in Europe Conf. \& Exhibition (DATE)*, Antwerp, Belgium, 2022, pp. 406–411, doi: 10.23919/DATE54114.2022.9774769.  
-
-[4] T. Kremic, “High Temperature Electronics for Venus Surface Applications: A Summary of Recent Technical Advances,” *The Planetary Science Journal*, vol. 2, no. 1, 2021, doi: 10.3847/25C2CFEB.E3883E19.  
-
-[5] A. Moreno *et al.*, “An FPGA Verification, Debug and Performance Platform for RISC-V Cores,” in *Proc. RISC-V Summit Europe*, Barcelona, Spain, 2023.  
-
-[6] Efinix Inc., “RISC-V and FPGAs,” *Efinix Blog*, Jul. 2023. [Online]. Available: https://www.efinixinc.com/blog/riscv-and-fpgas.html. [Accessed: Sep. 26, 2025].  
-
-[7] D. Kim, *FPGA-Accelerated Evaluation and Verification of RTL Designs*, Ph.D. dissertation, Dept. Comput. Sci., Univ. California, Berkeley, Berkeley, CA, USA, Tech. Rep. UCB/EECS-2019-57, May 2019.  
-
-[8] K. Qin, X. Guo, M. Schulz, and C. Trinitis, “FERIVer: An FPGA-assisted Emulated Framework for RTL Verification of RISC-V Processors,” *arXiv preprint* arXiv:2504.05284, Apr. 2025.  
+\bibliographystyle{ieeetr}
+\bibliography{references}
 
 \end{document}
-
