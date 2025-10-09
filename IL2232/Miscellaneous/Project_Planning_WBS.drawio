@@ -1,0 +1,251 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/28.1.2 Chrome/138.0.7204.243 Electron/37.4.0 Safari/537.36" version="28.1.2">
+  <diagram name="WBS" id="0___UBgFq_i7mjWTfP7u">
+    <mxGraphModel dx="2831" dy="1413" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="pRa-0OVVVHF2z5KM39jq-0" />
+        <mxCell id="pRa-0OVVVHF2z5KM39jq-1" parent="pRa-0OVVVHF2z5KM39jq-0" />
+        <mxCell id="FuqN0fA_Sz1pcI7o6lyv-22" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=none;endFill=0;" edge="1" parent="pRa-0OVVVHF2z5KM39jq-1" source="7agJYDbnh14eQpLGDpHO-1" target="7agJYDbnh14eQpLGDpHO-5">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="685" y="200" />
+              <mxPoint x="57" y="200" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FuqN0fA_Sz1pcI7o6lyv-23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=none;endFill=0;" edge="1" parent="pRa-0OVVVHF2z5KM39jq-1" source="7agJYDbnh14eQpLGDpHO-1" target="7agJYDbnh14eQpLGDpHO-3">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="685" y="200" />
+              <mxPoint x="375" y="200" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FuqN0fA_Sz1pcI7o6lyv-24" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=none;endFill=0;" edge="1" parent="pRa-0OVVVHF2z5KM39jq-1" source="7agJYDbnh14eQpLGDpHO-1" target="7agJYDbnh14eQpLGDpHO-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="FuqN0fA_Sz1pcI7o6lyv-25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=none;endFill=0;" edge="1" parent="pRa-0OVVVHF2z5KM39jq-1" source="7agJYDbnh14eQpLGDpHO-1" target="FuqN0fA_Sz1pcI7o6lyv-14">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="685" y="200" />
+              <mxPoint x="1015" y="200" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FuqN0fA_Sz1pcI7o6lyv-26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=none;endFill=0;" edge="1" parent="pRa-0OVVVHF2z5KM39jq-1" source="7agJYDbnh14eQpLGDpHO-1" target="FuqN0fA_Sz1pcI7o6lyv-19">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="685" y="200" />
+              <mxPoint x="1335" y="200" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="7agJYDbnh14eQpLGDpHO-1" value="&lt;span id=&quot;docs-internal-guid-adad4b57-7fff-5f18-2822-9f22124e8e18&quot;&gt;&lt;span style=&quot;font-size: 15pt; font-family: Arial, sans-serif; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-variant-position: normal; font-variant-emoji: normal; vertical-align: baseline; white-space-collapse: preserve;&quot;&gt;&lt;font style=&quot;color: rgb(255, 255, 255);&quot;&gt;Testbench for Bit-Serial RISC-V processor in SoI for Venus&lt;/font&gt;&lt;/span&gt;&lt;/span&gt;" style="whiteSpace=wrap;html=1;rounded=1;shadow=1;strokeWidth=1;fontSize=16;align=center;fillColor=#f0a30a;fontColor=#000000;strokeColor=#BD7000;" parent="pRa-0OVVVHF2z5KM39jq-1" vertex="1">
+          <mxGeometry x="368.75" y="50" width="632.5" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="FuqN0fA_Sz1pcI7o6lyv-36" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endArrow=none;endFill=0;" edge="1" parent="pRa-0OVVVHF2z5KM39jq-1" source="7agJYDbnh14eQpLGDpHO-3" target="7agJYDbnh14eQpLGDpHO-8">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="230" y="305" />
+              <mxPoint x="230" y="460" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FuqN0fA_Sz1pcI7o6lyv-37" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endArrow=none;endFill=0;" edge="1" parent="pRa-0OVVVHF2z5KM39jq-1" source="7agJYDbnh14eQpLGDpHO-3" target="FuqN0fA_Sz1pcI7o6lyv-9">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="230" y="305" />
+              <mxPoint x="230" y="620" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FuqN0fA_Sz1pcI7o6lyv-38" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endArrow=none;endFill=0;" edge="1" parent="pRa-0OVVVHF2z5KM39jq-1" source="7agJYDbnh14eQpLGDpHO-3" target="FuqN0fA_Sz1pcI7o6lyv-8">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="230" y="305" />
+              <mxPoint x="230" y="780" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FuqN0fA_Sz1pcI7o6lyv-39" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endArrow=none;endFill=0;" edge="1" parent="pRa-0OVVVHF2z5KM39jq-1" source="7agJYDbnh14eQpLGDpHO-3" target="FuqN0fA_Sz1pcI7o6lyv-10">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="230" y="305" />
+              <mxPoint x="230" y="950" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="7agJYDbnh14eQpLGDpHO-3" value="FPGA Prototyping of Processor Cores" style="whiteSpace=wrap;html=1;rounded=1;shadow=1;strokeWidth=1;fontSize=16;align=center;fillColor=#1ba1e2;strokeColor=#006EAF;fontColor=#ffffff;" parent="pRa-0OVVVHF2z5KM39jq-1" vertex="1">
+          <mxGeometry x="250" y="260" width="250" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="FuqN0fA_Sz1pcI7o6lyv-40" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endArrow=none;endFill=0;" edge="1" parent="pRa-0OVVVHF2z5KM39jq-1" source="7agJYDbnh14eQpLGDpHO-4" target="7agJYDbnh14eQpLGDpHO-40">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="540" y="305" />
+              <mxPoint x="540" y="460" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FuqN0fA_Sz1pcI7o6lyv-41" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endArrow=none;endFill=0;" edge="1" parent="pRa-0OVVVHF2z5KM39jq-1" source="7agJYDbnh14eQpLGDpHO-4" target="FuqN0fA_Sz1pcI7o6lyv-11">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="540" y="305" />
+              <mxPoint x="540" y="620" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FuqN0fA_Sz1pcI7o6lyv-42" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endArrow=none;endFill=0;" edge="1" parent="pRa-0OVVVHF2z5KM39jq-1" source="7agJYDbnh14eQpLGDpHO-4" target="FuqN0fA_Sz1pcI7o6lyv-13">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="540" y="305" />
+              <mxPoint x="540" y="780" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FuqN0fA_Sz1pcI7o6lyv-43" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endArrow=none;endFill=0;" edge="1" parent="pRa-0OVVVHF2z5KM39jq-1" source="7agJYDbnh14eQpLGDpHO-4" target="FuqN0fA_Sz1pcI7o6lyv-12">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="540" y="305" />
+              <mxPoint x="540" y="950" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="7agJYDbnh14eQpLGDpHO-4" value="Testbench Development" style="whiteSpace=wrap;html=1;rounded=1;shadow=1;strokeWidth=1;fontSize=16;align=center;fillColor=#d80073;strokeColor=#A50040;fontColor=#ffffff;" parent="pRa-0OVVVHF2z5KM39jq-1" vertex="1">
+          <mxGeometry x="560" y="260" width="250" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="FuqN0fA_Sz1pcI7o6lyv-33" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endArrow=none;endFill=0;" edge="1" parent="pRa-0OVVVHF2z5KM39jq-1" source="7agJYDbnh14eQpLGDpHO-5" target="7agJYDbnh14eQpLGDpHO-37">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-100" y="305" />
+              <mxPoint x="-100" y="460" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FuqN0fA_Sz1pcI7o6lyv-34" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endArrow=none;endFill=0;" edge="1" parent="pRa-0OVVVHF2z5KM39jq-1" source="7agJYDbnh14eQpLGDpHO-5" target="FuqN0fA_Sz1pcI7o6lyv-6">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-100" y="305" />
+              <mxPoint x="-100" y="620" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FuqN0fA_Sz1pcI7o6lyv-35" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endArrow=none;endFill=0;" edge="1" parent="pRa-0OVVVHF2z5KM39jq-1" source="7agJYDbnh14eQpLGDpHO-5" target="FuqN0fA_Sz1pcI7o6lyv-7">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-100" y="305" />
+              <mxPoint x="-100" y="780" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="7agJYDbnh14eQpLGDpHO-5" value=" Toolchain and Hardware Setup" style="whiteSpace=wrap;html=1;rounded=1;shadow=1;strokeWidth=1;fontSize=16;align=center;fillColor=#6a00ff;strokeColor=#3700CC;fontColor=#ffffff;" parent="pRa-0OVVVHF2z5KM39jq-1" vertex="1">
+          <mxGeometry x="-67.5" y="260" width="250" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="7agJYDbnh14eQpLGDpHO-8" value="&lt;span class=&quot;citation-110 citation-end-110&quot;&gt;&amp;nbsp;Analyze the existing VHDL model of RISC-V and CISC-V processor&lt;sup data-turn-source-index=&quot;3&quot; class=&quot;superscript&quot;&gt;&lt;/sup&gt;&lt;sup data-turn-source-index=&quot;3&quot; class=&quot;superscript&quot;&gt;&lt;/sup&gt;&lt;sup data-turn-source-index=&quot;3&quot; class=&quot;superscript&quot;&gt;&lt;/sup&gt;&lt;sup data-turn-source-index=&quot;3&quot; class=&quot;superscript&quot;&gt;&lt;/sup&gt;&lt;/span&gt;." style="whiteSpace=wrap;html=1;rounded=1;shadow=1;strokeWidth=1;fontSize=16;align=center;fillColor=#1ba1e2;strokeColor=#006EAF;fontColor=#ffffff;" parent="pRa-0OVVVHF2z5KM39jq-1" vertex="1">
+          <mxGeometry x="265" y="400" width="200" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="7agJYDbnh14eQpLGDpHO-37" value="Install and configure VHDL and ProGram development environments" style="whiteSpace=wrap;html=1;rounded=1;shadow=1;strokeWidth=1;fontSize=16;align=center;fillColor=#6a00ff;strokeColor=#3700CC;fontColor=#ffffff;" parent="pRa-0OVVVHF2z5KM39jq-1" vertex="1">
+          <mxGeometry x="-42.5" y="400" width="200" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="7agJYDbnh14eQpLGDpHO-40" value="Specify the communication protocol between the testbench FPGA and the processor FPGA." style="whiteSpace=wrap;html=1;rounded=1;shadow=1;strokeWidth=1;fontSize=16;align=center;fillColor=#d80073;strokeColor=#A50040;fontColor=#ffffff;" parent="pRa-0OVVVHF2z5KM39jq-1" vertex="1">
+          <mxGeometry x="585" y="400" width="200" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="FuqN0fA_Sz1pcI7o6lyv-6" value="Install and configure FPGA synthesis and implementation tools." style="whiteSpace=wrap;html=1;rounded=1;shadow=1;strokeWidth=1;fontSize=16;align=center;fillColor=#6a00ff;strokeColor=#3700CC;fontColor=#ffffff;" vertex="1" parent="pRa-0OVVVHF2z5KM39jq-1">
+          <mxGeometry x="-42.5" y="560" width="200" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="FuqN0fA_Sz1pcI7o6lyv-7" value="Set up the physical hardware, including the two FPGAs and connection interfaces." style="whiteSpace=wrap;html=1;rounded=1;shadow=1;strokeWidth=1;fontSize=16;align=center;fillColor=#6a00ff;strokeColor=#3700CC;fontColor=#ffffff;" vertex="1" parent="pRa-0OVVVHF2z5KM39jq-1">
+          <mxGeometry x="-42.5" y="720" width="200" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="FuqN0fA_Sz1pcI7o6lyv-8" value="Implement the parallel RISC-V and bit-serial CISC-V processors on FPGA" style="whiteSpace=wrap;html=1;rounded=1;shadow=1;strokeWidth=1;fontSize=16;align=center;fillColor=#1ba1e2;strokeColor=#006EAF;fontColor=#ffffff;" vertex="1" parent="pRa-0OVVVHF2z5KM39jq-1">
+          <mxGeometry x="265" y="720" width="200" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="FuqN0fA_Sz1pcI7o6lyv-9" value="Adapt the VHDL code for FPGA synthesis and placement." style="whiteSpace=wrap;html=1;rounded=1;shadow=1;strokeWidth=1;fontSize=16;align=center;fillColor=#1ba1e2;strokeColor=#006EAF;fontColor=#ffffff;" vertex="1" parent="pRa-0OVVVHF2z5KM39jq-1">
+          <mxGeometry x="265" y="560" width="200" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="FuqN0fA_Sz1pcI7o6lyv-10" value="&lt;span class=&quot;citation-106 citation-end-106&quot;&gt;Perform initial standalone testing of both processors on a single FPGA&lt;sup data-turn-source-index=&quot;7&quot; class=&quot;superscript&quot;&gt;&lt;/sup&gt;&lt;/span&gt;." style="whiteSpace=wrap;html=1;rounded=1;shadow=1;strokeWidth=1;fontSize=16;align=center;fillColor=#1ba1e2;strokeColor=#006EAF;fontColor=#ffffff;" vertex="1" parent="pRa-0OVVVHF2z5KM39jq-1">
+          <mxGeometry x="265" y="890" width="200" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="FuqN0fA_Sz1pcI7o6lyv-11" value="Develop the HDL code for the testbench logic." style="whiteSpace=wrap;html=1;rounded=1;shadow=1;strokeWidth=1;fontSize=16;align=center;fillColor=#d80073;strokeColor=#A50040;fontColor=#ffffff;" vertex="1" parent="pRa-0OVVVHF2z5KM39jq-1">
+          <mxGeometry x="585" y="560" width="200" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="FuqN0fA_Sz1pcI7o6lyv-12" value="&lt;span class=&quot;citation-102 citation-end-102 interactive-span-hovered&quot;&gt;Develop a suite of test programs in C++ and/or assembly to verify processor functionality&lt;sup data-turn-source-index=&quot;11&quot; class=&quot;superscript&quot;&gt;&lt;/sup&gt;&lt;/span&gt;." style="whiteSpace=wrap;html=1;rounded=1;shadow=1;strokeWidth=1;fontSize=16;align=center;fillColor=#d80073;strokeColor=#A50040;fontColor=#ffffff;" vertex="1" parent="pRa-0OVVVHF2z5KM39jq-1">
+          <mxGeometry x="585" y="890" width="200" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="FuqN0fA_Sz1pcI7o6lyv-13" value="&lt;span class=&quot;citation-104 citation-end-104&quot;&gt;&amp;nbsp;Synthesize and implement the testbench on a separate FPGA&lt;sup data-turn-source-index=&quot;9&quot; class=&quot;superscript&quot;&gt;&lt;/sup&gt;&lt;/span&gt;." style="whiteSpace=wrap;html=1;rounded=1;shadow=1;strokeWidth=1;fontSize=16;align=center;fillColor=#d80073;strokeColor=#A50040;fontColor=#ffffff;" vertex="1" parent="pRa-0OVVVHF2z5KM39jq-1">
+          <mxGeometry x="585" y="720" width="200" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="FuqN0fA_Sz1pcI7o6lyv-44" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endArrow=none;endFill=0;" edge="1" parent="pRa-0OVVVHF2z5KM39jq-1" source="FuqN0fA_Sz1pcI7o6lyv-14" target="FuqN0fA_Sz1pcI7o6lyv-15">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="870" y="305" />
+              <mxPoint x="870" y="460" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FuqN0fA_Sz1pcI7o6lyv-45" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endArrow=none;endFill=0;" edge="1" parent="pRa-0OVVVHF2z5KM39jq-1" source="FuqN0fA_Sz1pcI7o6lyv-14" target="FuqN0fA_Sz1pcI7o6lyv-16">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="870" y="305" />
+              <mxPoint x="870" y="620" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FuqN0fA_Sz1pcI7o6lyv-46" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endArrow=none;endFill=0;" edge="1" parent="pRa-0OVVVHF2z5KM39jq-1" source="FuqN0fA_Sz1pcI7o6lyv-14" target="FuqN0fA_Sz1pcI7o6lyv-17">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="870" y="305" />
+              <mxPoint x="870" y="780" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FuqN0fA_Sz1pcI7o6lyv-53" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endArrow=none;endFill=0;" edge="1" parent="pRa-0OVVVHF2z5KM39jq-1" source="FuqN0fA_Sz1pcI7o6lyv-14" target="FuqN0fA_Sz1pcI7o6lyv-18">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="870" y="305" />
+              <mxPoint x="870" y="950" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FuqN0fA_Sz1pcI7o6lyv-14" value="System Integration and Verification" style="whiteSpace=wrap;html=1;rounded=1;shadow=1;strokeWidth=1;fontSize=16;align=center;fillColor=#60a917;strokeColor=#2D7600;fontColor=#ffffff;" vertex="1" parent="pRa-0OVVVHF2z5KM39jq-1">
+          <mxGeometry x="890" y="260" width="250" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="FuqN0fA_Sz1pcI7o6lyv-15" value="&lt;span class=&quot;citation-101 citation-end-101&quot;&gt;Physically connect the processor FPGA to the testbench FPGA&lt;sup data-turn-source-index=&quot;12&quot; class=&quot;superscript&quot;&gt;&lt;/sup&gt;&lt;/span&gt;." style="whiteSpace=wrap;html=1;rounded=1;shadow=1;strokeWidth=1;fontSize=16;align=center;fillColor=#60a917;strokeColor=#2D7600;fontColor=#ffffff;" vertex="1" parent="pRa-0OVVVHF2z5KM39jq-1">
+          <mxGeometry x="915" y="400" width="200" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="FuqN0fA_Sz1pcI7o6lyv-16" value=" Execute testbench to validate the functionality of both the RISC-V and CISC-V processors." style="whiteSpace=wrap;html=1;rounded=1;shadow=1;strokeWidth=1;fontSize=16;align=center;fillColor=#60a917;strokeColor=#2D7600;fontColor=#ffffff;" vertex="1" parent="pRa-0OVVVHF2z5KM39jq-1">
+          <mxGeometry x="915" y="560" width="200" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="FuqN0fA_Sz1pcI7o6lyv-17" value="Potential bug fixes and debugging." style="whiteSpace=wrap;html=1;rounded=1;shadow=1;strokeWidth=1;fontSize=16;align=center;fillColor=#60a917;strokeColor=#2D7600;fontColor=#ffffff;" vertex="1" parent="pRa-0OVVVHF2z5KM39jq-1">
+          <mxGeometry x="915" y="720" width="200" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="FuqN0fA_Sz1pcI7o6lyv-18" value="&lt;span class=&quot;citation-99 citation-end-99&quot;&gt;Verify that the complete system works as intended&lt;sup data-turn-source-index=&quot;14&quot; class=&quot;superscript&quot;&gt;&lt;/sup&gt;&lt;/span&gt;." style="whiteSpace=wrap;html=1;rounded=1;shadow=1;strokeWidth=1;fontSize=16;align=center;fillColor=#60a917;strokeColor=#2D7600;fontColor=#ffffff;" vertex="1" parent="pRa-0OVVVHF2z5KM39jq-1">
+          <mxGeometry x="915" y="890" width="200" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="FuqN0fA_Sz1pcI7o6lyv-48" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endArrow=none;endFill=0;" edge="1" parent="pRa-0OVVVHF2z5KM39jq-1" source="FuqN0fA_Sz1pcI7o6lyv-19" target="FuqN0fA_Sz1pcI7o6lyv-20">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1190" y="305" />
+              <mxPoint x="1190" y="460" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FuqN0fA_Sz1pcI7o6lyv-49" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endArrow=none;endFill=0;" edge="1" parent="pRa-0OVVVHF2z5KM39jq-1" source="FuqN0fA_Sz1pcI7o6lyv-19" target="FuqN0fA_Sz1pcI7o6lyv-21">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1335" y="460" />
+              <mxPoint x="1190" y="460" />
+              <mxPoint x="1190" y="630" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FuqN0fA_Sz1pcI7o6lyv-19" value="Project Finalization and Documentation" style="whiteSpace=wrap;html=1;rounded=1;shadow=1;strokeWidth=1;fontSize=16;align=center;fillColor=#a0522d;strokeColor=#6D1F00;fontColor=#ffffff;" vertex="1" parent="pRa-0OVVVHF2z5KM39jq-1">
+          <mxGeometry x="1210" y="260" width="250" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="FuqN0fA_Sz1pcI7o6lyv-20" value="Create detailed documentation for the design of both processor implementations and the testbench." style="whiteSpace=wrap;html=1;rounded=1;shadow=1;strokeWidth=1;fontSize=16;align=center;fillColor=#a0522d;strokeColor=#6D1F00;fontColor=#ffffff;" vertex="1" parent="pRa-0OVVVHF2z5KM39jq-1">
+          <mxGeometry x="1235" y="400" width="200" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="FuqN0fA_Sz1pcI7o6lyv-21" value="Document the test procedures, test cases, and final verification results." style="whiteSpace=wrap;html=1;rounded=1;shadow=1;strokeWidth=1;fontSize=16;align=center;fillColor=#a0522d;strokeColor=#6D1F00;fontColor=#ffffff;" vertex="1" parent="pRa-0OVVVHF2z5KM39jq-1">
+          <mxGeometry x="1235" y="570" width="200" height="120" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
