@@ -192,4 +192,137 @@ Week 51–1 & Sprint 10–11 – Prepare documentation, lessons learned, final r
 
 \section{First sprint plan}
 
+\subsection{Sprint 1 Overview}
+
+\textbf{Sprint Duration:} Week 41 (October 6-13, 2025)\\
+\textbf{Sprint Goal:} Establish project foundation by setting up development environment, organizational structure, and initial planning documentation.\\
+\textbf{Main Deliverable:} Project Plan document
+
+\subsection{Sprint Objectives}
+
+The first sprint focuses on establishing the necessary infrastructure and understanding for the project:
+
+\begin{itemize}
+    \item Set up development environment and toolchains (ProGram, RISC-V tools, FPGA synthesis tools)
+    \item Establish GitHub repository structure for code, documentation, and version control
+    \item Complete project planning documentation (this document)
+    \item Conduct initial risk analysis to identify potential project obstacles
+    \item Familiarize team with existing RISC-V and CISC-V processor designs
+    \item Procure and verify availability of required FPGA hardware
+    \item Establish communication channels and meeting schedules with supervisors
+\end{itemize}
+
+
+\subsection{Detailed Task Descriptions}
+
+\noindent\textbf{Development Environment Setup}\\
+The team will install and configure all necessary software tools on individual workstations:
+\begin{itemize}
+    \item ProGram compiler and synthesis tools for CISC-V development
+    \item RISC-V GNU toolchain for cross-compilation and assembly programming
+    \item FPGA vendor tools (Xilinx Vivado or equivalent) for synthesis and implementation
+    \item Simulation tools (ModelSim, GHDL, or Verilator) for functional verification
+\end{itemize}
+
+\noindent\textbf{Repository Organization}\\
+The GitHub repository will be structured with separate directories for:
+\begin{itemize}
+    \item RISC-V processor source code and documentation
+    \item CISC-V processor source code and documentation
+    \item Testbench HDL code and verification scripts
+    \item Software test programs and benchmarks
+    \item Project documentation (reports, presentations, meeting notes)
+\end{itemize}
+
+\noindent\textbf{Code Review and Familiarization}\\
+Team members will review the existing processor implementations from last years project to understand:
+\begin{itemize}
+    \item Architectural decisions and design constraints (12-pad limitation)
+    \item Interface specifications between processor and memory/peripherals
+    \item Current implementation status and known issues
+    \item Test coverage and validation approach used previously
+\end{itemize}
+
+\subsection{Sprint Meetings}
+
+\noindent\textbf{Sprint Planning Meeting}\\
+\textit{Date:}  October 4, 2025\\
+\textit{Duration:} 2 hours\\
+\textit{Participants:} All team members\\
+\textit{Agenda:}
+\begin{itemize}
+    \item Review project description and objectives
+    \item Discuss initial task breakdown
+    \item Assign responsibilities based on expertise
+    \item Set up communication channels
+\end{itemize}
+
+\noindent\textbf{Risk Analysis Meeting}\\
+\textit{Date:}  September 28, 2025\\
+\textit{Duration:} 2 hours\\
+\textit{Participants:} All team members\\
+\textit{Outcome:} Completed risk analysis document identifying 8 major risks with mitigation strategies
+
+\noindent\textbf{Supervisor Meeting}\\
+\textit{Date:}  October 8, 2025, 10:00 AM\\
+\textit{Duration:} 1 hour\\
+\textit{Participants:} Team + Johnny Oberg\\
+\textit{Agenda:}
+\begin{itemize}
+    \item Present project plan draft
+    \item Clarify FPGA hardware availability and specifications
+    \item Discuss ProGram toolchain setup issues
+    \item Confirm weekly meeting schedule for remainder of project
+\end{itemize}
+
+\noindent\textbf{Sprint Review and Retrospective}\\
+\textit{Date:} October 14, 2025\\
+\textit{Duration:} 1.5 hours\\
+\textit{Participants:} All team members\\
+\textit{Agenda:}
+\begin{itemize}
+    \item Review completed tasks and deliverables
+    \item Identify blockers and technical challenges encountered
+    \item Discuss what went well and areas for improvement
+    \item Plan priorities for Sprint 2 (testbench architecture design)
+\end{itemize}
+
+\subsection{Success Criteria}
+
+Sprint 1 will be considered successful if:
+\begin{itemize}
+    \item All team members have functional development environments installed
+    \item GitHub repository is established with appropriate structure and access rights
+    \item Project plan document is completed and submitted
+    \item Risk analysis is completed with identified mitigation strategies
+    \item Team has reviewed existing processor code and understands the design
+    \item FPGA hardware is confirmed available for upcoming implementation phases
+    \item Weekly supervisor meeting schedule is established and confirmed
+\end{itemize}
+
+\subsection{Risks and Mitigation for Sprint 1}
+
+Based on the risk analysis conducted this week, the following risks are particularly relevant to Sprint 1:
+
+\begin{itemize}
+    \item \textbf{Specialized Toolchain Dependency:} ProGram compiler may have installation or compatibility issues\\
+    \textit{Mitigation:} Early installation attempts with supervisor support; document issues immediately
+    
+    \item \textbf{Team Inexperience:} Members unfamiliar with ProGram and high-temperature SoI constraints\\
+    \textit{Mitigation:} Thorough code review sessions; leverage supervisors expertise during setup
+    
+    \item \textbf{Organizational Issues:} Software installation on personal computers; varying member schedules\\
+    \textit{Mitigation:} Flexible meeting times; remote collaboration via Discord; documented setup procedures
+\end{itemize}
+
+\subsection{Transition to Sprint 2}
+
+Upon completion of Sprint 1, the team will transition to Sprint 2 (Week 42: October 14-21) with focus on:
+\begin{itemize}
+    \item Beginning testbench architecture design
+    \item Defining interface specifications between testbench and processor FPGAs
+    \item Initial component breakdown 
+    \item Creating first simulation test cases for basic ISA instructions
+\end{itemize}
+
 \end{document}
