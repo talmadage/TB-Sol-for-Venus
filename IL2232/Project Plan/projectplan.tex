@@ -150,6 +150,9 @@ This combination of tools ensures that our communication remains efficient, clea
 
 \FloatBarrier
 \section{Work Breakdown Structure (WBS)}
+
+The Work Breakdown Structure (WBS) for this project is illustrated in the diagram below. It hierarchically decomposes the project into five primary phases to ensure a clear and manageable workflow.\\
+
 \begin{figure}[h]
 \centering
 \includegraphics[width=\linewidth]{WBS.png}
@@ -157,8 +160,36 @@ This combination of tools ensures that our communication remains efficient, clea
 \label{fig:timeline}
 \end{figure}
 
+The main phases of the project are:
+\begin{itemize}
+  \item \textbf{Toolchain and Hardware Setup} : This initial phase involves preparing the necessary software environments and physical hardware for development and testing.
+  \item \textbf{FPGA Prototyping of Processor Cores} : This phase focuses on adapting, implementing, and performing initial tests on the existing RISC-V and CISC-V processor models on an FPGA.
+  \item \textbf{Testbench Development} : This involves designing and implementing the advanced testbench on a separate FPGA, which will be used to validate the processor cores.
+  \item \textbf{System Integration and Verification} : This phase covers the physical connection of the two FPGAs and the execution of comprehensive tests to validate the complete system and debug any potential issues.
+  \item \textbf{Project Finalization and Documentation} : The final phase includes creating detailed documentation for the designs and test procedures, and preparing the final project deliverables.
+\end{itemize}
+This structure provides a comprehensive overview of the project's scope and organizes all required work into logical, manageable packages.
+
+
 \section{Global plan}
-\subsection{}
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Week} & \textbf{Sprint Focus} & \textbf{Main Deliverable} \\ \hline
+Week 41 (Oct 6–13) & Sprint 1 – Setup project environment, FPGA toolchain, GitHub structure & Project Plan \\ \hline
+Week 42 (Oct 14–20) & Sprint 2 – Start testbench architecture & Early TB design \\ \hline
+Week 43–44 & Sprint 3–4 – Integrate CISC-V with testbench, basic simulation & Status Report 1 \\ \hline
+Week 45–46 & Sprint 5–6 – Implement and connect RISC-V, improve testbench & Status Report 2 \\ \hline
+Week 47–50 & Sprint 7–9 – Hardware testing on FPGA, validation and debugging & TB verification results \\ \hline
+Week 51–1 & Sprint 10–11 – Prepare documentation, lessons learned, final report & Final report \& presentation \\ \hline
+\end{tabular}
+\caption{Global sprint overview and deliverables for the project.}
+\label{tab:sprint_overview}
+\end{table}
+
+
 \section{First sprint plan}
 
 \end{document}
