@@ -37,7 +37,7 @@ Emails: chinmayp@kth.se, parata@ug.kth.se, chongnan@kth.se, xjia@kth.se, xinxinq
 This project presents the development of a testbench framework for the Venus RISC-V initiative at KTH Royal Institute of Technology. The objective is to validate two FPGA-based processors—a parallel RISC-V core with a bit-serial cache interface, and a bit-serial “CISC-V” variant—under realistic hardware and verification constraints. The system separates the processor and the testbench onto two FPGAs, simulating the communication bottlenecks expected in future SoI-based high-temperature implementations for Venus surface missions. Following an agile project model, the team designed, implemented, and verified the hardware through incremental sprints. The final prototype successfully demonstrates a reproducible hardware test environment capable of validating functional correctness, communication reliability, and performance feasibility for simplified RISC-V cores targeting extreme environments.
 
 \section*{Keywords}
-<optional section to help search engines to find the paper>
+RISC-V CISC FPGA Venus
 
 % Sezioni principali
 \section{Introduction}
@@ -100,16 +100,25 @@ The overall architecture is divided into two major subsystems connected through 
 The communication between the two FPGAs uses a synchronous serial protocol, minimizing the number of required pads and simplifying PCB connectivity. Each subsystem is independently testable, allowing early functional verification before full integration. The design adopts incremental hardware-in-the-loop testing and leverages a modular top-level hierarchy for flexible reconfiguration.
 
 \section{Experiments}
-<What experiments have I done? This is more or less a specification of the experiments.>
+A structured experimental campaign was conducted to validate the system functionality. Each major milestone corresponded to a separate experiment phase:
+\begin{itemize}
+  \item \textbf{Core-A validation} : The parallel RISC-V processor was synthesized and tested with simple benchmark programs (e.g., arithmetic, loop, and branching tests) using a single FPGA. Functional correctness was verified via waveform comparison and on-board UART output.
+  \item \textbf{Testbench bring-up} : The second FPGA was programmed with the testbench, initially tested in isolation through internal loopback and signal toggling to validate timing and I/O drivers.
+  \item \textbf{Dual-FPGA integration} : The communication link between the two FPGAs was established, allowing the processor to execute test programs under the control of the testbench. Signal integrity, synchronization, and latency were evaluated through test logs and signal probing.
+  \item \textbf{Bit-serial CISC-V verification} : The ProGram-generated core was synthesized, and functional tests were executed under the same testbench configuration. Comparative measurements against the parallel RISC-V implementation were made to observe performance and throughput differences.
+  \item \textbf{Regression and stability testing} : Automated test scripts executed repeated workloads to ensure reproducibility and detect intermittent synchronization or logic issues.
+\end{itemize}
+All tests were performed iteratively under the agile process, where each sprint concluded with a functional demonstration and documentation update.
 
 \section{Results}
-<What results did I get from the experiments. This section is sometimes merged with the experiments section>
+The implemented testbench successfully validated both processor variants on FPGA hardware. The parallel RISC-V achieved stable operation and consistent test completion, while the bit-serial CISC-V demonstrated functional correctness albeit at reduced throughput, confirming the expected performance-area trade-off.\\
+Integration over the dual-FPGA configuration achieved reliable end-to-end communication with reproducible data transfer and command execution. The testbench’s automated logging framework enabled efficient verification and provided traceable results across sprints.\\
+Through repeated testing, the team confirmed the feasibility of conducting hardware-in-the-loop verification for simplified RISC-V processors under severe I/O constraints, demonstrating that the proposed testbench design is robust, flexible, and extensible to future SoI-based high-temperature platforms. The results also validate that the system can serve as a generic framework for testing future processor iterations or SoC components before fabrication.
 
 \section{Conclusion}
-<This is a retrospective look at the introduction, and should present answers to the questions asked there and throughout the paper.>
-
-\subsection{Future Work}
-<Optional section that describe possible future work>
+This project developed a comprehensive FPGA-based testbench for validating bit-serial RISC-V processors aimed at future Venus surface applications. Through systematic design, sprint-based development, and risk-aware planning, the team successfully realized a modular dual-FPGA platform that enables early-stage verification of simplified processor architectures under constrained I/O and environmental assumptions.\\
+The key outcomes include (1) functional verification of both parallel and bit-serial processors, (2) a reusable hardware testbench with automation support, and (3) a validated design methodology applicable to SoI and SiC environments. The project demonstrates the effectiveness of combining agile methods with hardware prototyping to manage complexity and mitigate technical risks in research-oriented processor development.\\
+Future work will extend the framework toward temperature-aware modeling, SoI integration, and FPGA co-emulation with instruction-set simulators to achieve higher verification coverage and stronger correlation with final silicon implementations.
 
 \bibliographystyle{ieeetr}
 \bibliography{references}
