@@ -34,19 +34,16 @@ Emails: chinmayp@kth.se, parata@ug.kth.se, chongnan@kth.se, xjia@kth.se, xinxinq
 \maketitle
 
 \section*{Abstract}
-<Contains short summary of the paper>\\
-Main body – Double column format\\
-Text – Font – Times New Rom, 10 pts\\
-Section Headers – Bold Font – Times New Roman, 12 pts\\
-Subsection Headers – Bold font – Times new Roman, 11 pts\\
-Paper length target 4-6 pages.
+This project presents the development of a testbench framework for the Venus RISC-V initiative at KTH Royal Institute of Technology. The objective is to validate two FPGA-based processors—a parallel RISC-V core with a bit-serial cache interface, and a bit-serial “CISC-V” variant—under realistic hardware and verification constraints. The system separates the processor and the testbench onto two FPGAs, simulating the communication bottlenecks expected in future SoI-based high-temperature implementations for Venus surface missions. Following an agile project model, the team designed, implemented, and verified the hardware through incremental sprints. The final prototype successfully demonstrates a reproducible hardware test environment capable of validating functional correctness, communication reliability, and performance feasibility for simplified RISC-V cores targeting extreme environments.
 
 \section*{Keywords}
 <optional section to help search engines to find the paper>
 
 % Sezioni principali
 \section{Introduction}
-<Answers the question: Why do I do this research? The section may also contain which methodology have been used? Any research ethics? Sustainability issues?>
+The exploration of Venus surface missions requires electronic systems that can survive extreme conditions of up to 480°C, high pressure, and a corrosive atmosphere. Conventional silicon technology fails at such temperatures, motivating the use of Silicon-on-Insulator (SoI) and Silicon Carbide (SiC) technologies. However, validating designs for these technologies in realistic environments is expensive and slow. Therefore, FPGA-based emulation and verification provide a cost-effective platform for early design validation before fabrication.\\
+This project aims to build a hardware testbench that can evaluate bit-serial RISC-V processors intended for high-temperature deployment. Two cores are considered: a parallel RISC-V model and a bit-serial “CISC-V” core implemented using the ProGram tool. The project focuses on their functional verification, performance characterization, and system-level integration. The design methodology follows an agile approach, structured in short iterations (sprints) emphasizing early testing, modular development, and continuous risk assessment.\\
+Ethically, the project follows academic research standards: all external intellectual property (e.g., RTL, tools, frameworks) is used under proper open-source licenses. From a sustainability perspective, the project supports low-power, resource-efficient computing, a key enabler for future energy-constrained space missions.
 
 \section{Related Work}
 This section reviews research relevant to developing a testbench for bit-serial RISC-V processors targeting Venus surface applications. We examine RISC-V architectures, high-temperature electronics, FPGA implementation methods, and verification frameworks. These foundations inform the design of a testbench capable of validating processor functionality under extreme environmental constraints.
@@ -74,10 +71,33 @@ Together, these works highlight how FPGA-based infrastructures provide an effect
 
 
 \section{Specification}
-<Outlines the constraints this work has, if any>\\
+The project is constrained by both hardware and environmental limitations. The test setup consists of two FPGA boards, one implementing the processor core and the other acting as the testbench. Due to the 12-probe limitation of the physical test station, signal interfaces are highly constrained, motivating bit-serial communication schemes.\\
+The design goals are:\\
+\begin{itemize}
+    \item Maintain compatibility with RISC-V base ISA (RV32I).
+    \item Ensure modularity between processor and testbench components.
+    \item Enable automated test execution and result logging.
+    \item Achieve operational stability for extended FPGA runs to emulate continuous workload.
+\end{itemize}
+Hardware synthesis is performed using vendor FPGA tools and verified using ModelSim/QuestaSim. The ProGram compiler is used for the bit-serial CISC-V generation. Documentation, risk tracking, and test automation are maintained via version control and scripted pipelines.\\
 
 \section{Architecture}
-<How do I/we plan to build this gadget given the constraints I have?. This section is sometimes split into subsections like Hardware and Software>
+The overall architecture is divided into two major subsystems connected through a dedicated communication interface:
+\begin{itemize}
+\item Processor FPGA – hosts either the parallel RISC-V or the bit-serial CISC-V core.
+\begin{itemize}
+    \item The RISC-V core implements a bit-serial cache interface to mimic the narrow I/O expected under physical constraints.
+    \item The CISC-V processor is generated from a high-level specification using the ProGram tool and synthesized into FPGA fabric.
+    \item Both processors share a minimal peripheral set (instruction memory, serial link, debug UART).
+\end{itemize}
+\item Testbench FPGA – provides I/O emulation, input stimulus, and result logging.
+\begin{itemize}
+    \item Implements command control, data loading, and timing synchronization with the processor FPGA.
+    \item Generates and monitors test patterns to verify the correctness of arithmetic, control flow, and memory operations.
+    \item Logs execution traces for analysis and regression verification.
+\end{itemize}
+\end{itemize}
+The communication between the two FPGAs uses a synchronous serial protocol, minimizing the number of required pads and simplifying PCB connectivity. Each subsystem is independently testable, allowing early functional verification before full integration. The design adopts incremental hardware-in-the-loop testing and leverages a modular top-level hierarchy for flexible reconfiguration.
 
 \section{Experiments}
 <What experiments have I done? This is more or less a specification of the experiments.>
