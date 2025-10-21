@@ -17,15 +17,14 @@
 % Dati frontespizio
 \title{\textbf{TB for Venus RISC-V}\\[0.5em]}
 
-\author{Chinmay Purandare\\
-Lorenzo Parata\\
-Chongnan Wang\\
-Xiaotian Jiang \\
-Xinxin Qin \\
+\author{Chinmay Purandare(chinmayp@kth.se)\\
+Lorenzo Parata(parata@ug.kth.se)\\
+Chongnan Wang(chongnan@kth.se)\\
+Xiaotian Jiang(xjia@kth.se) \\
+Xinxin Qin(xinxinq@kth.se) \\
 Department of Electronics\\
 KTH Royal Institute of Technology\\
-Stockholm, Sweden\\
-Emails: chinmayp@kth.se, parata@ug.kth.se, chongnan@kth.se, xjia@kth.se, xinxinq@kth.se}
+Stockholm, Sweden\\}
 
 \date{}
 
@@ -34,16 +33,23 @@ Emails: chinmayp@kth.se, parata@ug.kth.se, chongnan@kth.se, xjia@kth.se, xinxinq
 \maketitle
 
 \section*{Abstract}
-This project presents the development of a testbench framework for the Venus RISC-V initiative at KTH Royal Institute of Technology. The objective is to validate two FPGA-based processors—a parallel RISC-V core with a bit-serial cache interface, and a bit-serial “CISC-V” variant—under realistic hardware and verification constraints. The system separates the processor and the testbench onto two FPGAs, simulating the communication bottlenecks expected in future SoI-based high-temperature implementations for Venus surface missions. Following an agile project model, the team designed, implemented, and verified the hardware through incremental sprints. The final prototype successfully demonstrates a reproducible hardware test environment capable of validating functional correctness, communication reliability, and performance feasibility for simplified RISC-V cores targeting extreme environments.
+High-temperature electronics operating beyond 300°C are essential for emerging applications in extreme environments, including deep-earth exploration, aerospace systems, and Venus surface missions where ambient temperatures exceed 450°C. This project addresses a critical challenge in validating high-temperature digital processors by developing and testing FPGA prototypes of bit-serial RISC-V processors designed for KTH's Silicon-on-Insulator (SoI) technology capable of operating at temperatures up to 380°C or higher.\\
+The project focuses on implementing and verifying two processor variants: a parallel RISC-V model with bit-serial cache interface and a CISC-V model with 2-bit serial interface. These designs overcome the constraint of having only 12 available probe connections in high-temperature test environments—a fundamental limitation imposed by measurement equipment that fails above 400°C. By adopting the open-source RISC-V instruction set architecture, this work avoids the intellectual property restrictions that typically hinder academic processor research while enabling full hardware and software development freedom.\\
+Successfully demonstrating these processor architectures in FPGA prototypes will validate KTH's high-temperature SoI technology for digital computing applications and advance the frontier of extreme-environment electronics. This capability is crucial for scientific missions and industrial applications where conventional silicon electronics cannot survive, opening new possibilities for autonomous systems operating in previously inaccessible thermal conditions.
 
 \section*{Keywords}
 RISC-V CISC FPGA Venus
 
 % Sezioni principali
 \section{Introduction}
-The exploration of Venus surface missions requires electronic systems that can survive extreme conditions of up to 480°C, high pressure, and a corrosive atmosphere. Conventional silicon technology fails at such temperatures, motivating the use of Silicon-on-Insulator (SoI) and Silicon Carbide (SiC) technologies. However, validating designs for these technologies in realistic environments is expensive and slow. Therefore, FPGA-based emulation and verification provide a cost-effective platform for early design validation before fabrication.\\
-This project aims to build a hardware testbench that can evaluate bit-serial RISC-V processors intended for high-temperature deployment. Two cores are considered: a parallel RISC-V model and a bit-serial “CISC-V” core implemented using the ProGram tool. The project focuses on their functional verification, performance characterization, and system-level integration. The design methodology follows an agile approach, structured in short iterations (sprints) emphasizing early testing, modular development, and continuous risk assessment.\\
-Ethically, the project follows academic research standards: all external intellectual property (e.g., RTL, tools, frameworks) is used under proper open-source licenses. From a sustainability perspective, the project supports low-power, resource-efficient computing, a key enabler for future energy-constrained space missions.
+\subsection{Background and Motivation}
+Conventional silicon-based electronics fail at temperatures exceeding 150°C due to increased leakage currents and thermal stress. However, applications such as geothermal systems, aerospace propulsion monitoring, and Venus surface exploration require digital computation at temperatures approaching 470°C. KTH's Electronic Systems department has developed Silicon-on-Insulator (SoI) technology capable of operating at temperatures exceeding 380°C, with theoretical limits approaching 1000°C, enabling complex digital systems in extreme environments previously inaccessible to conventional silicon.
+\subsection{The 12-Pad Constraint Challenge}
+While SoI technology can withstand extreme temperatures, measurement equipment deteriorates above 400°C. KTH's test station employs 12 high-temperature probes, imposing a strict 12-pad limitation on circuits under test. Traditional processors require dozens or hundreds of I/O connections, creating a fundamental incompatibility between high-temperature semiconductor capabilities and practical verification methods. This necessitates innovative architectural solutions that minimize pin count while maintaining processor functionality.
+\subsection{RISC-V and Bit-Serial Architecture}
+The open-source RISC-V instruction set architecture enables unrestricted processor development without licensing constraints. KTH researchers developed two processor variants to address the pad limitation: a parallel RISC-V core with bit-serial cache interface and a CISC-V implementation with 2-bit serial interface. These architectures serialize data transmission, dramatically reducing pin count. Notably, the bit-serial approach allows instruction execution to begin as bits arrive sequentially, eliminating pipeline stalls typically associated with serial interfaces. The implementations use VHDL for core logic and ProGram for bit-serial components.
+\subsection{Project Objectives and Significance}
+While previous work synthesized these architectures, FPGA prototyping remained incomplete. This project implements and validates FPGA prototypes of both processor variants, and develops an advanced testbench on a separate FPGA for system-level verification. The dual-FPGA approach provides realistic validation of inter-chip communication before silicon fabrication. Successfully demonstrating these architectures will validate KTH's high-temperature SoI technology for digital computing and establish reusable verification methodologies applicable to any pin-limited or thermally-constrained processor development.
 
 \section{Related Work}
 This section reviews research relevant to developing a testbench for bit-serial RISC-V processors targeting Venus surface applications. We examine RISC-V architectures, high-temperature electronics, FPGA implementation methods, and verification frameworks. These foundations inform the design of a testbench capable of validating processor functionality under extreme environmental constraints.
@@ -111,14 +117,14 @@ A structured experimental campaign was conducted to validate the system function
 All tests were performed iteratively under the agile process, where each sprint concluded with a functional demonstration and documentation update.
 
 \section{Results}
-The implemented testbench successfully validated both processor variants on FPGA hardware. The parallel RISC-V achieved stable operation and consistent test completion, while the bit-serial CISC-V demonstrated functional correctness albeit at reduced throughput, confirming the expected performance-area trade-off.\\
-Integration over the dual-FPGA configuration achieved reliable end-to-end communication with reproducible data transfer and command execution. The testbench’s automated logging framework enabled efficient verification and provided traceable results across sprints.\\
-Through repeated testing, the team confirmed the feasibility of conducting hardware-in-the-loop verification for simplified RISC-V processors under severe I/O constraints, demonstrating that the proposed testbench design is robust, flexible, and extensible to future SoI-based high-temperature platforms. The results also validate that the system can serve as a generic framework for testing future processor iterations or SoC components before fabrication.
+The developed FPGA-based testbench successfully validated both processor variants in real hardware experiments. The parallel RISC-V processor executed all benchmark programs correctly, showing stable timing and consistent functional results. The bit-serial CISC-V processor achieved equivalent functional correctness but exhibited reduced execution throughput, confirming the anticipated trade-off between performance and hardware resource utilization. Quantitatively, the bit-serial core consumed noticeably fewer FPGA logic resources, demonstrating its advantage in area efficiency.\\
+In the dual-FPGA integration, reliable data transmission and synchronization were achieved between the processor and the testbench. No critical communication errors or deadlocks were observed, and cycle-accurate timing was verified through logged traces. The automated logging and visualization tools simplified performance assessment and enabled quick feedback during iterative verification.\\
+Repeated experiments confirmed the stability and reproducibility of the platform. Across multiple builds and reconfigurations, the same functional results were obtained, validating the robustness of the hardware-in-the-loop approach. Additionally, stress tests demonstrated that the system remained operational under extended workloads without functional degradation. These findings indicate that the testbench framework provides a dependable basis for evaluating future RISC-V cores or SoC modules prior to fabrication.
 
 \section{Conclusion}
-This project developed a comprehensive FPGA-based testbench for validating bit-serial RISC-V processors aimed at future Venus surface applications. Through systematic design, sprint-based development, and risk-aware planning, the team successfully realized a modular dual-FPGA platform that enables early-stage verification of simplified processor architectures under constrained I/O and environmental assumptions.\\
-The key outcomes include (1) functional verification of both parallel and bit-serial processors, (2) a reusable hardware testbench with automation support, and (3) a validated design methodology applicable to SoI and SiC environments. The project demonstrates the effectiveness of combining agile methods with hardware prototyping to manage complexity and mitigate technical risks in research-oriented processor development.\\
-Future work will extend the framework toward temperature-aware modeling, SoI integration, and FPGA co-emulation with instruction-set simulators to achieve higher verification coverage and stronger correlation with final silicon implementations.
+This project established a complete verification framework for bit-serial RISC-V processors intended for high-temperature Venus surface applications. Through systematic FPGA prototyping and functional testing, it confirmed the viability of simplified, low-resource architectures operating under strict I/O and design constraints representative of SoI and SiC environments.\\
+The research contributes scientifically by demonstrating that bit-serial RISC-V architectures can maintain functional reliability and predictable performance when verified using a modular hardware testbench. The study also highlights how dual-FPGA hardware-in-the-loop validation can bridge the gap between simulation and physical testing, providing an efficient and scalable path toward silicon-ready verification.\\
+Beyond validation success, the work establishes a reusable verification methodology that supports future high-temperature processor research. The same testbench can be adapted for post-fabrication silicon evaluation, ensuring methodological consistency and extending the framework’s utility to next-generation Venus electronics. Looking forward, future efforts will expand toward incorporating thermal-aware modeling, SoI-level implementation, and co-emulation with instruction-set simulators, advancing the goal of fully verified, radiation- and temperature-resilient computing systems for extreme planetary environments.
 
 \bibliographystyle{ieeetr}
 \bibliography{references}
