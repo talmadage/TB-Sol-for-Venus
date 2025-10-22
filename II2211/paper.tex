@@ -9,6 +9,7 @@
 \usepackage{titlesec}
 \usepackage{multicol}
 \usepackage{cite}
+\usepackage{url}
 
 % Titoli sezioni (formato)
 \titleformat{\section}{\bfseries\fontsize{12}{14}\selectfont}{\thesection.}{0.5em}{}
@@ -114,7 +115,6 @@ A structured experimental campaign was conducted to validate the system function
   \item \textbf{Bit-serial CISC-V verification} : The ProGram-generated core was synthesized, and functional tests were executed under the same testbench configuration. Comparative measurements against the parallel RISC-V implementation were made to observe performance and throughput differences.
   \item \textbf{Regression and stability testing} : Automated test scripts executed repeated workloads to ensure reproducibility and detect intermittent synchronization or logic issues.
 \end{itemize}
-All tests were performed iteratively under the agile process, where each sprint concluded with a functional demonstration and documentation update.
 
 \section{Results}
 The developed FPGA-based testbench successfully validated both processor variants in real hardware experiments. The parallel RISC-V processor executed all benchmark programs correctly, showing stable timing and consistent functional results. The bit-serial CISC-V processor achieved equivalent functional correctness but exhibited reduced execution throughput, confirming the anticipated trade-off between performance and hardware resource utilization. Quantitatively, the bit-serial core consumed noticeably fewer FPGA logic resources, demonstrating its advantage in area efficiency.\\
@@ -128,5 +128,23 @@ Beyond validation success, the work establishes a reusable verification methodol
 
 \bibliographystyle{ieeetr}
 \bibliography{references}
+
+\newpage
+\appendix
+\section*{Appendix}
+
+\subsection*{Individual Author Contributions}
+\begin{itemize}
+    \item Lorenzo Parata contributed primarily to the literature review and methodological development of the verification framework. Specifically, he analyzed References [7] and [8], which discuss FPGA-based verification strategies for processor design, and authored the subsection \textit{“FPGA-Based Verification Frameworks”}.\\
+          In addition, Lorenzo was responsible for drafting this appendix, ensuring that author contributions, sustainability aspects, and ethical reflections were clearly documented.\\
+    \item 
+    \item 
+\end{itemize}
+
+\subsection*{Sustainability, Equality, and Ethical Considerations}
+The sustainability and ethical dimensions of this project are closely linked to its verification methodology and open-hardware foundation. The adoption of FPGA-based prototyping offers a reusable and energy-efficient platform that reduces the need for repeated ASIC fabrication cycles—each of which demands substantial energy, raw materials, and cleanroom resources. By performing exhaustive validation on FPGAs, the team minimizes material waste and mitigates the environmental footprint associated with early design iterations.\\
+Once validated, the ASIC implementation will deliver higher performance and lower power consumption than its FPGA prototype, achieving long-term energy efficiency. The bit-serial architecture further supports sustainability through reduced circuit complexity, minimizing both transistor count and manufacturing cost. Moreover, the use of Silicon-on-Insulator (SoI) technology enables reliable operation at extreme temperatures (up to 480°C), substantially reducing cooling requirements and extending system lifespan—both of which contribute to lower environmental impact over time.\\
+From an equality perspective, leveraging the open-source RISC-V architecture democratizes access to processor design and verification. This approach removes licensing barriers and enables research groups worldwide, including those with limited resources, to participate in high-level processor research. The collaborative, interdisciplinary nature of this project also promotes equal participation across hardware, software, and verification disciplines within the student team.\\
+Ethically, the project maintains transparency and reproducibility through open documentation and acknowledgment of prior work. While open-source designs inherently carry the risk of misuse in non-civil applications, the team emphasizes responsible dissemination and educational use. Furthermore, by optimizing verification and minimizing waste, the project reflects a commitment to responsible engineering and environmental stewardship—values aligned with sustainable and ethical research in embedded systems.
 
 \end{document}

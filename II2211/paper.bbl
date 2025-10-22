@@ -1,0 +1,36 @@
+\begin{thebibliography}{10}
+
+\bibitem{kissich2024fazyrv}
+M.~Kissich and M.~C. Baunach, ``Fazyrv: Closing the gap between 32-bit and bit-serial risc-v cores with a scalable implementation,'' in {\em Proc. 21st ACM Int. Conf. on Computing Frontiers (CF '24)}, (Ischia, Italy), pp.~240--248, May 2024.
+
+\bibitem{cui2023riscv}
+E.~Cui, T.~Li, and Q.~Wei, ``Risc-v instruction set architecture extensions: A survey,'' {\em IEEE Access}, vol.~11, pp.~24696--24711, 2023.
+
+\bibitem{gautschi2017slow}
+M.~Gautschi, P.~D. Schiavone, A.~Traber, F.~Zaruba, F.~Schuiki, A.~Pullini, D.~Rossi, E.~Flamand, F.~K. G{\"u}rkaynak, and L.~Benini, ``Slow and steady wins the race? a comparison of ultra-low-power risc-v cores for internet-of-things applications,'' {\em IEEE Transactions on Circuits and Systems I: Regular Papers}, vol.~64, no.~9, pp.~2387--2397, 2017.
+
+\bibitem{kim2022sic}
+H.~Kim, J.~Bagherzadeh, and R.~G. Dreslinski, ``Sic processors for extreme high-temperature venus surface exploration,'' in {\em Proc. Design, Automation \& Test in Europe Conf. \& Exhibition (DATE)}, (Antwerp, Belgium), pp.~406--411, 2022.
+
+\bibitem{kremic2021temperature}
+T.~Kremic, ``High temperature electronics for venus surface applications: A summary of recent technical advances,'' {\em The Planetary Science Journal}, vol.~2, no.~1, 2021.
+
+\bibitem{pradhan2024materials}
+D.~K. Pradhan, D.~C. Moore, A.~M. Francis, N.~R. Grissom, J.~Kupernik, and R.~H. Ohme, ``Materials for high-temperature digital electronics,'' {\em Nature Reviews Materials}, vol.~9, pp.~790--807, 2024.
+
+\bibitem{moreno2023fpga}
+A.~Moreno {\em et~al.}, ``An fpga verification, debug and performance platform for risc-v cores,'' in {\em Proc. RISC-V Summit Europe}, (Barcelona, Spain), 2023.
+
+\bibitem{efinix2023riscv}
+{Efinix Inc.}, ``Risc-v and fpgas.'' [Online]. Available: \url{https://www.efinixinc.com/blog/riscv-and-fpgas.html}, Jul 2023.
+\newblock [Accessed: Sep. 26, 2025].
+
+\bibitem{kim2019fpga}
+D.~Kim, {\em FPGA-Accelerated Evaluation and Verification of RTL Designs}.
+\newblock PhD thesis, Univ. California, Berkeley, Berkeley, CA, USA, May 2019.
+\newblock Tech. Rep. UCB/EECS-2019-57.
+
+\bibitem{qin2025feriver}
+K.~Qin, X.~Guo, M.~Schulz, and C.~Trinitis, ``Feriver: An fpga-assisted emulated framework for rtl verification of risc-v processors,'' Apr 2025.
+
+\end{thebibliography}
