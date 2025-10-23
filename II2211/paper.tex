@@ -10,6 +10,7 @@
 \usepackage{multicol}
 \usepackage{cite}
 \usepackage{url}
+\usepackage{graphicx}
 
 % Titoli sezioni (formato)
 \titleformat{\section}{\bfseries\fontsize{12}{14}\selectfont}{\thesection.}{0.5em}{}
@@ -79,6 +80,14 @@ Together, these works highlight how FPGA-based infrastructures provide an effect
 
 \section{Specification}
 The project is constrained by both hardware and environmental limitations. The test setup consists of two FPGA boards, one implementing the processor core and the other acting as the testbench. Due to the 12-probe limitation of the physical test station, signal interfaces are highly constrained, motivating bit-serial communication schemes.\\
+
+\begin{figure*}[t]
+    \centering
+    \includegraphics[width=1\linewidth]{II2212.png}
+\caption{\small Dual-FPGA verification architecture for the CISC-V processor variant. The testbench FPGA (left) generates test stimuli, monitors processor outputs, and analyzes debug data through a 12-pad interface. The processor FPGA (right) implements the CISC-V core with 2-bit serial interface, integrated error detection, and debug serialization capabilities.}
+    \label{fig:dual_fpga_system}
+\end{figure*}
+
 The design goals are:\\
 \begin{itemize}
     \item Maintain compatibility with RISC-V base ISA (RV32I).
@@ -143,6 +152,12 @@ Beyond validation success, the work establishes a reusable verification methodol
     In addition, Xinxin researched processors used on Venus, providing background information for the research's application environment. He was also responsible for organizing the technical architecture and experiments for the specific project, specifically Sections 4 and 5 of the article.
     \item Xiaotian Jiang was responsible for analyzing the experimental outcomes and authored the 'Results' (Section 6). He quantified the functional correctness, resource utilization, and performance trade-offs between the parallel RISC-V and bit-serial CISC-V cores. \\
     Furthermore, Xiaotian drafted the 'Conclusion' (Section 7), summarizing the project's achievements, its scientific contributions, and outlining future work for the high-temperature verification framework.
+    \item Chinmay Purandare was was responsible for the verification methodology  and testing strategy for the CISC-V processor. Specifically, he developed the debug output configuration detecting failure modes (FSM state validation, stuck 
+  state detection, and illegal instruction checking).He also conducted a literature  review on Low Power RISC-V implementations and materials for high temperature electronics
+\\    
+Additionally, Chinmay created the architectural diagrams 
+  illustrating the dual-FPGA verification 
+  system (Figure~\ref{fig:dual_fpga_system}),  visually documenting the I/O constraints and system interconnections.
 \end{itemize}
 
 \subsection*{Sustainability, Equality, and Ethical Considerations}
