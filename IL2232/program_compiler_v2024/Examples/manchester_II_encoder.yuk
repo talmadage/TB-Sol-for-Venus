@@ -1,0 +1,34 @@
+// PRO-GRAM Specification of a Manchester II Encoder
+// No Include files need to be specified
+%% // Interface section
+%name manchester_II_encoder
+%input enable bit
+%input Din [bit]8
+%input DataReady bit
+%input clk bit
+
+%internal a [bit]8
+%internal inp bit // afap
+
+%output q bit
+%output Ready2Send bit // exact
+
+%start encode(inp) clock(clk)
+%start parallel2serial(DataReady) clock(clk)
+
+%% // No constants need to be specified
+%% // No memories need to be specified
+%% // No actions macros need to be specified
+%%
+encode: 00 { q=if (enable=0) 10 else 00 endif; }
+	| 11 { q=if (enable=0) 01 else 00 endif; }
+	| 01 bit { q=if (enable=0) 100 else 000 endif; }
+	| 10 bit { q=if (enable=0) 010 else 000 endif; }
+;
+
+parallel2serial: 1 { a=Din; Ready2Send=0; } [bit]8
+		{ inp=a; Ready2Send=1; }
+	| 0
+		{ Ready2Send=1; }
+;
+

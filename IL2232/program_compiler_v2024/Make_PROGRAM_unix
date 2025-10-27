@@ -1,0 +1,79 @@
+
+CC =		g++
+YACC =		bison
+LEX =		flex
+CFLAGS =	-ansi -D_POSIX_SOURCE
+
+SYSTEM =	sun
+
+TARGET =	program_compiler
+
+P2V =		program
+P2VYY =		$(P2V).yy
+P2VYYT =	$(P2VYY).tab
+P2VF =		lex.$(P2V)_
+RLIS =		rli_string
+COMP =		composer
+VHDL =		vhdl_packages
+EST =		estimations
+ESPR =		espresso_format
+ESPRF =		lex.espresso_
+ESPRYY =	$(ESPR).yy
+ESPRYYT =	$(ESPRYY).tab
+
+OFILE =		$(TARGET).o $(P2V).o $(RLIS).o $(P2VYYT).o $(P2VF).o \
+		$(VHDL).o $(EST).o $(ESPR).o $(ESPRF).o $(ESPRYYT).o \
+		$(COMP).o
+
+HFILE =		$(P2V).h lib/$(RLIS).h lib/list.h lib/$(VHDL).h $(EST).h \
+		$(ESPR).h $(COMP).h
+
+$(TARGET):	$(OFILE)
+	$(CC) -L/usr/local/lib -o $(TARGET) $(OFILE)
+	mv $(TARGET) ../bin/$(SYSTEM)
+
+$(TARGET).o:	$(TARGET).c $(HFILE)
+	$(CC) $(CFLAGS) -c $(TARGET).c
+
+$(VHDL).o:	lib/$(VHDL).c $(HFILE)
+	$(CC) $(CFLAGS) -c lib/$(VHDL).c
+
+$(EST).o:	$(EST).c $(HFILE)
+	$(CC) $(CFLAGS) -c $(EST).c
+
+$(RLIS).o:	lib/$(RLIS).c $(HFILE)
+	$(CC) $(CFLAGS) -c lib/$(RLIS).c
+
+$(COMP).o:	$(COMP).c $(HFILE)
+	$(CC) $(CFLAGS) -c $(COMP).c
+
+$(P2V).o:	$(P2V).c $(HFILE)
+	$(CC) $(CFLAGS) -c $(P2V).c
+
+$(P2VYYT).o:	$(P2VYYT).c $(P2VYYT).h $(HFILE)
+	$(CC) $(CFLAGS) -c $(P2VYYT).c
+
+$(P2VYYT).h:	$(P2VYY)
+	$(YACC) -d -pprogram_ $(P2VYY)
+
+$(P2VF).o:	$(P2VF).c $(P2VYYT).h $(HFILE)
+	$(CC) $(CFLAGS) -c $(P2VF).c
+
+$(P2VF).c:	$(P2V).flex
+	$(LEX) -Pprogram_ $(P2V).flex
+
+$(ESPR).o:	$(ESPR).c $(HFILE)
+	$(CC) $(CFLAGS) -c $(ESPR).c
+
+$(ESPRYYT).o:	$(ESPRYYT).c $(ESPRYYT).h $(HFILE)
+	$(CC) $(CFLAGS) -c $(ESPRYYT).c
+
+$(ESPRYYT).h:	$(ESPRYY)
+	$(YACC) -d -pespresso_ $(ESPRYY)
+
+$(ESPRF).o:	$(ESPRF).c $(ESPRYYT).h
+	$(CC) $(CFLAGS) -c $(ESPRF).c
+
+$(ESPRF).c:	$(ESPR).flex
+	$(LEX) -Pespresso_ $(ESPR).flex
+

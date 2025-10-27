@@ -1,0 +1,70 @@
+|manchester_II_encoder
+clk => encode_0:U0.clk
+clk => parallel2serial_1:U1.clk
+enable[0] => encode_0:U0.enable[0]
+Din[0] => parallel2serial_1:U1.Din[0]
+Din[1] => parallel2serial_1:U1.Din[1]
+Din[2] => parallel2serial_1:U1.Din[2]
+Din[3] => parallel2serial_1:U1.Din[3]
+Din[4] => parallel2serial_1:U1.Din[4]
+Din[5] => parallel2serial_1:U1.Din[5]
+Din[6] => parallel2serial_1:U1.Din[6]
+Din[7] => parallel2serial_1:U1.Din[7]
+DataReady[0] => parallel2serial_1:U1.DataReady[0]
+q[0] <= encode_0:U0.q[0]
+Ready2Send[0] <= parallel2serial_1:U1.Ready2Send[0]
+
+
+|manchester_II_encoder|encode_0:U0
+clk => q_internal[0].CLK
+clk => pres_state[0].CLK
+clk => pres_state[1].CLK
+clk => pres_state[2].CLK
+enable[0] => q_register.DATAB
+enable[0] => q_register.DATAB
+inp[0] => FSM.IN1
+inp[0] => FSM.IN1
+inp[0] => FSM.IN1
+inp[0] => FSM.IN1
+inp[0] => FSM.IN1
+inp[0] => FSM.IN1
+q[0] <= q_internal[0].DB_MAX_OUTPUT_PORT_TYPE
+
+
+|manchester_II_encoder|parallel2serial_1:U1
+clk => inp_internal[0].CLK
+clk => a_internal[0].CLK
+clk => a_internal[1].CLK
+clk => a_internal[2].CLK
+clk => a_internal[3].CLK
+clk => a_internal[4].CLK
+clk => a_internal[5].CLK
+clk => a_internal[6].CLK
+clk => a_internal[7].CLK
+clk => Ready2Send_internal[0].CLK
+clk => pres_state[0].CLK
+clk => pres_state[1].CLK
+clk => pres_state[2].CLK
+clk => pres_state[3].CLK
+Din[0] => a_internal[0].DATAIN
+Din[1] => a_internal[1].DATAIN
+Din[2] => a_internal[2].DATAIN
+Din[3] => a_internal[3].DATAIN
+Din[4] => a_internal[4].DATAIN
+Din[5] => a_internal[5].DATAIN
+Din[6] => a_internal[6].DATAIN
+Din[7] => a_internal[7].DATAIN
+DataReady[0] => FSM.IN1
+DataReady[0] => FSM.IN1
+a[0] <> a[0]
+a[1] <> a[1]
+a[2] <> a[2]
+a[3] <> a[3]
+a[4] <> a[4]
+a[5] <> a[5]
+a[6] <> a[6]
+a[7] <> a[7]
+inp[0] <= inp_internal[0].DB_MAX_OUTPUT_PORT_TYPE
+Ready2Send[0] <= Ready2Send_internal[0].DB_MAX_OUTPUT_PORT_TYPE
+
+
