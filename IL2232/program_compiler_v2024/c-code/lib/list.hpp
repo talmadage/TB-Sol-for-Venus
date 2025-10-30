@@ -4,6 +4,8 @@
 #include <stdio.h>
 #include <malloc.h>
 
+FILE *error_log = stderr;
+
 template <class temp>
 class List
 {

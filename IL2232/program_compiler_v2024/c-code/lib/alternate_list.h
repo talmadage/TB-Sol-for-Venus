@@ -4,6 +4,8 @@
 #include <stdio.h>
 #include <malloc.h>
 
+FILE *error_log = stderr;
+
 template <class temp> class List
 {
 private:
@@ -78,7 +80,7 @@ template <class temp> void List<temp>::AddFirst(temp *member)
    {
       temp **tmp=members;
       members=new temp *[nr_of_members];
-      for(int i=nr_of_member-1;i>0;i--)
+      for(int i=nr_of_members-1;i>0;i--)
       {
 	 members[i]=tmp[i-1];
       };

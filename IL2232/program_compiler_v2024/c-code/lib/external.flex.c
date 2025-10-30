@@ -20,7 +20,9 @@
 #ifdef __cplusplus
 
 #include <stdlib.h>
-#include <osfcn.h>
+//#include <osfcn.h>
+#include <unistd.h>
+#include <fcntl.h>
 
 /* use prototypes in function declarations */
 #define YY_USE_PROTOS

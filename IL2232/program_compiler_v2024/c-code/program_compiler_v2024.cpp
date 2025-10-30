@@ -16,7 +16,7 @@ bool SPLIT_TREE,ESTIMATE_MODE,DETAILED_ESTIMATE_MODE,STATE_COUNTER_MODE;
 int  SCHEDULE_HEURISTIC;
 
 int Version = 2024;
-FILE *error_log = stderr;
+// FILE *error_log = stderr;
 
 char *ForSyDePath;
 key_struct *KEY_PROGRAM_COMPILER,*KEY_XILINX_BACKEND,*KEY_ALTERA_BACKEND;

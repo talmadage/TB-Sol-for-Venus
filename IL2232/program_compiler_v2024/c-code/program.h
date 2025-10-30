@@ -1,7 +1,7 @@
 #ifndef PROGRAM
 #define PROGRAM
 
-#include <string.h>om
+#include <string.h>
 #include <stdlib.h>
 #include "lib/list.hpp"
 #include "lib/rli_string.h"
@@ -1036,7 +1036,7 @@ public:
    action_variable(char *n, int i) { name=cpystr(n); first_bit=0; last_partition=false; ref_pos=i; bit_range=NULL; };
    action_variable(char *n, int i, range_class *r) {
 	   name = cpystr(n); first_bit = 0; last_partition = false; ref_pos = i; bit_range = r; 
-	   sprintf_s(log_str, 1024,"RANGE %d to %d\n",r->Left(),r->Right());
+	   sprintf(log_str,"RANGE %d to %d\n",r->Left(),r->Right());
 	   log(log_str);
 	};
    ~action_variable();
