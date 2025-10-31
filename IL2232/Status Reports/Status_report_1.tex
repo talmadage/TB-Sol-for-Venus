@@ -83,6 +83,7 @@ Stockholm, Sweden
 • State the problems the sponsor and steering committee need to be aware of, and proposals for action
 
 
+\newpage
 \section{Risks / Action plan (-> Paul)}
 
 On this part we will follow-up and update the risk analysis we previously did. It’s important here to state, as much as possible, the risks the sponsor and steering committee need to be aware of, and to propose actions to reduce those ones.
@@ -100,7 +101,49 @@ For example:
 
 \subsection{Updated Risk Analysis}
 
-We decided to follow up on the risk analysis and update it using the mini risk methodology.\\
+We decided to follow up on the risk analysis and update it using the mini risk method.\\
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|c|p{2.35cm}|p{4.1cm}|c|c|c|p{4.3cm}|p{1.17cm}|c|}
+\hline
+\textbf{ID} & \textbf{Risk} & \textbf{Description} & \textbf{P} & \textbf{C} & \textbf{R} & \textbf{Suggested Action} & \textbf{Follow-up Date} & \textbf{Trend} \\
+\hline
+1 & Hardware complexity & Two processor models on separate FPGAs increase design and debugging effort. & 3 & 4 & 12 & Start with single-FPGA setup, define early comm. protocols. & 31 Oct & $\downarrow$ \\
+\hline
+2 & Multi-FPGA system complexity & Communication and timing between boards difficult to synchronize. & 4 & 4 & 16 & Test modules separately, simulate before hardware link. & 31 Oct & $\rightarrow$ \\
+\hline
+3 & Extreme environment & SoI may not survive Venus-like temperatures. & 2 & 5 & 10 & Study environmental limits; keep simulation-level validation. & 31 Oct & $\rightarrow$ \\
+\hline
+4 & High development cost & ASIC fabrication and tooling are expensive. & 1 & 3 & 3 & Focus on FPGA prototyping only. & 17 Oct & $\downarrow$ \\
+\hline
+5 & Performance gap & Bit-serial version may not reach required speed. & 4 & 3 & 12 & Define realistic targets, compare to parallel baseline. & 31 Oct & $\rightarrow$ \\
+\hline
+6 & Verification coverage & Testbench may not provide full functional testing. & 3 & 5 & 15 & Add random/stress test patterns; document coverage. & 31 Oct & $\rightarrow$ \\
+\hline
+7 & Specialized toolchain dependency & ProGram compiler unstable or limited. & 3 & 3 & 9 & Validate early, keep VHDL rewrite backup plan. & 24 Oct & $\downarrow$ \\
+\hline
+8 & Novel microarchitecture flaws & CISC-V model may contain logical deadlocks. & 4 & 2 & 8 & Write detailed spec, co-simulate with golden model. & 24 Oct & $\downarrow$ \\
+\hline
+9 & Members’ schedules differ & Difficult to meet as a full team. & 5 & 2 & 10 & Assign rotating secretaries, record meeting minutes. & 17 Oct & $\downarrow$ \\
+\hline
+10 & Internal conflicts & Potential disagreements between members. & 3 & 4 & 12 & Address through discussion or reassigning tasks. & 31 Oct & $\rightarrow$ \\
+\hline
+11 & Integration timeline underestimation & System-level testing may take longer than expected. & 5 & 3 & 15 & Allocate buffer time, set MVP milestone. & 31 Oct & $\rightarrow$ \\
+\hline
+12 & Supervisor unavailability & Feedback delayed due to limited availability. & 3 & 2 & 6 & Plan meetings in advance, prepare written questions. & 17 Oct & $\downarrow$ \\
+\hline
+13 & Baseline design quality unknown & Legacy design may contain bugs. & 4 & 2 & 8 & Perform early code review and functional tests. & 24 Oct & $\downarrow$ \\
+\hline
+\end{tabular}
+\caption{Mini Risk Method Table}
+\end{table}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=1\textwidth]{risk_matrix.png}
+    \caption{Updated Risk Matrix}
+\end{figure}
 
 
 \section{Project changes from the project plan}
