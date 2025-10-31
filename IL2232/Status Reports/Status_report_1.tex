@@ -84,7 +84,7 @@ Stockholm, Sweden
 
 
 \newpage
-\section{Risks / Action plan (-> Paul)}
+\section{Risks / Action plan}
 
 On this part we will follow-up and update the risk analysis we previously did. It’s important here to state, as much as possible, the risks the sponsor and steering committee need to be aware of, and to propose actions to reduce those ones.
 
@@ -145,7 +145,25 @@ We decided to follow up on the risk analysis and update it using the mini risk m
     \caption{Updated Risk Matrix}
 \end{figure}
 
+\subsection{Risks to Be Reported}
 
+According to the latest risk matrix evaluation, four risks are currently considered as really critical for the project (in the red zone) and should have a higher attention.
+
+\subsubsection*{Risk 3 – Extreme Environment}
+The SoI CMOS technology used in this project may not be enough for the environmental conditions of Venus. If it’s the case, the final demonstration may not be really representative of the objective and it would limit the scientific value of the prototype. We should keep in mind this while creating the testbench to imagine a way to simulate as closely as possible the Venus environmental conditions.
+
+\subsubsection*{Risk 2 – Multi-FPGA System Complexity}
+The project requires two FPGAs, one for the processor and one for the testbench, communicating through a custom interface. We haven’t done this communication interface yet but it might be the most challenging part of the project. Synchronization, timing management, and debugging of this inter-FPGA are difficult and could lead to delay in the final validation phase. That is why we have allocated several springs for this task.
+
+\subsubsection*{Risk 6 – Verification Coverage}
+The testbench might not generate a sufficiently diverse set of test scenarios to achieve full verification coverage. A lot of special cases should be taken care of and an incomplete verification may allow hidden functional bugs. Discovering those bugs in the late stages of the project could impact the demonstration reliability. As a result, we will try to expand the testbench with randomized and stress testing sequences.
+
+\subsubsection*{Risk 11 – Integration Timeline Underestimation}
+Multi-FPGA integration may take longer than expected. This phase depends on several things: synthesis, communication debugging, and testbench validation. Those delays could compress the verification phase and result in a rushed testing, which is never good in a project. It’s important to have a structured plan with clear milestones, define a “minimum viable demo” to ensure at least one stable version at the end and allocate additional buffer time in the coming sprints to focus on debugging and hardware validation.
+
+
+
+\newpage
 \section{Project changes from the project plan}
 
 • This is where changes are documented so that they become visual. Changes are typically: new requirements, changed requirements, changed organization, changed prerequisites, new documents, etc.
