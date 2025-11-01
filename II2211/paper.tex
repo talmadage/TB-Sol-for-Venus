@@ -44,7 +44,7 @@ By adopting the open-source RISC-V instruction set architecture, this project en
 Demonstrating these processor architectures in FPGA prototypes will validate KTH's high-temperature SoI technology for digital computing and advance research in extreme-environment electronics.
 
 \section*{Keywords}
-RISC-V, CISC, FPGA, Venus
+RISC-V, CISC, FPGA, bit-serial processor communication, hardware verification
 
 % Sezioni principali
 \section{Introduction}
@@ -153,15 +153,12 @@ Additionally, while the current tests focused on functional correctness, future 
 Overall, the discussion highlights that although the methodology proved robust and flexible, further refinement is needed to reach the desired performance level for high-temperature applications.
 
 \section{Conclusion}
-This project established a complete verification framework for two processor architectures based on the RISC-V instruction set intended for high-temperature Venus surface applications.  
-Through systematic FPGA prototyping and functional testing, it confirmed the viability of simplified, low-resource architectures operating under strict I/O and design constraints representative of SoI and SiC environments.  
-
-The research contributes by demonstrating that bit-serial RISC-V architectures can maintain functional reliability when verified using a modular hardware testbench.  
-The dual-FPGA hardware-in-the-loop validation approach efficiently bridges the gap between simulation and physical testing.  
-
-The project also provides a reusable verification methodology for future high-temperature processor research.  
-Once validated, the same testbench can be adapted for post-fabrication silicon evaluation, ensuring continuity across development phases.  
-Future work will focus on incorporating thermal-aware modeling, SoI-level implementation, and co-emulation with instruction-set simulators, advancing the development of resilient computing systems for extreme planetary environments.
+This project established a complete verification framework for two processor architectures based on the RISC-V instruction set intended for high-temperature Venus surface applications.\\
+Through systematic FPGA prototyping and functional testing under standard laboratory conditions, it confirmed the viability of simplified, low-resource architectures operating under strict I/O and design constraints representative of SoI and SiC environments. It is important to note that the current work focuses on initial functional verification of the RTL designs at room temperature using commercial COTS FPGAs, and does not yet address the actual thermal and material challenges of Venus surface conditions.
+The research contributes by demonstrating that bit-serial RISC-V architectures can maintain functional reliability when verified using a modular hardware testbench in a controlled environment. The dual-FPGA hardware-in-the-loop validation approach efficiently bridges the gap between simulation and physical testing, providing a foundation for future high-temperature characterization.\\
+The project also provides a reusable verification methodology for future high-temperature processor research, with the understanding that additional thermal and radiation testing will be required to fully validate designs for extreme environments.\\
+Once validated functionally at room temperature, the same testbench can be adapted for post-fabrication silicon evaluation under actual high-temperature conditions, ensuring continuity across development phases.
+Future work will focus on incorporating thermal-aware modeling, SoI-level implementation, and co-emulation with instruction-set simulators, advancing the development of resilient computing systems for extreme planetary environments. This includes rigorous testing with high-temperature SoI/SiC fabricated chips to validate performance and reliability under actual Venus-like thermal conditions.
 
 \bibliographystyle{ieeetr}
 \bibliography{references}
