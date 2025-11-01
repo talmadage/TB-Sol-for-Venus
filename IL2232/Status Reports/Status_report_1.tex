@@ -205,7 +205,45 @@ Multi-FPGA integration may take longer than expected. This phase depends on seve
 \newpage
 \section{Project changes from the project plan}
 
-• This is where changes are documented so that they become visual. Changes are typically: new requirements, changed requirements, changed organization, changed prerequisites, new documents, etc.
+Since the initial project plan was submitted, several adjustments have been made to the project's organization, prerequisites, and documentation to better align with practical realities and emerging challenges.
+
+\subsection{Changed Requirements}
+The core project requirements have remained largely stable. The primary objective continues to be the implementation and validation of a testbench system for both the RISC-V and CISC-V (bit-serial) processors. No significant changes to the functional requirements or deliverables have been necessary.
+
+\subsection{Changed Organization}
+Several organizational improvements have been implemented to enhance project flexibility and team coordination:
+
+\begin{itemize}
+    \item \textbf{Agile workflow adoption:} The team has fully embraced an agile methodology to maintain flexibility and quickly adapt to new findings or technical challenges that emerge during development.
+    
+    \item \textbf{Weekly sprint-based planning:} The project now operates on a structured weekly sprint cycle, with clear short-term goals defined at the beginning of each sprint to ensure continuous and measurable progress.
+    
+    \item \textbf{Iterative development approach:} Rather than following a rigid sequential process, the team now emphasizes iterative improvements and early validation, allowing for faster identification and resolution of issues.
+    
+    \item \textbf{Regular supervisor engagement:} Weekly meetings with supervisor Johnny Öberg have been established for sprint reviews, live demonstrations of progress, and short retrospectives to discuss improvements and address blockers.
+\end{itemize}
+
+\subsection{Changed Prerequisites}
+Several technical challenges were encountered that required adjustments to the project's initial assumptions:
+
+\begin{itemize}
+    \item \textbf{ProGram compiler errors:} Compiler errors were discovered in the provided ProGram tool. These errors were identified early in the project, allowing the team to develop workarounds and avoid a complete project blockage.
+    
+    \item \textbf{FPGA board connectivity issues:} The FPGA boards were initially not functioning correctly due to faulty cables. These hardware issues were detected early and resolved before the system integration phase, preventing delays in testing.
+    
+    \item \textbf{Complex software setup:} Installation and configuration of the development environment on personal computers proved more complex than initially anticipated, requiring additional time and documentation.
+    
+    \item \textbf{Power adapter compatibility:} US power cables were incompatible with local power outlets. Proper adapters were quickly procured through established contacts, minimizing downtime.
+\end{itemize}
+
+\subsection{New Documents}
+To improve project organization and knowledge transfer, the following documentation has been created beyond the original plan:
+
+\begin{itemize}
+    \item \textbf{Project management document:} A comprehensive document detailing the team's agile processes, sprint workflows, and decision-making procedures.
+    
+    \item \textbf{Detailed README file:} An extensive README has been written to document the codebase structure, setup procedures, usage instructions, and troubleshooting guidelines for future development and maintenance.
+\end{itemize}
 
 
 \section{Appendix}
