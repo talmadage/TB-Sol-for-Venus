@@ -118,8 +118,28 @@ In the next sprint sessions, we expect to increase the workload substantially, a
 
 
 \section{Problems / Action plan}
-Xinxin Qin
-• State the problems the sponsor and steering committee need to be aware of, and proposals for action
+\subsection{ProGram Tool Malfunction}
+\begin{itemize}
+    \item \textbf{Problem:} The ProGram compiler, which is intended for generating the bit-serial CISC-V processor, is still not functioning properly. Compilation fails due to unresolved external dependencies and library conflicts that originated from the legacy codebase. However, since the current phase of the project does not yet require the use of ProGram for any active module, this issue has been assigned a lower resolution priority.
+    
+    \item \textbf{Action plan:} Paul will continue to investigate potential fixes based on the supervisor’s recommendations. The current plan is to remove unnecessary external references and rebuild the tool environment to isolate the error. If these actions do not resolve the issue, the team will formally request assistance from the supervisor to ensure the tool can be restored before the CISC-V implementation phase begins.
+\end{itemize}
+
+\subsection{Simulation-Only Testbench}
+\begin{itemize}
+    \item \textbf{Problem:} The current testbench is only compatible with simulation because its verification method relies on printing execution logs and comparing them against a trusted RISC-V simulator (currently Spike). This approach involves frequent file I/O operations and therefore cannot be synthesized or deployed directly on FPGA hardware, which conflicts with the project’s final goal of on-board verification.
+    
+    \item \textbf{Action plan 1:} The immediate plan is to complete the current simulation workflow using QuestaSim to verify processor correctness. This phase also includes finalizing the log-printing functionality for the Spike simulator, which is nearly completed by Xiaotian.
+    \item \textbf{Action plan 2:} For FPGA-based validation, a new approach will be adopted using the RISC-V test suite. This test method verifies correctness by checking whether a specific register returns zero at the end of execution, allowing the binary to be uploaded into FPGA SRAM for self-contained verification without logs—thus making it fully synthesizable. This task will be jointly handled by Xinxin and Chongnan.
+    \item \textbf{Action plan 3:} If, however, the supervisor confirms that on-board log comparison is still required, the alternative plan is to transfer the golden log to the FPGA and perform comparison directly in hardware. This contingency option will also be developed by Xinxin and Chongnan if needed.
+\end{itemize}
+\subsection{Limited FPGA I/O for Dual-Board Integration}
+\begin{itemize}
+    \item \textbf{Problem:} The number of available I/O pins between the verification FPGA and the processor FPGA is insufficient to support the current parallel signal interfaces used by the testbench and processor modules. This limitation was anticipated early in the project, and the team has prepared an appropriate workaround.
+    
+    \item \textbf{Action plan:} The solution is to design and implement a bit-serial communication module on the verification FPGA, which will serialize address, data, and control signals—transmitting them bit by bit instead of as 32-bit parallel buses. This module will act as an intermediary, ensuring complete communication between the testbench and the processor within the physical I/O limits of the hardware. Paul, Lorenzo, and Chinmay are jointly responsible for the design and implementation of this module.
+\end{itemize}
+
 
 
 \newpage
