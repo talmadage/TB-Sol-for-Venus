@@ -268,8 +268,60 @@ To improve project organization and knowledge transfer, the following documentat
 
 \section{Appendix}
 
-• Updated time plan\\
-• Updated resource plan
+\subsection{Updated Time Plan}
 
+This updated time plan accounts for the initial delays encountered with the legacy codebase and allocates specific sprints for critical tasks identified in the risk analysis, such as multi-FPGA integration and comprehensive verification. The plan increases the projected hours for upcoming sprints to compensate for the initial low contribution.
 
+\begin{table}[h!]
+\centering
+\begin{tabular}{@{}llp{6cm}p{5cm}@{}}
+\toprule
+\textbf{Sprint} & \textbf{Tentative Dates (2025)} & \textbf{Key Objectives \& Focus Areas} & \textbf{Deliverables} \\
+\midrule
+\textbf{Sprint 3} & Nov 3 - Nov 9 & \textbf{Legacy Code Stabilization:} \newline Resolve remaining compilation and synthesis errors in the provided RISC-V and CISC-V models. & A functional and synthesizable baseline for both processor models. \\
+\addlinespace
+\textbf{Sprint 4} & Nov 10 - Nov 16 & \textbf{Initial Testbench Integration:} \newline \begin{itemize} \itemsep0em \item Integrate the initial testbench prototype with the stabilized processor models. \item Achieve functional simulation on a single-FPGA setup. \end{itemize} & Simulated proof-of-concept showing processor-testbench communication. \\
+\addlinespace
+\textbf{Sprint 5} & Nov 17 - Nov 23 & \textbf{Multi-FPGA Interface Development:} \newline Design and test the communication protocol for the two-FPGA setup (processor and testbench). & A validated communication interface (simulation). \\
+\addlinespace
+\textbf{Sprint 6} & Nov 24 - Nov 30 & \textbf{Hardware Implementation (Multi-FPGA):} \newline \begin{itemize} \itemsep0em \item Implement the processor model on one FPGA and the testbench on the second. \item Begin hardware-level debugging of the inter-FPGA link. \end{itemize} & Initial multi-board system brought up. \\
+\addlinespace
+\textbf{Sprint 7} & Dec 1 - Dec 7 & \textbf{Verification \& Stress Testing:} \newline \begin{itemize} \itemsep0em \item Expand the testbench with randomized and stress test patterns to improve coverage. \item Test for special cases and potential functional bugs. \end{itemize} & Verification report and list of identified bugs. \\
+\addlinespace
+\textbf{Sprint 8} & Dec 8 - Dec 14 & \textbf{Buffer \& Final Demonstration Prep:} \newline \begin{itemize} \itemsep0em \item Allocate buffer time for debugging and hardware validation. \item Finalize the "minimum viable demo" and ensure system stability. \end{itemize} & A stable, demonstrable prototype of the completed system. \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Updated Resource Plan}
+
+This plan details the allocation of personnel and hardware resources for the project.
+
+\subsubsection*{Personnel Allocation}
+The project team consists of six members. Based on the initial sprints, the team is organized into two primary focus groups, though all members will collaborate on system-level integration:
+
+\begin{itemize}
+    \item \textbf{Processor \& Legacy Code Team:}
+    \begin{itemize}
+        \item Chinmay Purandare
+        \item Lorenzo Parata
+        \item Paul Martin
+        \item \textit{Focus:} Stabilizing, synthesizing, and implementing the RISC-V and CISC-V processor models.
+    \end{itemize}
+    \vspace{0.5em} % Adds a small space between teams
+    \item \textbf{Testbench Development Team:}
+    \begin{itemize}
+        \item Chongnan Wang
+        \item Xiaotian Jiang
+        \item Xinxin Qin
+        \item \textit{Focus:} Developing, integrating, and expanding the advanced testbench.
+    \end{itemize}
+\end{itemize}
+
+\subsubsection*{Hardware \& Software Allocation}
+\begin{itemize}
+    \item \textbf{Hardware:} Each of the six team members has been allocated one \textbf{DE0-Nano-SoC Board}. This allows for parallel development and testing of the processor and testbench modules before final integration.
+    \item \textbf{Software:} The project relies on the RISC-V compiler for the testbench compilation .
+    \item \textbf{Budget:} As an academic project, no financial budget is allocated. All necessary hardware resources are provided by the supervisor.
+\end{itemize}
 \end{document}
