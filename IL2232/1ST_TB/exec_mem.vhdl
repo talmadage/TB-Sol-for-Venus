@@ -79,6 +79,8 @@ begin
     elsif (clk'event and clk='1') then
 
       if (stall = '0') then        
+        Mem.debug_pc <= decoded.debug_pc;
+        Mem.debug_instr <= decoded.debug_instr;
         Mem.mem_en   <= Decoded.mem_en;
         Mem.mem_rw   <= Decoded.mem_rw;
         Mem.mem_len  <= Decoded.mem_len;

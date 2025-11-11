@@ -57,6 +57,8 @@ package dtekv_lib is
   -------------------------------------
 
   type ExecPacket is record
+    debug_pc : unsigned(31 downto 0);
+    debug_instr : unsigned(31 downto 0);
     cin_sra  : OneBit;  -- '1' means Sub or Sra
     mem_en   : OneBit;
     mem_rw   : OneBit;
@@ -70,11 +72,15 @@ package dtekv_lib is
   end record ExecPacket;
 
   type WritebackPacket is record
+    debug_pc : unsigned(31 downto 0);
+    debug_instr : unsigned(31 downto 0);
     result : Word;
     dstReg : RegNr;    
   end record WritebackPacket;
 
   type MemoryPacket is record
+    debug_pc : unsigned(31 downto 0);
+    debug_instr : unsigned(31 downto 0);
     mem_en   : OneBit;
     mem_rw   : OneBit;
     mem_len  : unsigned(1 downto 0);

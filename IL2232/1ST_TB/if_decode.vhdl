@@ -183,9 +183,11 @@ begin
 
     -- Reset signal
     if (reset = '1') then
-      ProgramCounter <= (others=>'0');  -- Clear Program counter
+      ProgramCounter <= X"80000000";  -- Clear Program counter
       idle <= '1';                      -- Set idle register to default '1'
                                         -- (that is, CPU is waiting to be started)
+      decoded.debug_pc <= (others=>'0');
+      decoded.debug_instr <= (others=>'0');                                        
       decoded.mem_en <= "0";            -- Create a default "nop" out packet
       decoded.mem_rw <= "0";            -- Do not access memory
       decoded.cin_sra  <= "0";          -- Neither cin nor sra
@@ -213,6 +215,8 @@ begin
         if (stall = '1') then
           decoded <= curDecoded;
         else
+          decoded.debug_pc <= ProgramCounter;
+          decoded.debug_instr <= Instr;
           decoded.mem_en <= "0";
           decoded.mem_rw <= "0";
           decoded.cin_sra  <= "0";
@@ -270,8 +274,10 @@ begin
                               decoded.mem_rw <= "1"; -- Write
                               decoded.mem_len <= Funct3(1 downto 0);
                               decoded.mem_se(0) <= Funct3(2);
+                              decoded.dstReg   <= (others=>'0');
                             
             when "1100011" => --printf("-> B-type\n"); -- Branch instructions
+                              decoded.dstReg   <= (others=>'0');
                               if (goBranch = "1") then
                                 tmp := ProgramCounter + IMM_Btype;
                                 ProgramCounter <= ProgramCounter + IMM_Btype;

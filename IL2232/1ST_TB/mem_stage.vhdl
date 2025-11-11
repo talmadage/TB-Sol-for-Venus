@@ -65,11 +65,15 @@ begin
 
       -- Non memory packet
       if (mem_packet.mem_en = "0") then
+        wb_packet.debug_pc <= mem_packet.debug_pc;
+        wb_packet.debug_instr <= mem_packet.debug_instr;
         wb_packet.result <= mem_packet.adr;
         wb_packet.dstReg <= mem_packet.dstReg;		 
       end if;
 
       if (mem_packet.mem_en = "1" and mem_packet.mem_rw="0" and data_rdy = "1") then        
+        wb_packet.debug_pc <= mem_packet.debug_pc;
+        wb_packet.debug_instr <= mem_packet.debug_instr;
         wb_packet.dstReg <= mem_packet.dstReg;
         case mem_packet.mem_len is
           -- Load a 8-bit value and possibly extend it

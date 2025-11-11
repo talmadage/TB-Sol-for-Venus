@@ -29,16 +29,15 @@ module dtekv_tb(
     input  logic [31:0] debug_instr,
     input  logic        debug_regwrite,
     input  logic [4:0]  debug_regaddr,
-    input  logic [31:0] debug_regvalue
+    input  logic [31:0] debug_regvalue,
+    output logic simulation_done
 );
 
 
     // Parameters and Memories
-    localparam INSTR_MEM_SIZE = 4096;
-    localparam DATA_MEM_SIZE  = 4096;
+    localparam MEM_SIZE = 262144; // 1024KB memory
 
-    logic [31:0] instr_mem [0:INSTR_MEM_SIZE-1];
-    logic [31:0] data_mem  [0:DATA_MEM_SIZE-1];
+    logic [31:0] mem [0:MEM_SIZE-1];
 
     logic [31:0] instr_rdata;
     logic [31:0] data_rdata;
@@ -54,12 +53,11 @@ module dtekv_tb(
 
     // 1) initial
     initial begin
-        // fill with NOPs
-        for (int i = 0; i < INSTR_MEM_SIZE; i++) instr_mem[i] = 32'h00000013;
-        for (int i = 0; i < DATA_MEM_SIZE;  i++) data_mem[i]  = 32'h0;
+        // fill with all-1
+        for (int i = 0; i < MEM_SIZE; i++) mem[i] = 32'hffff_ffff;
 
         // open binary file
-        fin = $fopen("E:/IL2232/riscv_tb/instr_mem.bin", "rb");
+        fin = $fopen("D:\\coremark.bin", "rb");
         if (fin == 0) begin
             $display("[TB][ERROR] cannot open binary file, keep NOPs");
         end
@@ -67,7 +65,7 @@ module dtekv_tb(
             $display("[TB] opened binary file, start fread ...");
 
             idx = 0;
-            while (!$feof(fin) && idx < INSTR_MEM_SIZE) begin
+            while (!$feof(fin) && idx < MEM_SIZE) begin
                 nread = $fread(b0, fin);
                 if (nread != 1) break;
                 nread = $fread(b1, fin);
@@ -78,7 +76,7 @@ module dtekv_tb(
                 if (nread != 1) break;
 
                 //Little Endian
-                instr_mem[idx] = {b3, b2, b1, b0};
+                mem[idx] = {b3, b2, b1, b0};
                 idx++;
             end
 
@@ -119,23 +117,28 @@ module dtekv_tb(
     // 3) instr
     assign avm_instr_read_waitreq = 1'b0;
 
+    assign instr_rdata = avm_instr_read ? mem[avm_instr_read_adr[19:0] >> 2] : 32'h0000_0000;
+
+    // check for simulation done
     always @(posedge clk) begin
-        if (avm_instr_read)
-            instr_rdata <= instr_mem[avm_instr_read_adr >> 2];
+        if (avm_instr_read) begin
+            if(mem[avm_instr_read_adr[19:0] >> 2] == 32'hffff_ffff) begin
+                simulation_done <= 1'b1;
+            end
+        end
     end
 
     assign avm_instr_read_data = instr_rdata;
 
     // 4) data
     assign avm_data_waitreq = 1'b0;
-
+    assign data_rdata = mem[avm_data_adr[19:0] >> 2];
+    
     always @(posedge clk) begin
-        if (avm_data_read)
-            data_rdata <= data_mem[avm_data_adr >> 2];
         if (avm_data_write) begin
             for (int i = 0; i < 4; i++) begin
                 if (avm_data_write_byten[i])
-                    data_mem[avm_data_adr >> 2][8*i +: 8] <= avm_data_write_data[8*i +: 8];
+                    mem[avm_data_adr[19:0] >> 2][8*i +: 8] <= avm_data_write_data[8*i +: 8];
             end
         end
     end

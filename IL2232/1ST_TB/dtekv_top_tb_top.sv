@@ -8,14 +8,12 @@ module dtekv_top_tb_top;
 
     initial begin
         clk = 1'b0;
-        forever #5 clk = ~clk;   // 100MHz
-    end
-
-    initial begin
         reset = 1'b1;
         #40;
         reset = 1'b0;
     end
+
+    always #5 clk = ~clk;
 
     // ---------------- wires between DUT and TB ----------------
     logic [31:0] avm_instr_read_adr;
@@ -40,6 +38,16 @@ module dtekv_top_tb_top;
     logic        debug_regwrite;
     logic [4:0]  debug_regaddr;
     logic [31:0] debug_regvalue;
+
+    logic tb_simulation_done;
+
+    initial begin
+        wait (tb_simulation_done == 1'b1); 
+        #100;
+
+        $display("Testbench simulation complete. Stopping simulation.");
+        $finish; // 停止仿真
+    end
 
     // ---------------- DUT ----------------
     dtekv_top u_dtekv_top (
@@ -96,7 +104,8 @@ module dtekv_top_tb_top;
         .debug_instr            (debug_instr),
         .debug_regwrite         (debug_regwrite),
         .debug_regaddr          (debug_regaddr),
-        .debug_regvalue         (debug_regvalue)
+        .debug_regvalue         (debug_regvalue),
+        .simulation_done        (tb_simulation_done)
     );
 
 endmodule

@@ -143,15 +143,17 @@ begin
 
   current_pc    <= std_logic_vector(icache_adr);
   current_instr <= std_logic_vector(icache_instr);
-  wb_valid <= '1'
-              when wb_to_dec.dstReg /= to_unsigned(0, RegBits)
-              else '0';
+  -- wb_valid <= '1'
+  --             when wb_to_dec.dstReg /= to_unsigned(0, RegBits)
+  --             else '0';
   wb_regaddr  <= std_logic_vector(wb_to_dec.dstReg);
   wb_regvalue <= std_logic_vector(wb_to_dec.result);
 
-  debug_pc       <= current_pc;
-  debug_instr    <= current_instr;
-  debug_regwrite <= wb_valid;
+  debug_pc       <= std_logic_vector(wb_to_dec.debug_pc);
+  debug_instr    <= std_logic_vector(wb_to_dec.debug_instr);
+  debug_regwrite <= '1'
+              when wb_to_dec.dstReg /= to_unsigned(0, RegBits)
+              else '0';
   debug_regaddr  <= wb_regaddr;
   debug_regvalue <= wb_regvalue;
 
