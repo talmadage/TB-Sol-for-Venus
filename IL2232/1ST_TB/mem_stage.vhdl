@@ -77,15 +77,15 @@ begin
         wb_packet.dstReg <= mem_packet.dstReg;
         case mem_packet.mem_len is
           -- Load a 8-bit value and possibly extend it
-          when "00" => wb_packet.result <= internal_data_in;
+          when "00" => wb_packet.result <= (31 downto 8 => '0') & internal_data_in(7 downto 0); 
                        if (internal_data_in(7) = '1' and mem_packet.sign_ext = "1") then
                          wb_packet.result <= "111111111111111111111111" &  internal_data_in(7 downto 0);
                        end if;
 
           -- Load a 16-bit value and possible extend it
-          when "01" => wb_packet.result <= internal_data_in;
+          when "01" => wb_packet.result <= (31 downto 16 => '0') & internal_data_in(15 downto 0);
                        if (internal_data_in(15) = '1' and mem_packet.sign_ext = "1") then
-                         wb_packet.result <= "1111111111111111" & data_in(15 downto 0);
+                         wb_packet.result <= "1111111111111111" & internal_data_in(15 downto 0);
                        end if;
 															
           -- Load a 32-bit value

@@ -46,7 +46,7 @@ module dtekv_top_tb_top;
         #100;
 
         $display("Testbench simulation complete. Stopping simulation.");
-        $finish; // 停止仿真
+        $stop; // 停止仿真
     end
 
     // ---------------- DUT ----------------
