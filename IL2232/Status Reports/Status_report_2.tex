@@ -72,9 +72,51 @@ Stockholm, Sweden
 
 
 \section{Resource Status}
-• How much in terms of resources has the project consumed and how much has been
-delivered?\\
-• (In industrial projects, the economic status is reported as well)
+\subsection{Time and Effort}
+After resolving the initial issues in the codebase and becoming gradually familiar with the project structure, the team concentrated during the last four sprints on engineering development and technical documentation. This focus enabled steady progress in both the testbench development and the bit-serial interface branches as the project transitioned from preparation to active implementation.
+In the testbench branch, three members worked on functional testing, coremark generation, and integrating the testbench with RAM and UART on the SoC. These tasks formed the core of the verification flow and significantly improved the maturity of the testbench.
+In the bit-serial interface branch, the other three members concentrated on defining frequency and pin properties, specifying the communication protocol, and implementing the RTL. This work ensured that the communication mechanism can operate under the expected I/O limitations.
+
+The cumulative time contribution per member and sprint is summarized below:
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{lcccc}
+\hline
+\textbf{Member} & \textbf{Sprint 3} & \textbf{Sprint 4} & \textbf{Sprint 5} & \textbf{Sprint 6} \\
+\hline
+Chongnan Wang & &  &  & \\
+Xinxin Qin & 12h & 11h & 7h & 14h \\
+Paul Martin & &  &  & \\
+Xiaotian Jiang & &  &  & \\
+Chinmay Purandare & &  &  & \\
+Lorenzo Parata & &  &  & \\
+\hline
+\end{tabular}
+\caption{Time contribution per member and sprint.}
+\end{table}
+
+Overall, the team has spent approximately xx hours so far (still being finalized), showing an increase compared with the previous status report as the project entered a more intensive development phase.
+
+\subsection{Budget and Economic Status}
+As this is an academic course project, no financial budget is involved. Team members’ work is unpaid, and the necessary hardware resources are provided by the supervisor, likely obtained through educational sponsorships.
+During the project, a few minor expenses occurred, such as purchasing power adapters for the boards and cables to connect the two FPGA boards. These were handled individually by team members, or replaced through simple alternatives such as soldered connections. Such small expenses did not significantly impact project progress or planning.
+
+\subsection{Personnel}
+The project currently consists of six active members, each contributing according to the agile sprint plan described above.
+The team is divided into two subgroups: Chongnan, Xinxin, and Xiaotian work on the testbench, while Chinmay, Paul, and Lorenzo focus on the bit-serial converter.
+This division has proven effective in keeping responsibilities clear and preventing overlap between tasks. Collaboration between the two subgroups has remained consistent, ensuring that integration work can proceed smoothly in later stages.
+
+\subsection{Materials and Equipment}
+Each team member is currently using one \textbf{DE0-Nano-SoC Development Kit}, a robust FPGA platform based on the Altera System-on-Chip (SoC) architecture. The board combines a dual-core ARM Cortex-A9 processor with programmable logic, enabling flexible and high-performance embedded system design. The kit includes DDR3 memory, analog-to-digital capabilities, and Ethernet connectivity, offering a complete environment for hardware-software co-design.
+As the project progressed, a few additional accessories such as FPGA communication cables were required to support multi-board testing. These items ensured that essential connections and debugging steps could be completed without delays.
+
+\subsection{Deliverables}
+After the sixth sprint, the deliverables include: a simulation-validated testbench integrated with UART and RAM on the FPGA board, capable of providing stimuli to the DUT, collecting logs, communicating with the PC, and comparing against a golden log; and a custom serial communication module that enables interaction between the testbench and the CPU under limited pad conditions. These deliverables form the basis of the final integration stage and demonstrate that both major branches of the project have reached functional readiness.
+
+\subsection{Outlook}
+In the next stage of work, we will wrap up the project, complete the integration between the two modules and conduct on-board testing, as well as test and collect the final data.The upcoming tasks will focus on validating full-system functionality and ensuring that the testbench and CPU interact reliably under hardware conditions.
+
 
 
 \section{Problems / Action plan}
