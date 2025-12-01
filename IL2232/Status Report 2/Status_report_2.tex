@@ -85,7 +85,7 @@ The cumulative time contribution per member and sprint is summarized below:
 \hline
 \textbf{Member} & \textbf{Sprint 3} & \textbf{Sprint 4} & \textbf{Sprint 5} & \textbf{Sprint 6} \\
 \hline
-Chongnan Wang & &  &  & \\
+Chongnan Wang & 15h & 10h & 11h & 11h\\
 Xinxin Qin & 12h & 11h & 7h & 14h \\
 Paul Martin & &  &  & \\
 Xiaotian Jiang & &  &  & \\
@@ -182,9 +182,57 @@ But we have in addition Risk 14 – Clock Domain and Timing Inconsistencies that
 
 
 \section{Project changes from the project plan}
-• This is where changes are documented so that they become visual. Changes are
-typically: new requirements, changed requirements, changed organization, changed
-prerequisites, new documents, etc.
+
+The following table documents the deviations from the original project plan. It highlights new technical requirements, hardware prerequisites, documentation updates, and organizational adjustments to ensure project transparency.
+
+\begin{table}[h!]
+    \centering
+    \renewcommand{\arraystretch}{1.6} %稍微增加行高以容纳更多内容
+    \begin{tabular}{|p{0.18\textwidth}|p{0.42\textwidth}|p{0.32\textwidth}|}
+        \hline
+        \textbf{Change Type} & \textbf{Description} & \textbf{Impact / Action Plan} \\
+        \hline
+        
+        \textbf{New Requirement} & 
+        \textbf{Cross-Platform Compatibility} \newline 
+        Code discrepancies between Windows and Linux (e.g., makefile paths, library dependencies) caused build failures. & 
+        Refactored build scripts and standardized compiler flags to ensure seamless portability across both OS environments. \\
+        \hline
+        
+        \textbf{Changed Requirement} & 
+        \textbf{Testbench Scope Expansion} \newline 
+        Validation now requires functional coverage for both RISC-V and CISC-V architectures to ensure instruction set compatibility. & 
+        Refactoring verification logic to support dual-architecture testing and implementing automated regression tests. \\
+        \hline
+        
+        \textbf{New Prerequisite} & 
+        \textbf{Hardware Interconnection} \newline 
+        Identified a missing specific female-to-female interface required to bridge the two development boards for signal transmission. & 
+        Team will fabricate (solder) a custom cable to meet connection requirements immediately to avoid blocking hardware integration. \\
+        \hline
+        
+        \textbf{Changed Organization} & 
+        \textbf{Holiday Schedule Optimization} \newline 
+        Reduced workforce availability during the upcoming Christmas break requires a shift in project phasing. & 
+        Critical path tasks accelerated to be completed pre-holiday; remote workflow established for asynchronous contributions. \\
+        \hline
+        
+        \textbf{New Document} & 
+        \textbf{Documentation Overhaul (README)} \newline 
+        The initial project documentation was insufficient for the current code complexity. & 
+        Restructured `README.md` and added inline comments to improve code structure visibility and long-term maintainability. \\
+        \hline
+        
+        \textbf{Clarified Requirement} & 
+        \textbf{Specification Alignment} \newline 
+        Initial hardware specifications contained ambiguities regarding interface details. & 
+        Conducted a detailed review with the supervisor to define missing constraints; updated the hardware design specifications accordingly. \\
+        \hline
+        
+    \end{tabular}
+    \caption{Summary of Changes and Deviations from the Project Plan}
+    \label{tab:project_changes}
+\end{table}
 
 
 \section{Appendix}
