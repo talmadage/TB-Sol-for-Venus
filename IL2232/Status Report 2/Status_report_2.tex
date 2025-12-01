@@ -67,14 +67,18 @@ Stockholm, Sweden
 
 % Start main content
 \section{General description of status} 
-• What has happened since the last report?\\
 
 During the recent sprints, the testbench subgroup focused heavily on the functional verification of the RISC-V processor core. To ensure comprehensive coverage, CoreMark was selected as the primary benchmark test case. A critical achievement during this phase was the identification and resolution of a logic bug within the Load-Store Unit (LSU), which was previously causing incorrect memory access behaviors.
 
-• What is the status?
-
 Following the fix of the LSU, the RISC-V core has been successfully verified in the simulation environment. The processor is now able to execute the CoreMark benchmark correctly, confirming the logical correctness of the core architecture before moving to the final hardware integration phase.
 
+In parallel, the bit-serial interface subgroup made substantial progress in defining the communication protocol between the two FPGA boards. The team established clear specifications for frequency requirements, pin assignments, and data transmission patterns. RTL implementation of the serial converter has been completed and undergoes continuous refinement based on simulation results. This module will serve as the critical bridge enabling the testbench to communicate with the processor under the severe I/O pad constraints imposed by the Venus mission requirements.
+
+Cross-team coordination has improved significantly compared to earlier phases. Regular integration meetings ensure that both subgroups remain aligned on interface specifications and timing requirements. Documentation quality has also increased, with the README file restructured to better reflect the current codebase complexity and facilitate onboarding for future contributors.
+
+The project timeline remains on track despite some anticipated delays in system-level integration. Buffer time allocated during initial planning has proven valuable in absorbing unforeseen technical challenges, particularly those related to clock domain crossing between the two FPGAs. The team has identified potential synchronization issues early and is actively working on handshake protocols and synchronizer circuits to mitigate timing inconsistencies.
+
+Looking ahead to the final phase, the primary focus will shift toward full-system integration and on-board validation. Both major branches—testbench verification infrastructure and bit-serial communication—have reached functional readiness in their respective simulation environments. The upcoming sprints will concentrate on merging these components, conducting hardware-level testing, and collecting performance metrics to evaluate the feasibility of bit-serial processing for space applications.
 \section{Resource Status}
 \subsection{Time and Effort}
 After resolving the initial issues in the codebase and becoming gradually familiar with the project structure, the team concentrated during the last four sprints on engineering development and technical documentation. This focus enabled steady progress in both the testbench development and the bit-serial interface branches as the project transitioned from preparation to active implementation.
