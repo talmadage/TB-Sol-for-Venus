@@ -5,25 +5,26 @@ USE WORK.types_pkg.ALL;
 
 entity BRISC_V is
     port (
-        clk      : in  std_logic;  -- Clock input
+        clk      : in  std_logic;
         reset    : in std_logic_vector(0 downto 0);
         instruction_data : in Word;
-
         load_instruction_enable : in std_logic;
-        new_instruction  : in std_logic
+        new_instruction  : in std_logic;
+        
+        io_ports : inout unsigned(IOPorts-1 downto 0)
     );
 end entity BRISC_V;
 
 architecture Structural of BRISC_V is
 
-    -- Component Declarations (Optional if using direct instantiation)
+    -- Component Declarations
     component io_controller
         port (
-            we		 : in std_logic;
-			data_in	 : in Word;	
-			data_out : out Word;	
-			ports	 : inout unsigned(IOPorts-1 downto 0)
-
+            clk      : in  std_logic;
+            we       : in  std_logic;
+            data_in  : in  Word;	
+            data_out : out Word;	
+            ports    : inout unsigned(IOPorts-1 downto 0)
         );
     end component;
 
@@ -31,7 +32,6 @@ architecture Structural of BRISC_V is
         port (
            clk       : in std_logic;
            reset     : in std_logic;
-
            data_addr : in MemoryAddress;
            we : in std_logic;
            data_in  : in Word;
@@ -51,13 +51,12 @@ architecture Structural of BRISC_V is
 			addr			: in unsigned(1 downto 0);
 			s_active		: out std_logic;
 			rx_data			: out unsigned(1 downto 0);
-
 			data_addr		: out MemoryAddress;
 			we				: out std_logic;
-			data4mem		: in Word;					-- Data from memory
-			data2mem		: out Word;					-- Data to memory
-			data4io			: in Word;					-- Data from IO 
-			data2io			: out Word					-- Data to IO 
+			data4mem		: in Word;
+			data2mem		: out Word;
+			data4io			: in Word;
+			data2io			: out Word
         );
     end component;
 
@@ -72,22 +71,19 @@ architecture Structural of BRISC_V is
             addr:OUT std_logic_vector(1 downto 0);
             m_data:OUT std_logic_vector(1 downto 0);
             clk_out:OUT std_logic_vector(0 downto 0)
-
         );
     end component;
 
     -- Internal signals to connect modules
     signal we_wire              : std_logic;
-    signal data_in_io_wire         : Word;	
-    signal data_out_io_wire        : Word;
-
+    signal data_in_io_wire      : Word;	
+    signal data_out_io_wire     : Word;
     signal clk_out_wire         : std_logic_vector(0 downto 0);
     signal data_addr_wire       : MemoryAddress;
-    signal data_in_mem_wire         : Word;	
-    signal data_out_mem_wire        : Word;
+    signal data_in_mem_wire     : Word;	
+    signal data_out_mem_wire    : Word;
 
-
-    --convertion wires
+    -- Conversion wires
     signal com_enable_wire      : std_logic_vector(0 downto 0);
     signal m_active_wire        : std_logic_vector(0 downto 0);
     signal m_data_wire          : std_logic_vector(1 downto 0);
@@ -97,16 +93,17 @@ architecture Structural of BRISC_V is
 
 begin
 
-    -- Instantiate Module1
+    -- Instantiate I/O Controller
     U1: io_controller
         port map (
-            we     => we_wire,
-            data_in => data_in_io_wire,
+            clk      => clk_out_wire(0),
+            we       => we_wire,
+            data_in  => data_in_io_wire,
             data_out => data_out_io_wire,
-            ports => open
+            ports    => io_ports
         );
 
-    -- Instantiate Module2
+    -- Instantiate RAM
     U2: RAM
         port map (
             clk => clk_out_wire(0),
@@ -120,6 +117,7 @@ begin
             new_instruction => new_instruction
         );
     
+    -- Instantiate BS Interface
     U3: bs_interface
         port map(
             clk	=> clk_out_wire(0),
@@ -137,19 +135,18 @@ begin
 			data2io => data_in_io_wire
         );
 
+    -- Instantiate CiscV Controller
     U4: CiscV
         port map(
-
-        clk => clk,
-        s_active => s_active_wire,
-        s_data => std_logic_vector(s_data_wire),
-        sreset => reset,
-        com_enable => com_enable_wire,
-        m_active => m_active_wire,
-        addr => addr_wire,
-        m_data => m_data_wire,
-        clk_out => clk_out_wire
-
+            clk => clk,
+            s_active => s_active_wire,
+            s_data => std_logic_vector(s_data_wire),
+            sreset => reset,
+            com_enable => com_enable_wire,
+            m_active => m_active_wire,
+            addr => addr_wire,
+            m_data => m_data_wire,
+            clk_out => clk_out_wire
         );
 
 end architecture Structural;
