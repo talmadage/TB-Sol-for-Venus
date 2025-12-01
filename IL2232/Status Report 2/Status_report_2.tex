@@ -68,8 +68,12 @@ Stockholm, Sweden
 % Start main content
 \section{General description of status} 
 • What has happened since the last report?\\
+
+During the recent sprints, the testbench subgroup focused heavily on the functional verification of the RISC-V processor core. To ensure comprehensive coverage, CoreMark was selected as the primary benchmark test case. A critical achievement during this phase was the identification and resolution of a logic bug within the Load-Store Unit (LSU), which was previously causing incorrect memory access behaviors.
+
 • What is the status?
 
+Following the fix of the LSU, the RISC-V core has been successfully verified in the simulation environment. The processor is now able to execute the CoreMark benchmark correctly, confirming the logical correctness of the core architecture before moving to the final hardware integration phase.
 
 \section{Resource Status}
 \subsection{Time and Effort}
@@ -87,8 +91,8 @@ The cumulative time contribution per member and sprint is summarized below:
 \hline
 Chongnan Wang & 15h & 10h & 11h & 11h\\
 Xinxin Qin & 12h & 11h & 7h & 14h \\
-Paul Martin & &  &  & \\
-Xiaotian Jiang & &  &  & \\
+Paul Martin & 16h & 8h & 8h & 9h \\
+Xiaotian Jiang & 10h & 14h & 5h & 10h \\
 Chinmay Purandare & &  &  & \\
 Lorenzo Parata & &  &  & \\
 \hline
@@ -120,6 +124,7 @@ In the next stage of work, we will wrap up the project, complete the integration
 
 
 \section{Problems / Action plan}
+Chinmay
 • State the problems the sponsor and steering committee need to be aware of, and
 proposals for action
 
