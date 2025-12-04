@@ -28,8 +28,9 @@ architecture rtl of BRISC_top_connect is
     signal load_instruction_enable : std_logic := '0';
     signal new_instruction         : std_logic := '0';
     
-    -- *** I/O controller ports signal ***
-    signal io_ports : unsigned(IOPorts-1 downto 0);
+    -- Separate signals for input and output
+    signal io_ports_out : unsigned(IOPorts-1 downto 0);
+    signal io_ports_in  : unsigned(IOPorts-1 downto 0);
 
 begin
     ----------------------------------------------------------------------
@@ -39,8 +40,7 @@ begin
     reset(0)   <= not KEY(0);       -- Active-low reset from button
 
     ----------------------------------------------------------------------
-    -- Instantiate BRISC core
-    -- *** MODIFICATO: io_ports ora collegato come porta ***
+    -- Instantiate BRISC core with separated I/O
     ----------------------------------------------------------------------
     u_core : entity work.BRISC_V
         port map (
@@ -49,18 +49,26 @@ begin
             instruction_data        => instruction_data,
             load_instruction_enable => load_instruction_enable,
             new_instruction         => new_instruction,
-            io_ports                => io_ports
+            io_ports_out            => io_ports_out,
+            io_ports_in             => io_ports_in
         );
 
     ----------------------------------------------------------------------
-    -- GPIO mapping to physical DE0-Nano pins
+    -- GPIO bidirectional control
     ----------------------------------------------------------------------
-    -- GPIO_0(7 downto 0) = Bidirectional data
-    -- GPIO_0(8)          = TX_VALID
-    -- GPIO_0(9)          = RX_READY
-    ----------------------------------------------------------------------
-    GPIO_0 <= std_logic_vector(io_ports);
-    io_ports <= unsigned(GPIO_0);
+    -- Data pins (0-7): Bidirectional
+    -- Drive when outputting, otherwise high-impedance
+    GPIO_0(7 downto 0) <= std_logic_vector(io_ports_out(7 downto 0)) 
+                          when io_ports_out(8) = '1' else (others => 'Z');
+    
+    -- TX_VALID (pin 8): Output only
+    GPIO_0(8) <= std_logic(io_ports_out(8));
+    
+    -- RX_READY (pin 9): Input only (high-impedance from FPGA side)
+    GPIO_0(9) <= 'Z';
+    
+    -- Read GPIO state back into internal signal
+    io_ports_in <= unsigned(GPIO_0);
 
     ----------------------------------------------------------------------
     -- Debug LEDs (shows first 8 bits of I/O data)
@@ -74,8 +82,8 @@ begin
             -- LED(0) = Heartbeat
             LED(0) <= counter(counter'high);
             
-            -- LED(7 downto 1) = GPIO state
-            LED(7 downto 1) <= std_logic_vector(io_ports(6 downto 0));
+            -- LED(7 downto 1) = GPIO input state
+            LED(7 downto 1) <= std_logic_vector(io_ports_in(6 downto 0));
         end if;
     end process;
 

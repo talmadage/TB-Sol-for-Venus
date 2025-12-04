@@ -5,11 +5,12 @@ use work.types_pkg.all;
 
 entity io_controller is
     port (
-        clk      : in  std_logic;
-        we       : in  std_logic;
-        data_in  : in  Word;           -- 32 bits to write
-        data_out : out Word;           -- 32 bits read
-        ports    : inout unsigned(IOPorts-1 downto 0)  -- 10 GPIO pins
+        clk       : in  std_logic;
+        we        : in  std_logic;
+        data_in   : in  Word;           -- 32 bits to write
+        data_out  : out Word;           -- 32 bits read
+        ports_out : out unsigned(IOPorts-1 downto 0);  -- Output to GPIO
+        ports_in  : in  unsigned(IOPorts-1 downto 0)   -- Input from GPIO
     );
 end entity;
 
@@ -21,10 +22,10 @@ architecture rtl of io_controller is
     signal bit_counter  : integer range 0 to 31 := 0;
     
     -- Control signals (mapped to GPIO)
-    signal tx_data      : unsigned(7 downto 0);  -- 8-bit parallel data
-    signal rx_data      : unsigned(7 downto 0);  -- 8-bit parallel data
-    signal tx_valid     : std_logic := '0';      -- TX data valid signal
-    signal rx_ready     : std_logic;             -- RX ready signal
+    signal tx_data      : unsigned(7 downto 0) := (others => '0');  -- 8-bit parallel data
+    signal rx_data      : unsigned(7 downto 0);                      -- 8-bit parallel data
+    signal tx_valid     : std_logic := '0';                          -- TX data valid signal
+    signal rx_ready     : std_logic;                                 -- RX ready signal
     
     -- State machine for transmission/reception
     type state_type is (IDLE, TX_SEND, RX_RECEIVE, DONE);
@@ -43,13 +44,14 @@ begin
     -- GPIO Pin 9:   RX_READY (input - indicates ready input data)
     -- ================================================================
     
-    -- Output to GPIO
-    ports(7 downto 0) <= tx_data when (state = TX_SEND) else (others => 'Z');
-    ports(8) <= tx_valid;
-    ports(9) <= 'Z';  -- Input
+    -- Output assignments
+    ports_out(7 downto 0) <= tx_data;
+    ports_out(8) <= tx_valid;
+    ports_out(9) <= '0';  -- Not used for output
     
-    -- Input from GPIO
-    rx_data <= ports(7 downto 0);
+    -- Input assignments
+    rx_data <= ports_in(7 downto 0);
+    rx_ready <= ports_in(9);
 
     process(clk)
     begin
@@ -116,9 +118,6 @@ begin
                         end if;
                     end if;
                 
-                -- ============================================
-                -- DONE STATE: Operation completed
-                -- ============================================
                 when DONE =>
                     tx_valid <= '0';
                     state <= IDLE;

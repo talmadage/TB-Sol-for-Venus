@@ -11,7 +11,8 @@ entity BRISC_V is
         load_instruction_enable : in std_logic;
         new_instruction  : in std_logic;
         
-        io_ports : inout unsigned(IOPorts-1 downto 0)
+        io_ports_out : out unsigned(IOPorts-1 downto 0);
+        io_ports_in  : in  unsigned(IOPorts-1 downto 0)
     );
 end entity BRISC_V;
 
@@ -20,11 +21,12 @@ architecture Structural of BRISC_V is
     -- Component Declarations
     component io_controller
         port (
-            clk      : in  std_logic;
-            we       : in  std_logic;
-            data_in  : in  Word;	
-            data_out : out Word;	
-            ports    : inout unsigned(IOPorts-1 downto 0)
+            clk        : in  std_logic;
+            we         : in  std_logic;
+            data_in    : in  Word;	
+            data_out   : out Word;	
+            ports_out  : out unsigned(IOPorts-1 downto 0);
+            ports_in   : in  unsigned(IOPorts-1 downto 0)
         );
     end component;
 
@@ -93,14 +95,15 @@ architecture Structural of BRISC_V is
 
 begin
 
-    -- Instantiate I/O Controller
+    -- Instantiate I/O Controller with separated ports
     U1: io_controller
         port map (
-            clk      => clk_out_wire(0),
-            we       => we_wire,
-            data_in  => data_in_io_wire,
-            data_out => data_out_io_wire,
-            ports    => io_ports
+            clk       => clk_out_wire(0),
+            we        => we_wire,
+            data_in   => data_in_io_wire,
+            data_out  => data_out_io_wire,
+            ports_out => io_ports_out,
+            ports_in  => io_ports_in
         );
 
     -- Instantiate RAM

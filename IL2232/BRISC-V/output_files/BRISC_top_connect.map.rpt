@@ -1,0 +1,1407 @@
+Analysis & Synthesis report for BRISC_top_connect
+Thu Dec  4 19:29:18 2025
+Quartus Prime Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. Analysis & Synthesis RAM Summary
+  9. Analysis & Synthesis IP Cores Summary
+ 10. State Machine - |BRISC_top_connect|BRISC_V:u_core|bs_interface:U3|current_state
+ 11. State Machine - |BRISC_top_connect|BRISC_V:u_core|io_controller:U1|state
+ 12. User-Specified and Inferred Latches
+ 13. Registers Removed During Synthesis
+ 14. Removed Registers Triggering Further Register Optimizations
+ 15. General Register Statistics
+ 16. Inverted Register Statistics
+ 17. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 18. Source assignments for BRISC_V:u_core|RAM:U2|RAM_1PORT:u_ram_inst|altsyncram:altsyncram_component|altsyncram_bcp3:auto_generated
+ 19. Parameter Settings for User Entity Instance: BRISC_V:u_core|RAM:U2|RAM_1PORT:u_ram_inst|altsyncram:altsyncram_component
+ 20. altsyncram Parameter Settings by Entity Instance
+ 21. Port Connectivity Checks: "BRISC_V:u_core|CiscV:U4|CiscV_0:U0"
+ 22. Port Connectivity Checks: "BRISC_V:u_core"
+ 23. Post-Synthesis Netlist Statistics for Top Partition
+ 24. Elapsed Time Per Partition
+ 25. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2025  Altera Corporation. All rights reserved.
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, the Altera Quartus Prime License Agreement,
+the Altera IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Altera and sold by Altera or its authorized distributors.  Please
+refer to the Altera Software License Subscription Agreements 
+on the Quartus Prime software download page.
+
+
+
++--------------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                         ;
++------------------------------------+-------------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Thu Dec  4 19:29:17 2025           ;
+; Quartus Prime Version              ; 25.1std.0 Build 1129 10/21/2025 SC Lite Edition ;
+; Revision Name                      ; BRISC_top_connect                               ;
+; Top-level Entity Name              ; BRISC_top_connect                               ;
+; Family                             ; Cyclone IV E                                    ;
+; Total logic elements               ; 5,745                                           ;
+;     Total combinational functions  ; 5,037                                           ;
+;     Dedicated logic registers      ; 1,124                                           ;
+; Total registers                    ; 1124                                            ;
+; Total pins                         ; 21                                              ;
+; Total virtual pins                 ; 0                                               ;
+; Total memory bits                  ; 32,768                                          ;
+; Embedded Multiplier 9-bit elements ; 0                                               ;
+; Total PLLs                         ; 0                                               ;
++------------------------------------+-------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                              ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                           ; Setting            ; Default Value      ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                           ; EP4CE22F17C6       ;                    ;
+; Top-level entity name                                            ; BRISC_top_connect  ; BRISC_top_connect  ;
+; Family name                                                      ; Cyclone IV E       ; Cyclone V          ;
+; Use smart compilation                                            ; Off                ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                      ; Off                ; Off                ;
+; Restructure Multiplexers                                         ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                              ; Off                ; Off                ;
+; Preserve fewer node names                                        ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                    ; Enable             ; Enable             ;
+; Verilog Version                                                  ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                     ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                         ; Auto               ; Auto               ;
+; Safe State Machine                                               ; Off                ; Off                ;
+; Extract Verilog State Machines                                   ; On                 ; On                 ;
+; Extract VHDL State Machines                                      ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                       ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                   ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                          ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                        ; On                 ; On                 ;
+; Parallel Synthesis                                               ; On                 ; On                 ;
+; DSP Block Balancing                                              ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                               ; On                 ; On                 ;
+; Power-Up Don't Care                                              ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                     ; Off                ; Off                ;
+; Remove Duplicate Registers                                       ; On                 ; On                 ;
+; Ignore CARRY Buffers                                             ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                           ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                            ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                        ; Off                ; Off                ;
+; Ignore LCELL Buffers                                             ; Off                ; Off                ;
+; Ignore SOFT Buffers                                              ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                   ; Off                ; Off                ;
+; Optimization Technique                                           ; Balanced           ; Balanced           ;
+; Carry Chain Length                                               ; 70                 ; 70                 ;
+; Auto Carry Chains                                                ; On                 ; On                 ;
+; Auto Open-Drain Pins                                             ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                            ; Off                ; Off                ;
+; Auto ROM Replacement                                             ; On                 ; On                 ;
+; Auto RAM Replacement                                             ; On                 ; On                 ;
+; Auto DSP Block Replacement                                       ; On                 ; On                 ;
+; Auto Shift Register Replacement                                  ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                  ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                    ; On                 ; On                 ;
+; Strict RAM Replacement                                           ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                           ; Off                ; Off                ;
+; Auto RAM Block Balancing                                         ; On                 ; On                 ;
+; Auto RAM to Logic Cell Conversion                                ; Off                ; Off                ;
+; Auto Resource Sharing                                            ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                               ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                               ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                    ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing              ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                ; Off                ; Off                ;
+; Timing-Driven Synthesis                                          ; On                 ; On                 ;
+; Report Parameter Settings                                        ; On                 ; On                 ;
+; Report Source Assignments                                        ; On                 ; On                 ;
+; Report Connectivity Checks                                       ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                               ; Off                ; Off                ;
+; Synchronization Register Chain Length                            ; 2                  ; 2                  ;
+; Power Optimization During Synthesis                              ; Normal compilation ; Normal compilation ;
+; HDL message level                                                ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                  ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report         ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report               ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report        ; 100                ; 100                ;
+; Clock MUX Protection                                             ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                      ; Off                ; Off                ;
+; Block Design Naming                                              ; Auto               ; Auto               ;
+; SDC constraint protection                                        ; Off                ; Off                ;
+; Synthesis Effort                                                 ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal     ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                             ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                               ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                      ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                           ; On                 ; On                 ;
++------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 8           ;
+; Maximum allowed            ; 4           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 4           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   0.0%      ;
+;     Processor 3            ;   0.0%      ;
+;     Processor 4            ;   0.0%      ;
++----------------------------+-------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                       ;
++----------------------------------+-----------------+------------------------------+------------------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                                   ; Library ;
++----------------------------------+-----------------+------------------------------+------------------------------------------------------------------------------------------------+---------+
+; types_pkg.vhd                    ; yes             ; User VHDL File               ; /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/types_pkg.vhd                 ;         ;
+; io_controller.vhdl               ; yes             ; User VHDL File               ; /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/io_controller.vhdl            ;         ;
+; bs_interface.vhd                 ; yes             ; User VHDL File               ; /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/bs_interface.vhd              ;         ;
+; RAM.vhdl                         ; yes             ; User VHDL File               ; /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/RAM.vhdl                      ;         ;
+; RAM_1PORT.vhd                    ; yes             ; User Wizard-Generated File   ; /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/RAM_1PORT.vhd                 ;         ;
+; CiscV.vhdl                       ; yes             ; User VHDL File               ; /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/CiscV.vhdl                    ;         ;
+; program_package.vhdl             ; yes             ; User VHDL File               ; /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/program_package.vhdl          ;         ;
+; BRISC_top.vhdl                   ; yes             ; User VHDL File               ; /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/BRISC_top.vhdl                ;         ;
+; BRISC_top_connect.vhdl           ; yes             ; User VHDL File               ; /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/BRISC_top_connect.vhdl        ;         ;
+; altsyncram.tdf                   ; yes             ; Megafunction                 ; /home/lorenzo-parata/altera_lite/25.1std/quartus/libraries/megafunctions/altsyncram.tdf        ;         ;
+; stratix_ram_block.inc            ; yes             ; Megafunction                 ; /home/lorenzo-parata/altera_lite/25.1std/quartus/libraries/megafunctions/stratix_ram_block.inc ;         ;
+; lpm_mux.inc                      ; yes             ; Megafunction                 ; /home/lorenzo-parata/altera_lite/25.1std/quartus/libraries/megafunctions/lpm_mux.inc           ;         ;
+; lpm_decode.inc                   ; yes             ; Megafunction                 ; /home/lorenzo-parata/altera_lite/25.1std/quartus/libraries/megafunctions/lpm_decode.inc        ;         ;
+; aglobal251.inc                   ; yes             ; Megafunction                 ; /home/lorenzo-parata/altera_lite/25.1std/quartus/libraries/megafunctions/aglobal251.inc        ;         ;
+; a_rdenreg.inc                    ; yes             ; Megafunction                 ; /home/lorenzo-parata/altera_lite/25.1std/quartus/libraries/megafunctions/a_rdenreg.inc         ;         ;
+; altrom.inc                       ; yes             ; Megafunction                 ; /home/lorenzo-parata/altera_lite/25.1std/quartus/libraries/megafunctions/altrom.inc            ;         ;
+; altram.inc                       ; yes             ; Megafunction                 ; /home/lorenzo-parata/altera_lite/25.1std/quartus/libraries/megafunctions/altram.inc            ;         ;
+; altdpram.inc                     ; yes             ; Megafunction                 ; /home/lorenzo-parata/altera_lite/25.1std/quartus/libraries/megafunctions/altdpram.inc          ;         ;
+; db/altsyncram_bcp3.tdf           ; yes             ; Auto-Generated Megafunction  ; /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/db/altsyncram_bcp3.tdf        ;         ;
++----------------------------------+-----------------+------------------------------+------------------------------------------------------------------------------------------------+---------+
+
+
++-----------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                     ;
++---------------------------------------------+-------------------+
+; Resource                                    ; Usage             ;
++---------------------------------------------+-------------------+
+; Estimated Total logic elements              ; 5,745             ;
+;                                             ;                   ;
+; Total combinational functions               ; 5037              ;
+; Logic element usage by number of LUT inputs ;                   ;
+;     -- 4 input functions                    ; 3589              ;
+;     -- 3 input functions                    ; 1113              ;
+;     -- <=2 input functions                  ; 335               ;
+;                                             ;                   ;
+; Logic elements by mode                      ;                   ;
+;     -- normal mode                          ; 4725              ;
+;     -- arithmetic mode                      ; 312               ;
+;                                             ;                   ;
+; Total registers                             ; 1124              ;
+;     -- Dedicated logic registers            ; 1124              ;
+;     -- I/O registers                        ; 0                 ;
+;                                             ;                   ;
+; I/O pins                                    ; 21                ;
+; Total memory bits                           ; 32768             ;
+;                                             ;                   ;
+; Embedded Multiplier 9-bit elements          ; 0                 ;
+;                                             ;                   ;
+; Maximum fan-out node                        ; FPGA_CLK_50~input ;
+; Maximum fan-out                             ; 1156              ;
+; Total fan-out                               ; 22120             ;
+; Average fan-out                             ; 3.54              ;
++---------------------------------------------+-------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                                                          ;
++-------------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------------------------------------------------------------------+-------------------+--------------+
+; Compilation Hierarchy Node                      ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                          ; Entity Name       ; Library Name ;
++-------------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------------------------------------------------------------------+-------------------+--------------+
+; |BRISC_top_connect                              ; 5037 (26)           ; 1124 (34)                 ; 32768       ; 0            ; 0       ; 0         ; 21   ; 0            ; |BRISC_top_connect                                                                                                           ; BRISC_top_connect ; work         ;
+;    |BRISC_V:u_core|                             ; 5011 (0)            ; 1090 (0)                  ; 32768       ; 0            ; 0       ; 0         ; 0    ; 0            ; |BRISC_top_connect|BRISC_V:u_core                                                                                            ; BRISC_V           ; work         ;
+;       |CiscV:U4|                                ; 4483 (2370)         ; 884 (630)                 ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |BRISC_top_connect|BRISC_V:u_core|CiscV:U4                                                                                   ; CiscV             ; work         ;
+;          |CiscV_0:U0|                           ; 2113 (2113)         ; 254 (254)                 ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |BRISC_top_connect|BRISC_V:u_core|CiscV:U4|CiscV_0:U0                                                                        ; CiscV_0           ; work         ;
+;       |RAM:U2|                                  ; 0 (0)               ; 0 (0)                     ; 32768       ; 0            ; 0       ; 0         ; 0    ; 0            ; |BRISC_top_connect|BRISC_V:u_core|RAM:U2                                                                                     ; RAM               ; work         ;
+;          |RAM_1PORT:u_ram_inst|                 ; 0 (0)               ; 0 (0)                     ; 32768       ; 0            ; 0       ; 0         ; 0    ; 0            ; |BRISC_top_connect|BRISC_V:u_core|RAM:U2|RAM_1PORT:u_ram_inst                                                                ; RAM_1PORT         ; work         ;
+;             |altsyncram:altsyncram_component|   ; 0 (0)               ; 0 (0)                     ; 32768       ; 0            ; 0       ; 0         ; 0    ; 0            ; |BRISC_top_connect|BRISC_V:u_core|RAM:U2|RAM_1PORT:u_ram_inst|altsyncram:altsyncram_component                                ; altsyncram        ; work         ;
+;                |altsyncram_bcp3:auto_generated| ; 0 (0)               ; 0 (0)                     ; 32768       ; 0            ; 0       ; 0         ; 0    ; 0            ; |BRISC_top_connect|BRISC_V:u_core|RAM:U2|RAM_1PORT:u_ram_inst|altsyncram:altsyncram_component|altsyncram_bcp3:auto_generated ; altsyncram_bcp3   ; work         ;
+;       |bs_interface:U3|                         ; 474 (474)           ; 91 (91)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |BRISC_top_connect|BRISC_V:u_core|bs_interface:U3                                                                            ; bs_interface      ; work         ;
+;       |io_controller:U1|                        ; 54 (54)             ; 115 (115)                 ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |BRISC_top_connect|BRISC_V:u_core|io_controller:U1                                                                           ; io_controller     ; work         ;
++-------------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------------------------------------------------------------------+-------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis RAM Summary                                                                                                                                                                                     ;
++----------------------------------------------------------------------------------------------------------------------+------+-------------+--------------+--------------+--------------+--------------+-------+------+
+; Name                                                                                                                 ; Type ; Mode        ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size  ; MIF  ;
++----------------------------------------------------------------------------------------------------------------------+------+-------------+--------------+--------------+--------------+--------------+-------+------+
+; BRISC_V:u_core|RAM:U2|RAM_1PORT:u_ram_inst|altsyncram:altsyncram_component|altsyncram_bcp3:auto_generated|ALTSYNCRAM ; AUTO ; Single Port ; 1024         ; 32           ; --           ; --           ; 32768 ; None ;
++----------------------------------------------------------------------------------------------------------------------+------+-------------+--------------+--------------+--------------+--------------+-------+------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis IP Cores Summary                                                                                                           ;
++--------+--------------+---------+--------------+--------------+---------------------------------------------------------------+-----------------+
+; Vendor ; IP Core Name ; Version ; Release Date ; License Type ; Entity Instance                                               ; IP Include File ;
++--------+--------------+---------+--------------+--------------+---------------------------------------------------------------+-----------------+
+; Altera ; RAM: 1-PORT  ; 25.1    ; N/A          ; N/A          ; |BRISC_top_connect|BRISC_V:u_core|RAM:U2|RAM_1PORT:u_ram_inst ; RAM_1PORT.vhd   ;
++--------+--------------+---------+--------------+--------------+---------------------------------------------------------------+-----------------+
+
+
+Encoding Type:  One-Hot
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |BRISC_top_connect|BRISC_V:u_core|bs_interface:U3|current_state                                                                                                                                                               ;
++----------------------------+--------------------------+----------------------------+---------------------------+--------------------------+----------------------------+---------------------------+---------------------+--------------------+
+; Name                       ; current_state.RD_TX_DATA ; current_state.RD_WAIT_NACK ; current_state.RD_WAIT_ACK ; current_state.RD_TX_ADDR ; current_state.WR_WAIT_NACK ; current_state.WR_WAIT_ACK ; current_state.WR_TX ; current_state.IDLE ;
++----------------------------+--------------------------+----------------------------+---------------------------+--------------------------+----------------------------+---------------------------+---------------------+--------------------+
+; current_state.IDLE         ; 0                        ; 0                          ; 0                         ; 0                        ; 0                          ; 0                         ; 0                   ; 0                  ;
+; current_state.WR_TX        ; 0                        ; 0                          ; 0                         ; 0                        ; 0                          ; 0                         ; 1                   ; 1                  ;
+; current_state.WR_WAIT_ACK  ; 0                        ; 0                          ; 0                         ; 0                        ; 0                          ; 1                         ; 0                   ; 1                  ;
+; current_state.WR_WAIT_NACK ; 0                        ; 0                          ; 0                         ; 0                        ; 1                          ; 0                         ; 0                   ; 1                  ;
+; current_state.RD_TX_ADDR   ; 0                        ; 0                          ; 0                         ; 1                        ; 0                          ; 0                         ; 0                   ; 1                  ;
+; current_state.RD_WAIT_ACK  ; 0                        ; 0                          ; 1                         ; 0                        ; 0                          ; 0                         ; 0                   ; 1                  ;
+; current_state.RD_WAIT_NACK ; 0                        ; 1                          ; 0                         ; 0                        ; 0                          ; 0                         ; 0                   ; 1                  ;
+; current_state.RD_TX_DATA   ; 1                        ; 0                          ; 0                         ; 0                        ; 0                          ; 0                         ; 0                   ; 1                  ;
++----------------------------+--------------------------+----------------------------+---------------------------+--------------------------+----------------------------+---------------------------+---------------------+--------------------+
+
+
+Encoding Type:  One-Hot
++-------------------------------------------------------------------------------+
+; State Machine - |BRISC_top_connect|BRISC_V:u_core|io_controller:U1|state      ;
++------------------+------------+------------------+---------------+------------+
+; Name             ; state.DONE ; state.RX_RECEIVE ; state.TX_SEND ; state.IDLE ;
++------------------+------------+------------------+---------------+------------+
+; state.IDLE       ; 0          ; 0                ; 0             ; 0          ;
+; state.TX_SEND    ; 0          ; 0                ; 1             ; 1          ;
+; state.RX_RECEIVE ; 0          ; 1                ; 0             ; 1          ;
+; state.DONE       ; 1          ; 0                ; 0             ; 1          ;
++------------------+------------+------------------+---------------+------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------+
+; User-Specified and Inferred Latches                                                                                                            ;
++-----------------------------------------------------+-----------------------------------------------------------------+------------------------+
+; Latch Name                                          ; Latch Enable Signal                                             ; Free of Timing Hazards ;
++-----------------------------------------------------+-----------------------------------------------------------------+------------------------+
+; BRISC_V:u_core|CiscV:U4|store_data[30]              ; BRISC_V:u_core|CiscV:U4|CiscV_0:U0|store_enable_internal[0]     ; yes                    ;
+; BRISC_V:u_core|CiscV:U4|store_data[28]              ; BRISC_V:u_core|CiscV:U4|CiscV_0:U0|store_enable_internal[0]     ; yes                    ;
+; BRISC_V:u_core|CiscV:U4|store_data[26]              ; BRISC_V:u_core|CiscV:U4|CiscV_0:U0|store_enable_internal[0]     ; yes                    ;
+; BRISC_V:u_core|CiscV:U4|store_data[24]              ; BRISC_V:u_core|CiscV:U4|CiscV_0:U0|store_enable_internal[0]     ; yes                    ;
+; BRISC_V:u_core|CiscV:U4|store_data[22]              ; BRISC_V:u_core|CiscV:U4|CiscV_0:U0|store_enable_internal[0]     ; yes                    ;
+; BRISC_V:u_core|CiscV:U4|store_data[20]              ; BRISC_V:u_core|CiscV:U4|CiscV_0:U0|store_enable_internal[0]     ; yes                    ;
+; BRISC_V:u_core|CiscV:U4|store_data[18]              ; BRISC_V:u_core|CiscV:U4|CiscV_0:U0|store_enable_internal[0]     ; yes                    ;
+; BRISC_V:u_core|CiscV:U4|store_data[16]              ; BRISC_V:u_core|CiscV:U4|CiscV_0:U0|store_enable_internal[0]     ; yes                    ;
+; BRISC_V:u_core|CiscV:U4|store_data[14]              ; BRISC_V:u_core|CiscV:U4|CiscV_0:U0|store_enable_internal[0]     ; yes                    ;
+; BRISC_V:u_core|CiscV:U4|store_data[12]              ; BRISC_V:u_core|CiscV:U4|CiscV_0:U0|store_enable_internal[0]     ; yes                    ;
+; BRISC_V:u_core|CiscV:U4|store_data[10]              ; BRISC_V:u_core|CiscV:U4|CiscV_0:U0|store_enable_internal[0]     ; yes                    ;
+; BRISC_V:u_core|CiscV:U4|store_data[8]               ; BRISC_V:u_core|CiscV:U4|CiscV_0:U0|store_enable_internal[0]     ; yes                    ;
+; BRISC_V:u_core|CiscV:U4|store_data[6]               ; BRISC_V:u_core|CiscV:U4|CiscV_0:U0|store_enable_internal[0]     ; yes                    ;
+; BRISC_V:u_core|CiscV:U4|store_data[4]               ; BRISC_V:u_core|CiscV:U4|CiscV_0:U0|store_enable_internal[0]     ; yes                    ;
+; BRISC_V:u_core|CiscV:U4|store_data[2]               ; BRISC_V:u_core|CiscV:U4|CiscV_0:U0|store_enable_internal[0]     ; yes                    ;
+; BRISC_V:u_core|CiscV:U4|store_data[0]               ; BRISC_V:u_core|CiscV:U4|CiscV_0:U0|store_enable_internal[0]     ; yes                    ;
+; BRISC_V:u_core|CiscV:U4|store_data[31]              ; BRISC_V:u_core|CiscV:U4|CiscV_0:U0|store_enable_internal[0]     ; yes                    ;
+; BRISC_V:u_core|CiscV:U4|store_data[29]              ; BRISC_V:u_core|CiscV:U4|CiscV_0:U0|store_enable_internal[0]     ; yes                    ;
+; BRISC_V:u_core|CiscV:U4|store_data[27]              ; BRISC_V:u_core|CiscV:U4|CiscV_0:U0|store_enable_internal[0]     ; yes                    ;
+; BRISC_V:u_core|CiscV:U4|store_data[25]              ; BRISC_V:u_core|CiscV:U4|CiscV_0:U0|store_enable_internal[0]     ; yes                    ;
+; BRISC_V:u_core|CiscV:U4|store_data[23]              ; BRISC_V:u_core|CiscV:U4|CiscV_0:U0|store_enable_internal[0]     ; yes                    ;
+; BRISC_V:u_core|CiscV:U4|store_data[21]              ; BRISC_V:u_core|CiscV:U4|CiscV_0:U0|store_enable_internal[0]     ; yes                    ;
+; BRISC_V:u_core|CiscV:U4|store_data[19]              ; BRISC_V:u_core|CiscV:U4|CiscV_0:U0|store_enable_internal[0]     ; yes                    ;
+; BRISC_V:u_core|CiscV:U4|store_data[17]              ; BRISC_V:u_core|CiscV:U4|CiscV_0:U0|store_enable_internal[0]     ; yes                    ;
+; BRISC_V:u_core|CiscV:U4|store_data[15]              ; BRISC_V:u_core|CiscV:U4|CiscV_0:U0|store_enable_internal[0]     ; yes                    ;
+; BRISC_V:u_core|CiscV:U4|store_data[13]              ; BRISC_V:u_core|CiscV:U4|CiscV_0:U0|store_enable_internal[0]     ; yes                    ;
+; BRISC_V:u_core|CiscV:U4|store_data[11]              ; BRISC_V:u_core|CiscV:U4|CiscV_0:U0|store_enable_internal[0]     ; yes                    ;
+; BRISC_V:u_core|CiscV:U4|store_data[9]               ; BRISC_V:u_core|CiscV:U4|CiscV_0:U0|store_enable_internal[0]     ; yes                    ;
+; BRISC_V:u_core|CiscV:U4|store_data[7]               ; BRISC_V:u_core|CiscV:U4|CiscV_0:U0|store_enable_internal[0]     ; yes                    ;
+; BRISC_V:u_core|CiscV:U4|store_data[5]               ; BRISC_V:u_core|CiscV:U4|CiscV_0:U0|store_enable_internal[0]     ; yes                    ;
+; BRISC_V:u_core|CiscV:U4|store_data[3]               ; BRISC_V:u_core|CiscV:U4|CiscV_0:U0|store_enable_internal[0]     ; yes                    ;
+; BRISC_V:u_core|CiscV:U4|store_data[1]               ; BRISC_V:u_core|CiscV:U4|CiscV_0:U0|store_enable_internal[0]     ; yes                    ;
+; BRISC_V:u_core|CiscV:U4|load_byte_data[5]           ; BRISC_V:u_core|CiscV:U4|CiscV_0:U0|load_byte_enable_internal[0] ; yes                    ;
+; BRISC_V:u_core|CiscV:U4|load_byte_data[3]           ; BRISC_V:u_core|CiscV:U4|CiscV_0:U0|load_byte_enable_internal[0] ; yes                    ;
+; BRISC_V:u_core|CiscV:U4|load_byte_data[7]           ; BRISC_V:u_core|CiscV:U4|CiscV_0:U0|load_byte_enable_internal[0] ; yes                    ;
+; BRISC_V:u_core|CiscV:U4|load_byte_data[1]           ; BRISC_V:u_core|CiscV:U4|CiscV_0:U0|load_byte_enable_internal[0] ; yes                    ;
+; BRISC_V:u_core|CiscV:U4|load_half_data[7]           ; BRISC_V:u_core|CiscV:U4|CiscV_0:U0|load_half_enable_internal[0] ; yes                    ;
+; BRISC_V:u_core|CiscV:U4|load_byte_data[15]          ; BRISC_V:u_core|CiscV:U4|CiscV_0:U0|load_byte_enable_internal[0] ; yes                    ;
+; BRISC_V:u_core|CiscV:U4|load_half_data[5]           ; BRISC_V:u_core|CiscV:U4|CiscV_0:U0|load_half_enable_internal[0] ; yes                    ;
+; BRISC_V:u_core|CiscV:U4|load_byte_data[13]          ; BRISC_V:u_core|CiscV:U4|CiscV_0:U0|load_byte_enable_internal[0] ; yes                    ;
+; BRISC_V:u_core|CiscV:U4|load_half_data[13]          ; BRISC_V:u_core|CiscV:U4|CiscV_0:U0|load_half_enable_internal[0] ; yes                    ;
+; BRISC_V:u_core|CiscV:U4|load_byte_data[21]          ; BRISC_V:u_core|CiscV:U4|CiscV_0:U0|load_byte_enable_internal[0] ; yes                    ;
+; BRISC_V:u_core|CiscV:U4|load_half_data[11]          ; BRISC_V:u_core|CiscV:U4|CiscV_0:U0|load_half_enable_internal[0] ; yes                    ;
+; BRISC_V:u_core|CiscV:U4|load_byte_data[19]          ; BRISC_V:u_core|CiscV:U4|CiscV_0:U0|load_byte_enable_internal[0] ; yes                    ;
+; BRISC_V:u_core|CiscV:U4|load_half_data[15]          ; BRISC_V:u_core|CiscV:U4|CiscV_0:U0|load_half_enable_internal[0] ; yes                    ;
+; BRISC_V:u_core|CiscV:U4|load_byte_data[23]          ; BRISC_V:u_core|CiscV:U4|CiscV_0:U0|load_byte_enable_internal[0] ; yes                    ;
+; BRISC_V:u_core|CiscV:U4|load_half_data[9]           ; BRISC_V:u_core|CiscV:U4|CiscV_0:U0|load_half_enable_internal[0] ; yes                    ;
+; BRISC_V:u_core|CiscV:U4|load_byte_data[17]          ; BRISC_V:u_core|CiscV:U4|CiscV_0:U0|load_byte_enable_internal[0] ; yes                    ;
+; BRISC_V:u_core|CiscV:U4|load_half_data[3]           ; BRISC_V:u_core|CiscV:U4|CiscV_0:U0|load_half_enable_internal[0] ; yes                    ;
+; BRISC_V:u_core|CiscV:U4|load_byte_data[11]          ; BRISC_V:u_core|CiscV:U4|CiscV_0:U0|load_byte_enable_internal[0] ; yes                    ;
+; BRISC_V:u_core|CiscV:U4|load_half_data[1]           ; BRISC_V:u_core|CiscV:U4|CiscV_0:U0|load_half_enable_internal[0] ; yes                    ;
+; BRISC_V:u_core|CiscV:U4|load_byte_data[9]           ; BRISC_V:u_core|CiscV:U4|CiscV_0:U0|load_byte_enable_internal[0] ; yes                    ;
+; BRISC_V:u_core|CiscV:U4|load_byte_data[2]           ; BRISC_V:u_core|CiscV:U4|CiscV_0:U0|load_byte_enable_internal[0] ; yes                    ;
+; BRISC_V:u_core|CiscV:U4|load_byte_data[4]           ; BRISC_V:u_core|CiscV:U4|CiscV_0:U0|load_byte_enable_internal[0] ; yes                    ;
+; BRISC_V:u_core|CiscV:U4|load_byte_data[6]           ; BRISC_V:u_core|CiscV:U4|CiscV_0:U0|load_byte_enable_internal[0] ; yes                    ;
+; BRISC_V:u_core|CiscV:U4|load_byte_data[0]           ; BRISC_V:u_core|CiscV:U4|CiscV_0:U0|load_byte_enable_internal[0] ; yes                    ;
+; BRISC_V:u_core|CiscV:U4|load_half_data[6]           ; BRISC_V:u_core|CiscV:U4|CiscV_0:U0|load_half_enable_internal[0] ; yes                    ;
+; BRISC_V:u_core|CiscV:U4|load_byte_data[14]          ; BRISC_V:u_core|CiscV:U4|CiscV_0:U0|load_byte_enable_internal[0] ; yes                    ;
+; BRISC_V:u_core|CiscV:U4|load_half_data[4]           ; BRISC_V:u_core|CiscV:U4|CiscV_0:U0|load_half_enable_internal[0] ; yes                    ;
+; BRISC_V:u_core|CiscV:U4|load_byte_data[12]          ; BRISC_V:u_core|CiscV:U4|CiscV_0:U0|load_byte_enable_internal[0] ; yes                    ;
+; BRISC_V:u_core|CiscV:U4|load_half_data[12]          ; BRISC_V:u_core|CiscV:U4|CiscV_0:U0|load_half_enable_internal[0] ; yes                    ;
+; BRISC_V:u_core|CiscV:U4|load_byte_data[20]          ; BRISC_V:u_core|CiscV:U4|CiscV_0:U0|load_byte_enable_internal[0] ; yes                    ;
+; BRISC_V:u_core|CiscV:U4|load_half_data[10]          ; BRISC_V:u_core|CiscV:U4|CiscV_0:U0|load_half_enable_internal[0] ; yes                    ;
+; BRISC_V:u_core|CiscV:U4|load_byte_data[18]          ; BRISC_V:u_core|CiscV:U4|CiscV_0:U0|load_byte_enable_internal[0] ; yes                    ;
+; BRISC_V:u_core|CiscV:U4|load_half_data[14]          ; BRISC_V:u_core|CiscV:U4|CiscV_0:U0|load_half_enable_internal[0] ; yes                    ;
+; BRISC_V:u_core|CiscV:U4|load_byte_data[22]          ; BRISC_V:u_core|CiscV:U4|CiscV_0:U0|load_byte_enable_internal[0] ; yes                    ;
+; BRISC_V:u_core|CiscV:U4|load_half_data[8]           ; BRISC_V:u_core|CiscV:U4|CiscV_0:U0|load_half_enable_internal[0] ; yes                    ;
+; BRISC_V:u_core|CiscV:U4|load_byte_data[16]          ; BRISC_V:u_core|CiscV:U4|CiscV_0:U0|load_byte_enable_internal[0] ; yes                    ;
+; BRISC_V:u_core|CiscV:U4|load_half_data[2]           ; BRISC_V:u_core|CiscV:U4|CiscV_0:U0|load_half_enable_internal[0] ; yes                    ;
+; BRISC_V:u_core|CiscV:U4|load_byte_data[10]          ; BRISC_V:u_core|CiscV:U4|CiscV_0:U0|load_byte_enable_internal[0] ; yes                    ;
+; BRISC_V:u_core|CiscV:U4|load_half_data[0]           ; BRISC_V:u_core|CiscV:U4|CiscV_0:U0|load_half_enable_internal[0] ; yes                    ;
+; BRISC_V:u_core|CiscV:U4|load_byte_data[8]           ; BRISC_V:u_core|CiscV:U4|CiscV_0:U0|load_byte_enable_internal[0] ; yes                    ;
+; Number of user-specified and inferred latches = 72  ;                                                                 ;                        ;
++-----------------------------------------------------+-----------------------------------------------------------------+------------------------+
+Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                                                      ;
++----------------------------------------------------------------+------------------------------------------------------------------------+
+; Register name                                                  ; Reason for Removal                                                     ;
++----------------------------------------------------------------+------------------------------------------------------------------------+
+; BRISC_V:u_core|CiscV:U4|CiscV_0:U0|lui_result_internal[0..11]  ; Stuck at GND due to stuck port data_in                                 ;
+; BRISC_V:u_core|CiscV:U4|CiscV_0:U0|send_clk_internal[0]        ; Stuck at VCC due to stuck port data_in                                 ;
+; BRISC_V:u_core|CiscV:U4|CiscV_0:U0|lui_result_internal[14]     ; Merged with BRISC_V:u_core|CiscV:U4|CiscV_0:U0|lui_result_internal[12] ;
+; BRISC_V:u_core|CiscV:U4|result_ready_execution[0]              ; Merged with BRISC_V:u_core|CiscV:U4|execution_enable_reset[0]          ;
+; BRISC_V:u_core|CiscV:U4|CiscV_0:U0|imm20_data_internal[0]      ; Merged with BRISC_V:u_core|CiscV:U4|CiscV_0:U0|imm20_data_internal[2]  ;
+; BRISC_V:u_core|CiscV:U4|CiscV_0:U0|branch_bus_internal[12..30] ; Merged with BRISC_V:u_core|CiscV:U4|CiscV_0:U0|branch_bus_internal[31] ;
+; BRISC_V:u_core|CiscV:U4|CiscV_0:U0|branch_bus_internal[31]     ; Stuck at GND due to stuck port data_in                                 ;
+; BRISC_V:u_core|CiscV:U4|CiscV_0:U0|op2_alt_internal[12]        ; Merged with BRISC_V:u_core|CiscV:U4|CiscV_0:U0|op2_alt_internal[14]    ;
+; BRISC_V:u_core|CiscV:U4|CiscV_0:U0|imm5_data_internal[2]       ; Merged with BRISC_V:u_core|CiscV:U4|CiscV_0:U0|imm5_data_internal[0]   ;
+; BRISC_V:u_core|CiscV:U4|CiscV_0:U0|imm7_data_internal[0]       ; Merged with BRISC_V:u_core|CiscV:U4|CiscV_0:U0|imm7_data_internal[2]   ;
+; BRISC_V:u_core|CiscV:U4|CiscV_0:U0|rs1_data_internal[0]        ; Merged with BRISC_V:u_core|CiscV:U4|CiscV_0:U0|rs1_data_internal[2]    ;
+; BRISC_V:u_core|CiscV:U4|CiscV_0:U0|rd_data_internal[0]         ; Merged with BRISC_V:u_core|CiscV:U4|CiscV_0:U0|rd_data_internal[2]     ;
+; BRISC_V:u_core|CiscV:U4|CiscV_0:U0|imm12_data_internal[0]      ; Merged with BRISC_V:u_core|CiscV:U4|CiscV_0:U0|imm12_data_internal[2]  ;
+; BRISC_V:u_core|CiscV:U4|CiscV_0:U0|branch_bus_internal[5]      ; Merged with BRISC_V:u_core|CiscV:U4|CiscV_0:U0|branch_bus_internal[7]  ;
+; BRISC_V:u_core|CiscV:U4|CiscV_0:U0|branch_bus_internal[0]      ; Merged with BRISC_V:u_core|CiscV:U4|CiscV_0:U0|branch_bus_internal[2]  ;
+; BRISC_V:u_core|CiscV:U4|regs[3][31]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][31]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[4][31]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][31]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[6][31]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][31]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[9][31]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][31]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[11][31]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][31]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[12][31]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][31]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[14][31]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][31]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[17][31]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][31]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[19][31]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][31]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[20][31]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][31]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[22][31]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][31]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[25][31]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][31]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[27][31]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][31]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[28][31]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][31]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[30][31]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][31]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[3][30]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][30]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[4][30]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][30]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[6][30]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][30]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[9][30]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][30]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[11][30]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][30]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[12][30]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][30]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[14][30]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][30]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[17][30]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][30]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[19][30]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][30]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[20][30]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][30]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[22][30]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][30]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[25][30]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][30]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[27][30]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][30]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[28][30]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][30]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[30][30]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][30]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[3][29]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][29]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[4][29]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][29]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[6][29]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][29]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[9][29]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][29]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[11][29]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][29]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[12][29]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][29]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[14][29]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][29]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[17][29]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][29]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[19][29]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][29]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[20][29]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][29]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[22][29]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][29]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[25][29]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][29]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[27][29]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][29]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[28][29]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][29]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[30][29]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][29]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[3][28]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][28]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[4][28]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][28]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[6][28]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][28]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[9][28]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][28]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[11][28]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][28]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[12][28]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][28]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[14][28]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][28]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[17][28]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][28]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[19][28]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][28]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[20][28]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][28]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[22][28]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][28]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[25][28]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][28]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[27][28]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][28]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[28][28]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][28]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[30][28]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][28]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[3][27]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][27]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[4][27]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][27]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[6][27]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][27]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[9][27]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][27]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[11][27]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][27]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[12][27]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][27]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[14][27]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][27]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[17][27]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][27]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[19][27]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][27]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[20][27]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][27]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[22][27]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][27]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[25][27]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][27]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[27][27]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][27]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[28][27]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][27]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[30][27]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][27]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[3][26]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][26]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[4][26]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][26]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[6][26]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][26]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[9][26]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][26]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[11][26]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][26]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[12][26]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][26]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[14][26]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][26]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[17][26]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][26]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[19][26]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][26]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[20][26]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][26]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[22][26]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][26]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[25][26]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][26]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[27][26]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][26]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[28][26]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][26]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[30][26]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][26]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[3][25]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][25]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[4][25]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][25]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[6][25]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][25]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[9][25]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][25]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[11][25]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][25]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[12][25]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][25]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[14][25]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][25]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[17][25]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][25]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[19][25]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][25]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[20][25]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][25]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[22][25]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][25]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[25][25]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][25]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[27][25]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][25]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[28][25]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][25]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[30][25]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][25]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[3][24]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][24]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[4][24]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][24]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[6][24]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][24]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[9][24]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][24]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[11][24]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][24]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[12][24]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][24]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[14][24]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][24]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[17][24]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][24]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[19][24]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][24]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[20][24]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][24]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[22][24]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][24]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[25][24]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][24]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[27][24]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][24]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[28][24]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][24]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[30][24]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][24]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[3][23]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][23]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[4][23]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][23]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[6][23]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][23]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[9][23]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][23]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[11][23]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][23]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[12][23]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][23]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[14][23]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][23]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[17][23]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][23]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[19][23]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][23]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[20][23]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][23]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[22][23]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][23]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[25][23]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][23]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[27][23]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][23]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[28][23]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][23]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[30][23]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][23]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[3][22]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][22]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[4][22]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][22]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[6][22]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][22]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[9][22]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][22]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[11][22]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][22]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[12][22]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][22]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[14][22]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][22]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[17][22]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][22]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[19][22]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][22]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[20][22]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][22]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[22][22]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][22]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[25][22]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][22]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[27][22]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][22]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[28][22]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][22]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[30][22]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][22]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[3][21]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][21]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[4][21]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][21]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[6][21]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][21]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[9][21]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][21]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[11][21]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][21]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[12][21]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][21]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[14][21]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][21]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[17][21]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][21]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[19][21]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][21]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[20][21]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][21]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[22][21]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][21]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[25][21]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][21]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[27][21]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][21]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[28][21]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][21]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[30][21]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][21]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[3][20]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][20]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[4][20]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][20]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[6][20]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][20]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[9][20]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][20]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[11][20]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][20]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[12][20]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][20]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[14][20]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][20]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[17][20]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][20]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[19][20]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][20]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[20][20]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][20]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[22][20]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][20]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[25][20]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][20]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[27][20]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][20]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[28][20]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][20]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[30][20]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][20]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[3][19]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][19]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[4][19]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][19]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[6][19]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][19]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[9][19]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][19]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[11][19]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][19]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[12][19]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][19]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[14][19]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][19]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[17][19]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][19]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[19][19]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][19]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[20][19]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][19]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[22][19]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][19]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[25][19]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][19]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[27][19]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][19]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[28][19]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][19]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[30][19]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][19]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[3][18]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][18]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[4][18]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][18]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[6][18]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][18]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[9][18]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][18]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[11][18]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][18]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[12][18]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][18]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[14][18]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][18]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[17][18]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][18]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[19][18]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][18]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[20][18]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][18]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[22][18]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][18]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[25][18]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][18]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[27][18]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][18]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[28][18]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][18]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[30][18]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][18]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[3][17]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][17]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[4][17]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][17]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[6][17]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][17]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[9][17]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][17]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[11][17]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][17]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[12][17]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][17]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[14][17]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][17]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[17][17]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][17]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[19][17]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][17]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[20][17]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][17]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[22][17]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][17]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[25][17]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][17]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[27][17]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][17]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[28][17]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][17]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[30][17]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][17]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[3][16]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][16]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[4][16]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][16]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[6][16]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][16]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[9][16]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][16]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[11][16]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][16]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[12][16]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][16]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[14][16]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][16]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[17][16]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][16]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[19][16]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][16]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[20][16]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][16]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[22][16]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][16]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[25][16]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][16]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[27][16]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][16]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[28][16]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][16]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[30][16]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][16]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[3][15]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][15]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[4][15]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][15]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[6][15]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][15]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[9][15]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][15]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[11][15]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][15]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[12][15]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][15]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[14][15]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][15]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[17][15]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][15]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[19][15]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][15]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[20][15]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][15]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[22][15]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][15]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[25][15]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][15]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[27][15]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][15]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[28][15]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][15]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[30][15]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][15]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[3][14]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][14]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[4][14]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][14]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[6][14]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][14]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[9][14]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][14]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[11][14]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][14]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[12][14]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][14]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[14][14]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][14]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[17][14]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][14]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[19][14]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][14]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[20][14]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][14]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[22][14]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][14]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[25][14]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][14]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[27][14]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][14]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[28][14]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][14]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[30][14]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][14]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[3][13]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][13]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[4][13]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][13]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[6][13]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][13]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[9][13]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][13]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[11][13]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][13]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[12][13]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][13]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[14][13]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][13]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[17][13]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][13]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[19][13]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][13]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[20][13]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][13]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[22][13]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][13]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[25][13]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][13]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[27][13]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][13]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[28][13]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][13]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[30][13]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][13]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[3][12]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][12]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[4][12]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][12]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[6][12]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][12]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[9][12]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][12]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[11][12]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][12]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[12][12]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][12]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[14][12]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][12]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[17][12]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][12]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[19][12]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][12]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[20][12]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][12]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[22][12]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][12]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[25][12]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][12]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[27][12]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][12]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[28][12]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][12]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[30][12]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][12]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[3][11]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][11]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[4][11]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][11]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[6][11]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][11]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[9][11]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][11]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[11][11]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][11]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[12][11]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][11]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[14][11]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][11]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[17][11]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][11]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[19][11]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][11]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[20][11]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][11]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[22][11]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][11]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[25][11]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][11]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[27][11]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][11]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[28][11]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][11]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[30][11]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][11]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[3][10]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][10]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[4][10]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][10]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[6][10]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][10]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[9][10]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][10]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[11][10]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][10]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[12][10]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][10]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[14][10]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][10]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[17][10]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][10]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[19][10]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][10]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[20][10]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][10]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[22][10]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][10]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[25][10]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][10]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[27][10]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][10]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[28][10]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][10]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[30][10]                           ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][10]                        ;
+; BRISC_V:u_core|CiscV:U4|regs[3][9]                             ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][9]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[4][9]                             ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][9]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[6][9]                             ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][9]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[9][9]                             ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][9]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[11][9]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][9]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[12][9]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][9]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[14][9]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][9]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[17][9]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][9]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[19][9]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][9]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[20][9]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][9]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[22][9]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][9]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[25][9]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][9]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[27][9]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][9]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[28][9]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][9]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[30][9]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][9]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[3][8]                             ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][8]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[4][8]                             ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][8]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[6][8]                             ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][8]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[9][8]                             ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][8]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[11][8]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][8]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[12][8]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][8]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[14][8]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][8]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[17][8]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][8]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[19][8]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][8]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[20][8]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][8]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[22][8]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][8]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[25][8]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][8]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[27][8]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][8]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[28][8]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][8]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[30][8]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][8]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[3][7]                             ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][7]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[4][7]                             ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][7]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[6][7]                             ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][7]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[9][7]                             ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][7]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[11][7]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][7]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[12][7]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][7]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[14][7]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][7]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[17][7]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][7]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[19][7]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][7]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[20][7]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][7]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[22][7]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][7]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[25][7]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][7]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[27][7]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][7]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[28][7]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][7]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[30][7]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][7]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[3][6]                             ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][6]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[4][6]                             ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][6]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[6][6]                             ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][6]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[9][6]                             ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][6]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[11][6]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][6]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[12][6]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][6]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[14][6]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][6]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[17][6]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][6]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[19][6]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][6]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[20][6]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][6]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[22][6]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][6]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[25][6]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][6]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[27][6]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][6]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[28][6]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][6]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[30][6]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][6]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[3][5]                             ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][5]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[4][5]                             ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][5]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[6][5]                             ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][5]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[9][5]                             ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][5]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[11][5]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][5]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[12][5]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][5]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[14][5]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][5]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[17][5]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][5]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[19][5]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][5]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[20][5]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][5]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[22][5]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][5]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[25][5]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][5]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[27][5]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][5]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[28][5]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][5]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[30][5]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][5]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[3][4]                             ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][4]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[4][4]                             ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][4]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[6][4]                             ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][4]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[9][4]                             ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][4]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[11][4]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][4]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[12][4]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][4]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[14][4]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][4]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[17][4]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][4]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[19][4]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][4]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[20][4]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][4]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[22][4]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][4]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[25][4]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][4]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[27][4]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][4]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[28][4]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][4]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[30][4]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][4]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[3][3]                             ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][3]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[4][3]                             ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][3]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[6][3]                             ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][3]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[9][3]                             ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][3]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[11][3]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][3]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[12][3]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][3]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[14][3]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][3]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[17][3]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][3]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[19][3]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][3]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[20][3]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][3]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[22][3]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][3]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[25][3]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][3]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[27][3]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][3]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[28][3]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][3]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[30][3]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][3]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[3][2]                             ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][2]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[4][2]                             ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][2]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[6][2]                             ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][2]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[9][2]                             ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][2]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[11][2]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][2]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[12][2]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][2]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[14][2]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][2]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[17][2]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][2]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[19][2]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][2]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[20][2]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][2]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[22][2]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][2]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[25][2]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][2]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[27][2]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][2]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[28][2]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][2]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[30][2]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][2]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[3][1]                             ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][1]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[4][1]                             ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][1]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[6][1]                             ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][1]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[9][1]                             ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][1]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[11][1]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][1]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[12][1]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][1]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[14][1]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][1]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[17][1]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][1]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[19][1]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][1]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[20][1]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][1]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[22][1]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][1]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[25][1]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][1]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[27][1]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][1]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[28][1]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][1]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[30][1]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][1]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[3][0]                             ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][0]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[4][0]                             ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][0]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[6][0]                             ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][0]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[9][0]                             ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][0]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[11][0]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][0]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[12][0]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][0]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[14][0]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][0]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[17][0]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][0]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[19][0]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][0]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[20][0]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][0]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[22][0]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][0]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[25][0]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][0]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[27][0]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][0]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[28][0]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][0]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[30][0]                            ; Merged with BRISC_V:u_core|CiscV:U4|regs[1][0]                         ;
+; BRISC_V:u_core|CiscV:U4|regs[1][1]                             ; Stuck at GND due to stuck port data_in                                 ;
+; BRISC_V:u_core|CiscV:U4|regs[1][3]                             ; Stuck at GND due to stuck port data_in                                 ;
+; BRISC_V:u_core|CiscV:U4|regs[1][5]                             ; Stuck at GND due to stuck port data_in                                 ;
+; BRISC_V:u_core|CiscV:U4|regs[1][7]                             ; Stuck at GND due to stuck port data_in                                 ;
+; BRISC_V:u_core|CiscV:U4|regs[1][9]                             ; Stuck at GND due to stuck port data_in                                 ;
+; BRISC_V:u_core|CiscV:U4|regs[1][11]                            ; Stuck at GND due to stuck port data_in                                 ;
+; BRISC_V:u_core|CiscV:U4|regs[1][13]                            ; Stuck at GND due to stuck port data_in                                 ;
+; BRISC_V:u_core|CiscV:U4|regs[1][15]                            ; Stuck at GND due to stuck port data_in                                 ;
+; BRISC_V:u_core|CiscV:U4|regs[1][17]                            ; Stuck at GND due to stuck port data_in                                 ;
+; BRISC_V:u_core|CiscV:U4|regs[1][19]                            ; Stuck at GND due to stuck port data_in                                 ;
+; BRISC_V:u_core|CiscV:U4|regs[1][21]                            ; Stuck at GND due to stuck port data_in                                 ;
+; BRISC_V:u_core|CiscV:U4|regs[1][23]                            ; Stuck at GND due to stuck port data_in                                 ;
+; BRISC_V:u_core|CiscV:U4|regs[1][25]                            ; Stuck at GND due to stuck port data_in                                 ;
+; BRISC_V:u_core|CiscV:U4|regs[1][27]                            ; Stuck at GND due to stuck port data_in                                 ;
+; BRISC_V:u_core|CiscV:U4|regs[1][29]                            ; Stuck at GND due to stuck port data_in                                 ;
+; BRISC_V:u_core|CiscV:U4|regs[1][31]                            ; Stuck at GND due to stuck port data_in                                 ;
+; BRISC_V:u_core|CiscV:U4|regs[1][0]                             ; Stuck at GND due to stuck port data_in                                 ;
+; BRISC_V:u_core|CiscV:U4|regs[1][2]                             ; Stuck at GND due to stuck port data_in                                 ;
+; BRISC_V:u_core|CiscV:U4|regs[1][4]                             ; Stuck at GND due to stuck port data_in                                 ;
+; BRISC_V:u_core|CiscV:U4|regs[1][6]                             ; Stuck at GND due to stuck port data_in                                 ;
+; BRISC_V:u_core|CiscV:U4|regs[1][8]                             ; Stuck at GND due to stuck port data_in                                 ;
+; BRISC_V:u_core|CiscV:U4|regs[1][10]                            ; Stuck at GND due to stuck port data_in                                 ;
+; BRISC_V:u_core|CiscV:U4|regs[1][12]                            ; Stuck at GND due to stuck port data_in                                 ;
+; BRISC_V:u_core|CiscV:U4|regs[1][14]                            ; Stuck at GND due to stuck port data_in                                 ;
+; BRISC_V:u_core|CiscV:U4|regs[1][16]                            ; Stuck at GND due to stuck port data_in                                 ;
+; BRISC_V:u_core|CiscV:U4|regs[1][18]                            ; Stuck at GND due to stuck port data_in                                 ;
+; BRISC_V:u_core|CiscV:U4|regs[1][20]                            ; Stuck at GND due to stuck port data_in                                 ;
+; BRISC_V:u_core|CiscV:U4|regs[1][22]                            ; Stuck at GND due to stuck port data_in                                 ;
+; BRISC_V:u_core|CiscV:U4|regs[1][24]                            ; Stuck at GND due to stuck port data_in                                 ;
+; BRISC_V:u_core|CiscV:U4|regs[1][26]                            ; Stuck at GND due to stuck port data_in                                 ;
+; BRISC_V:u_core|CiscV:U4|regs[1][28]                            ; Stuck at GND due to stuck port data_in                                 ;
+; BRISC_V:u_core|CiscV:U4|regs[1][30]                            ; Stuck at GND due to stuck port data_in                                 ;
+; BRISC_V:u_core|bs_interface:U3|counter[0]                      ; Stuck at GND due to stuck port data_in                                 ;
+; Total Number of Removed Registers = 557                        ;                                                                        ;
++----------------------------------------------------------------+------------------------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                                     ;
++---------------------------------------------------------+---------------------------+-------------------------------------------+
+; Register name                                           ; Reason for Removal        ; Registers Removed due to This Register    ;
++---------------------------------------------------------+---------------------------+-------------------------------------------+
+; BRISC_V:u_core|CiscV:U4|CiscV_0:U0|send_clk_internal[0] ; Stuck at VCC              ; BRISC_V:u_core|bs_interface:U3|counter[0] ;
+;                                                         ; due to stuck port data_in ;                                           ;
++---------------------------------------------------------+---------------------------+-------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 1124  ;
+; Number of registers using Synchronous Clear  ; 32    ;
+; Number of registers using Synchronous Load   ; 34    ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 943   ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++--------------------------------------------------------+
+; Inverted Register Statistics                           ;
++----------------------------------------------+---------+
+; Inverted Register                            ; Fan out ;
++----------------------------------------------+---------+
+; BRISC_V:u_core|bs_interface:U3|br_counter[2] ; 4       ;
+; BRISC_V:u_core|bs_interface:U3|counter[5]    ; 18      ;
+; Total number of inverted registers = 2       ;         ;
++----------------------------------------------+---------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                                  ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                        ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------------------------------+
+; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |BRISC_top_connect|BRISC_V:u_core|CiscV:U4|regs[0][17]                            ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |BRISC_top_connect|BRISC_V:u_core|CiscV:U4|regs[1][20]                            ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |BRISC_top_connect|BRISC_V:u_core|CiscV:U4|regs[2][31]                            ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |BRISC_top_connect|BRISC_V:u_core|CiscV:U4|regs[3][5]                             ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |BRISC_top_connect|BRISC_V:u_core|CiscV:U4|regs[4][12]                            ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |BRISC_top_connect|BRISC_V:u_core|CiscV:U4|regs[5][12]                            ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |BRISC_top_connect|BRISC_V:u_core|CiscV:U4|regs[6][25]                            ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |BRISC_top_connect|BRISC_V:u_core|CiscV:U4|regs[7][8]                             ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |BRISC_top_connect|BRISC_V:u_core|CiscV:U4|regs[8][3]                             ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |BRISC_top_connect|BRISC_V:u_core|CiscV:U4|regs[9][29]                            ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |BRISC_top_connect|BRISC_V:u_core|CiscV:U4|regs[10][10]                           ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |BRISC_top_connect|BRISC_V:u_core|CiscV:U4|regs[11][4]                            ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |BRISC_top_connect|BRISC_V:u_core|CiscV:U4|regs[12][26]                           ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |BRISC_top_connect|BRISC_V:u_core|CiscV:U4|regs[13][3]                            ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |BRISC_top_connect|BRISC_V:u_core|CiscV:U4|regs[14][29]                           ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |BRISC_top_connect|BRISC_V:u_core|CiscV:U4|regs[15][31]                           ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |BRISC_top_connect|BRISC_V:u_core|CiscV:U4|regs[16][14]                           ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |BRISC_top_connect|BRISC_V:u_core|CiscV:U4|regs[17][14]                           ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |BRISC_top_connect|BRISC_V:u_core|CiscV:U4|regs[18][6]                            ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |BRISC_top_connect|BRISC_V:u_core|CiscV:U4|regs[19][8]                            ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |BRISC_top_connect|BRISC_V:u_core|CiscV:U4|regs[20][19]                           ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |BRISC_top_connect|BRISC_V:u_core|CiscV:U4|regs[21][8]                            ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |BRISC_top_connect|BRISC_V:u_core|CiscV:U4|regs[22][22]                           ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |BRISC_top_connect|BRISC_V:u_core|CiscV:U4|regs[23][16]                           ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |BRISC_top_connect|BRISC_V:u_core|CiscV:U4|regs[24][24]                           ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |BRISC_top_connect|BRISC_V:u_core|CiscV:U4|regs[25][5]                            ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |BRISC_top_connect|BRISC_V:u_core|CiscV:U4|regs[26][24]                           ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |BRISC_top_connect|BRISC_V:u_core|CiscV:U4|regs[27][30]                           ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |BRISC_top_connect|BRISC_V:u_core|CiscV:U4|regs[28][4]                            ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |BRISC_top_connect|BRISC_V:u_core|CiscV:U4|regs[29][21]                           ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |BRISC_top_connect|BRISC_V:u_core|CiscV:U4|regs[30][21]                           ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |BRISC_top_connect|BRISC_V:u_core|CiscV:U4|regs[31][2]                            ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |BRISC_top_connect|BRISC_V:u_core|CiscV:U4|parity_addr[1]                         ;
+; 8:1                ; 12 bits   ; 60 LEs        ; 36 LEs               ; 24 LEs                 ; Yes        ; |BRISC_top_connect|BRISC_V:u_core|CiscV:U4|result_bus[2]                          ;
+; 8:1                ; 20 bits   ; 100 LEs       ; 80 LEs               ; 20 LEs                 ; Yes        ; |BRISC_top_connect|BRISC_V:u_core|CiscV:U4|result_bus[26]                         ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |BRISC_top_connect|BRISC_V:u_core|CiscV:U4|parity_data[0]                         ;
+; 5:1                ; 3 bits    ; 9 LEs         ; 3 LEs                ; 6 LEs                  ; Yes        ; |BRISC_top_connect|BRISC_V:u_core|io_controller:U1|tx_count[0]                    ;
+; 5:1                ; 3 bits    ; 9 LEs         ; 3 LEs                ; 6 LEs                  ; Yes        ; |BRISC_top_connect|BRISC_V:u_core|io_controller:U1|rx_count[0]                    ;
+; 6:1                ; 2 bits    ; 8 LEs         ; 2 LEs                ; 6 LEs                  ; Yes        ; |BRISC_top_connect|BRISC_V:u_core|bs_interface:U3|br_counter[1]                   ;
+; 12:1               ; 30 bits   ; 240 LEs       ; 90 LEs               ; 150 LEs                ; Yes        ; |BRISC_top_connect|BRISC_V:u_core|CiscV:U4|pc[21]                                 ;
+; 6:1                ; 2 bits    ; 8 LEs         ; 2 LEs                ; 6 LEs                  ; Yes        ; |BRISC_top_connect|BRISC_V:u_core|bs_interface:U3|parity_check_addr[1]            ;
+; 9:1                ; 32 bits   ; 192 LEs       ; 64 LEs               ; 128 LEs                ; Yes        ; |BRISC_top_connect|BRISC_V:u_core|CiscV:U4|CiscV_0:U0|load_result_internal[30]    ;
+; 8:1                ; 2 bits    ; 10 LEs        ; 4 LEs                ; 6 LEs                  ; Yes        ; |BRISC_top_connect|BRISC_V:u_core|bs_interface:U3|parity_check_data[1]            ;
+; 11:1               ; 3 bits    ; 21 LEs        ; 12 LEs               ; 9 LEs                  ; Yes        ; |BRISC_top_connect|BRISC_V:u_core|CiscV:U4|CiscV_0:U0|branch_funct_internal[0]    ;
+; 12:1               ; 4 bits    ; 32 LEs        ; 8 LEs                ; 24 LEs                 ; Yes        ; |BRISC_top_connect|BRISC_V:u_core|bs_interface:U3|counter[4]                      ;
+; 26:1               ; 7 bits    ; 119 LEs       ; 84 LEs               ; 35 LEs                 ; Yes        ; |BRISC_top_connect|BRISC_V:u_core|CiscV:U4|alu_result[11]                         ;
+; 26:1               ; 7 bits    ; 119 LEs       ; 84 LEs               ; 35 LEs                 ; Yes        ; |BRISC_top_connect|BRISC_V:u_core|CiscV:U4|alu_result[17]                         ;
+; 28:1               ; 4 bits    ; 72 LEs        ; 52 LEs               ; 20 LEs                 ; Yes        ; |BRISC_top_connect|BRISC_V:u_core|CiscV:U4|alu_result[7]                          ;
+; 28:1               ; 4 bits    ; 72 LEs        ; 52 LEs               ; 20 LEs                 ; Yes        ; |BRISC_top_connect|BRISC_V:u_core|CiscV:U4|alu_result[24]                         ;
+; 25:1               ; 2 bits    ; 32 LEs        ; 12 LEs               ; 20 LEs                 ; Yes        ; |BRISC_top_connect|BRISC_V:u_core|CiscV:U4|CiscV_0:U0|rs_sel_internal[0]          ;
+; 30:1               ; 2 bits    ; 40 LEs        ; 32 LEs               ; 8 LEs                  ; Yes        ; |BRISC_top_connect|BRISC_V:u_core|CiscV:U4|alu_result[2]                          ;
+; 30:1               ; 2 bits    ; 40 LEs        ; 32 LEs               ; 8 LEs                  ; Yes        ; |BRISC_top_connect|BRISC_V:u_core|CiscV:U4|alu_result[29]                         ;
+; 39:1               ; 20 bits   ; 520 LEs       ; 80 LEs               ; 440 LEs                ; Yes        ; |BRISC_top_connect|BRISC_V:u_core|CiscV:U4|CiscV_0:U0|op2_alt_internal[16]        ;
+; 39:1               ; 11 bits   ; 286 LEs       ; 44 LEs               ; 242 LEs                ; Yes        ; |BRISC_top_connect|BRISC_V:u_core|CiscV:U4|CiscV_0:U0|op2_alt_internal[3]         ;
+; 47:1               ; 3 bits    ; 93 LEs        ; 33 LEs               ; 60 LEs                 ; Yes        ; |BRISC_top_connect|BRISC_V:u_core|CiscV:U4|CiscV_0:U0|alu_ctrl_internal[0]        ;
+; 56:1               ; 2 bits    ; 74 LEs        ; 24 LEs               ; 50 LEs                 ; Yes        ; |BRISC_top_connect|BRISC_V:u_core|CiscV:U4|CiscV_0:U0|internal_m_data_internal[1] ;
+; 77:1               ; 3 bits    ; 153 LEs       ; 78 LEs               ; 75 LEs                 ; Yes        ; |BRISC_top_connect|BRISC_V:u_core|CiscV:U4|CiscV_0:U0|result_select_internal[0]   ;
+; 111:1              ; 3 bits    ; 222 LEs       ; 150 LEs              ; 72 LEs                 ; Yes        ; |BRISC_top_connect|BRISC_V:u_core|CiscV:U4|CiscV_0:U0|pc_sel_internal[2]          ;
+; 89:1               ; 10 bits   ; 590 LEs       ; 580 LEs              ; 10 LEs                 ; Yes        ; |BRISC_top_connect|BRISC_V:u_core|CiscV:U4|CiscV_0:U0|pres_state[0]               ;
+; 172:1              ; 2 bits    ; 228 LEs       ; 52 LEs               ; 176 LEs                ; Yes        ; |BRISC_top_connect|BRISC_V:u_core|CiscV:U4|CiscV_0:U0|internal_addr_internal[1]   ;
+; 8:1                ; 8 bits    ; 40 LEs        ; 24 LEs               ; 16 LEs                 ; Yes        ; |BRISC_top_connect|BRISC_V:u_core|io_controller:U1|tx_data[5]                     ;
+; 4:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |BRISC_top_connect|BRISC_V:u_core|bs_interface:U3|Mux4                            ;
+; 32:1               ; 32 bits   ; 672 LEs       ; 672 LEs              ; 0 LEs                  ; No         ; |BRISC_top_connect|BRISC_V:u_core|CiscV:U4|Mux64                                  ;
+; 33:1               ; 32 bits   ; 704 LEs       ; 704 LEs              ; 0 LEs                  ; No         ; |BRISC_top_connect|BRISC_V:u_core|CiscV:U4|op1_bus[8]                             ;
+; 8:1                ; 4 bits    ; 20 LEs        ; 12 LEs               ; 8 LEs                  ; No         ; |BRISC_top_connect|BRISC_V:u_core|io_controller:U1|Selector4                      ;
+; 11:1               ; 2 bits    ; 14 LEs        ; 4 LEs                ; 10 LEs                 ; No         ; |BRISC_top_connect|BRISC_V:u_core|bs_interface:U3|Selector51                      ;
+; 12:1               ; 2 bits    ; 16 LEs        ; 6 LEs                ; 10 LEs                 ; No         ; |BRISC_top_connect|BRISC_V:u_core|bs_interface:U3|Selector48                      ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------+
+; Source assignments for BRISC_V:u_core|RAM:U2|RAM_1PORT:u_ram_inst|altsyncram:altsyncram_component|altsyncram_bcp3:auto_generated ;
++---------------------------------+--------------------+------+--------------------------------------------------------------------+
+; Assignment                      ; Value              ; From ; To                                                                 ;
++---------------------------------+--------------------+------+--------------------------------------------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                                                  ;
++---------------------------------+--------------------+------+--------------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: BRISC_V:u_core|RAM:U2|RAM_1PORT:u_ram_inst|altsyncram:altsyncram_component ;
++------------------------------------+----------------------+-------------------------------------------------------------+
+; Parameter Name                     ; Value                ; Type                                                        ;
++------------------------------------+----------------------+-------------------------------------------------------------+
+; BYTE_SIZE_BLOCK                    ; 8                    ; Untyped                                                     ;
+; AUTO_CARRY_CHAINS                  ; ON                   ; AUTO_CARRY                                                  ;
+; IGNORE_CARRY_BUFFERS               ; OFF                  ; IGNORE_CARRY                                                ;
+; AUTO_CASCADE_CHAINS                ; ON                   ; AUTO_CASCADE                                                ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                  ; IGNORE_CASCADE                                              ;
+; WIDTH_BYTEENA                      ; 1                    ; Untyped                                                     ;
+; OPERATION_MODE                     ; SINGLE_PORT          ; Untyped                                                     ;
+; WIDTH_A                            ; 32                   ; Signed Integer                                              ;
+; WIDTHAD_A                          ; 10                   ; Signed Integer                                              ;
+; NUMWORDS_A                         ; 1024                 ; Signed Integer                                              ;
+; OUTDATA_REG_A                      ; CLOCK0               ; Untyped                                                     ;
+; ADDRESS_ACLR_A                     ; NONE                 ; Untyped                                                     ;
+; OUTDATA_ACLR_A                     ; NONE                 ; Untyped                                                     ;
+; WRCONTROL_ACLR_A                   ; NONE                 ; Untyped                                                     ;
+; INDATA_ACLR_A                      ; NONE                 ; Untyped                                                     ;
+; BYTEENA_ACLR_A                     ; NONE                 ; Untyped                                                     ;
+; WIDTH_B                            ; 1                    ; Signed Integer                                              ;
+; WIDTHAD_B                          ; 1                    ; Signed Integer                                              ;
+; NUMWORDS_B                         ; 0                    ; Signed Integer                                              ;
+; INDATA_REG_B                       ; CLOCK1               ; Untyped                                                     ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1               ; Untyped                                                     ;
+; RDCONTROL_REG_B                    ; CLOCK1               ; Untyped                                                     ;
+; ADDRESS_REG_B                      ; CLOCK1               ; Untyped                                                     ;
+; OUTDATA_REG_B                      ; UNREGISTERED         ; Untyped                                                     ;
+; BYTEENA_REG_B                      ; CLOCK1               ; Untyped                                                     ;
+; INDATA_ACLR_B                      ; NONE                 ; Untyped                                                     ;
+; WRCONTROL_ACLR_B                   ; NONE                 ; Untyped                                                     ;
+; ADDRESS_ACLR_B                     ; NONE                 ; Untyped                                                     ;
+; OUTDATA_ACLR_B                     ; NONE                 ; Untyped                                                     ;
+; RDCONTROL_ACLR_B                   ; NONE                 ; Untyped                                                     ;
+; BYTEENA_ACLR_B                     ; NONE                 ; Untyped                                                     ;
+; WIDTH_BYTEENA_A                    ; 1                    ; Signed Integer                                              ;
+; WIDTH_BYTEENA_B                    ; 1                    ; Signed Integer                                              ;
+; RAM_BLOCK_TYPE                     ; AUTO                 ; Untyped                                                     ;
+; BYTE_SIZE                          ; 8                    ; Signed Integer                                              ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE            ; Untyped                                                     ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ ; Untyped                                                     ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ ; Untyped                                                     ;
+; INIT_FILE                          ; UNUSED               ; Untyped                                                     ;
+; INIT_FILE_LAYOUT                   ; PORT_A               ; Untyped                                                     ;
+; MAXIMUM_DEPTH                      ; 0                    ; Signed Integer                                              ;
+; CLOCK_ENABLE_INPUT_A               ; BYPASS               ; Untyped                                                     ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL               ; Untyped                                                     ;
+; CLOCK_ENABLE_OUTPUT_A              ; BYPASS               ; Untyped                                                     ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL               ; Untyped                                                     ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN      ; Untyped                                                     ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN      ; Untyped                                                     ;
+; ENABLE_ECC                         ; FALSE                ; Untyped                                                     ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                ; Untyped                                                     ;
+; WIDTH_ECCSTATUS                    ; 3                    ; Signed Integer                                              ;
+; DEVICE_FAMILY                      ; Cyclone IV E         ; Untyped                                                     ;
+; CBXI_PARAMETER                     ; altsyncram_bcp3      ; Untyped                                                     ;
++------------------------------------+----------------------+-------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------------------------------------------+
+; altsyncram Parameter Settings by Entity Instance                                                                       ;
++-------------------------------------------+----------------------------------------------------------------------------+
+; Name                                      ; Value                                                                      ;
++-------------------------------------------+----------------------------------------------------------------------------+
+; Number of entity instances                ; 1                                                                          ;
+; Entity Instance                           ; BRISC_V:u_core|RAM:U2|RAM_1PORT:u_ram_inst|altsyncram:altsyncram_component ;
+;     -- OPERATION_MODE                     ; SINGLE_PORT                                                                ;
+;     -- WIDTH_A                            ; 32                                                                         ;
+;     -- NUMWORDS_A                         ; 1024                                                                       ;
+;     -- OUTDATA_REG_A                      ; CLOCK0                                                                     ;
+;     -- WIDTH_B                            ; 1                                                                          ;
+;     -- NUMWORDS_B                         ; 0                                                                          ;
+;     -- ADDRESS_REG_B                      ; CLOCK1                                                                     ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED                                                               ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                                                                       ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                                                                  ;
++-------------------------------------------+----------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------+
+; Port Connectivity Checks: "BRISC_V:u_core|CiscV:U4|CiscV_0:U0" ;
++----------------+-------+----------+----------------------------+
+; Port           ; Type  ; Severity ; Details                    ;
++----------------+-------+----------+----------------------------+
+; j_immediate[0] ; Input ; Info     ; Stuck at GND               ;
++----------------+-------+----------+----------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "BRISC_V:u_core"                                                                                        ;
++-------------------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port                    ; Type   ; Severity ; Details                                                                             ;
++-------------------------+--------+----------+-------------------------------------------------------------------------------------+
+; instruction_data        ; Input  ; Info     ; Stuck at GND                                                                        ;
+; load_instruction_enable ; Input  ; Info     ; Stuck at GND                                                                        ;
+; new_instruction         ; Input  ; Info     ; Stuck at GND                                                                        ;
+; io_ports_out[9]         ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++-------------------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; boundary_port         ; 21                          ;
+; cycloneiii_ff         ; 1124                        ;
+;     ENA               ; 880                         ;
+;     ENA SCLR          ; 30                          ;
+;     ENA SLD           ; 33                          ;
+;     SCLR              ; 2                           ;
+;     SLD               ; 1                           ;
+;     plain             ; 178                         ;
+; cycloneiii_io_obuf    ; 10                          ;
+; cycloneiii_lcell_comb ; 5037                        ;
+;     arith             ; 312                         ;
+;         2 data inputs ; 145                         ;
+;         3 data inputs ; 167                         ;
+;     normal            ; 4725                        ;
+;         1 data inputs ; 8                           ;
+;         2 data inputs ; 182                         ;
+;         3 data inputs ; 946                         ;
+;         4 data inputs ; 3589                        ;
+; cycloneiii_ram_block  ; 32                          ;
+;                       ;                             ;
+; Max LUT depth         ; 26.00                       ;
+; Average LUT depth     ; 12.48                       ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:01:46     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
+    Info: Processing started: Thu Dec  4 19:27:20 2025
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off BRISC-V -c BRISC_top_connect
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
+Info (12021): Found 1 design units, including 0 entities, in source file types_pkg.vhd
+    Info (12022): Found design unit 1: types_pkg File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/types_pkg.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file io_controller.vhdl
+    Info (12022): Found design unit 1: io_controller-rtl File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/io_controller.vhdl Line: 17
+    Info (12023): Found entity 1: io_controller File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/io_controller.vhdl Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file bs_interface.vhd
+    Info (12022): Found design unit 1: bs_interface-Behavioral File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/bs_interface.vhd Line: 25
+    Info (12023): Found entity 1: bs_interface File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/bs_interface.vhd Line: 7
+Info (12021): Found 2 design units, including 1 entities, in source file RAM.vhdl
+    Info (12022): Found design unit 1: RAM-rtl File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/RAM.vhdl Line: 21
+    Info (12023): Found entity 1: RAM File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/RAM.vhdl Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file RAM_1PORT.vhd
+    Info (12022): Found design unit 1: ram_1port-SYN File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/RAM_1PORT.vhd Line: 55
+    Info (12023): Found entity 1: RAM_1PORT File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/RAM_1PORT.vhd Line: 43
+Info (12021): Found 4 design units, including 2 entities, in source file CiscV.vhdl
+    Info (12022): Found design unit 1: CiscV_0-program File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/CiscV.vhdl Line: 63
+    Info (12022): Found design unit 2: CiscV-program File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/CiscV.vhdl Line: 2956
+    Info (12023): Found entity 1: CiscV_0 File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/CiscV.vhdl Line: 9
+    Info (12023): Found entity 2: CiscV File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/CiscV.vhdl Line: 2944
+Info (12021): Found 4 design units, including 1 entities, in source file program_package.vhdl
+    Info (12022): Found design unit 1: memory-program File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/program_package.vhdl Line: 14
+    Info (12022): Found design unit 2: program_package File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/program_package.vhdl Line: 44
+    Info (12022): Found design unit 3: program_package-body File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/program_package.vhdl Line: 73
+    Info (12023): Found entity 1: memory File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/program_package.vhdl Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file BRISC_top.vhdl
+    Info (12022): Found design unit 1: BRISC_V-Structural File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/BRISC_top.vhdl Line: 19
+    Info (12023): Found entity 1: BRISC_V File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/BRISC_top.vhdl Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file BRISC_top_connect.vhdl
+    Info (12022): Found design unit 1: BRISC_top_connect-rtl File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/BRISC_top_connect.vhdl Line: 18
+    Info (12023): Found entity 1: BRISC_top_connect File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/BRISC_top_connect.vhdl Line: 6
+Info (12127): Elaborating entity "BRISC_top_connect" for the top level hierarchy
+Warning (10540): VHDL Signal Declaration warning at BRISC_top_connect.vhdl(27): used explicit default value for signal "instruction_data" because signal was never assigned a value File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/BRISC_top_connect.vhdl Line: 27
+Warning (10540): VHDL Signal Declaration warning at BRISC_top_connect.vhdl(28): used explicit default value for signal "load_instruction_enable" because signal was never assigned a value File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/BRISC_top_connect.vhdl Line: 28
+Warning (10540): VHDL Signal Declaration warning at BRISC_top_connect.vhdl(29): used explicit default value for signal "new_instruction" because signal was never assigned a value File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/BRISC_top_connect.vhdl Line: 29
+Info (12128): Elaborating entity "BRISC_V" for hierarchy "BRISC_V:u_core" File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/BRISC_top_connect.vhdl Line: 45
+Info (12128): Elaborating entity "io_controller" for hierarchy "BRISC_V:u_core|io_controller:U1" File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/BRISC_top.vhdl Line: 99
+Info (12128): Elaborating entity "RAM" for hierarchy "BRISC_V:u_core|RAM:U2" File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/BRISC_top.vhdl Line: 110
+Info (12128): Elaborating entity "RAM_1PORT" for hierarchy "BRISC_V:u_core|RAM:U2|RAM_1PORT:u_ram_inst" File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/RAM.vhdl Line: 51
+Info (12128): Elaborating entity "altsyncram" for hierarchy "BRISC_V:u_core|RAM:U2|RAM_1PORT:u_ram_inst|altsyncram:altsyncram_component" File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/RAM_1PORT.vhd Line: 62
+Info (12130): Elaborated megafunction instantiation "BRISC_V:u_core|RAM:U2|RAM_1PORT:u_ram_inst|altsyncram:altsyncram_component" File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/RAM_1PORT.vhd Line: 62
+Info (12133): Instantiated megafunction "BRISC_V:u_core|RAM:U2|RAM_1PORT:u_ram_inst|altsyncram:altsyncram_component" with the following parameter: File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/RAM_1PORT.vhd Line: 62
+    Info (12134): Parameter "address_aclr_a" = "UNUSED"
+    Info (12134): Parameter "address_aclr_b" = "NONE"
+    Info (12134): Parameter "address_reg_b" = "CLOCK1"
+    Info (12134): Parameter "byte_size" = "8"
+    Info (12134): Parameter "byteena_aclr_a" = "UNUSED"
+    Info (12134): Parameter "byteena_aclr_b" = "NONE"
+    Info (12134): Parameter "byteena_reg_b" = "CLOCK1"
+    Info (12134): Parameter "clock_enable_core_a" = "USE_INPUT_CLKEN"
+    Info (12134): Parameter "clock_enable_core_b" = "USE_INPUT_CLKEN"
+    Info (12134): Parameter "clock_enable_input_a" = "BYPASS"
+    Info (12134): Parameter "clock_enable_input_b" = "NORMAL"
+    Info (12134): Parameter "clock_enable_output_a" = "BYPASS"
+    Info (12134): Parameter "clock_enable_output_b" = "NORMAL"
+    Info (12134): Parameter "intended_device_family" = "Cyclone V"
+    Info (12134): Parameter "ecc_pipeline_stage_enabled" = "FALSE"
+    Info (12134): Parameter "enable_ecc" = "FALSE"
+    Info (12134): Parameter "implement_in_les" = "OFF"
+    Info (12134): Parameter "indata_aclr_a" = "UNUSED"
+    Info (12134): Parameter "indata_aclr_b" = "NONE"
+    Info (12134): Parameter "indata_reg_b" = "CLOCK1"
+    Info (12134): Parameter "init_file" = "UNUSED"
+    Info (12134): Parameter "init_file_layout" = "PORT_A"
+    Info (12134): Parameter "maximum_depth" = "0"
+    Info (12134): Parameter "numwords_a" = "1024"
+    Info (12134): Parameter "numwords_b" = "0"
+    Info (12134): Parameter "operation_mode" = "SINGLE_PORT"
+    Info (12134): Parameter "outdata_aclr_a" = "NONE"
+    Info (12134): Parameter "outdata_aclr_b" = "NONE"
+    Info (12134): Parameter "outdata_reg_a" = "CLOCK0"
+    Info (12134): Parameter "outdata_reg_b" = "UNREGISTERED"
+    Info (12134): Parameter "power_up_uninitialized" = "FALSE"
+    Info (12134): Parameter "ram_block_type" = "AUTO"
+    Info (12134): Parameter "rdcontrol_aclr_b" = "NONE"
+    Info (12134): Parameter "rdcontrol_reg_b" = "CLOCK1"
+    Info (12134): Parameter "read_during_write_mode_mixed_ports" = "DONT_CARE"
+    Info (12134): Parameter "read_during_write_mode_port_a" = "NEW_DATA_NO_NBE_READ"
+    Info (12134): Parameter "read_during_write_mode_port_b" = "NEW_DATA_NO_NBE_READ"
+    Info (12134): Parameter "stratixiv_m144k_allow_dual_clocks" = "ON"
+    Info (12134): Parameter "width_a" = "32"
+    Info (12134): Parameter "width_b" = "1"
+    Info (12134): Parameter "width_byteena_a" = "1"
+    Info (12134): Parameter "width_byteena_b" = "1"
+    Info (12134): Parameter "width_eccstatus" = "3"
+    Info (12134): Parameter "widthad_a" = "10"
+    Info (12134): Parameter "widthad_b" = "1"
+    Info (12134): Parameter "wrcontrol_aclr_a" = "UNUSED"
+    Info (12134): Parameter "wrcontrol_aclr_b" = "NONE"
+    Info (12134): Parameter "wrcontrol_wraddress_reg_b" = "CLOCK1"
+    Info (12134): Parameter "lpm_hint" = "ENABLE_RUNTIME_MOD=NO"
+    Info (12134): Parameter "lpm_type" = "altsyncram"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_bcp3.tdf
+    Info (12023): Found entity 1: altsyncram_bcp3 File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/db/altsyncram_bcp3.tdf Line: 28
+Info (12128): Elaborating entity "altsyncram_bcp3" for hierarchy "BRISC_V:u_core|RAM:U2|RAM_1PORT:u_ram_inst|altsyncram:altsyncram_component|altsyncram_bcp3:auto_generated" File: /home/lorenzo-parata/altera_lite/25.1std/quartus/libraries/megafunctions/altsyncram.tdf Line: 792
+Info (12128): Elaborating entity "bs_interface" for hierarchy "BRISC_V:u_core|bs_interface:U3" File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/BRISC_top.vhdl Line: 124
+Info (12128): Elaborating entity "CiscV" for hierarchy "BRISC_V:u_core|CiscV:U4" File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/BRISC_top.vhdl Line: 142
+Warning (10631): VHDL Process Statement warning at CiscV.vhdl(3101): inferring latch(es) for signal or variable "clk_out", which holds its previous value in one or more paths through the process File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/CiscV.vhdl Line: 3101
+Warning (10492): VHDL Process Statement warning at CiscV.vhdl(3195): signal "rs_sel" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/CiscV.vhdl Line: 3195
+Warning (10492): VHDL Process Statement warning at CiscV.vhdl(3196): signal "regs" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/CiscV.vhdl Line: 3196
+Warning (10492): VHDL Process Statement warning at CiscV.vhdl(3200): signal "rs_sel" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/CiscV.vhdl Line: 3200
+Warning (10492): VHDL Process Statement warning at CiscV.vhdl(3201): signal "regs" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/CiscV.vhdl Line: 3201
+Warning (10492): VHDL Process Statement warning at CiscV.vhdl(3205): signal "store_enable" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/CiscV.vhdl Line: 3205
+Warning (10492): VHDL Process Statement warning at CiscV.vhdl(3207): signal "regs" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/CiscV.vhdl Line: 3207
+Warning (10492): VHDL Process Statement warning at CiscV.vhdl(3210): signal "load_byte_enable" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/CiscV.vhdl Line: 3210
+Warning (10492): VHDL Process Statement warning at CiscV.vhdl(3211): signal "regs" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/CiscV.vhdl Line: 3211
+Warning (10492): VHDL Process Statement warning at CiscV.vhdl(3213): signal "load_byte_data" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/CiscV.vhdl Line: 3213
+Warning (10492): VHDL Process Statement warning at CiscV.vhdl(3215): signal "load_half_enable" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/CiscV.vhdl Line: 3215
+Warning (10492): VHDL Process Statement warning at CiscV.vhdl(3216): signal "regs" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/CiscV.vhdl Line: 3216
+Warning (10492): VHDL Process Statement warning at CiscV.vhdl(3218): signal "load_half_data" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/CiscV.vhdl Line: 3218
+Warning (10631): VHDL Process Statement warning at CiscV.vhdl(3193): inferring latch(es) for signal or variable "store_data", which holds its previous value in one or more paths through the process File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/CiscV.vhdl Line: 3193
+Warning (10631): VHDL Process Statement warning at CiscV.vhdl(3193): inferring latch(es) for signal or variable "load_byte_data", which holds its previous value in one or more paths through the process File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/CiscV.vhdl Line: 3193
+Warning (10631): VHDL Process Statement warning at CiscV.vhdl(3193): inferring latch(es) for signal or variable "load_half_data", which holds its previous value in one or more paths through the process File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "load_half_data[0]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "load_half_data[1]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "load_half_data[2]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "load_half_data[3]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "load_half_data[4]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "load_half_data[5]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "load_half_data[6]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "load_half_data[7]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "load_half_data[8]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "load_half_data[9]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "load_half_data[10]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "load_half_data[11]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "load_half_data[12]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "load_half_data[13]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "load_half_data[14]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "load_half_data[15]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "load_byte_data[0]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "load_byte_data[1]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "load_byte_data[2]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "load_byte_data[3]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "load_byte_data[4]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "load_byte_data[5]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "load_byte_data[6]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "load_byte_data[7]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "load_byte_data[8]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "load_byte_data[9]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "load_byte_data[10]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "load_byte_data[11]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "load_byte_data[12]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "load_byte_data[13]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "load_byte_data[14]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "load_byte_data[15]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "load_byte_data[16]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "load_byte_data[17]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "load_byte_data[18]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "load_byte_data[19]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "load_byte_data[20]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "load_byte_data[21]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "load_byte_data[22]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "load_byte_data[23]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "store_data[0]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "store_data[1]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "store_data[2]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "store_data[3]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "store_data[4]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "store_data[5]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "store_data[6]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "store_data[7]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "store_data[8]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "store_data[9]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "store_data[10]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "store_data[11]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "store_data[12]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "store_data[13]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "store_data[14]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "store_data[15]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "store_data[16]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "store_data[17]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "store_data[18]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "store_data[19]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "store_data[20]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "store_data[21]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "store_data[22]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "store_data[23]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "store_data[24]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "store_data[25]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "store_data[26]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "store_data[27]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "store_data[28]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "store_data[29]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "store_data[30]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "store_data[31]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "clk_out[0]" at CiscV.vhdl(3101) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/CiscV.vhdl Line: 3101
+Info (12128): Elaborating entity "CiscV_0" for hierarchy "BRISC_V:u_core|CiscV:U4|CiscV_0:U0" File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/CiscV.vhdl Line: 3411
+Warning (14026): LATCH primitive "BRISC_V:u_core|CiscV:U4|clk_out[0]" is permanently enabled File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/CiscV.vhdl Line: 3101
+Warning (13034): The following nodes have both tri-state and non-tri-state drivers
+    Warning (13035): Inserted always-enabled tri-state buffer between "GPIO_0[8]" and its non-tri-state driver. File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/BRISC_top_connect.vhdl Line: 14
+Warning (13009): TRI or OPNDRN buffers permanently enabled
+    Warning (13010): Node "GPIO_0[8]~synth" File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/BRISC_top_connect.vhdl Line: 14
+Info (286030): Timing-Driven Synthesis is running
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Warning (21074): Design contains 1 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "KEY[1]" File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/BRISC-V/BRISC_top_connect.vhdl Line: 10
+Info (21057): Implemented 5832 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 3 input pins
+    Info (21059): Implemented 8 output pins
+    Info (21060): Implemented 10 bidirectional pins
+    Info (21061): Implemented 5779 logic cells
+    Info (21064): Implemented 32 RAM segments
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 27 warnings
+    Info: Peak virtual memory: 606 megabytes
+    Info: Processing ended: Thu Dec  4 19:29:18 2025
+    Info: Elapsed time: 00:01:58
+    Info: Total CPU time (on all processors): 00:02:10
+
+
