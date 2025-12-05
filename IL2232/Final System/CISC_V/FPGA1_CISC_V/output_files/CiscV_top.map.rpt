@@ -1,0 +1,643 @@
+Analysis & Synthesis report for CiscV_top
+Fri Dec  5 17:15:18 2025
+Quartus Prime Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. User-Specified and Inferred Latches
+  9. Registers Removed During Synthesis
+ 10. General Register Statistics
+ 11. Inverted Register Statistics
+ 12. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 13. Port Connectivity Checks: "CiscV:processor|CiscV_0:U0"
+ 14. Post-Synthesis Netlist Statistics for Top Partition
+ 15. Elapsed Time Per Partition
+ 16. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2025  Altera Corporation. All rights reserved.
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, the Altera Quartus Prime License Agreement,
+the Altera IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Altera and sold by Altera or its authorized distributors.  Please
+refer to the Altera Software License Subscription Agreements 
+on the Quartus Prime software download page.
+
+
+
++-----------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                      ;
++---------------------------------+-------------------------------------------------+
+; Analysis & Synthesis Status     ; Successful - Fri Dec  5 17:15:18 2025           ;
+; Quartus Prime Version           ; 25.1std.0 Build 1129 10/21/2025 SC Lite Edition ;
+; Revision Name                   ; CiscV_top                                       ;
+; Top-level Entity Name           ; CiscV_top                                       ;
+; Family                          ; Cyclone V                                       ;
+; Logic utilization (in ALMs)     ; N/A                                             ;
+; Total registers                 ; 1413                                            ;
+; Total pins                      ; 20                                              ;
+; Total virtual pins              ; 0                                               ;
+; Total block memory bits         ; 0                                               ;
+; Total DSP Blocks                ; 0                                               ;
+; Total HSSI RX PCSs              ; 0                                               ;
+; Total HSSI PMA RX Deserializers ; 0                                               ;
+; Total HSSI TX PCSs              ; 0                                               ;
+; Total HSSI PMA TX Serializers   ; 0                                               ;
+; Total PLLs                      ; 0                                               ;
+; Total DLLs                      ; 0                                               ;
++---------------------------------+-------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                             ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                          ; Setting            ; Default Value      ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                          ; 5CSEMA4U23C6       ;                    ;
+; Top-level entity name                                                           ; CiscV_top          ; CiscV_top          ;
+; Family name                                                                     ; Cyclone V          ; Cyclone V          ;
+; Use smart compilation                                                           ; Off                ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation                ; On                 ; On                 ;
+; Enable compact report table                                                     ; Off                ; Off                ;
+; Restructure Multiplexers                                                        ; Auto               ; Auto               ;
+; MLAB Add Timing Constraints For Mixed-Port Feed-Through Mode Setting Don't Care ; Off                ; Off                ;
+; Create Debugging Nodes for IP Cores                                             ; Off                ; Off                ;
+; Preserve fewer node names                                                       ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                                   ; Enable             ; Enable             ;
+; Verilog Version                                                                 ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                                    ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                        ; Auto               ; Auto               ;
+; Safe State Machine                                                              ; Off                ; Off                ;
+; Extract Verilog State Machines                                                  ; On                 ; On                 ;
+; Extract VHDL State Machines                                                     ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                               ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                      ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                                  ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                         ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                       ; On                 ; On                 ;
+; Parallel Synthesis                                                              ; On                 ; On                 ;
+; DSP Block Balancing                                                             ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                              ; On                 ; On                 ;
+; Power-Up Don't Care                                                             ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                                    ; Off                ; Off                ;
+; Remove Duplicate Registers                                                      ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                            ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                          ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                           ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                       ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                            ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                             ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                                  ; Off                ; Off                ;
+; Optimization Technique                                                          ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                              ; 70                 ; 70                 ;
+; Auto Carry Chains                                                               ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                            ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                           ; Off                ; Off                ;
+; Auto ROM Replacement                                                            ; On                 ; On                 ;
+; Auto RAM Replacement                                                            ; On                 ; On                 ;
+; Auto DSP Block Replacement                                                      ; On                 ; On                 ;
+; Auto Shift Register Replacement                                                 ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                                 ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                                   ; On                 ; On                 ;
+; Strict RAM Replacement                                                          ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                               ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                           ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                                   ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                             ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                               ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                         ; On                 ; On                 ;
+; Report Parameter Settings                                                       ; On                 ; On                 ;
+; Report Source Assignments                                                       ; On                 ; On                 ;
+; Report Connectivity Checks                                                      ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                              ; Off                ; Off                ;
+; Synchronization Register Chain Length                                           ; 3                  ; 3                  ;
+; Power Optimization During Synthesis                                             ; Normal compilation ; Normal compilation ;
+; HDL message level                                                               ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                                 ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                        ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                              ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                       ; 100                ; 100                ;
+; Clock MUX Protection                                                            ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                     ; Off                ; Off                ;
+; Block Design Naming                                                             ; Auto               ; Auto               ;
+; SDC constraint protection                                                       ; Off                ; Off                ;
+; Synthesis Effort                                                                ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal                    ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                            ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                              ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                     ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                          ; On                 ; On                 ;
+; Automatic Parallel Synthesis                                                    ; On                 ; On                 ;
+; Partial Reconfiguration Bitstream ID                                            ; Off                ; Off                ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 8           ;
+; Maximum allowed            ; 4           ;
+;                            ;             ;
+; Average used               ; 2.13        ;
+; Maximum used               ; 4           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;  52.2%      ;
+;     Processor 3            ;  52.2%      ;
+;     Processor 4            ;   8.3%      ;
++----------------------------+-------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                          ;
++----------------------------------+-----------------+-----------------+----------------------------------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                                                                                   ; Library ;
++----------------------------------+-----------------+-----------------+----------------------------------------------------------------------------------------------------------------+---------+
+; CiscV.vhdl                       ; yes             ; User VHDL File  ; /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV.vhdl           ;         ;
+; program_package.vhdl             ; yes             ; User VHDL File  ; /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/program_package.vhdl ;         ;
+; clock_divider.vhd                ; yes             ; User VHDL File  ; /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/clock_divider.vhd    ;         ;
+; CiscV_top.vhd                    ; yes             ; User VHDL File  ; /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV_top.vhd        ;         ;
++----------------------------------+-----------------+-----------------+----------------------------------------------------------------------------------------------------------------+---------+
+
+
++-----------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                                 ;
++---------------------------------------------+-------------------------------+
+; Resource                                    ; Usage                         ;
++---------------------------------------------+-------------------------------+
+; Estimate of Logic utilization (ALMs needed) ; 3474                          ;
+;                                             ;                               ;
+; Combinational ALUT usage for logic          ; 4852                          ;
+;     -- 7 input functions                    ; 56                            ;
+;     -- 6 input functions                    ; 1902                          ;
+;     -- 5 input functions                    ; 1064                          ;
+;     -- 4 input functions                    ; 715                           ;
+;     -- <=3 input functions                  ; 1115                          ;
+;                                             ;                               ;
+; Dedicated logic registers                   ; 1413                          ;
+;                                             ;                               ;
+; I/O pins                                    ; 20                            ;
+;                                             ;                               ;
+; Total DSP Blocks                            ; 0                             ;
+;                                             ;                               ;
+; Maximum fan-out node                        ; clock_divider:clk_div|clk_reg ;
+; Maximum fan-out                             ; 1408                          ;
+; Total fan-out                               ; 28270                         ;
+; Average fan-out                             ; 4.48                          ;
++---------------------------------------------+-------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                        ;
++----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------------------------+---------------+--------------+
+; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                   ; Entity Name   ; Library Name ;
++----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------------------------+---------------+--------------+
+; |CiscV_top                 ; 4852 (0)            ; 1413 (3)                  ; 0                 ; 0          ; 20   ; 0            ; |CiscV_top                            ; CiscV_top     ; work         ;
+;    |CiscV:processor|       ; 4846 (1767)         ; 1404 (1142)               ; 0                 ; 0          ; 0    ; 0            ; |CiscV_top|CiscV:processor            ; CiscV         ; work         ;
+;       |CiscV_0:U0|         ; 3079 (3079)         ; 262 (262)                 ; 0                 ; 0          ; 0    ; 0            ; |CiscV_top|CiscV:processor|CiscV_0:U0 ; CiscV_0       ; work         ;
+;    |clock_divider:clk_div| ; 6 (6)               ; 6 (6)                     ; 0                 ; 0          ; 0    ; 0            ; |CiscV_top|clock_divider:clk_div      ; clock_divider ; work         ;
++----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------------------------+---------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++----------------------------------------------------------------------------------------------------------------------------------------+
+; User-Specified and Inferred Latches                                                                                                    ;
++-----------------------------------------------------+---------------------------------------------------------+------------------------+
+; Latch Name                                          ; Latch Enable Signal                                     ; Free of Timing Hazards ;
++-----------------------------------------------------+---------------------------------------------------------+------------------------+
+; CiscV:processor|load_half_data[1]                   ; CiscV:processor|CiscV_0:U0|load_half_enable_internal[0] ; yes                    ;
+; CiscV:processor|store_data[5]                       ; CiscV:processor|CiscV_0:U0|store_enable_internal[0]     ; yes                    ;
+; CiscV:processor|store_data[6]                       ; CiscV:processor|CiscV_0:U0|store_enable_internal[0]     ; yes                    ;
+; CiscV:processor|store_data[7]                       ; CiscV:processor|CiscV_0:U0|store_enable_internal[0]     ; yes                    ;
+; CiscV:processor|store_data[8]                       ; CiscV:processor|CiscV_0:U0|store_enable_internal[0]     ; yes                    ;
+; CiscV:processor|store_data[9]                       ; CiscV:processor|CiscV_0:U0|store_enable_internal[0]     ; yes                    ;
+; CiscV:processor|store_data[10]                      ; CiscV:processor|CiscV_0:U0|store_enable_internal[0]     ; yes                    ;
+; CiscV:processor|store_data[11]                      ; CiscV:processor|CiscV_0:U0|store_enable_internal[0]     ; yes                    ;
+; CiscV:processor|store_data[12]                      ; CiscV:processor|CiscV_0:U0|store_enable_internal[0]     ; yes                    ;
+; CiscV:processor|store_data[13]                      ; CiscV:processor|CiscV_0:U0|store_enable_internal[0]     ; yes                    ;
+; CiscV:processor|store_data[14]                      ; CiscV:processor|CiscV_0:U0|store_enable_internal[0]     ; yes                    ;
+; CiscV:processor|store_data[15]                      ; CiscV:processor|CiscV_0:U0|store_enable_internal[0]     ; yes                    ;
+; CiscV:processor|store_data[16]                      ; CiscV:processor|CiscV_0:U0|store_enable_internal[0]     ; yes                    ;
+; CiscV:processor|store_data[17]                      ; CiscV:processor|CiscV_0:U0|store_enable_internal[0]     ; yes                    ;
+; CiscV:processor|store_data[18]                      ; CiscV:processor|CiscV_0:U0|store_enable_internal[0]     ; yes                    ;
+; CiscV:processor|store_data[19]                      ; CiscV:processor|CiscV_0:U0|store_enable_internal[0]     ; yes                    ;
+; CiscV:processor|store_data[20]                      ; CiscV:processor|CiscV_0:U0|store_enable_internal[0]     ; yes                    ;
+; CiscV:processor|store_data[21]                      ; CiscV:processor|CiscV_0:U0|store_enable_internal[0]     ; yes                    ;
+; CiscV:processor|store_data[22]                      ; CiscV:processor|CiscV_0:U0|store_enable_internal[0]     ; yes                    ;
+; CiscV:processor|store_data[23]                      ; CiscV:processor|CiscV_0:U0|store_enable_internal[0]     ; yes                    ;
+; CiscV:processor|store_data[24]                      ; CiscV:processor|CiscV_0:U0|store_enable_internal[0]     ; yes                    ;
+; CiscV:processor|store_data[25]                      ; CiscV:processor|CiscV_0:U0|store_enable_internal[0]     ; yes                    ;
+; CiscV:processor|store_data[26]                      ; CiscV:processor|CiscV_0:U0|store_enable_internal[0]     ; yes                    ;
+; CiscV:processor|store_data[27]                      ; CiscV:processor|CiscV_0:U0|store_enable_internal[0]     ; yes                    ;
+; CiscV:processor|store_data[28]                      ; CiscV:processor|CiscV_0:U0|store_enable_internal[0]     ; yes                    ;
+; CiscV:processor|store_data[29]                      ; CiscV:processor|CiscV_0:U0|store_enable_internal[0]     ; yes                    ;
+; CiscV:processor|store_data[30]                      ; CiscV:processor|CiscV_0:U0|store_enable_internal[0]     ; yes                    ;
+; CiscV:processor|store_data[31]                      ; CiscV:processor|CiscV_0:U0|store_enable_internal[0]     ; yes                    ;
+; CiscV:processor|load_byte_data[2]                   ; CiscV:processor|CiscV_0:U0|load_byte_enable_internal[0] ; yes                    ;
+; CiscV:processor|load_byte_data[3]                   ; CiscV:processor|CiscV_0:U0|load_byte_enable_internal[0] ; yes                    ;
+; CiscV:processor|load_byte_data[4]                   ; CiscV:processor|CiscV_0:U0|load_byte_enable_internal[0] ; yes                    ;
+; CiscV:processor|load_byte_data[5]                   ; CiscV:processor|CiscV_0:U0|load_byte_enable_internal[0] ; yes                    ;
+; CiscV:processor|load_byte_data[6]                   ; CiscV:processor|CiscV_0:U0|load_byte_enable_internal[0] ; yes                    ;
+; CiscV:processor|load_byte_data[7]                   ; CiscV:processor|CiscV_0:U0|load_byte_enable_internal[0] ; yes                    ;
+; CiscV:processor|load_byte_data[8]                   ; CiscV:processor|CiscV_0:U0|load_byte_enable_internal[0] ; yes                    ;
+; CiscV:processor|load_byte_data[9]                   ; CiscV:processor|CiscV_0:U0|load_byte_enable_internal[0] ; yes                    ;
+; CiscV:processor|load_byte_data[10]                  ; CiscV:processor|CiscV_0:U0|load_byte_enable_internal[0] ; yes                    ;
+; CiscV:processor|load_byte_data[11]                  ; CiscV:processor|CiscV_0:U0|load_byte_enable_internal[0] ; yes                    ;
+; CiscV:processor|load_byte_data[12]                  ; CiscV:processor|CiscV_0:U0|load_byte_enable_internal[0] ; yes                    ;
+; CiscV:processor|load_byte_data[13]                  ; CiscV:processor|CiscV_0:U0|load_byte_enable_internal[0] ; yes                    ;
+; CiscV:processor|load_byte_data[14]                  ; CiscV:processor|CiscV_0:U0|load_byte_enable_internal[0] ; yes                    ;
+; CiscV:processor|load_byte_data[15]                  ; CiscV:processor|CiscV_0:U0|load_byte_enable_internal[0] ; yes                    ;
+; CiscV:processor|load_byte_data[16]                  ; CiscV:processor|CiscV_0:U0|load_byte_enable_internal[0] ; yes                    ;
+; CiscV:processor|load_byte_data[17]                  ; CiscV:processor|CiscV_0:U0|load_byte_enable_internal[0] ; yes                    ;
+; CiscV:processor|load_byte_data[18]                  ; CiscV:processor|CiscV_0:U0|load_byte_enable_internal[0] ; yes                    ;
+; CiscV:processor|load_byte_data[19]                  ; CiscV:processor|CiscV_0:U0|load_byte_enable_internal[0] ; yes                    ;
+; CiscV:processor|load_byte_data[20]                  ; CiscV:processor|CiscV_0:U0|load_byte_enable_internal[0] ; yes                    ;
+; CiscV:processor|load_byte_data[21]                  ; CiscV:processor|CiscV_0:U0|load_byte_enable_internal[0] ; yes                    ;
+; CiscV:processor|load_byte_data[22]                  ; CiscV:processor|CiscV_0:U0|load_byte_enable_internal[0] ; yes                    ;
+; CiscV:processor|load_byte_data[23]                  ; CiscV:processor|CiscV_0:U0|load_byte_enable_internal[0] ; yes                    ;
+; CiscV:processor|store_data[0]                       ; CiscV:processor|CiscV_0:U0|store_enable_internal[0]     ; yes                    ;
+; CiscV:processor|store_data[1]                       ; CiscV:processor|CiscV_0:U0|store_enable_internal[0]     ; yes                    ;
+; CiscV:processor|store_data[2]                       ; CiscV:processor|CiscV_0:U0|store_enable_internal[0]     ; yes                    ;
+; CiscV:processor|store_data[3]                       ; CiscV:processor|CiscV_0:U0|store_enable_internal[0]     ; yes                    ;
+; CiscV:processor|store_data[4]                       ; CiscV:processor|CiscV_0:U0|store_enable_internal[0]     ; yes                    ;
+; CiscV:processor|load_half_data[2]                   ; CiscV:processor|CiscV_0:U0|load_half_enable_internal[0] ; yes                    ;
+; CiscV:processor|load_half_data[3]                   ; CiscV:processor|CiscV_0:U0|load_half_enable_internal[0] ; yes                    ;
+; CiscV:processor|load_half_data[4]                   ; CiscV:processor|CiscV_0:U0|load_half_enable_internal[0] ; yes                    ;
+; CiscV:processor|load_half_data[5]                   ; CiscV:processor|CiscV_0:U0|load_half_enable_internal[0] ; yes                    ;
+; CiscV:processor|load_half_data[6]                   ; CiscV:processor|CiscV_0:U0|load_half_enable_internal[0] ; yes                    ;
+; CiscV:processor|load_half_data[7]                   ; CiscV:processor|CiscV_0:U0|load_half_enable_internal[0] ; yes                    ;
+; CiscV:processor|load_half_data[8]                   ; CiscV:processor|CiscV_0:U0|load_half_enable_internal[0] ; yes                    ;
+; CiscV:processor|load_half_data[9]                   ; CiscV:processor|CiscV_0:U0|load_half_enable_internal[0] ; yes                    ;
+; CiscV:processor|load_half_data[10]                  ; CiscV:processor|CiscV_0:U0|load_half_enable_internal[0] ; yes                    ;
+; CiscV:processor|load_half_data[11]                  ; CiscV:processor|CiscV_0:U0|load_half_enable_internal[0] ; yes                    ;
+; CiscV:processor|load_half_data[12]                  ; CiscV:processor|CiscV_0:U0|load_half_enable_internal[0] ; yes                    ;
+; CiscV:processor|load_half_data[13]                  ; CiscV:processor|CiscV_0:U0|load_half_enable_internal[0] ; yes                    ;
+; CiscV:processor|load_half_data[14]                  ; CiscV:processor|CiscV_0:U0|load_half_enable_internal[0] ; yes                    ;
+; CiscV:processor|load_half_data[15]                  ; CiscV:processor|CiscV_0:U0|load_half_enable_internal[0] ; yes                    ;
+; CiscV:processor|load_byte_data[0]                   ; CiscV:processor|CiscV_0:U0|load_byte_enable_internal[0] ; yes                    ;
+; CiscV:processor|load_byte_data[1]                   ; CiscV:processor|CiscV_0:U0|load_byte_enable_internal[0] ; yes                    ;
+; CiscV:processor|load_half_data[0]                   ; CiscV:processor|CiscV_0:U0|load_half_enable_internal[0] ; yes                    ;
+; Number of user-specified and inferred latches = 72  ;                                                         ;                        ;
++-----------------------------------------------------+---------------------------------------------------------+------------------------+
+Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
+
+
++-------------------------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                                      ;
++--------------------------------------------------------+----------------------------------------------------------------+
+; Register name                                          ; Reason for Removal                                             ;
++--------------------------------------------------------+----------------------------------------------------------------+
+; CiscV:processor|CiscV_0:U0|lui_result_internal[0..11]  ; Stuck at GND due to stuck port data_in                         ;
+; CiscV:processor|CiscV_0:U0|send_clk_internal[0]        ; Stuck at VCC due to stuck port data_in                         ;
+; CiscV:processor|CiscV_0:U0|lui_result_internal[14]     ; Merged with CiscV:processor|CiscV_0:U0|lui_result_internal[12] ;
+; CiscV:processor|result_ready_execution[0]              ; Merged with CiscV:processor|execution_enable_reset[0]          ;
+; CiscV:processor|CiscV_0:U0|branch_bus_internal[12..31] ; Stuck at GND due to stuck port data_in                         ;
+; CiscV:processor|CiscV_0:U0|shift_imm_internal[4]       ; Stuck at GND due to stuck port data_in                         ;
+; Total Number of Removed Registers = 36                 ;                                                                ;
++--------------------------------------------------------+----------------------------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 1413  ;
+; Number of registers using Synchronous Clear  ; 1128  ;
+; Number of registers using Synchronous Load   ; 51    ;
+; Number of registers using Asynchronous Clear ; 9     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 1250  ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++--------------------------------------------------+
+; Inverted Register Statistics                     ;
++----------------------------------------+---------+
+; Inverted Register                      ; Fan out ;
++----------------------------------------+---------+
+; reset_sync                             ; 1136    ;
+; Total number of inverted registers = 1 ;         ;
++----------------------------------------+---------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                  ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                        ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------------------------+
+; 9:1                ; 32 bits   ; 192 LEs       ; 64 LEs               ; 128 LEs                ; Yes        ; |CiscV_top|CiscV:processor|CiscV_0:U0|load_result_internal[19]    ;
+; 11:1               ; 3 bits    ; 21 LEs        ; 12 LEs               ; 9 LEs                  ; Yes        ; |CiscV_top|CiscV:processor|CiscV_0:U0|branch_funct_internal[2]    ;
+; 25:1               ; 2 bits    ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |CiscV_top|CiscV:processor|CiscV_0:U0|rs_sel_internal[0]          ;
+; 39:1               ; 20 bits   ; 520 LEs       ; 40 LEs               ; 480 LEs                ; Yes        ; |CiscV_top|CiscV:processor|CiscV_0:U0|op2_alt_internal[14]        ;
+; 39:1               ; 11 bits   ; 286 LEs       ; 22 LEs               ; 264 LEs                ; Yes        ; |CiscV_top|CiscV:processor|CiscV_0:U0|op2_alt_internal[7]         ;
+; 47:1               ; 3 bits    ; 93 LEs        ; 48 LEs               ; 45 LEs                 ; Yes        ; |CiscV_top|CiscV:processor|CiscV_0:U0|alu_ctrl_internal[0]        ;
+; 56:1               ; 2 bits    ; 74 LEs        ; 24 LEs               ; 50 LEs                 ; Yes        ; |CiscV_top|CiscV:processor|CiscV_0:U0|internal_m_data_internal[0] ;
+; 77:1               ; 3 bits    ; 153 LEs       ; 78 LEs               ; 75 LEs                 ; Yes        ; |CiscV_top|CiscV:processor|CiscV_0:U0|result_select_internal[0]   ;
+; 111:1              ; 3 bits    ; 222 LEs       ; 150 LEs              ; 72 LEs                 ; Yes        ; |CiscV_top|CiscV:processor|CiscV_0:U0|pc_sel_internal[0]          ;
+; 89:1               ; 9 bits    ; 531 LEs       ; 504 LEs              ; 27 LEs                 ; Yes        ; |CiscV_top|CiscV:processor|CiscV_0:U0|pres_state[3]               ;
+; 172:1              ; 2 bits    ; 228 LEs       ; 56 LEs               ; 172 LEs                ; Yes        ; |CiscV_top|CiscV:processor|CiscV_0:U0|internal_addr_internal[1]   ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 0 LEs                ; 64 LEs                 ; Yes        ; |CiscV_top|CiscV:processor|regs[0][17]                            ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 0 LEs                ; 64 LEs                 ; Yes        ; |CiscV_top|CiscV:processor|regs[1][17]                            ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 0 LEs                ; 64 LEs                 ; Yes        ; |CiscV_top|CiscV:processor|regs[2][17]                            ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 0 LEs                ; 64 LEs                 ; Yes        ; |CiscV_top|CiscV:processor|regs[3][17]                            ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 0 LEs                ; 64 LEs                 ; Yes        ; |CiscV_top|CiscV:processor|regs[4][17]                            ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 0 LEs                ; 64 LEs                 ; Yes        ; |CiscV_top|CiscV:processor|regs[5][17]                            ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 0 LEs                ; 64 LEs                 ; Yes        ; |CiscV_top|CiscV:processor|regs[6][31]                            ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 0 LEs                ; 64 LEs                 ; Yes        ; |CiscV_top|CiscV:processor|regs[7][0]                             ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 0 LEs                ; 64 LEs                 ; Yes        ; |CiscV_top|CiscV:processor|regs[8][30]                            ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 0 LEs                ; 64 LEs                 ; Yes        ; |CiscV_top|CiscV:processor|regs[9][0]                             ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 0 LEs                ; 64 LEs                 ; Yes        ; |CiscV_top|CiscV:processor|regs[10][28]                           ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 0 LEs                ; 64 LEs                 ; Yes        ; |CiscV_top|CiscV:processor|regs[11][22]                           ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 0 LEs                ; 64 LEs                 ; Yes        ; |CiscV_top|CiscV:processor|regs[12][30]                           ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 0 LEs                ; 64 LEs                 ; Yes        ; |CiscV_top|CiscV:processor|regs[13][0]                            ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 0 LEs                ; 64 LEs                 ; Yes        ; |CiscV_top|CiscV:processor|regs[14][0]                            ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 0 LEs                ; 64 LEs                 ; Yes        ; |CiscV_top|CiscV:processor|regs[15][0]                            ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 0 LEs                ; 64 LEs                 ; Yes        ; |CiscV_top|CiscV:processor|regs[16][0]                            ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 0 LEs                ; 64 LEs                 ; Yes        ; |CiscV_top|CiscV:processor|regs[17][0]                            ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 0 LEs                ; 64 LEs                 ; Yes        ; |CiscV_top|CiscV:processor|regs[18][0]                            ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 0 LEs                ; 64 LEs                 ; Yes        ; |CiscV_top|CiscV:processor|regs[19][0]                            ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 0 LEs                ; 64 LEs                 ; Yes        ; |CiscV_top|CiscV:processor|regs[20][30]                           ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 0 LEs                ; 64 LEs                 ; Yes        ; |CiscV_top|CiscV:processor|regs[21][0]                            ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 0 LEs                ; 64 LEs                 ; Yes        ; |CiscV_top|CiscV:processor|regs[22][0]                            ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 0 LEs                ; 64 LEs                 ; Yes        ; |CiscV_top|CiscV:processor|regs[23][0]                            ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 0 LEs                ; 64 LEs                 ; Yes        ; |CiscV_top|CiscV:processor|regs[24][0]                            ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 0 LEs                ; 64 LEs                 ; Yes        ; |CiscV_top|CiscV:processor|regs[25][0]                            ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 0 LEs                ; 64 LEs                 ; Yes        ; |CiscV_top|CiscV:processor|regs[26][0]                            ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 0 LEs                ; 64 LEs                 ; Yes        ; |CiscV_top|CiscV:processor|regs[27][0]                            ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 0 LEs                ; 64 LEs                 ; Yes        ; |CiscV_top|CiscV:processor|regs[28][0]                            ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 0 LEs                ; 64 LEs                 ; Yes        ; |CiscV_top|CiscV:processor|regs[29][0]                            ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 0 LEs                ; 64 LEs                 ; Yes        ; |CiscV_top|CiscV:processor|regs[30][0]                            ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 0 LEs                ; 64 LEs                 ; Yes        ; |CiscV_top|CiscV:processor|regs[31][0]                            ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; Yes        ; |CiscV_top|CiscV:processor|parity_addr[0]                         ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; Yes        ; |CiscV_top|CiscV:processor|parity_data[1]                         ;
+; 8:1                ; 12 bits   ; 60 LEs        ; 24 LEs               ; 36 LEs                 ; Yes        ; |CiscV_top|CiscV:processor|result_bus[10]                         ;
+; 8:1                ; 20 bits   ; 100 LEs       ; 40 LEs               ; 60 LEs                 ; Yes        ; |CiscV_top|CiscV:processor|result_bus[23]                         ;
+; 12:1               ; 30 bits   ; 240 LEs       ; 60 LEs               ; 180 LEs                ; Yes        ; |CiscV_top|CiscV:processor|pc[8]                                  ;
+; 29:1               ; 2 bits    ; 38 LEs        ; 36 LEs               ; 2 LEs                  ; Yes        ; |CiscV_top|CiscV:processor|alu_result[7]                          ;
+; 29:1               ; 2 bits    ; 38 LEs        ; 36 LEs               ; 2 LEs                  ; Yes        ; |CiscV_top|CiscV:processor|alu_result[24]                         ;
+; 31:1               ; 2 bits    ; 40 LEs        ; 36 LEs               ; 4 LEs                  ; Yes        ; |CiscV_top|CiscV:processor|alu_result[9]                          ;
+; 29:1               ; 3 bits    ; 57 LEs        ; 54 LEs               ; 3 LEs                  ; Yes        ; |CiscV_top|CiscV:processor|alu_result[12]                         ;
+; 29:1               ; 3 bits    ; 57 LEs        ; 54 LEs               ; 3 LEs                  ; Yes        ; |CiscV_top|CiscV:processor|alu_result[19]                         ;
+; 31:1               ; 2 bits    ; 40 LEs        ; 36 LEs               ; 4 LEs                  ; Yes        ; |CiscV_top|CiscV:processor|alu_result[22]                         ;
+; 31:1               ; 2 bits    ; 40 LEs        ; 36 LEs               ; 4 LEs                  ; Yes        ; |CiscV_top|CiscV:processor|alu_result[5]                          ;
+; 31:1               ; 2 bits    ; 40 LEs        ; 36 LEs               ; 4 LEs                  ; Yes        ; |CiscV_top|CiscV:processor|alu_result[25]                         ;
+; 35:1               ; 3 bits    ; 69 LEs        ; 57 LEs               ; 12 LEs                 ; Yes        ; |CiscV_top|CiscV:processor|alu_result[1]                          ;
+; 35:1               ; 3 bits    ; 69 LEs        ; 57 LEs               ; 12 LEs                 ; Yes        ; |CiscV_top|CiscV:processor|alu_result[28]                         ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |CiscV_top|CiscV:processor|ShiftLeft0                             ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |CiscV_top|CiscV:processor|ShiftLeft0                             ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |CiscV_top|CiscV:processor|ShiftLeft0                             ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |CiscV_top|CiscV:processor|ShiftRight1                            ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |CiscV_top|CiscV:processor|ShiftRight2                            ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |CiscV_top|CiscV:processor|ShiftLeft0                             ;
+; 4:1                ; 49 bits   ; 98 LEs        ; 98 LEs               ; 0 LEs                  ; No         ; |CiscV_top|CiscV:processor|ShiftLeft0                             ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |CiscV_top|CiscV:processor|ShiftLeft1                             ;
+; 4:1                ; 49 bits   ; 98 LEs        ; 98 LEs               ; 0 LEs                  ; No         ; |CiscV_top|CiscV:processor|ShiftRight0                            ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |CiscV_top|CiscV:processor|ShiftLeft1                             ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |CiscV_top|CiscV:processor|ShiftLeft2                             ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |CiscV_top|CiscV:processor|ShiftRight0                            ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |CiscV_top|CiscV:processor|ShiftRight0                            ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |CiscV_top|CiscV:processor|ShiftRight0                            ;
+; 32:1               ; 32 bits   ; 672 LEs       ; 672 LEs              ; 0 LEs                  ; No         ; |CiscV_top|CiscV:processor|Mux94                                  ;
+; 33:1               ; 32 bits   ; 704 LEs       ; 704 LEs              ; 0 LEs                  ; No         ; |CiscV_top|CiscV:processor|op1_bus[30]                            ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------------------------+
+
+
++--------------------------------------------------------+
+; Port Connectivity Checks: "CiscV:processor|CiscV_0:U0" ;
++----------------+-------+----------+--------------------+
+; Port           ; Type  ; Severity ; Details            ;
++----------------+-------+----------+--------------------+
+; j_immediate[0] ; Input ; Info     ; Stuck at GND       ;
++----------------+-------+----------+--------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; arriav_ff             ; 1413                        ;
+;     CLR               ; 9                           ;
+;     ENA               ; 124                         ;
+;     ENA SCLR          ; 1075                        ;
+;     ENA SCLR SLD      ; 51                          ;
+;     SCLR              ; 2                           ;
+;     plain             ; 152                         ;
+; arriav_io_obuf        ; 10                          ;
+; arriav_lcell_comb     ; 4852                        ;
+;     arith             ; 233                         ;
+;         1 data inputs ; 61                          ;
+;         2 data inputs ; 43                          ;
+;         3 data inputs ; 33                          ;
+;         4 data inputs ; 64                          ;
+;         5 data inputs ; 32                          ;
+;     extend            ; 56                          ;
+;         7 data inputs ; 56                          ;
+;     normal            ; 4563                        ;
+;         2 data inputs ; 478                         ;
+;         3 data inputs ; 500                         ;
+;         4 data inputs ; 651                         ;
+;         5 data inputs ; 1032                        ;
+;         6 data inputs ; 1902                        ;
+; boundary_port         ; 20                          ;
+;                       ;                             ;
+; Max LUT depth         ; 17.00                       ;
+; Average LUT depth     ; 10.94                       ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:42     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
+    Info: Processing started: Fri Dec  5 17:14:24 2025
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off CiscV -c CiscV_top
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
+Info (12021): Found 4 design units, including 2 entities, in source file CiscV.vhdl
+    Info (12022): Found design unit 1: CiscV_0-program File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV.vhdl Line: 63
+    Info (12022): Found design unit 2: CiscV-program File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV.vhdl Line: 2956
+    Info (12023): Found entity 1: CiscV_0 File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV.vhdl Line: 9
+    Info (12023): Found entity 2: CiscV File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV.vhdl Line: 2944
+Info (12021): Found 4 design units, including 1 entities, in source file program_package.vhdl
+    Info (12022): Found design unit 1: memory-program File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/program_package.vhdl Line: 14
+    Info (12022): Found design unit 2: program_package File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/program_package.vhdl Line: 44
+    Info (12022): Found design unit 3: program_package-body File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/program_package.vhdl Line: 73
+    Info (12023): Found entity 1: memory File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/program_package.vhdl Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file clock_divider.vhd
+    Info (12022): Found design unit 1: clock_divider-rtl File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/clock_divider.vhd Line: 13
+    Info (12023): Found entity 1: clock_divider File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/clock_divider.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file CiscV_top.vhd
+    Info (12022): Found design unit 1: CiscV_top-structural File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV_top.vhd Line: 22
+    Info (12023): Found entity 1: CiscV_top File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV_top.vhd Line: 6
+Info (12127): Elaborating entity "CiscV_top" for the top level hierarchy
+Info (12128): Elaborating entity "clock_divider" for hierarchy "clock_divider:clk_div" File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV_top.vhd Line: 86
+Info (12128): Elaborating entity "CiscV" for hierarchy "CiscV:processor" File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV_top.vhd Line: 96
+Warning (10631): VHDL Process Statement warning at CiscV.vhdl(3101): inferring latch(es) for signal or variable "clk_out", which holds its previous value in one or more paths through the process File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV.vhdl Line: 3101
+Warning (10492): VHDL Process Statement warning at CiscV.vhdl(3195): signal "rs_sel" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV.vhdl Line: 3195
+Warning (10492): VHDL Process Statement warning at CiscV.vhdl(3196): signal "regs" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV.vhdl Line: 3196
+Warning (10492): VHDL Process Statement warning at CiscV.vhdl(3200): signal "rs_sel" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV.vhdl Line: 3200
+Warning (10492): VHDL Process Statement warning at CiscV.vhdl(3201): signal "regs" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV.vhdl Line: 3201
+Warning (10492): VHDL Process Statement warning at CiscV.vhdl(3205): signal "store_enable" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV.vhdl Line: 3205
+Warning (10492): VHDL Process Statement warning at CiscV.vhdl(3207): signal "regs" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV.vhdl Line: 3207
+Warning (10492): VHDL Process Statement warning at CiscV.vhdl(3210): signal "load_byte_enable" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV.vhdl Line: 3210
+Warning (10492): VHDL Process Statement warning at CiscV.vhdl(3211): signal "regs" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV.vhdl Line: 3211
+Warning (10492): VHDL Process Statement warning at CiscV.vhdl(3213): signal "load_byte_data" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV.vhdl Line: 3213
+Warning (10492): VHDL Process Statement warning at CiscV.vhdl(3215): signal "load_half_enable" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV.vhdl Line: 3215
+Warning (10492): VHDL Process Statement warning at CiscV.vhdl(3216): signal "regs" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV.vhdl Line: 3216
+Warning (10492): VHDL Process Statement warning at CiscV.vhdl(3218): signal "load_half_data" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV.vhdl Line: 3218
+Warning (10631): VHDL Process Statement warning at CiscV.vhdl(3193): inferring latch(es) for signal or variable "store_data", which holds its previous value in one or more paths through the process File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV.vhdl Line: 3193
+Warning (10631): VHDL Process Statement warning at CiscV.vhdl(3193): inferring latch(es) for signal or variable "load_byte_data", which holds its previous value in one or more paths through the process File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV.vhdl Line: 3193
+Warning (10631): VHDL Process Statement warning at CiscV.vhdl(3193): inferring latch(es) for signal or variable "load_half_data", which holds its previous value in one or more paths through the process File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "load_half_data[0]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "load_half_data[1]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "load_half_data[2]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "load_half_data[3]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "load_half_data[4]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "load_half_data[5]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "load_half_data[6]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "load_half_data[7]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "load_half_data[8]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "load_half_data[9]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "load_half_data[10]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "load_half_data[11]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "load_half_data[12]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "load_half_data[13]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "load_half_data[14]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "load_half_data[15]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "load_byte_data[0]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "load_byte_data[1]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "load_byte_data[2]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "load_byte_data[3]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "load_byte_data[4]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "load_byte_data[5]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "load_byte_data[6]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "load_byte_data[7]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "load_byte_data[8]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "load_byte_data[9]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "load_byte_data[10]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "load_byte_data[11]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "load_byte_data[12]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "load_byte_data[13]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "load_byte_data[14]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "load_byte_data[15]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "load_byte_data[16]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "load_byte_data[17]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "load_byte_data[18]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "load_byte_data[19]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "load_byte_data[20]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "load_byte_data[21]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "load_byte_data[22]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "load_byte_data[23]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "store_data[0]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "store_data[1]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "store_data[2]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "store_data[3]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "store_data[4]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "store_data[5]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "store_data[6]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "store_data[7]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "store_data[8]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "store_data[9]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "store_data[10]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "store_data[11]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "store_data[12]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "store_data[13]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "store_data[14]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "store_data[15]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "store_data[16]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "store_data[17]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "store_data[18]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "store_data[19]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "store_data[20]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "store_data[21]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "store_data[22]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "store_data[23]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "store_data[24]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "store_data[25]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "store_data[26]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "store_data[27]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "store_data[28]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "store_data[29]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "store_data[30]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "store_data[31]" at CiscV.vhdl(3193) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV.vhdl Line: 3193
+Info (10041): Inferred latch for "clk_out[0]" at CiscV.vhdl(3101) File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV.vhdl Line: 3101
+Info (12128): Elaborating entity "CiscV_0" for hierarchy "CiscV:processor|CiscV_0:U0" File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV.vhdl Line: 3411
+Warning (14026): LATCH primitive "CiscV:processor|clk_out[0]" is permanently enabled File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV.vhdl Line: 3101
+Warning (13034): The following nodes have both tri-state and non-tri-state drivers
+    Warning (13035): Inserted always-enabled tri-state buffer between "GPIO_0[7]" and its non-tri-state driver. File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV_top.vhd Line: 15
+    Warning (13035): Inserted always-enabled tri-state buffer between "GPIO_0[8]" and its non-tri-state driver. File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV_top.vhd Line: 15
+Warning (13039): The following bidirectional pins have no drivers
+    Warning (13040): bidirectional pin "GPIO_0[2]" has no driver File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV_top.vhd Line: 15
+    Warning (13040): bidirectional pin "GPIO_0[1]" has no driver File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV_top.vhd Line: 15
+Warning (13034): The following nodes have both tri-state and non-tri-state drivers
+    Warning (13035): Inserted always-enabled tri-state buffer between "GPIO_0[3]" and its non-tri-state driver. File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV_top.vhd Line: 15
+    Warning (13035): Inserted always-enabled tri-state buffer between "GPIO_0[4]" and its non-tri-state driver. File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV_top.vhd Line: 15
+    Warning (13035): Inserted always-enabled tri-state buffer between "GPIO_0[5]" and its non-tri-state driver. File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV_top.vhd Line: 15
+    Warning (13035): Inserted always-enabled tri-state buffer between "GPIO_0[6]" and its non-tri-state driver. File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV_top.vhd Line: 15
+Warning (13039): The following bidirectional pins have no drivers
+    Warning (13040): bidirectional pin "GPIO_0[0]" has no driver File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV_top.vhd Line: 15
+Warning (13034): The following nodes have both tri-state and non-tri-state drivers
+    Warning (13035): Inserted always-enabled tri-state buffer between "GPIO_0[9]" and its non-tri-state driver. File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV_top.vhd Line: 15
+Warning (13009): TRI or OPNDRN buffers permanently enabled
+    Warning (13010): Node "GPIO_0[9]~synth" File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV_top.vhd Line: 15
+    Warning (13010): Node "GPIO_0[7]~synth" File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV_top.vhd Line: 15
+    Warning (13010): Node "GPIO_0[8]~synth" File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV_top.vhd Line: 15
+    Warning (13010): Node "GPIO_0[3]~synth" File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV_top.vhd Line: 15
+    Warning (13010): Node "GPIO_0[4]~synth" File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV_top.vhd Line: 15
+    Warning (13010): Node "GPIO_0[5]~synth" File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV_top.vhd Line: 15
+    Warning (13010): Node "GPIO_0[6]~synth" File: /home/lorenzo-parata/Lorenzo/KTH/TB-Sol-for-Venus/IL2232/Final System/CISC_V/FPGA1_CISC_V/CiscV_top.vhd Line: 15
+Info (286030): Timing-Driven Synthesis is running
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 6018 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 2 input pins
+    Info (21059): Implemented 8 output pins
+    Info (21060): Implemented 10 bidirectional pins
+    Info (21061): Implemented 5998 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 41 warnings
+    Info: Peak virtual memory: 666 megabytes
+    Info: Processing ended: Fri Dec  5 17:15:18 2025
+    Info: Elapsed time: 00:00:54
+    Info: Total CPU time (on all processors): 00:01:27
+
+
