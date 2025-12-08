@@ -33,51 +33,55 @@ KTH Royal Institute of Technology, Stockholm, Sweden\\
 \maketitle
 
 \section*{Abstract}
-High-temperature electronics operating beyond 300°C are essential for applications in extreme environments such as deep-earth exploration, aerospace systems, and Venus surface missions where ambient temperatures exceed 450°C.  
-This project addresses a key challenge in validating high-temperature digital processors by developing and testing Field-Programmable Gate Array (FPGA) prototypes of two processor architectures based on the RISC-V instruction set.  
-The final processor will target KTH's Silicon-on-Insulator (SoI) technology, capable of operation up to 380°C or higher.  
+{
+\bfseries
+High-temperature electronics operating beyond 300°C are essential for applications in extreme environments, such as deep-earth exploration, aerospace systems, and Venus surface missions where ambient temperatures exceed 450°C. 
+A key challenge in validating high-temperature digital processors is addressed here through the development and testing of Field-Programmable Gate Array (FPGA) prototypes of two processor architectures based on the RISC-V instruction set. 
+Targeting KTH's Silicon-on-Insulator (SoI) technology, capable of operation up to 380°C, the implementation and verification focus on two processor variants: a parallel RISC-V model with a bit-serial cache interface and a CISC-V model with a 2-bit serial interface. 
+These designs mitigate the specific constraint of having only 12 available probe connections in high-temperature test environments. 
+Furthermore, the adoption of the open-source RISC-V instruction set architecture ensures freedom in hardware and software development while avoiding proprietary restrictions. 
+Demonstrating these processor architectures via FPGA prototyping serves to validate high-temperature SoI technology for digital computing and advances research in extreme-environment electronics.
+}
 
-The work focuses on implementing and verifying two processor variants: a parallel RISC-V model with a bit-serial cache interface and a CISC-V model with a 2-bit serial interface.  
-These designs overcome the limitation of only 12 available probe connections in high-temperature test environments.  
-By adopting the open-source RISC-V instruction set architecture, this project ensures freedom in hardware and software development while avoiding proprietary restrictions.  
-
-Demonstrating these processor architectures in FPGA prototypes will validate KTH's high-temperature SoI technology for digital computing and advance research in extreme-environment electronics.
-
-\section*{Keywords}
-RISC-V, CISC, FPGA, bit-serial processor communication, hardware verification
+\vspace{1em} % 增加一点垂直间距
+\noindent \textbf{Keywords:} \textbf{RISC-V, CISC, FPGA, bit-serial processor communication, hardware verification}
 
 % Sezioni principali
 \section{Introduction}
 \subsection{Background and Motivation}
-Conventional silicon-based electronics fail at temperatures exceeding 150°C due to increased leakage currents and thermal stress. However, applications such as geothermal systems, aerospace propulsion monitoring, and Venus surface exploration require digital computation at temperatures approaching 470°C. KTH's Electronic Systems department has developed Silicon-on-Insulator (SoI) technology capable of operating at temperatures exceeding 380°C, with theoretical limits approaching 1000°C, enabling complex digital systems in extreme environments previously inaccessible to conventional silicon.
+Conventional silicon-based electronics fail at temperatures exceeding 150°C due to increased leakage currents and thermal stress. However, applications such as geothermal systems, aerospace propulsion monitoring, and Venus surface exploration require digital computation at temperatures approaching 470°C. KTH's Electronic Systems department has developed Silicon-on-Insulator (SoI) technology capable of operating at temperatures exceeding 380°C, enabling complex digital systems in extreme environments previously inaccessible to conventional silicon.
 \subsection{The 12-Pad Constraint Challenge}
 While SoI technology can withstand extreme temperatures, measurement equipment deteriorates above 400°C. KTH's test station employs 12 high-temperature probes, imposing a strict 12-pad limitation on circuits under test. Traditional processors require dozens or hundreds of I/O connections, creating a fundamental incompatibility between high-temperature semiconductor capabilities and practical verification methods. This necessitates innovative architectural solutions that minimize pin count while maintaining processor functionality.
 \subsection{RISC-V and Bit-Serial Architecture}
 The open-source RISC-V instruction set architecture (ISA) enables unrestricted processor development without licensing constraints. KTH researchers developed two processor variants based on the RISC-V ISA to address the pad limitation: (1) a parallel RISC-V core with a bit-serial cache interface, and (2) a bit-serial implementation of the RISC-V ISA with a 2-bit serial interface.
-This second variant is referred to in the project as "CISC-V" because its execution model differs significantly from a standard parallel core; notably, the bit-serial approach allows instruction execution to begin as bits arrive sequentially, eliminating pipeline stalls typically associated with serial interfaces. These architectures serialize data transmission, dramatically reducing pin count. The implementations use VHDL for the core logic and ProGram for the bit-serial components.
+This second variant is referred to in the project as "CISC-V" because its execution model differs significantly from a standard parallel core; notably, the bit-serial approach allows instruction execution to begin as bits arrive sequentially, eliminating pipeline stalls typically associated with serial interfaces. These architectures serialize data transmission, dramatically reducing pin count. The implementations use VHDL for the core logic and ProGram for the bit-serial components. ProGram (short for Protocol Grammar) is a grammar-based specification language and hardware synthesis method developed by Prof.Johnny Öberg. It is designed specifically for specifying and implementing data communication protocols, interfaces, and control-dominated functionality. Unlike traditional hardware description languages, ProGram allows designers to describe protocols using production rules (similar to BNF notation) in a way that is independent of physical implementation details, such as specific port widths.
 \subsection{Project Objectives and Significance}
 While previous work synthesized these architectures, FPGA prototyping remained incomplete. This project implements and validates FPGA prototypes of both processor variants, and develops an advanced testbench on a separate FPGA for system-level verification. The dual-FPGA approach provides realistic validation of inter-chip communication before silicon fabrication. Successfully demonstrating these architectures will validate KTH's high-temperature SoI technology for digital computing and establish reusable verification methodologies applicable to any pin-limited or thermally-constrained processor development.
 
 \section{Related Work}
-This section reviews research relevant to developing a testbench for two processor architectures based on the RISC-V instruction set targeting Venus surface applications. We examine RISC-V architectures, high-temperature electronics, FPGA implementation methods, and verification frameworks. These foundations inform the design of a testbench capable of validating processor functionality under extreme environmental constraints.
 
 \subsection{RISC-V}
-Kissich and Baunach \cite{kissich2024fazyrv} developed FazyRV , a minimal-area open-source RV32I RISC-V core targeting IoT and low-workload applications, addressing the problem that 32-bit RISC-V processor cores reach a boundary on their minimal size. Their goal was to minimize area demand while fulfilling performance requirements and close the gap between prevalent 32-bit and 1-bit-serial RISC-V cores.\\
-Wei \textit{et al.} \cite{cui2023riscv} created a comprehensive survey of RISC-V instruction set architecture extensions because while RISC-V is popular for embedded processors , there is still a gap between RISC-V's capabilities and the requirements of various emerging computing scenarios like artificial intelligence and cloud computing.\\
-Gautschi \textit{et al.} \cite{gautschi2017slow} conducted a comprehensive comparison of ultra-low-power RISC-V cores for Internet-of-Things applications , analyzing the trade-offs between performance and energy efficiency in resource-constrained environments. Their work provides valuable insights into processor design considerations for applications with tight area and power constraints.
+Kissich and Baunach \cite{kissich2024fazyrv} developed FazyRV, a minimal-area open-source RV32I RISC-V core targeting IoT and low-workload applications, addressing the problem that 32-bit RISC-V processor cores reach a boundary on their minimal size. Their goal was to minimize area demand while fulfilling performance requirements and close the gap between prevalent 32-bit and 1-bit-serial RISC-V cores.
+
+Wei \textit{et al.} \cite{cui2023riscv} created a comprehensive survey of RISC-V instruction set architecture extensions because while RISC-V is popular for embedded processors, there is still a gap between RISC-V's capabilities and the requirements of various emerging computing scenarios like artificial intelligence and cloud computing.
+
+Gautschi \textit{et al.} \cite{gautschi2017slow} conducted a comprehensive comparison of ultra-low-power RISC-V cores for Internet-of-Things applications, analyzing the trade-offs between performance and energy efficiency in resource-constrained environments. Their work provides valuable insights into processor design considerations for applications with tight area and power constraints.
 
 \subsection{Processors for Venus}
-Current research on high-temperature electronics for Venus has shown that Silicon Carbide Integrated Circuits (SiC ICs) can sustain operation for over a year at 500 °C and for months in simulated Venus conditions, supporting sensors and simple microprocessors. This demonstrates the feasibility of long-duration surface missions and motivates concepts like LLISSE targeting low-power seismic monitoring \cite{kim2022sic}. \\
-At the processor level, studies of SiC-based computing infrastructures reveal that current prototypes achieve significantly lower throughput than space-proven silicon systems, yet provide guidelines at the microarchitecture and ISA levels for developing processors able to operate under Venus's extreme environment \cite{kremic2021temperature}.\\
-Pradhan \textit{et al.} \cite{pradhan2024materials} provided a comprehensive review of materials for high-temperature digital electronics , highlighting the challenges and solutions for electronic systems operating at temperatures as high as 500°C and beyond. Their work emphasizes the critical importance of developing new material solutions beyond conventional silicon-based devices for applications including space exploration.
+Current research on high-temperature electronics for Venus has shown that Silicon Carbide Integrated Circuits (SiC ICs) can sustain operation for over a year at 500 °C and for months in simulated Venus conditions, supporting sensors and simple microprocessors. This demonstrates the feasibility of long-duration surface missions and motivates concepts like LLISSE targeting low-power seismic monitoring \cite{kim2022sic}. 
+
+At the processor level, studies of SiC-based computing infrastructures reveal that current prototypes achieve significantly lower throughput than space-proven silicon systems, yet provide guidelines at the microarchitecture and ISA levels for developing processors able to operate under Venus's extreme environment \cite{kremic2021temperature}.
+
+Pradhan \textit{et al.} \cite{pradhan2024materials} provided a comprehensive review of materials for high-temperature digital electronics, highlighting the challenges and solutions for electronic systems operating at temperatures as high as 500°C and beyond. Their work emphasizes the critical importance of developing new material solutions beyond conventional silicon-based devices for applications including space exploration.
 
 \subsection{FPGA}
 One verification strategy is co-emulation, where the RTL design on the FPGA is run in parallel with a trusted software model, such as the Spike simulator \cite{moreno2023fpga}, on a host PC. This allows for high-speed verification by comparing the core's architectural state against the simulator in real-time. Furthermore, using FPGAs with RISC-V is advantageous as it allows for optimized hardware, where the FPGA is configured with only the peripherals required for a specific application \cite{efinix2023riscv}.
 
 \subsection{FPGA-Based Verification Frameworks}
 
-Kim \cite{kim2019fpga} demonstrated the importance of FPGA-based acceleration for RTL evaluation by introducing automated flows that generate cycle-accurate simulators directly from RTL. This approach reduces the engineering effort compared to earlier manual FPGA frameworks and enables both faster and more reliable pre-silicon verification. \\
-Building on this direction, Qin \textit{et al.} \cite{qin2025feriver} proposed FERIVer, an FPGA-assisted framework for verifying RISC-V processors. Their method exploits the heterogeneous architecture of  System-on-Chip (SoC) FPGAs, running an instruction set simulator on the processing system in parallel with the RTL core on the programmable logic. By cross-checking execution states, FERIVer achieves significant speedups over traditional software simulators while maintaining accuracy. \\
+Kim \cite{kim2019fpga} demonstrated the importance of FPGA-based acceleration for RTL evaluation by introducing automated flows that generate cycle-accurate simulators directly from RTL. This approach reduces the engineering effort compared to earlier manual FPGA frameworks and enables both faster and more reliable pre-silicon verification. 
+
+Building on this direction, Qin \textit{et al.} \cite{qin2025feriver} proposed FERIVer, an FPGA-assisted framework for verifying RISC-V processors. Their method exploits the heterogeneous architecture of  System-on-Chip (SoC) FPGAs, running an instruction set simulator on the processing system in parallel with the RTL core on the programmable logic. By cross-checking execution states, FERIVer achieves significant speedups over traditional software simulators while maintaining accuracy. 
 Together, these works highlight how FPGA-based infrastructures provide an effective foundation for validating processor designs before costly SoC fabrication.
 
 
@@ -91,14 +95,14 @@ The project is constrained by both hardware and environmental limitations. The t
     \label{fig:dual_fpga_system}
 \end{figure*}
 
-The design goals are:\\
+The design goals are:
 \begin{itemize}
     \item Maintain compatibility with RISC-V base ISA (RV32I).
     \item Ensure modularity between processor and testbench components.
     \item Enable automated test execution and result logging.
     \item Achieve operational stability for extended FPGA runs to emulate continuous workload.
 \end{itemize}
-Hardware synthesis is performed using vendor FPGA tools and verified using ModelSim/QuestaSim. The ProGram compiler is used for the bit-serial CISC-V generation. Documentation, risk tracking, and test automation are maintained via version control and scripted pipelines.\\
+Hardware synthesis is performed using vendor FPGA tools and verified using ModelSim/QuestaSim. The ProGram compiler is used for the bit-serial CISC-V generation. Documentation, risk tracking, and test automation are maintained via version control and scripted pipelines.
 
 \section{Architecture}
 The overall architecture is divided into two major subsystems connected through a dedicated communication interface:
@@ -116,49 +120,56 @@ The overall architecture is divided into two major subsystems connected through 
     \item Logs execution traces for analysis and regression verification.
 \end{itemize}
 \end{itemize}
-The communication between the two FPGAs uses a synchronous serial protocol, minimizing the number of required pads and simplifying PCB connectivity.The synchronous serial protocol used for inter-FPGA communication is a custom lightweight interface inspired by standard SPI signaling. It operates with a single shared clock and separate bidirectional data lines to minimize skew.Simple parity-based error detection is implemented to ensure reliable data transfer between the testbench and processor. In the case of transmission errors, the testbench automatically reissues the command frame.This design balances simplicity and robustness, making it well suited for verification under the constrained I/O and timing conditions expected in future high-temperature hardware implementations.Each subsystem is independently testable, allowing early functional verification before full integration. The design adopts incremental hardware-in-the-loop testing and leverages a modular top-level hierarchy for flexible reconfiguration.
+The communication between the two FPGAs uses a synchronous serial protocol, minimizing the number of required pads and simplifying PCB connectivity.The synchronous serial protocol used for inter-FPGA communication is a custom lightweight interface inspired by standard SPI signaling. It operates with a single shared clock and separate bidirectional data lines to minimize skew. Simple parity-based error detection is implemented to ensure reliable data transfer between the testbench and processor. In the case of transmission errors, the testbench automatically reissues the command frame. This design balances simplicity and robustness, making it well suited for verification under the constrained I/O and timing conditions expected in future high-temperature hardware implementations. Each subsystem is independently testable, allowing early functional verification before full integration. The design adopts incremental hardware-in-the-loop testing and leverages a modular top-level hierarchy for flexible reconfiguration.
 
 \section{Experiments}
 A structured experimental campaign was conducted to validate the system functionality. Each major milestone corresponded to a separate experiment phase:
 \begin{itemize}
-  \item \textbf{Core-A validation} : The parallel RISC-V processor was synthesized and tested with simple benchmark programs (e.g., arithmetic, loop, and branching tests) using a single FPGA. Functional correctness was verified via waveform comparison and on-board UART output.
-  \item \textbf{Testbench bring-up} : The second FPGA was programmed with the testbench, initially tested in isolation through internal loopback and signal toggling to validate timing and I/O drivers.
-  \item \textbf{Dual-FPGA integration} : The communication link between the two FPGAs was established, allowing the processor to execute test programs under the control of the testbench. Signal integrity, synchronization, and latency were evaluated through test logs and signal probing.
-  \item \textbf{Bit-serial CISC-V verification} : The ProGram-generated core was synthesized, and functional tests were executed under the same testbench configuration. Comparative measurements against the parallel RISC-V implementation were made to observe performance and throughput differences.
-  \item \textbf{Regression and stability testing} : Automated test scripts executed repeated workloads to ensure reproducibility and detect intermittent synchronization or logic issues.
+  \item \textbf{Core-A validation}: The parallel RISC-V processor was synthesized and tested with simple benchmark programs (e.g., arithmetic, loop, and branching tests) using a single FPGA. Functional correctness was verified via waveform comparison and on-board UART output.
+  \item \textbf{Testbench bring-up}: The second FPGA was programmed with the testbench, initially tested in isolation through internal loopback and signal toggling to validate timing and I/O drivers.
+  \item \textbf{Dual-FPGA integration}: The communication link between the two FPGAs was established, allowing the processor to execute test programs under the control of the testbench. Signal integrity, synchronization, and latency were evaluated through test logs and signal probing.
+  \item \textbf{Bit-serial CISC-V verification}: The ProGram-generated core was synthesized, and functional tests were executed under the same testbench configuration. Comparative measurements against the parallel RISC-V implementation were made to observe performance and throughput differences.
+  \item \textbf{Regression and stability testing}: Automated test scripts executed repeated workloads to ensure reproducibility and detect intermittent synchronization or logic issues.
 \end{itemize}
 
 \section{Results}
 The developed FPGA-based testbench successfully validated both processor variants in real hardware experiments.  
 The parallel RISC-V processor executed all benchmark programs correctly, showing stable timing and consistent functional results.  
-The bit-serial CISC-V processor achieved equivalent functional correctness but exhibited reduced execution throughput, confirming the expected trade-off between performance and hardware resource utilization.\\
-Under the same clock frequency, the parallel RISC-V processor achieves roughly 32× higher execution speed than the bit-serial CISC-V, since the former executes 32-bit operations in a single clock cycle, while the latter processes data bit by bit. This difference is reflected in the cycles per instruction (CPI), where the CISC-V design exhibits an order of magnitude higher CPI.In terms of area, the Quartus-II synthesis report indicates that the CISC-V core requires significantly fewer logic elements, flip-flops, and memory blocks compared to the parallel RISC-V core, confirming its superior area and power efficiency.These results illustrate the classic performance–area trade-off: the CISC-V design minimizes hardware cost at the expense of speed, whereas the RISC-V design maximizes throughput with higher logic utilization.\\
-In the dual-FPGA integration, reliable data transmission and synchronization were achieved between the processor and the testbench.  
-No critical communication errors or deadlocks were observed, and cycle-accurate timing was verified through logged traces.\\  
-Repeated experiments confirmed the stability and reproducibility of the platform.Across multiple builds and reconfigurations, the same functional results were obtained, validating the robustness of the hardware-in-the-loop approach.Stress tests further demonstrated that the system remained operational under extended workloads without functional degradation.  
+The bit-serial CISC-V processor achieved equivalent functional correctness but exhibited reduced execution throughput, confirming the expected trade-off between performance and hardware resource utilization.
+
+Under the same clock frequency, the parallel RISC-V processor achieves roughly 32× higher execution speed than the bit-serial CISC-V, since the former executes 32-bit operations in a single clock cycle, while the latter processes data bit by bit. This difference is reflected in the cycles per instruction (CPI), where the CISC-V design exhibits an order of magnitude higher CPI. In terms of area, the Quartus-II synthesis report indicates that the CISC-V core requires significantly fewer logic elements, flip-flops, and memory blocks compared to the parallel RISC-V core, confirming its superior area and power efficiency. These results illustrate the classic performance–area trade-off: the CISC-V design minimizes hardware cost at the expense of speed, whereas the RISC-V design maximizes throughput with higher logic utilization.
+
+In the dual-FPGA integration, reliable data transmission and synchronization were achieved between the processor and the testbench. No critical communication errors or deadlocks were observed, and cycle-accurate timing was verified through logged traces.
+
+Repeated experiments confirmed the stability and reproducibility of the platform. Across multiple builds and reconfigurations, the same functional results were obtained, validating the robustness of the hardware-in-the-loop approach. Stress tests further demonstrated that the system remained operational under extended workloads without functional degradation.  
+
 These results indicate that the testbench framework provides a dependable basis for evaluating future RISC-V cores or SoC modules prior to fabrication.
 
 \section{Discussion}
 The obtained results confirm that the proposed FPGA-based framework can effectively validate both parallel and bit-serial processor architectures under strict hardware constraints.  
 However, some limitations remain. The bit-serial CISC-V implementation, while resource-efficient, showed lower performance compared to the parallel variant.  
-Future iterations should investigate optimization techniques for the serial datapath and communication interface to improve throughput.  \\
-Additionally, while the current tests focused on functional correctness, future work should include performance profiling, energy estimation, and thermal resilience analysis to reflect real deployment conditions.  \\
+Future iterations should investigate optimization techniques for the serial datapath and communication interface to improve throughput.  
+
+Additionally, while the current tests focused on functional correctness, future work should include performance profiling, energy estimation, and thermal resilience analysis to reflect real deployment conditions.  
+
 Overall, the discussion highlights that although the methodology proved robust and flexible, further refinement is needed to reach the desired performance level for high-temperature applications.
 
-\noindent FPGA-based prototyping reduces waste from repeated ASIC fabrication cycles, thereby making the verification process sustainable. RISC-V being open source enhances equality by eliminating barriers cause by private IP. This increases the number of people who can contribute towards processor research. Thorough pre-silicon validation ensures system reliability before costly deployments which maximizes scientific return while minimizing mission risk. Detailed sustainability, equality, and ethics analysis is provided in the Appendix.
-FPGA-based prototyping reduces waste from repeated ASIC fabrication cycles, thereby making the verification process sustainable. RISC-V being open source enhances equality by eliminating barriers cause by private IP. This increases the number of people who can contribute towards processor research. Thorough pre-silicon validation ensures system reliability before costly deployments which maximizes scientific return while minimizing mission risk. Detailed sustainability, equality, and ethics analysis is provided in the Appendix.
 
 \section{Conclusion}
-This project established a complete verification framework for two processor architectures based on the RISC-V instruction set intended for high-temperature Venus surface applications.\\
+This project established a complete verification framework for two processor architectures based on the RISC-V instruction set intended for high-temperature Venus surface application
+
 Through systematic FPGA prototyping and functional testing under standard laboratory conditions, it confirmed the viability of simplified, low-resource architectures operating under strict I/O and design constraints representative of SoI and SiC environments. It is important to note that the current work focuses on initial functional verification of the RTL designs at room temperature using commercial COTS FPGAs, and does not yet address the actual thermal and material challenges of Venus surface conditions.
-The research contributes by demonstrating that bit-serial RISC-V architectures can maintain functional reliability when verified using a modular hardware testbench in a controlled environment. The dual-FPGA hardware-in-the-loop validation approach efficiently bridges the gap between simulation and physical testing, providing a foundation for future high-temperature characterization.\\
-The project also provides a reusable verification methodology for future high-temperature processor research, with the understanding that additional thermal and radiation testing will be required to fully validate designs for extreme environments.\\
+The research contributes by demonstrating that bit-serial RISC-V architectures can maintain functional reliability when verified using a modular hardware testbench in a controlled environment. The dual-FPGA hardware-in-the-loop validation approach efficiently bridges the gap between simulation and physical testing, providing a foundation for future high-temperature characterization.
+
+The project also provides a reusable verification methodology for future high-temperature processor research, with the understanding that additional thermal and radiation testing will be required to fully validate designs for extreme environments.
+
 Once validated functionally at room temperature, the same testbench can be adapted for post-fabrication silicon evaluation under actual high-temperature conditions, ensuring continuity across development phases.
 Future work will focus on incorporating thermal-aware modeling, SoI-level implementation, and co-emulation with instruction-set simulators, advancing the development of resilient computing systems for extreme planetary environments. This includes rigorous testing with high-temperature SoI/SiC fabricated chips to validate performance and reliability under actual Venus-like thermal conditions.
 
 \bibliographystyle{ieeetr}
 \bibliography{references}
 
+\clearpage
 \appendix
 \section*{Appendix}
 
