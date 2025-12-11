@@ -1,0 +1,170 @@
+\documentclass[10pt]{article}
+
+% Minimal packages for fast compile
+\usepackage{times}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[a4paper,margin=2.5cm]{geometry}
+\usepackage{titlesec}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage[section]{placeins} % Pour \FloatBarrier
+\usepackage{setspace}
+\usepackage{hyperref}   % Essential for clickable Table of Contents and links
+\usepackage{amsmath}    % For math
+\usepackage{amssymb}    % For math symbols
+
+% Hyperlink setup
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    citecolor=blue,
+}
+
+% Section title styles
+\titleformat{\section}{\bfseries\fontsize{12}{14}\selectfont}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\bfseries\fontsize{11}{13}\selectfont}{\thesubsection.}{0.5em}{}
+
+% Custom title page
+\begin{document}
+
+\begin{titlepage}
+\centering
+\vspace*{2cm}
+\includegraphics[width=0.3\textwidth]{images/KTH_logo.png} % Assurez-vous que le chemin d'accès à l'image est correct.
+\vspace{1cm}
+
+{\Huge\bfseries Final Report - TB Sol for Venus\par}
+\vspace{2cm}
+
+\begin{flushleft}
+\textbf{Name of submission:} Final technical report\\[0.5em]
+\textbf{Group name:} Testbench for Bit-Serial RISC-V processor in SoI for Venus\\[0.5em]
+\textbf{Date:} 2026/01/06\\[0.5em]
+\textbf{Organization:} KTH\\[1.5em]
+\textbf{Authors:}\\[0.5em]
+\begin{center}
+\begin{tabular}{p{5cm}p{6cm}}
+\toprule
+\textbf{Name} & \textbf{Email} \\
+\midrule
+Chinmay Purandare & \texttt{chinmayp@kth.se} \\
+Lorenzo Parata & \texttt{parata@ug.kth.se} \\
+Chongnan Wang & \texttt{chongnan@kth.se} \\
+Xiaotian Jiang & \texttt{xjia@kth.se} \\
+Xinxin Qin & \texttt{xinxinq@kth.se} \\
+Paul Martin & \texttt{paulmart@kth.se} \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{1em}
+\end{flushleft}
+
+\vfill
+\begin{flushright}
+\textbf{Department of Electronics}\\
+KTH Royal Institute of Technology\\
+Stockholm, Sweden
+\end{flushright}
+\end{titlepage}
+
+\newpage
+\thispagestyle{empty} % Ensure no page number on the abstract page
+
+% ==========================================================
+% ABSTRACT
+% ==========================================================
+\section*{Abstract}
+\addcontentsline{toc}{section}{Abstract} % Add to Table of Contents without numbering
+
+\noindent
+
+\newpage
+
+% ==========================================================
+% TABLE OF CONTENTS
+% ==========================================================
+\tableofcontents
+\newpage
+
+\section*{Acronyms}
+\addcontentsline{toc}{section}{Acronyms}
+
+\begin{itemize}
+    \item \textbf{RISC-V} Reduced Instruction Set Computer - Five
+    \item \textbf{SoI} Silicon-on-Insulator
+    \item \textbf{TB} Testbench
+    \item \textbf{CPU} Central Processing Unit
+    \item \textbf{RAM} Random Access Memory
+    \item \textbf{FPGA} Field-Programmable Gate Array
+    \item \textbf{I/O} Input/Output
+    \item \textbf{Brisc} Bit-Serial RISC-V (Processor Name)
+    % Add more acronymes
+\end{itemize}
+
+\newpage
+
+\listoffigures
+\newpage
+
+\listoftables
+\newpage
+
+
+% ==========================================================
+% REPORT BODY
+% ==========================================================
+\section{Introduction}
+
+
+
+\FloatBarrier
+\section{Synthesis}
+
+
+\subsection{Synthesis Overview}
+
+\subsection{CPU Timing Analysis}
+
+\subsection{FPGA1 (CPU) Structure}
+
+
+\FloatBarrier 
+\section{Testbench}
+
+
+\subsection{FPGA2 (TB) Structure}
+
+\subsection{TB Serialization - Bit Serial Interface}
+
+
+
+\FloatBarrier
+\section{FPGA Communication} 
+
+
+
+\FloatBarrier
+\section{Conclusion}
+
+\subsection{Conclusion}
+
+\subsection{Future Work}
+
+
+% ==========================================================
+% REFERENCES 
+% ==========================================================
+\newpage
+\section{References}
+
+\begin{thebibliography}{99}
+    % [1] Author(s), "Title of work", Publisher/Journal, Year.
+    \bibitem{KTH} KTH Royal Institute of Technology, Official Website. \url{https://www.kth.se}
+    \bibitem{SoI} Smith, J. et al. "High-Temperature Characteristics of SoI CMOS for Venus Missions," Journal of Extreme Environment Electronics, 2024.
+\end{thebibliography}
+
+\end{document}
