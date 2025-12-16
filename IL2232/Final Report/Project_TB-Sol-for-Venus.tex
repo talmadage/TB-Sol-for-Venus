@@ -1,10 +1,10 @@
-\documentclass[10pt]{article}
+\documentclass[12pt]{article}
 
 % Minimal packages for fast compile
 \usepackage{times}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage[a4paper,margin=2.5cm]{geometry}
+\usepackage[a4paper,margin=3.5cm]{geometry}
 \usepackage{titlesec}
 \usepackage{graphicx}
 \usepackage{booktabs}
@@ -25,8 +25,8 @@
 }
 
 % Section title styles
-\titleformat{\section}{\bfseries\fontsize{12}{14}\selectfont}{\thesection.}{0.5em}{}
-\titleformat{\subsection}{\bfseries\fontsize{11}{13}\selectfont}{\thesubsection.}{0.5em}{}
+\titleformat{\section}{\bfseries\fontsize{14}{16}\selectfont}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\bfseries\fontsize{13}{15}\selectfont}{\thesubsection.}{0.5em}{}
 
 % Custom title page
 \begin{document}
@@ -119,6 +119,15 @@ Stockholm, Sweden
 % ==========================================================
 \section{Introduction}
 
+The development of electronic systems that resist extreme environments is a real challenge for the space industries. For instance, Venus has constraints on temperature and space radiation that are completely different than on earth. Indeed, conventional technologies are often unsuitable under such conditions, that is why we need alternative design and architectures. 
+
+It is in this context that we started our project. It continues previous work at KTH developing digital electronics for extreme high-temperature environments, specifically targeting Venus surface conditions. Last year's students successfully designed and synthesized two RISC-V processor variants—a parallel model in VHDL and a bit-serial CISC-V model in ProGram—both optimized for the 12-pad constraint of KTH's high-temperature test station. However, they did not complete FPGA implementation and testing.
+
+The current project addresses this gap by implementing and testing both processor models on FPGAs, developing an advanced testbench. To do this, we will split the system into two FPGAs: one hosting the processor core, and the other implementing the testbench and external control logic. This work uses KTH's experimental Silicon-on-Insulator technology, which can operate at temperatures approaching Venus's 480°C requirement, and leverages the open-source RISC-V architecture to avoid licensing constraints.
+
+A key aspect of the project is the use of a bit-serial communication interface between the processor and its environment. Thanks to these serialized data transfers, the number of I/O pins can be significantly reduced. It is indeed one of our critical constraints, the system is limited by a maximum of 12 pads for communication between the 2 FPGAs. The reason is test setups for high-temperature that have limited probe access. This architectural choice has direct implications on timing, synchronization, and verification, and therefore plays a central role in both the design and validation phases of the system.
+
+The report is structured as follows. The first part presents the synthesis results of the processor, including an overview of the synthesis flow, timing analysis, and the internal structure of the FPGA hosting the CPU. Indeed, the first task of our project was to verify both CPU programs, using Quartus and Modelsim. The second part describes the testbench architecture implemented on the second FPGA. We will see the testbench itself with the different tests we wrote but also the serialization mechanism used to interface with the processor. The third part details the communication scheme between the two FPGAs. This part will highlight the communication module and protocol but also the synchronization challenges especially with the clock gestion. We will finally conclude the report with a summary of the achieved results and outlines possible directions for future work.
 
 
 \FloatBarrier
@@ -126,6 +135,9 @@ Stockholm, Sweden
 
 
 \subsection{Synthesis Overview}
+
+\subsubsection{Modelsim Simulation}
+\subsubsection{Implementation on FPGA}
 
 \subsection{CPU Timing Analysis}
 
