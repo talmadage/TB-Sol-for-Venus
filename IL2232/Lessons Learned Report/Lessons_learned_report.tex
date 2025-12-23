@@ -1,0 +1,85 @@
+\documentclass[10pt]{article}
+
+% Minimal packages for fast compile
+\usepackage{times}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[a4paper,margin=2cm]{geometry}
+\usepackage{titlesec}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage[section]{placeins}
+\usepackage{setspace}
+
+% Section title styles
+\titleformat{\section}{\bfseries\fontsize{12}{14}\selectfont}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\bfseries\fontsize{11}{13}\selectfont}{\thesubsection.}{0.5em}{}
+
+% Custom title page
+\begin{document}
+
+\begin{titlepage}
+\centering
+\vspace*{2cm}
+\includegraphics[width=0.3\textwidth]{image.png}
+\vspace{1cm}
+
+{\Huge\bfseries Lessons Learned Report\par}
+\vspace{2cm}
+
+\begin{flushleft}
+\textbf{Name of submission:} Lessons Learned Report\\[0.5em]
+\textbf{Group name:} Testbench for Bit-Serial RISC-V processor in SoI for Venus\\[0.5em]
+\textbf{Date:} 2026/01/09\\[0.5em]
+\textbf{Organization:} KTH\\[1.5em]
+\textbf{Authors:}\\[0.5em]
+\begin{center}
+\begin{tabular}{p{5cm}p{6cm}}
+\toprule
+\textbf{Name} & \textbf{Email} \\
+\midrule
+Chinmay Purandare & \texttt{chinmayp@kth.se} \\
+Lorenzo Parata & \texttt{parata@ug.kth.se} \\
+Chongnan Wang & \texttt{chongnan@kth.se} \\
+Xiaotian Jiang & \texttt{xjia@kth.se} \\
+Xinxin Qin & \texttt{xinxinq@kth.se} \\
+Paul Martin & \texttt{paulmart@kth.se} \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{1em}
+\end{flushleft}
+
+\vfill
+\begin{flushright}
+\textbf{Department of Electronics}\\
+KTH Royal Institute of Technology\\
+Stockholm, Sweden
+\end{flushright}
+\end{titlepage}
+
+% Table of Contents on separate page
+\clearpage
+\tableofcontents
+\thispagestyle{plain}
+\clearpage
+
+% Start main content
+\section{General summary of the project} 
+
+This project focused on the implementation and verification of a parallel and a bit-serial version of a Risc-V. Both processor models need to be implemented on one FPGA and be tested by an advanced testbench that will be implemented on another FPGA. So the CPU and the testbench need to communicate with physical wire. This setup is intended to operate in the extreme environments of Venus, specifically under high-temperature. This work uses KTH's experimental Silicon-on-Insulator technology, which can operate at temperatures approaching Venus's 480°C requirement. However, this test station has a constraint, it has only 12 pads available. A serialisation and a communication protocol need to be set.
+
+The project was carried out by dividing the work into two largely sub-projects: the testbench development with test set and implementation, and the communication system with especially the serialisation and protocol of the data transfer. This separation enabled parallel development and allowed team members to focus on different topics and architecture with at the end better efficiency. A significant portion of the work involved learning and adapting to unfamiliar tools, technologies, and design constraints. It strongly influenced both the schedule and the working methods.
+
+
+\section{Fulfillment of your goals}
+
+
+\section{What we learned (main part)}
+
+
+\section{Conclusion}
+
+
+\end{document}
