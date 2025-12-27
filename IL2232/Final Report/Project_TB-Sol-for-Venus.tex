@@ -142,7 +142,44 @@ The report is structured as follows. The first part presents the synthesis resul
 \FloatBarrier
 \section{Synthesis}
 
-\subsection{Difference between RiscV, CiscV and BriscV}
+\subsection{RiscV}
+RISC-V is a novel instruction set architecture (ISA) originally designed to support computer architecture research and education, with the broader ambition of becoming a standard, free, and open architecture for industrial implementation. Unlike traditional commercial ISAs, which are proprietary and often restricted by intellectual property guardrails, RISC-V is completely open and freely available to both academia and industry. The primary design goals emphasize creating a real ISA suitable for direct native hardware implementation rather than just simulation, while avoiding "over-architecting" for specific microarchitectural styles or implementation technologies. This approach ensures efficiency across various designs, from ASICs to FPGAs, and supports highly parallel multicore or heterogeneous multiprocessor implementations.
+
+The motivation for developing a new ISA stemmed from the significant limitations observed in existing commercial and open architectures. Dominant commercial ISAs are often characterized by complexity resulting from outdated design decisions and a lack of inherent extensibility, which leads to convoluted instruction encodings as new features are added. Furthermore, the market segmentation of these ISAs dilutes the benefits of their software ecosystems, as they are often not well-supported across different domains, such as server versus mobile space. While existing open ISAs like OpenRISC were considered, they were ultimately rejected due to technical constraints—such as the use of condition codes and branch delay slots—that complicate high-performance implementations and limit future expansion.
+
+Structurally, RISC-V is defined as a modular architecture consisting of a mandatory base integer ISA and optional instruction-set extensions. The base integer ISA, available in 32-bit (RV32I) and 64-bit (RV64I) variants, is restricted to a minimal set of instructions sufficient to support compilers and operating systems, serving as a skeleton around which customized processors can be built. To facilitate general-purpose software development, the architecture defines standard extensions, including "M" for integer multiplication and division, "A" for atomic memory operations, and "F" and "D" for single- and double-precision floating-point arithmetic . The combination of the base integer ISA and these four standard extensions is designated as "G" (General).
+
+Regarding instruction encoding and memory organization, the base RISC-V ISA employs fixed-length 32-bit instructions that must be naturally aligned on 32-bit boundaries. However, the encoding scheme is flexible enough to support optional variable-length instructions, where instructions can be composed of multiple 16-bit parcels. This capability enables the standard compressed ISA extension ("C"), which reduces code size by offering 16-bit compressed versions of common instructions and relaxing alignment constraints. The architecture follows a load-store model, where arithmetic instructions operate only on CPU registers, and it utilizes a little-endian memory system by default.
+
+\subsubsection{ISA}
+The RISC-V instruction set architecture (ISA) is fundamentally structured around a mandatory Base Integer ISA, which must be present in any implementation, supplemented by a variety of optional extensions. While conceptually similar to early RISC processors, the base ISA is modernized by excluding branch delay slots and supporting optional variable-length instruction encodings. Designed as a minimal "skeleton," it is strictly restricted to the essential instructions required to support compilers, assemblers, linkers, and operating systems, thereby serving as a streamlined foundation upon which more complex, customized processors can be built.
+
+Depending on the width of the integer registers and the size of the user address space, the base ISA is primarily categorized into RV32I (32-bit) and RV64I (64-bit) variants, alongside the RV32E subset designed for small microcontrollers and the future 128-bit RV128I variant. To facilitate general-purpose software development, RISC-V defines a set of standard extensions: "M" for integer multiplication and division, "A" for atomic memory operations used in inter-processor synchronization, and "F" and "D" for single- and double-precision floating-point arithmetic, respectively. The combination of the base integer ISA ("I") with these four standard extensions ("MAFD") is designated as "G" (General), which currently serves as the default target for compiler toolchains.
+
+A distinguishing feature of the RISC-V architecture is its approach to stability. Unlike traditional architectures that typically update the entire ISA version as new instructions are added, RISC-V endeavors to keep the base ISA and standard extensions constant over time. New functionality is introduced by layering new optional extensions rather than redefining the base instructions. This design philosophy ensures that the base ISA remains a fully supported, standalone entity, allowing hardware designers to pursue deep specialization for energy efficiency or specific domains without compromising long-term software compatibility.
+
+\begin{figure*}[h!]
+    \centering
+    \includegraphics[width=1\linewidth]{images/riscvISA.png}
+\caption{\small RV32I instruction formats}
+    \label{fig:RISCV_ISA}
+\end{figure*}
+
+\newpage
+
+\subsection{Bit-Serial CISC-V}
+The Bit-Serial CISC-V architecture is an experimental processor design explicitly engineered to overcome the severe physical constraints of high-temperature electronic testing environments. As the target high-temperature test station (utilizing Venus/Sol technology) is limited to only 12 physical probes (pads) due to the failure of standard measurement equipment at temperatures exceeding $400^{\circ}\text{C}$, traditional parallel processor interfaces are rendered unfeasible. Consequently, this architecture adopts a bit-serial design paradigm intended to minimize I/O bandwidth requirements, thereby enabling reliable computation within an extremely restricted hardware interface.
+
+The core innovation of this architecture lies in its unique execution mechanism, distinguishing it as a "CISC-V" variant. Unlike standard bit-parallel cache solutions, which typically require the processor to stall while waiting for a full data word to be assembled, the Bit-Serial CISC-V employs a non-stalling, streaming processing strategy. It is capable of executing instructions directly as the data bits are being loaded, effectively "processing-while-loading." This characteristic allows the architecture to maximize processing efficiency under the constraints of serial communication, mitigating the latency penalties often associated with traditional parallel-to-serial data conversion.
+
+In terms of implementation, the model is described using the ProGram hardware description language, a choice that contrasts with the VHDL-based approach used for the project's parallel RISC-V model. To strictly adhere to the physical limitations of the test oven, the architecture features a specialized 2-bit serial interface, which successfully confines the design's footprint to the available 12 pads. Although the model has been successfully synthesized in previous research phases, the primary objective of the current work is to prototype the design on FPGA hardware and perform timing verification to validate its operational integrity in simulated high-temperature environments.
+
+\begin{figure*}[h!]
+    \centering
+    \includegraphics[width=1\linewidth]{images/bit_serial_demonstration.png}
+\caption{\small bit-serial CISC-V demonstartion }
+    \label{fig:bit_serial_demonstration}
+\end{figure*}
 
 \subsection{Synthesis Overview}
 
