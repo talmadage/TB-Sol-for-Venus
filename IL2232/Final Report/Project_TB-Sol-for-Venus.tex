@@ -102,6 +102,8 @@ Stockholm, Sweden
     \item \textbf{FPGA} Field-Programmable Gate Array
     \item \textbf{I/O} Input/Output
     \item \textbf{Brisc} Bit-Serial RISC-V (Processor Name)
+    \item \textbf{FSM} Finite State Machine
+    \item \textbf{Avalon} Avalon Memory-Mapped Interface
     % Add more acronymes
 \end{itemize}
 
@@ -158,14 +160,13 @@ Depending on the width of the integer registers and the size of the user address
 
 A distinguishing feature of the RISC-V architecture is its approach to stability. Unlike traditional architectures that typically update the entire ISA version as new instructions are added, RISC-V endeavors to keep the base ISA and standard extensions constant over time. New functionality is introduced by layering new optional extensions rather than redefining the base instructions. This design philosophy ensures that the base ISA remains a fully supported, standalone entity, allowing hardware designers to pursue deep specialization for energy efficiency or specific domains without compromising long-term software compatibility.
 
-\begin{figure*}[h!]
+\begin{figure}[H]
     \centering
     \includegraphics[width=1\linewidth]{images/riscvISA.png}
 \caption{\small RV32I instruction formats}
     \label{fig:RISCV_ISA}
-\end{figure*}
+\end{figure}
 
-\newpage
 
 \subsection{Bit-Serial CISC-V}
 The Bit-Serial CISC-V architecture is an experimental processor design explicitly engineered to overcome the severe physical constraints of high-temperature electronic testing environments. As the target high-temperature test station (utilizing Venus/Sol technology) is limited to only 12 physical probes (pads) due to the failure of standard measurement equipment at temperatures exceeding $400^{\circ}\text{C}$, traditional parallel processor interfaces are rendered unfeasible. Consequently, this architecture adopts a bit-serial design paradigm intended to minimize I/O bandwidth requirements, thereby enabling reliable computation within an extremely restricted hardware interface.
@@ -174,12 +175,12 @@ The core innovation of this architecture lies in its unique execution mechanism,
 
 In terms of implementation, the model is described using the ProGram hardware description language, a choice that contrasts with the VHDL-based approach used for the project's parallel RISC-V model. To strictly adhere to the physical limitations of the test oven, the architecture features a specialized 2-bit serial interface, which successfully confines the design's footprint to the available 12 pads. Although the model has been successfully synthesized in previous research phases, the primary objective of the current work is to prototype the design on FPGA hardware and perform timing verification to validate its operational integrity in simulated high-temperature environments.
 
-\begin{figure*}[h!]
+\begin{figure}[H]
     \centering
     \includegraphics[width=1\linewidth]{images/bit_serial_demonstration.png}
-\caption{\small bit-serial CISC-V demonstartion }
+    \caption{\small bit-serial CISC-V demonstration}
     \label{fig:bit_serial_demonstration}
-\end{figure*}
+\end{figure}
 
 \subsection{Synthesis Overview}
 
@@ -190,7 +191,7 @@ In terms of implementation, the model is described using the ProGram hardware de
 
 Now that we are sure both CPUs are synthesized and can be run on FPGA. We can perform a timing analysis of the different processor cores. As we said, all processors were synthesized using Quartus, and we will use the same tool for the analysis. However, the initial synthesis results did not include any timing analysis because Quartus was unable to properly identify and constrain the clock domain of the design.
 
-The root cause of this issue was that the internal clock signal of the processor cores (\texttt{clk}) was not directly connected to the physical clock input of the FPGA board (\texttt{FPGA\_CLK\_50}). As a consequence, Quartus couldn’t generate any timing report. To resolve this problem, a wrapper module was introduced and defined as the new top-level entity of the design. This wrapper explicitly connects the FPGA hardware signals, including the board clock, reset signal, and output peripherals such as LEDs, to the internal processor core. As a result, the processor clock is driven directly by the \texttt{FPGA\_CLK\_50} signal. In addition, a simple sequential process was added inside the wrapper to drive a blinking LED. This step was necessary so Quartus doesn’t optimize away the entire design during synthesis. Indeed, without observable logic driven by the clock, the synthesis tool may consider parts of the design as redundant and decide to not use them. 
+The root cause of this issue was that the internal clock signal of the processor cores (\texttt{clk}) was not directly connected to the physical clock input of the FPGA board (\texttt{FPGA\_CLK\_50}). As a consequence, Quartus couldn't generate any timing report. To resolve this problem, a wrapper module was introduced and defined as the new top-level entity of the design. This wrapper explicitly connects the FPGA hardware signals, including the board clock, reset signal, and output peripherals such as LEDs, to the internal processor core. As a result, the processor clock is driven directly by the \texttt{FPGA\_CLK\_50} signal. In addition, a simple sequential process was added inside the wrapper to drive a blinking LED. This step was necessary so Quartus doesn't optimize away the entire design during synthesis. Indeed, without observable logic driven by the clock, the synthesis tool may consider parts of the design as redundant and decide to not use them. 
 
 After that, Quartus successfully generated timing analysis reports for the processor cores. However, the result showed negative setup slack values. It means that the design did not meet the default timing assumptions. This result is totally normal since no explicit timing constraints had been defined for the clock signal. So we wrote a Synopsys Design Constraints (SDC) file to properly constrain the clock period at 20ns. After applying the SDC constraints, the timing violations were resolved and the designs met the desired timing requirements. Table~\ref{tab:risc_timing} summarizes the observed setup and hold slack values for the RISC processor before and after applying the SDC constraints.
 
@@ -223,12 +224,88 @@ The same methodology was applied to the BRISC processor and it shows the same re
 
 \subsection{FPGA2 (TB) Structure}
 
-\subsection{TB Serialization - Bit Serial Interface}
 
 
 
 \FloatBarrier
 \section{FPGA Communication} 
+
+\subsection{TB Serialization - Bit Serial Interface}
+
+One of the most critical constraints of the project is the limited number of I/O pads that are available for communication between the two FPGAs. Indeed, only twelve pins are available because of the high-temperature test setup used at KTH that can’t take more I/Os. As a consequence, conventional parallel buses for instruction loading, data transfer, or debugging are not feasible. To overcome this limitation, there is no other choice than using bit-serial communication. As a result, an interface is needed to adapt and convert parallel communication into bit-serial communication.
+
+How does a bit-serial interface work? The idea is to serialize multi-bit data words and transmit them bit by bit over a small number of physical signals. As we can imagine, it takes much more time for the data to be transmitted, and it introduces additional complexity in terms of timing, synchronization, and control logic. However, this approach significantly reduces the number of required I/O pins and that is what we want. This loss of performance is acceptable in this project because performance is not the primary objective. Indeed, we prioritize the correctness of the system and compatibility with our constraints (for instance extreme-environment constraint).
+
+In our project, we use a master-slave communication that we will talk about in more detail later in the report. FPGA2 (the one with the TB) is responsible for generating serialized instruction streams, data inputs, and control signals, which are transmitted to the processor on FPGA1. Conversely, FPGA1 returns serialized response data and status information back to the testbench. The bit-serial interface will be placed in the FPGA2 and will need to convert the avalon I/Os of the TB into the bit serial I/Os. We can see in the picture above the minimal set of signals on the bit-serial side and the parallel avalon communication on the TB side.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{images/bs_interface_v1.png}
+    \caption{\small bit-serial interface architecture v1}
+    \label{fig:bs_interface_v1}
+\end{figure}
+
+We tried at first to describe this module in one block but it rapidly became a complex module, so the decision was made to describe it in two parts. The first one is bs\_interface and deals with the serialisation part. The second one is avm\_interface and concentrates on avalon communication. 
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{images/bs_interface_v2.png}
+    \caption{\small bit-serial interface architecture v2}
+    \label{fig:bs_interface_v2}
+\end{figure}
+
+
+\subsubsection{bs\_interface}
+
+As we said, the \texttt{bs\_interface} module is responsible for converting parallel transactions into a bit-serial communication protocol. In order to do this, we implement it as a synchronous finite state machine (FSM).
+
+\paragraph{Interface and I/O description}
+
+On the serial side, the interface is connected to the CPU. In this context, it is the CPU that initiates transactions by asserting the \texttt{m\_active} signal. The \texttt{tx\_data} and \texttt{addr} signals carry two-bit wide serial data and address fragments from the CPU to the testbench. In response, the testbench asserts the \texttt{s\_active} signal to acknowledge activity and transmits serialized data back to the processor through the \texttt{rx\_data} signal.
+
+On the parallel side, the signals \texttt{data\_addr} and \texttt{we} control memory addressing and write enable, \texttt{data2mem} and \texttt{data2io} write data while \texttt{data4mem} and \texttt{data4io} read data. 
+
+\paragraph{Finite state machine architecture}
+
+The \texttt{bs\_interface} is implemented as a finite state machine. The FSM ensures that each phase of communication is executed in a well-defined order. The main states of the FSM are:
+\begin{itemize}
+  \item \textbf{IDLE}: Waiting state where no communication is active.
+  \item \textbf{WR\_TX}: Serialization and transmission of write data and address.
+  \item \textbf{WR\_WAIT\_ACK / WR\_WAIT\_NACK}: Waiting for acknowledgment or rejection of a write transaction.
+  \item \textbf{RD\_TX\_ADDR}: Serialization and transmission of the read address.
+  \item \textbf{RD\_WAIT\_ACK / RD\_WAIT\_NACK}: Validation of the received address.
+  \item \textbf{RD\_TX\_DATA}: Serialization and transmission of read data back to the master.
+\end{itemize}
+And it follows the graph logic.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{images/bs_interface_graph.png}
+    \caption{\small serialisation FSM graph}
+    \label{fig:bs_interface_graph}
+\end{figure}
+
+\paragraph{Module logic}
+A transaction starts when both \texttt{com\_enable} and \texttt{m\_active} are asserted. It determines the operation type (read, write) and organizes the serialization or deserialization of addresses and data accordingly. Serialization is implemented using a counter-driven mechanism that transmits or receives two bits per clock cycle. It can’t go in the next state until the counter is not 0. The module proceeds also to a parity check that can detect invalid transactions and stop them (you can see on the graph the 2 states read or write wait\_nack). Then, the write part enables the data to be forwarded to either memory or I/O depending on the target address. And the read part enables the data to be fetched from memory or I/O.
+
+
+\subsubsection{avm\_interface}
+
+The \texttt{avm\_interface} module acts as an adapter between the parallel signals produced by the \texttt{bs\_interface} and the Avalon memory-mapped interfaces used inside the testbench. There is no serialisation here since the communication is parallel to parallel. Therefore this module focuses on routing and translating simple read and write requests into valid Avalon transactions.
+
+\paragraph{Interface and I/O description}
+
+On the bs\_interface side, we have a simple parallel interface. The module receives an address (\texttt{data\_addr}), a write enable signal (\texttt{we}) and write data (\texttt{data2mem}). It outputs read data through \texttt{data4mem} or \texttt{data4io}, depending on the accessed address. 
+
+On the other side of the module, it uses an Avalon memory-mapped (Avalon-MM) protocol. It provides a standardized and modular interface for instruction fetches, data accesses, and control signaling. In this project, the Avalon interface is used in a simplified way. Indeed, the testbench always responds immediately to read and write requests, it simplifies some signals. Instruction accesses are handled through a read-only port while data accesses support both reads and writes. And a control slave interface is used to transmit simple commands such as starting program execution.
+
+\paragraph{Module logic}
+
+The \texttt{avm\_interface} implements consist of a simple mapping between both sides. The instruction fetch path is permanently enabled, allowing continuous instruction reads. For data accesses, the module asserts either a read or write operation depending on the \texttt{we} signal. Write data is forwarded directly to the Avalon data port, while read data returned by the Avalon interface is captured on the rising edge of the clock and routed to either the memory or I/O output, based on the most significant address bit.
+
+By avoiding internal state machines and wait-state management, the module \texttt{avm\_interface} remains simple, deterministic, and easy to analyze. This design choice is consistent with the project’s objectives, as all protocol complexity is intentionally concentrated in the \texttt{bs\_interface}, leaving the Avalon adaptation layer minimal and robust.
+
 
 
 
