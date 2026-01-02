@@ -80,6 +80,14 @@ Stockholm, Sweden
 \section*{Abstract}
 \addcontentsline{toc}{section}{Abstract} % Add to Table of Contents without numbering
 
+The development of electronic systems capable of operating under extreme environmental conditions is an important challenge for future space exploration missions. In particular, the surface of Venus imposes severe constraints in terms of temperature and radiation, making conventional technologies unsuitable. To address this issue, KTH is developing a high-temperature Silicon-on-Insulator (SoI) process.
+
+In this context, a previous work has been done and introduced the design of two processor architectures: a conventional parallel RISC-V processor and a bit-serial Brisc-V processor. While these designs were already written, their testing on FPGA still remained incomplete.
+
+This project focuses on writing a testbench for the validation of both processor architectures using a two-FPGA system. One FPGA hosts the processor core and the second FPGA implements the testbench and external control logic. Due to the strict limitation on available I/O pads, communication between the two FPGAs is achieved using a custom bit-serial interface. 
+
+The results demonstrate the feasibility of implementing and testing both processor models with a testbench using a bit-serial protocol of communication. It provides an important step toward validating high-temperature digital systems suitable for extreme planetary environments.
+
 \noindent
 
 \newpage
@@ -182,10 +190,48 @@ In terms of implementation, the model is described using the ProGram hardware de
     \label{fig:bit_serial_demonstration}
 \end{figure}
 
+
 \subsection{Synthesis Overview}
 
-\subsubsection{Modelsim Simulation}
-\subsubsection{Implementation on FPGA}
+This section presents an overview of the synthesis and FPGA implementation process for both processor architectures we have in this project. As we previously seen, two main processor designs were synthesized and implemented: a conventional parallel RISC-V processor and the bit-serial Brisc-V processor. While the synthesis of the RISC-V core was relatively straightforward, the Brisc-V implementation required more work due to missing modules.
+
+\subsubsection{RISC-V Synthesis}
+
+The synthesis of the RISC-V processor did not present major difficulties. The design was successfully compiled, synthesized, and implemented on the FPGA using Intel Quartus without requiring structural modifications. The only challenge was to set Quartus parameters, import the right module and last but not least connect to the right FPGA board. Some of us had some difficulties in the matter, especially those who used a virtual machine.
+
+After synthesis, the design was implemented and tested on the FPGA, confirming correct integration of the processor. This part of the project mainly served as a reference implementation and validation baseline before moving to a more complex task.
+
+\subsubsection{Brisc-V Synthesis}
+
+The synthesis and implementation of the Brisc-V processor required additional work. The Brisc-V architecture is a bit-serial processor with a low number of I/O pads, which makes it particularly interesting for our applications. However, the original design provided only the processor core and assumed the existence of external modules that were not included in the project deliverables.
+
+During the initial synthesis attempts, two modules were missing: a memory module (RAM) and an I/O controller. These ones are required to allow the processor to access data memory, and interact with its environment. As a result, we add them and structure the Brisc-V system as follow:
+
+\begin{itemize}
+    \item \texttt{Brisc\_top}: Top-level entity of the system
+    \item \texttt{CiscV}: Core of the bit-serial processor
+    \item \texttt{bs\_interface}: Bit-serial interface
+    \item \texttt{io\_controller}: Communication with pins
+    \item \texttt{RAM}: Wrapper module interfacing the processor with on-chip memory
+    \item \texttt{RAM\_1PORT}: Single-port memory generated using the Quartus IP Catalog
+\end{itemize}
+
+\paragraph{RAM Module Implementation}
+
+The decision was made to use Quartus IP Catalog for generating a single-port memory. It allowed us to rely on a proven and optimized memory implementation. The generated memory, \texttt{RAM\_1PORT}, was configured with the following parameters:
+\begin{itemize}
+    \item Single-port memory
+    \item VHDL implementation
+    \item Word width of 32 bits
+    \item Memory depth of $2^{10}$ words (1024 words)
+    \item Pre-filled memory content enabled
+\end{itemize}
+Those parameters, especially word width and memory depth, correspond to the constant of the package type\_pkg that is in the repository project. That allowed a perfect fit.
+
+However, the I/Os of the generated memory doesn’t correspond to the I/Os of the component called by the top module. A wrapper needs to be implemented too. As a result, we wrote a \texttt{RAM} wrapper module that is responsible for connecting the processor core to the generated memory block. It adapts the address, data, and control signals of the Brisc-V core to the interface expected by the \texttt{RAM\_1PORT} IP. This includes managing read and write accesses and ensuring correct word alignment.
+
+Once the RAM module was implemented and integrated into the top-level design, the Brisc-V processor could be successfully synthesized and implemented on the FPGA using Quartus. A simple dummy instead of the RAM could have worked for the synthesis but would have no sense from a logic point of view. So this step was essential to enable further testing later.
+
 
 \subsection{CPU Timing Analysis}
 
@@ -215,14 +261,10 @@ As shown in the table, the application of clock constraints significantly improv
 The same methodology was applied to the BRISC processor and it shows the same result. As a result, this part validates the feasibility of both processor designs under realistic clocking conditions (20ns).
 
 
-\subsection{FPGA1 (CPU) Structure}
 
 
 \FloatBarrier 
 \section{Testbench}
-
-
-\subsection{FPGA2 (TB) Structure}
 
 
 
