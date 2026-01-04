@@ -8,6 +8,8 @@
 \usepackage{titlesec}
 \usepackage{graphicx}
 \usepackage{booktabs}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows,positioning,calc}
 \usepackage{float}
 \usepackage[section]{placeins} % Pour \FloatBarrier
 \usepackage{setspace}
@@ -80,13 +82,13 @@ Stockholm, Sweden
 \section*{Abstract}
 \addcontentsline{toc}{section}{Abstract} % Add to Table of Contents without numbering
 
-The development of electronic systems capable of operating under extreme environmental conditions is an important challenge for future space exploration missions. In particular, the surface of Venus imposes severe constraints in terms of temperature and radiation, making conventional technologies unsuitable. To address this issue, KTH is developing a high-temperature Silicon-on-Insulator (SoI) process.
+This project implements and validates a dual-FPGA testbench system for testing RISC-V processor architectures under severe I/O constraints. The work completes the hardware verification phase of two processor designs previously developed at KTH: a conventional parallel RISC-V processor and a bit-serial CISC-V processor, both optimized for high-temperature environments.
 
-In this context, a previous work has been done and introduced the design of two processor architectures: a conventional parallel RISC-V processor and a bit-serial Brisc-V processor. While these designs were already written, their testing on FPGA still remained incomplete.
+The testbench architecture employs a master-slave configuration where one FPGA hosts the processor core while a second FPGA implements the complete test environment, including memory models, control logic, and verification infrastructure. Communication between the two FPGAs is achieved through a custom 2-bit serial protocol, limiting the inter-FPGA connection to only 10 pins out of the maximum 12 available. This stringent constraint reflects the physical limitations of KTH's high-temperature test station, which operates at temperatures approaching 480°C for Venus surface conditions.
 
-This project focuses on writing a testbench for the validation of both processor architectures using a two-FPGA system. One FPGA hosts the processor core and the second FPGA implements the testbench and external control logic. Due to the strict limitation on available I/O pads, communication between the two FPGAs is achieved using a custom bit-serial interface. 
+The project successfully demonstrates both processor implementations operating correctly in hardware, with comprehensive functional verification through differential testing against architectural simulators. The bit-serial communication protocol, while introducing significant latency overhead, proves effective for reliable data transfer and enables complete instruction fetch, data memory access, and control operations within the pin budget constraints.
 
-The results demonstrate the feasibility of implementing and testing both processor models with a testbench using a bit-serial protocol of communication. It provides an important step toward validating high-temperature digital systems suitable for extreme planetary environments.
+This work represents a critical validation step for high-temperature digital systems designed for extreme planetary environments, proving that complex processor architectures can be effectively tested and verified under severe I/O limitations imposed by specialized test equipment. The developed testbench infrastructure provides a reusable platform for future processor designs targeting similar environmental constraints.
 
 \noindent
 
@@ -129,25 +131,29 @@ The results demonstrate the feasibility of implementing and testing both process
 % ==========================================================
 \section{Introduction}
 
-The development of electronic systems that resist extreme environments is a real challenge for the space industries. For instance, Venus has constraints on temperature and space radiation that are completely different from Earth. Indeed, conventional technologies are often unsuitable under such conditions, that is why we need alternative design and architectures. 
+Modern space exploration missions demand electronic systems capable of withstanding extreme environmental conditions that render conventional technologies inoperative. Venus, with surface temperatures reaching 480°C and intense radiation exposure, represents one of the most challenging targets for electronic instrumentation. These extreme conditions necessitate fundamentally different approaches to digital system design and verification.
 
-It is in this context that the project started. It continues previous work at KTH developing digital electronics for extreme high-temperature environments, specifically targeting Venus surface conditions. Last year's students successfully designed and synthesized two RISC-V processor variants—a parallel model in VHDL and a bit-serial CISC-V model in ProGram—both optimized for the 12-pad constraint of KTH's high-temperature test station. However, they did not complete FPGA implementation and testing.
+This project addresses the critical gap between processor design and hardware validation for extreme-environment applications. Building upon previous work at KTH, where two RISC-V processor variants were designed and synthesized—a parallel VHDL implementation and a bit-serial CISC-V model generated using ProGram—this work completes the verification chain by implementing both processors on FPGA hardware and developing a comprehensive dual-FPGA testbench system.
 
-The current project addresses this gap by implementing and testing both processor models on FPGAs, developing an advanced testbench. To do this, we will split the system into two FPGAs: one hosting the processor core, and the other implementing the testbench and external control logic. This work uses KTH's experimental Silicon-on-Insulator technology, which can operate at temperatures approaching Venus's 480°C requirement, and leverages the open-source RISC-V architecture to avoid licensing constraints.
+The architectural approach divides the system across two FPGAs: one hosting the processor core under test, and a second implementing the complete test environment including instruction memory, data memory, control logic, and verification infrastructure. This separation enables realistic testing conditions while accommodating the severe I/O constraints imposed by KTH's high-temperature test station, which limits inter-chip communication to a maximum of 12 physical probe connections. These constraints reflect the practical limitations of high-temperature test equipment, where conventional probe cards and connector technologies fail at elevated temperatures.
 
-A key aspect of the project is the use of a bit-serial communication interface between the processor and its environment. Thanks to these serialized data transfers, the number of I/O pins can be significantly reduced. It is indeed one of our critical constraints, the system is limited by a maximum of 12 pads for communication between the 2 FPGAs. The reason is test setups for high-temperature that have limited probe access. This architectural choice has direct implications on timing, synchronization, and verification, and therefore plays a central role in both the design and validation phases of the system.
+To operate within the 12-pad limitation, the system employs a custom bit-serial communication protocol that serializes all processor transactions over a compact 2-bit data interface. While this approach significantly increases transaction latency compared to parallel bus architectures, it successfully reduces the required pin count to 10 signals (including clock and control), enabling complete processor functionality within the constraint envelope. The protocol design encompasses instruction fetch, data memory access, and control signaling, with integrated parity checking for transaction integrity.
 
-The main phases of the project are:
+The project execution followed five main phases:
+
 \begin{itemize}
-  \item \textbf{Toolchain and Hardware Setup} : This initial phase involves preparing the necessary software environments and physical hardware for development and testing.
-  \item \textbf{FPGA Prototyping of Processor Cores} : This phase focuses on adapting, implementing, and performing initial tests on the existing RISC-V and CISC-V processor models on an FPGA.
-  \item \textbf{Testbench Development} : This involves designing and implementing the advanced testbench on a separate FPGA, which will be used to validate the processor cores.
-  \item \textbf{System Integration and Verification} : This phase covers the physical connection of the two FPGAs and the execution of comprehensive tests to validate the complete system and debug any potential issues.
-  \item \textbf{Project Finalization and Documentation} : The final phase includes creating detailed documentation for the designs and test procedures, and preparing the final project deliverables.
+  \item \textbf{Toolchain and Hardware Setup}: Establishing the development environment, including Quartus Prime for FPGA synthesis, ModelSim for simulation, and configuration of DE0-Nano-SoC development boards.
+  
+  \item \textbf{FPGA Prototyping of Processor Cores}: Synthesizing both processor variants, resolving missing infrastructure components (particularly memory interfaces for the CISC-V design), and performing timing analysis to validate feasibility.
+  
+  \item \textbf{Testbench Development}: Implementing a progressively refined testbench architecture, from initial simulation-only environments through synthesizable hardware implementations, including memory models, execution control, and debug visibility features.
+  
+  \item \textbf{System Integration and Verification}: Physically connecting the two FPGAs, implementing the bit-serial protocol on both sides, establishing clock distribution, and conducting end-to-end functional testing with real benchmark programs.
+  
+  \item \textbf{Validation and Documentation}: Performing differential verification against architectural simulators, characterizing system performance, and documenting the complete design for future extension.
 \end{itemize}
 
-The report is structured as follows. The first part presents the synthesis results of the processor, including an overview of the synthesis flow, timing analysis, and the internal structure of the FPGA hosting the CPU. Indeed, the first task of our project was to verify both CPU programs, using Quartus and Modelsim. The second part describes the testbench architecture implemented on the second FPGA. We will see the testbench itself with the different tests we wrote but also the serialization mechanism used to interface with the processor. The third part details the communication scheme between the two FPGAs. This part will highlight the communication module and protocol but also the synchronization challenges especially with the clock gestion. We will finally conclude the report with a summary of the achieved results and outlines possible directions for future work. 
-
+This report is structured to reflect the technical development progression. Section 2 presents the synthesis and timing analysis of both processor architectures, establishing their correctness and feasibility for FPGA implementation. Section 3 describes the processor implementation on FPGA 1, detailing the system architecture, clock management, reset synchronization, and the processor's internal organization including the ProGram-generated finite state machine. Section 4 documents the testbench development on FPGA 2, covering the evolution from simulation environments through synthesizable hardware implementations, including memory subsystems and execution monitoring. Section 5 details the inter-FPGA communication infrastructure, explaining the bit-serial protocol design, serialization mechanisms, and clock distribution strategy. Finally, Section 6 concludes with achieved results, lessons learned, and recommendations for future work extending this validation platform.
 \newpage
 \FloatBarrier
 \section{Synthesis}
@@ -275,7 +281,275 @@ As shown in the table, the application of clock constraints significantly improv
 The same methodology was applied to the BRISC processor and it shows the same result. As a result, this part validates the feasibility of both processor designs under realistic clocking conditions (20ns).
 
 
+\FloatBarrier
+\section{Processor}
 
+\subsection{System Architecture Overview}
+
+The first FPGA serves as the processor host platform, implementing the complete CISC-V bit-serial processor system along with the necessary infrastructure for communication with the testbench FPGA. The top-level architecture consists of several key modules that handle clock management, processor execution, and inter-FPGA communication.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{images/processor_img.png}
+    \caption{Complete system architecture of FPGA 1 hosting the CISC-V processor}
+    \label{fig:fpga1_architecture}
+\end{figure}
+
+\subsubsection{Top-Level Entity: CiscV\_top}
+
+The \texttt{CiscV\_top} entity serves as the system's top-level wrapper, providing the interface between the FPGA's physical pins and the internal processor subsystem. The entity exposes three main groups of external signals:
+
+\begin{itemize}
+    \item \textbf{Clock and Reset}: A 50 MHz clock input (\texttt{CLOCK\_50}) and an active-low reset button (\texttt{KEY[0]})
+    \item \textbf{GPIO Interface}: A 10-pin bidirectional GPIO bus (\texttt{GPIO\_0[9:0]}) for inter-FPGA communication
+    \item \textbf{Debug LEDs}: Eight LEDs (\texttt{LED[7:0]}) for runtime status indication
+\end{itemize}
+
+The structural architecture instantiates two primary components: the \texttt{CiscV} processor core and a \texttt{clock\_divider} module. The clock divider reduces the 50 MHz board clock to 1 MHz, which serves as the processor's operating frequency. This frequency reduction is necessary to ensure reliable operation of the bit-serial communication protocol and to meet timing constraints for the processor pipeline.
+
+\subsubsection{Reset Synchronization}
+
+A critical aspect of the design is the proper handling of asynchronous reset signals. The KEY button provides an asynchronous active-low reset, which must be synchronized to the system clock domain to prevent metastability issues. The implementation uses a three-stage shift register to synchronize the reset signal:
+
+\begin{verbatim}
+reset_sync_proc: PROCESS(CLOCK_50, reset_n)
+   VARIABLE reset_shift : std_logic_vector(2 downto 0) := "000";
+BEGIN
+   IF reset_n = '0' THEN
+      reset_shift := "000";
+      reset_sync <= '1';
+   ELSIF rising_edge(CLOCK_50) THEN
+      reset_shift := reset_shift(1 downto 0) & '1';
+      reset_sync <= NOT reset_shift(2);
+   END IF;
+END PROCESS;
+\end{verbatim}
+
+This synchronizer ensures that the internal reset signal (\texttt{sreset\_sig}) is properly aligned with the clock domain before being distributed to the processor core.
+
+\subsubsection{GPIO Pin Mapping}
+
+The GPIO pins are carefully mapped to support the bit-serial communication protocol. The mapping follows a master-slave convention where the processor acts as the master initiating transactions:
+
+\paragraph{Input Signals (from testbench FPGA):}
+\begin{itemize}
+    \item \texttt{GPIO\_0(0)}: Slave active acknowledgment (\texttt{s\_active})
+    \item \texttt{GPIO\_0(1:2)}: Received data bus (\texttt{s\_data[1:0]})
+\end{itemize}
+
+\paragraph{Output Signals (to testbench FPGA):}
+\begin{itemize}
+    \item \texttt{GPIO\_0(3)}: Communication enable (\texttt{com\_enable})
+    \item \texttt{GPIO\_0(4)}: Master active flag (\texttt{m\_active})
+    \item \texttt{GPIO\_0(5:6)}: Address/data transmission bus (\texttt{addr[1:0]})
+    \item \texttt{GPIO\_0(7:8)}: Transmitted data bus (\texttt{m\_data[1:0]})
+    \item \texttt{GPIO\_0(9)}: Forwarded clock signal (\texttt{clk\_out})
+\end{itemize}
+
+This pin assignment uses 10 of the available GPIO pins, staying well within the 12-pin constraint imposed by the high-temperature test environment requirements.
+
+\subsubsection{Debug LED Assignment}
+
+The LED outputs provide real-time visibility into the processor's communication state. Each LED is mapped to a specific internal signal, allowing hardware-level debugging without requiring external instrumentation:
+
+\begin{itemize}
+    \item \texttt{LED[0]}: Communication enable status
+    \item \texttt{LED[1]}: Master active flag
+    \item \texttt{LED[2:3]}: Current address bits
+    \item \texttt{LED[4:5]}: Current data bits being transmitted
+    \item \texttt{LED[6]}: Clock output status
+    \item \texttt{LED[7]}: Divided clock signal (1 MHz)
+\end{itemize}
+
+This mapping enables visual confirmation that the processor is actively communicating and provides immediate feedback during bring-up and debugging phases.
+
+\subsection{Clock Management}
+
+\subsubsection{Clock Divider Implementation}
+
+The \texttt{clock\_divider} module implements a frequency divider that generates the 1 MHz processor clock from the 50 MHz board clock. The division is achieved using a simple counter-based approach:
+
+\begin{verbatim}
+CONSTANT DIV_VALUE : integer := 25;
+SIGNAL counter : integer range 0 to DIV_VALUE-1 := 0;
+SIGNAL clk_reg : std_logic := '0';
+\end{verbatim}
+
+The divider counts to 25, then toggles the output clock. Since the output toggles every 25 input cycles, the effective division ratio is 50, producing a 1 MHz output from the 50 MHz input. This implementation ensures a 50\% duty cycle, which is important for reliable synchronous logic operation.
+
+The counter-based approach was chosen over PLL-based clock generation for several reasons:
+\begin{itemize}
+    \item Simplicity and deterministic behavior
+    \item No phase-locked loop lock time delays during reset
+    \item Predictable jitter characteristics
+    \item Lower resource utilization
+\end{itemize}
+
+\subsection{CISC-V Processor Core}
+
+\subsubsection{ProGram-Based FSM Architecture}
+
+The \texttt{CiscV} entity represents the bit-serial RISC-V processor core, automatically generated using the ProGram hardware description language. ProGram is a high-level synthesis tool that generates optimized finite state machines from algorithmic descriptions. The resulting VHDL code implements a 614-state FSM that controls all aspects of processor operation, including instruction fetch, decode, execution, and bit-serial communication.
+
+The FSM-based architecture is particularly well-suited for bit-serial operation because it naturally expresses the sequential nature of bit-by-bit data transmission and reception. Each state represents a specific phase of operation, and state transitions are triggered by both internal processor events and external communication handshakes.
+
+\subsubsection{Internal Signal Structure}
+
+The processor maintains an extensive set of internal signals that represent the architectural state and control information:
+
+\paragraph{Instruction Decoding Signals:}
+\begin{itemize}
+    \item \texttt{rd\_data[4:0]}: Destination register index
+    \item \texttt{rs1\_data[4:0]}: Source register 1 index
+    \item \texttt{rs2\_data[4:0]}: Source register 2 index
+    \item \texttt{imm5\_data}, \texttt{imm7\_data}, \texttt{imm12\_data}, \texttt{imm20\_data}: Various immediate field formats
+\end{itemize}
+
+\paragraph{Execution Control Signals:}
+\begin{itemize}
+    \item \texttt{execution\_enable}: Triggers ALU or branch execution
+    \item \texttt{execution\_type}: Distinguishes between ALU and branch operations
+    \item \texttt{result\_select[2:0]}: Multiplexer control for selecting result source
+\end{itemize}
+
+\paragraph{Memory and I/O Signals:}
+\begin{itemize}
+    \item \texttt{load\_byte\_enable}, \texttt{load\_half\_enable}: Enable sub-word load operations
+    \item \texttt{store\_enable}: Initiates memory write operations
+    \item \texttt{load\_result[31:0]}: Buffer for reconstructed load data
+\end{itemize}
+
+\subsubsection{Register File and Arithmetic Logic}
+
+The processor includes a 32-entry register file implemented as an internal memory array:
+
+\begin{verbatim}
+type memory_array_type is array (natural range <>) 
+    of std_logic_vector(31 downto 0);
+signal regs:memory_array_type(31 downto 0);
+\end{verbatim}
+
+Register writeback is controlled by a dedicated process that monitors the \texttt{writeback\_enable} signal and updates the destination register specified by \texttt{rd\_data}. The writeback logic includes special handling for load instructions, which require an additional pipeline stage to reconstruct the full word from serially received data.
+
+The ALU implementation supports the full set of RISC-V integer operations:
+\begin{itemize}
+    \item \textbf{Arithmetic}: ADD, SUB
+    \item \textbf{Logical}: AND, OR, XOR
+    \item \textbf{Shift}: SLL (shift left logical), SRL (shift right logical), SRA (shift right arithmetic)
+    \item \textbf{Comparison}: SLT (set less than), SLTU (set less than unsigned)
+\end{itemize}
+
+Each operation is implemented as a combinational assignment within a large case statement, with the operation code determined by the \texttt{alu\_ctrl} signal decoded from the instruction.
+
+\subsubsection{Program Counter Management}
+
+The program counter (PC) update logic handles all control flow scenarios defined by the RISC-V ISA:
+
+\begin{itemize}
+    \item \textbf{Sequential execution} (\texttt{pc\_sel = "001"}): PC increments by 4
+    \item \textbf{JAL/JALR jumps} (\texttt{pc\_sel = "010"} or \texttt{"011"}): PC is set to the computed target address
+    \item \textbf{Conditional branches} (\texttt{pc\_sel = "100"}): PC is conditionally updated based on branch condition evaluation
+\end{itemize}
+
+The PC update is synchronized to the rising edge of the clock and respects the reset condition, initializing to address 0x00000000 when the system is reset.
+
+\subsubsection{Bit-Serial Communication Protocol}
+
+The processor implements a custom bit-serial protocol for instruction fetch and data memory access. The protocol operates over a 2-bit data bus, transmitting address and data information in a sequence of 2-bit symbols. Key aspects of the protocol implementation include:
+
+\paragraph{Transaction Initiation:}
+\begin{itemize}
+    \item The processor asserts \texttt{m\_active} to signal an active transaction
+    \item The \texttt{com\_enable} signal is asserted to enable communication
+    \item Address bits are serialized and transmitted via the \texttt{addr[1:0]} bus
+\end{itemize}
+
+\paragraph{Data Transmission:}
+\begin{itemize}
+    \item Write data is serialized and transmitted through \texttt{m\_data[1:0]}
+    \item The transmission sequence reverses the bit order to match the testbench's expected format
+\end{itemize}
+
+\paragraph{Data Reception:}
+\begin{itemize}
+    \item The \texttt{receiving} signal indicates when the processor is expecting serialized input data
+    \item Received data arrives through \texttt{s\_data[1:0]} and is accumulated in internal FIFO structures
+\end{itemize}
+
+\paragraph{Parity Checking:}
+\begin{itemize}
+    \item The protocol includes parity computation for both address and data
+    \item \texttt{parity\_addr} and \texttt{parity\_data} signals accumulate XOR-based parity
+    \item The \texttt{reset\_parity} signal reinitializes parity counters at transaction boundaries
+\end{itemize}
+
+This protocol design minimizes pin count while maintaining sufficient bandwidth for instruction fetch and data access operations, albeit at the cost of increased transaction latency compared to parallel bus implementations.
+
+\subsubsection{Memory Interface Timing}
+
+The memory access timing is tightly coupled to the bit-serial protocol. A complete 32-bit word transmission requires 16 clock cycles (2 bits per cycle $\times$ 16 cycles). Instruction fetches follow this pattern:
+
+\begin{enumerate}
+    \item The processor transmits the instruction address (16 cycles)
+    \item The testbench FPGA responds with the instruction word (16 cycles)
+    \item The processor receives and reconstructs the instruction
+    \item Instruction decoding begins
+\end{enumerate}
+
+Similarly, data memory accesses for loads and stores follow the same serialization pattern, with additional handshaking for write acknowledgment.
+
+\subsection{Pin Constraints and Timing Analysis}
+
+\subsubsection{Pin Assignment Configuration}
+
+The Quartus project settings file (\texttt{CiscV\_top.qsf}) contains explicit pin assignments for all external signals. Each GPIO pin is constrained to a specific physical location on the FPGA:
+
+\begin{verbatim}
+set_location_assignment PIN_V12 -to GPIO_0[0]
+set_location_assignment PIN_AF7 -to GPIO_0[1]
+...
+\end{verbatim}
+
+These assignments ensure consistent placement across compilation runs and guarantee that the inter-FPGA connections can be physically realized on the target board. The I/O standard for all GPIO pins is set to "3.3-V LVTTL" to match the electrical characteristics of the DE0-Nano-SoC board.
+
+\subsubsection{Timing Constraints}
+
+The Synopsys Design Constraints (SDC) file (\texttt{CiscV\_top.sdc}) defines the timing requirements for the design:
+
+\paragraph{Base Clock Constraint:}
+\begin{verbatim}
+create_clock -name CLOCK_50 -period 20.000 [get_ports CLOCK_50]
+\end{verbatim}
+
+This declares the input clock as having a 20 ns period (50 MHz frequency). The constraint is essential for timing analysis and ensures that the synthesis and place-and-route tools optimize the design to meet this requirement.
+
+\paragraph{Generated Clock Constraint:}
+\begin{verbatim}
+create_generated_clock -name clk_1mhz \
+   -source [get_pins {clk_div|counter[0]}] \
+   -divide_by 50 \
+   [get_pins {clk_div|clk_reg}]
+\end{verbatim}
+
+This derived clock constraint informs the timing analyzer about the relationship between the input clock and the divided clock. The divide-by-50 relationship is explicitly declared, allowing the tool to properly analyze timing paths that cross between the two clock domains.
+
+\paragraph{Input and Output Delays:}
+The SDC file includes input delay constraints for the GPIO input signals and output delay constraints for the GPIO output signals. These constraints model the board-level timing between the two FPGAs:
+
+\begin{verbatim}
+set_input_delay -clock clk_1mhz -max 5.0 [get_ports {GPIO_0[0]}]
+set_output_delay -clock clk_1mhz -max 5.0 [get_ports {GPIO_0[3]}]
+\end{verbatim}
+
+The 5 ns delay constraints provide margin for board trace delays and setup/hold requirements of the receiving FPGA's input registers.
+
+\paragraph{False Path Declarations:}
+\begin{verbatim}
+set_false_path -from [get_ports {KEY[0]}] -to [all_registers]
+set_false_path -to [get_ports LED[*]]
+\end{verbatim}
+
+These declarations inform the timing analyzer that the reset path and LED outputs are asynchronous and should not be analyzed for timing violations. The reset synchronization logic handles metastability internally, and the LEDs are for debug purposes only and do not require tight timing.
 
 \FloatBarrier 
 \section{Testbench}
