@@ -68,32 +68,43 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Synthesizable Testbench}{28}{subsection.4.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.1}Synthesizable Platform Refactoring and IP Based Memories}{29}{subsubsection.4.3.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.2}Seven Segment Instruction Count Display}{30}{subsubsection.4.3.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Duel-board Testbench}{30}{subsection.4.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Dual-board Testbench}{30}{subsection.4.4}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {4.4.1}Interface Transform Module}{31}{subsubsection.4.4.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {4.4.2}IO Design}{32}{subsubsection.4.4.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {4.4.3}Dual Board Bring Up}{32}{subsubsection.4.4.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {5}FPGA Communication}{33}{section.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}TB Serialization - Bit Serial Interface}{33}{subsection.5.1}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces \small  bit-serial interface architecture v1}}{34}{figure.5}\protected@file@percent }
-\newlabel{fig:bs_interface_v1}{{5}{34}{\small bit-serial interface architecture v1}{figure.5}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces \small  bit-serial interface architecture v2}}{34}{figure.6}\protected@file@percent }
-\newlabel{fig:bs_interface_v2}{{6}{34}{\small bit-serial interface architecture v2}{figure.6}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.1.1}bs\_interface}{34}{subsubsection.5.1.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Interface and I/O description}{35}{paragraph*.15}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Finite state machine architecture}{35}{paragraph*.16}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces \small  serialisation FSM graph}}{36}{figure.7}\protected@file@percent }
-\newlabel{fig:bs_interface_graph}{{7}{36}{\small serialisation FSM graph}{figure.7}{}}
-\@writefile{toc}{\contentsline {paragraph}{Module logic}{36}{paragraph*.17}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.1.2}avm\_interface}{36}{subsubsection.5.1.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Interface and I/O description}{36}{paragraph*.18}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Module logic}{37}{paragraph*.19}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {6}Conclusion}{37}{section.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Conclusion}{37}{subsection.6.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Future Work}{37}{subsection.6.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5}Pin Constraints and Timing Analysis}{33}{subsection.4.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.5.1}Pin Assignment Configuration}{33}{subsubsection.4.5.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Inter-FPGA Communication Pins:}{33}{paragraph*.15}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Clock and Reset Pins:}{34}{paragraph*.16}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Seven-Segment Display Pins:}{34}{paragraph*.17}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.5.2}Timing Constraints}{34}{subsubsection.4.5.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Base Clock Constraint:}{35}{paragraph*.18}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Inter-FPGA Signal Timing:}{35}{paragraph*.19}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Seven-Segment Display Timing:}{35}{paragraph*.20}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Memory Timing:}{36}{paragraph*.21}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.5.3}Design for Testability Considerations}{36}{subsubsection.4.5.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5}FPGA Communication}{36}{section.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}TB Serialization - Bit Serial Interface}{36}{subsection.5.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces \small  bit-serial interface architecture v1}}{37}{figure.5}\protected@file@percent }
+\newlabel{fig:bs_interface_v1}{{5}{37}{\small bit-serial interface architecture v1}{figure.5}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces \small  bit-serial interface architecture v2}}{38}{figure.6}\protected@file@percent }
+\newlabel{fig:bs_interface_v2}{{6}{38}{\small bit-serial interface architecture v2}{figure.6}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.1.1}bs\_interface}{38}{subsubsection.5.1.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Interface and I/O description}{38}{paragraph*.22}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Finite state machine architecture}{38}{paragraph*.23}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces \small  serialisation FSM graph}}{39}{figure.7}\protected@file@percent }
+\newlabel{fig:bs_interface_graph}{{7}{39}{\small serialisation FSM graph}{figure.7}{}}
+\@writefile{toc}{\contentsline {paragraph}{Module logic}{39}{paragraph*.24}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.1.2}avm\_interface}{39}{subsubsection.5.1.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Interface and I/O description}{40}{paragraph*.25}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Module logic}{40}{paragraph*.26}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6}Conclusion}{40}{section.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Conclusion}{40}{subsection.6.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Future Work}{40}{subsection.6.2}\protected@file@percent }
 \bibcite{KTH}{1}
 \bibcite{FPGA}{2}
 \bibcite{RISC-V}{3}
 \bibcite{DE0}{4}
 \bibcite{7seg}{5}
-\@writefile{toc}{\contentsline {section}{\numberline {7}References}{38}{section.7}\protected@file@percent }
-\gdef \@abspage@last{39}
+\@writefile{toc}{\contentsline {section}{\numberline {7}References}{41}{section.7}\protected@file@percent }
+\gdef \@abspage@last{42}

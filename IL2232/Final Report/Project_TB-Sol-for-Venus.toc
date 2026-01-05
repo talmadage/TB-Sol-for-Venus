@@ -54,20 +54,31 @@
 \contentsline {subsection}{\numberline {4.3}Synthesizable Testbench}{28}{subsection.4.3}%
 \contentsline {subsubsection}{\numberline {4.3.1}Synthesizable Platform Refactoring and IP Based Memories}{29}{subsubsection.4.3.1}%
 \contentsline {subsubsection}{\numberline {4.3.2}Seven Segment Instruction Count Display}{30}{subsubsection.4.3.2}%
-\contentsline {subsection}{\numberline {4.4}Duel-board Testbench}{30}{subsection.4.4}%
+\contentsline {subsection}{\numberline {4.4}Dual-board Testbench}{30}{subsection.4.4}%
 \contentsline {subsubsection}{\numberline {4.4.1}Interface Transform Module}{31}{subsubsection.4.4.1}%
 \contentsline {subsubsection}{\numberline {4.4.2}IO Design}{32}{subsubsection.4.4.2}%
 \contentsline {subsubsection}{\numberline {4.4.3}Dual Board Bring Up}{32}{subsubsection.4.4.3}%
-\contentsline {section}{\numberline {5}FPGA Communication}{33}{section.5}%
-\contentsline {subsection}{\numberline {5.1}TB Serialization - Bit Serial Interface}{33}{subsection.5.1}%
-\contentsline {subsubsection}{\numberline {5.1.1}bs\_interface}{34}{subsubsection.5.1.1}%
-\contentsline {paragraph}{Interface and I/O description}{35}{paragraph*.15}%
-\contentsline {paragraph}{Finite state machine architecture}{35}{paragraph*.16}%
-\contentsline {paragraph}{Module logic}{36}{paragraph*.17}%
-\contentsline {subsubsection}{\numberline {5.1.2}avm\_interface}{36}{subsubsection.5.1.2}%
-\contentsline {paragraph}{Interface and I/O description}{36}{paragraph*.18}%
-\contentsline {paragraph}{Module logic}{37}{paragraph*.19}%
-\contentsline {section}{\numberline {6}Conclusion}{37}{section.6}%
-\contentsline {subsection}{\numberline {6.1}Conclusion}{37}{subsection.6.1}%
-\contentsline {subsection}{\numberline {6.2}Future Work}{37}{subsection.6.2}%
-\contentsline {section}{\numberline {7}References}{38}{section.7}%
+\contentsline {subsection}{\numberline {4.5}Pin Constraints and Timing Analysis}{33}{subsection.4.5}%
+\contentsline {subsubsection}{\numberline {4.5.1}Pin Assignment Configuration}{33}{subsubsection.4.5.1}%
+\contentsline {paragraph}{Inter-FPGA Communication Pins:}{33}{paragraph*.15}%
+\contentsline {paragraph}{Clock and Reset Pins:}{34}{paragraph*.16}%
+\contentsline {paragraph}{Seven-Segment Display Pins:}{34}{paragraph*.17}%
+\contentsline {subsubsection}{\numberline {4.5.2}Timing Constraints}{34}{subsubsection.4.5.2}%
+\contentsline {paragraph}{Base Clock Constraint:}{35}{paragraph*.18}%
+\contentsline {paragraph}{Inter-FPGA Signal Timing:}{35}{paragraph*.19}%
+\contentsline {paragraph}{Seven-Segment Display Timing:}{35}{paragraph*.20}%
+\contentsline {paragraph}{Memory Timing:}{36}{paragraph*.21}%
+\contentsline {subsubsection}{\numberline {4.5.3}Design for Testability Considerations}{36}{subsubsection.4.5.3}%
+\contentsline {section}{\numberline {5}FPGA Communication}{36}{section.5}%
+\contentsline {subsection}{\numberline {5.1}TB Serialization - Bit Serial Interface}{36}{subsection.5.1}%
+\contentsline {subsubsection}{\numberline {5.1.1}bs\_interface}{38}{subsubsection.5.1.1}%
+\contentsline {paragraph}{Interface and I/O description}{38}{paragraph*.22}%
+\contentsline {paragraph}{Finite state machine architecture}{38}{paragraph*.23}%
+\contentsline {paragraph}{Module logic}{39}{paragraph*.24}%
+\contentsline {subsubsection}{\numberline {5.1.2}avm\_interface}{39}{subsubsection.5.1.2}%
+\contentsline {paragraph}{Interface and I/O description}{40}{paragraph*.25}%
+\contentsline {paragraph}{Module logic}{40}{paragraph*.26}%
+\contentsline {section}{\numberline {6}Conclusion}{40}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Conclusion}{40}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Future Work}{40}{subsection.6.2}%
+\contentsline {section}{\numberline {7}References}{41}{section.7}%

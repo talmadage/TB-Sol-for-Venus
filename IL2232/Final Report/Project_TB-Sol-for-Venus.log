@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.10.12)  4 JAN 2026 23:53
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.10.12)  5 JAN 2026 13:29
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -625,7 +625,7 @@ Package hyperref Info: Link coloring ON on input line 34.
 \@outlinefile=\write4
 \openout4 = `Project_TB-Sol-for-Venus.out'.
 
-<images/KTH_logo.png, id=223, 1204.5pt x 1204.5pt>
+<images/KTH_logo.png, id=239, 1204.5pt x 1204.5pt>
 File: images/KTH_logo.png Graphic file (type png)
 <use images/KTH_logo.png>
 Package pdftex.def Info: images/KTH_logo.png  used on input line 39.
@@ -670,25 +670,25 @@ l.95 \newpage
 \openout7 = `Project_TB-Sol-for-Venus.lot'.
 
  [6] [7] [8] [9]
-<images/riscvISA.png, id=339, 774.895pt x 273.52188pt>
+<images/riscvISA.png, id=359, 774.895pt x 273.52188pt>
 File: images/riscvISA.png Graphic file (type png)
 <use images/riscvISA.png>
 Package pdftex.def Info: images/riscvISA.png  used on input line 180.
 (pdftex.def)             Requested size: 398.3386pt x 140.60449pt.
  [10 <./images/riscvISA.png>]
-<images/riscv_soc.png, id=344, 2826.56pt x 1541.76pt>
+<images/riscv_soc.png, id=364, 2826.56pt x 1541.76pt>
 File: images/riscv_soc.png Graphic file (type png)
 <use images/riscv_soc.png>
 Package pdftex.def Info: images/riscv_soc.png  used on input line 194.
 (pdftex.def)             Requested size: 398.3386pt x 217.25644pt.
  [11] [12 <./images/riscv_soc.png (PNG copy)>]
-<images/bit_serial_demonstration.png, id=356, 1606.0pt x 957.5775pt>
+<images/bit_serial_demonstration.png, id=376, 1606.0pt x 957.5775pt>
 File: images/bit_serial_demonstration.png Graphic file (type png)
 <use images/bit_serial_demonstration.png>
 Package pdftex.def Info: images/bit_serial_demonstration.png  used on input line 208.
 (pdftex.def)             Requested size: 398.3386pt x 237.50891pt.
  [13 <./images/bit_serial_demonstration.png>] [14] [15]
-<images/processor_img.png, id=374, 859.2903pt x 714.7503pt>
+<images/processor_img.png, id=394, 859.2903pt x 714.7503pt>
 File: images/processor_img.png Graphic file (type png)
 <use images/processor_img.png>
 Package pdftex.def Info: images/processor_img.png  used on input line 293.
@@ -748,30 +748,54 @@ Underfull \hbox (badness 10000) in paragraph at lines 634--638
 
  []
 
-[32]
-<images/bs_interface_v1.png, id=466, 906.38625pt x 481.8pt>
+[32] [33]
+Overfull \hbox (22.52489pt too wide) in paragraph at lines 684--685
+[]\T1/pcr/m/n/12 SEG1[6:0] \T1/ptm/m/n/12 (PIN_AE24, PIN_AD20, PIN_AG19, PIN_AG18, PIN_AC23,
+ []
+
+
+Overfull \hbox (24.9968pt too wide) in paragraph at lines 690--691
+[]\T1/pcr/m/n/12 SEG2[6:0] \T1/ptm/m/n/12 (PIN_AG23, PIN_AH23, PIN_AG24, PIN_AA19, PIN_AH26,
+ []
+
+
+Overfull \hbox (76.8612pt too wide) in paragraph at lines 704--704
+[]\T1/pcr/m/n/12 create_clock -name clk_50 -period 20.000 [get_ports {FPGA_CLK_50}][] 
+ []
+
+[34]
+Overfull \hbox (11.91325pt too wide) in paragraph at lines 729--730
+[] []\T1/ptm/b/n/12 Mem-ory Tim-ing:[] \T1/ptm/m/n/12 Both the in-struc-tion mem-ory (IMEM) and data mem-ory (DMEM)
+ []
+
+[35]
+Overfull \hbox (76.8612pt too wide) in paragraph at lines 735--735
+[]\T1/pcr/m/n/12 assign imem_addr = avm_instr_read_adr[15:2];  // Drop lower 2 bits[] 
+ []
+
+[36]
+<images/bs_interface_v1.png, id=510, 906.38625pt x 481.8pt>
 File: images/bs_interface_v1.png Graphic file (type png)
 <use images/bs_interface_v1.png>
-Package pdftex.def Info: images/bs_interface_v1.png  used on input line 652.
+Package pdftex.def Info: images/bs_interface_v1.png  used on input line 768.
 (pdftex.def)             Requested size: 398.3386pt x 211.74269pt.
- [33]
-<images/bs_interface_v2.png, id=471, 1202.4925pt x 532.99126pt>
+<images/bs_interface_v2.png, id=511, 1202.4925pt x 532.99126pt>
 File: images/bs_interface_v2.png Graphic file (type png)
 <use images/bs_interface_v2.png>
-Package pdftex.def Info: images/bs_interface_v2.png  used on input line 662.
+Package pdftex.def Info: images/bs_interface_v2.png  used on input line 778.
 (pdftex.def)             Requested size: 398.3386pt x 176.55455pt.
- [34 <./images/bs_interface_v1.png> <./images/bs_interface_v2.png>]
-<images/bs_interface_graph.png, id=478, 1406.25375pt x 956.57375pt>
+ [37 <./images/bs_interface_v1.png>] [38 <./images/bs_interface_v2.png>]
+<images/bs_interface_graph.png, id=524, 1406.25375pt x 956.57375pt>
 File: images/bs_interface_graph.png Graphic file (type png)
 <use images/bs_interface_graph.png>
-Package pdftex.def Info: images/bs_interface_graph.png  used on input line 693.
+Package pdftex.def Info: images/bs_interface_graph.png  used on input line 809.
 (pdftex.def)             Requested size: 398.3386pt x 270.9478pt.
- [35] [36 <./images/bs_interface_graph.png>] [37]
-Underfull \hbox (badness 10000) in paragraph at lines 740--741
+ [39 <./images/bs_interface_graph.png>] [40]
+Underfull \hbox (badness 10000) in paragraph at lines 856--857
 \T1/pcr/m/n/12 tw / attachment / archive / 941 / DE0-[]Nano-[]SoC _ User _ manual _
  []
 
-[38] (./Project_TB-Sol-for-Venus.aux)
+[41] (./Project_TB-Sol-for-Venus.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
@@ -781,21 +805,21 @@ L3 programming layer <2024-01-22>
 LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `Project_TB-Sol-for-Venus.out' has not changed.
-(rerunfilecheck)             Checksum: B9D22C2849612497062C64E960D22C22;9520.
+(rerunfilecheck)             Checksum: 035B77F54B9969E8B569B90A7E5CE06E;10402.
  ) 
 Here is how much of TeX's memory you used:
- 24033 strings out of 476182
- 465029 string characters out of 5795594
+ 24051 strings out of 476182
+ 465291 string characters out of 5795594
  1938975 words of memory out of 5000000
- 45478 multiletter control sequences out of 15000+600000
+ 45482 multiletter control sequences out of 15000+600000
  585237 words of font info for 72 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 84i,9n,93p,1629b,514s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 84i,9n,93p,1629b,516s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb>
-Output written on Project_TB-Sol-for-Venus.pdf (39 pages, 5298355 bytes).
+Output written on Project_TB-Sol-for-Venus.pdf (42 pages, 5305958 bytes).
 PDF statistics:
- 587 PDF objects out of 1000 (max. 8388607)
- 512 compressed objects within 6 object streams
- 127 named destinations out of 1000 (max. 500000)
- 485 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 628 PDF objects out of 1000 (max. 8388607)
+ 550 compressed objects within 6 object streams
+ 141 named destinations out of 1000 (max. 500000)
+ 517 words of extra memory for PDF output out of 10000 (max. 10000000)
 

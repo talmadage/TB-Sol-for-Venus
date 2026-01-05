@@ -612,7 +612,7 @@ Another important part of the single board deployment was the systematic handlin
 In summary, the single board testbench iteration achieved a complete synthesizable platform suitable for FPGA deployment while preserving the Avalon style interface used in the simulation versions. The environment was refactored to remove simulation only constructs and to rely solely on the processor external bus connections. Behavioral memories were replaced by Quartus generated ROM and RAM IP blocks with deterministic preloading through a validated initialization file. A seven segment display subsystem was integrated to show an instruction execution count and to provide an on board demonstration of continuous execution. With these elements in place, this version of the testbench could be integrated with the processor on the same FPGA board and was verified to run correctly in hardware, establishing a functionally correct single board platform as the foundation for the subsequent dual board work.
 
 
-\subsection{Duel-board Testbench}
+\subsection{Dual-board Testbench}
 
 The fourth milestone completed the transition from a single board demonstration into the final dual board setup. The purpose of this phase was to keep the FPGA oriented, synthesizable platform developed in the previous milestone and to move the processor onto a separate board. The processor board was responsible for instruction execution, while the testbench board provided the instruction memory and data memory services. The two boards communicated through a compact bus serial link, so that all instruction fetches and data accesses initiated by the processor could be transported across the link and reconstructed as equivalent memory transactions on the testbench board. A key requirement was to stay within the project constraint of fewer than twelve inter board pins, and to preserve the overall platform behavior already validated on the single board system.
 
@@ -635,6 +635,122 @@ After integrating the protocol modules, the Avalon reconstruction bridge, the sh
 \\
 \\
 In conclusion, this dual board iteration represents the final version of the testbench platform. It fulfills the original project goals and constraints by providing a compact, synthesizable execution environment with a minimal inter board pin budget, a well defined bus serial communication layer, and a clear on board progress indicator. The resulting design is directly applicable as a reusable test platform for both the RISCV processor and the BRISC implementation, and it forms a complete and project compliant basis for the final hardware demonstrations.
+
+\subsection{Pin Constraints and Timing Analysis}
+
+\subsubsection{Pin Assignment Configuration}
+
+The testbench FPGA requires careful pin mapping to establish reliable communication with the processor FPGA and to interface with the external seven-segment display peripheral. All pin assignments are explicitly defined in the Quartus settings file (\texttt{FPGA\_2\_TB\_bs\_v2.qsf}) to ensure consistent placement across compilation iterations and to facilitate physical board connections.
+
+\paragraph{Inter-FPGA Communication Pins:}
+The bit-serial communication interface uses a compact set of GPIO pins that directly correspond to the processor FPGA's pin assignments:
+
+\begin{itemize}
+    \item \textbf{Testbench to Processor (Outputs):}
+    \begin{itemize}
+        \item \texttt{s\_active} (PIN\_V12): Slave acknowledgment signal
+        \item \texttt{rx\_data[0]} (PIN\_AF7): Return data bit 0
+        \item \texttt{rx\_data[1]} (PIN\_W12): Return data bit 1
+    \end{itemize}
+    
+    \item \textbf{Processor to Testbench (Inputs):}
+    \begin{itemize}
+        \item \texttt{com\_enable} (PIN\_AF8): Communication enable control
+        \item \texttt{m\_active} (PIN\_Y8): Master active flag
+        \item \texttt{addr[0]} (PIN\_AB4): Address/control bit 0
+        \item \texttt{addr[1]} (PIN\_W8): Address/control bit 1
+        \item \texttt{tx\_data[0]} (PIN\_Y4): Transmitted data bit 0
+        \item \texttt{tx\_data[1]} (PIN\_Y5): Transmitted data bit 1
+    \end{itemize}
+\end{itemize}
+
+This 10-pin interface satisfies the project's constraint of fewer than 12 inter-board connections while supporting full bidirectional communication for instruction fetch, data access, and control operations.
+
+\paragraph{Clock and Reset Pins:}
+\begin{itemize}
+    \item \texttt{BS\_CLK} (PIN\_U11): Bit-serial clock input, forwarded from the processor FPGA. This clock drives all testbench logic to ensure synchronous operation across both boards.
+    \item \texttt{RESET\_N} (PIN\_AG5): Active-low reset button from the add-on board
+    \item \texttt{CLOCK\_50} (PIN\_V11): On-board 50 MHz oscillator (available but unused in dual-board configuration)
+\end{itemize}
+
+The decision to use the forwarded clock from the processor FPGA (\texttt{BS\_CLK}) rather than the local oscillator was critical for protocol correctness. Since the bit-serial state machine on both FPGAs must sample the 2-bit symbols in perfect synchronization, using independent clocks would introduce phase uncertainty and sampling errors.
+
+\paragraph{Seven-Segment Display Pins:}
+The testbench includes two seven-segment displays to show the instruction execution count:
+
+\begin{itemize}
+    \item \textbf{Display 1} (lower digit):
+    \begin{itemize}
+        \item \texttt{SEG1[6:0]} (PIN\_AE24, PIN\_AD20, PIN\_AG19, PIN\_AG18, PIN\_AC23, PIN\_AE20, PIN\_AD19): Segments g-f-e-d-c-b-a
+        \item \texttt{SEG1\_DP} (PIN\_AF20): Decimal point
+    \end{itemize}
+    
+    \item \textbf{Display 2} (upper digit):
+    \begin{itemize}
+        \item \texttt{SEG2[6:0]} (PIN\_AG23, PIN\_AH23, PIN\_AG24, PIN\_AA19, PIN\_AH26, PIN\_AE19, PIN\_AF18): Segments g-f-e-d-c-b-a
+        \item \texttt{SEG2\_DP} (PIN\_AF25): Decimal point
+    \end{itemize}
+\end{itemize}
+
+All pins are configured with the "3.3-V LVTTL" I/O standard to match the voltage levels of the DE0-Nano-SoC board and the external display module. This standard provides adequate noise margins and drive strength for the relatively short board traces while remaining compatible with standard CMOS logic levels.
+
+\subsubsection{Timing Constraints}
+
+The timing analysis for the testbench FPGA is defined through a Synopsys Design Constraints (SDC) file (\texttt{testbench\_fpga.sdc}). The constraint structure is intentionally minimal compared to the processor FPGA because the testbench logic operates at a lower frequency and has more relaxed timing requirements.
+
+\paragraph{Base Clock Constraint:}
+\begin{verbatim}
+create_clock -name clk_50 -period 20.000 [get_ports {FPGA_CLK_50}]
+\end{verbatim}
+
+This constraint declares a 50 MHz clock (20 ns period) on the board oscillator port. However, in the dual-board configuration, the testbench logic is actually clocked by the forwarded \texttt{BS\_CLK} signal from the processor FPGA, which operates at 1 MHz (1000 ns period). The SDC file does not explicitly constrain \texttt{BS\_CLK} because it is an external input whose timing characteristics are determined by the processor FPGA's clock generation.
+
+The absence of explicit timing constraints on \texttt{BS\_CLK} is acceptable for this design because:
+\begin{itemize}
+    \item The 1 MHz clock frequency provides a 1000 ns period, which is extremely relaxed for modern FPGA fabric
+    \item The bit-serial state machine and memory interfaces have inherently low combinational depth
+    \item Setup and hold times are easily met at this frequency without requiring explicit constraints
+\end{itemize}
+
+\paragraph{Inter-FPGA Signal Timing:}
+The communication signals between the two FPGAs (\texttt{s\_active}, \texttt{rx\_data}, \texttt{com\_enable}, \texttt{m\_active}, \texttt{addr}, \texttt{tx\_data}) are inherently asynchronous from the perspective of Quartus timing analysis because they cross board boundaries. However, because both boards share the same clock source through \texttt{BS\_CLK}, these signals are actually source-synchronous and sample reliably without metastability concerns.
+
+No explicit input delay or output delay constraints are applied to these signals because:
+\begin{itemize}
+    \item The board-to-board propagation delay is negligible compared to the 1000 ns clock period
+    \item The receiving logic samples the signals on the same clock edge used to generate them (source-synchronous design)
+    \item The 2-bit symbol transmission scheme provides inherent tolerance to small timing variations
+\end{itemize}
+
+\paragraph{Seven-Segment Display Timing:}
+The seven-segment display outputs are driven by registered signals from the instruction counter module. These outputs are purely combinational from the display driver's perspective and do not require setup/hold timing analysis. The display update rate is intentionally slow (controlled by the \texttt{SCALE\_BITS} parameter) to ensure visual persistence for human observers.
+
+\paragraph{Memory Timing:}
+Both the instruction memory (IMEM) and data memory (DMEM) are implemented using Quartus-generated single-port synchronous RAM IP blocks. These memories are configured for single-cycle access with registered outputs. The timing analysis for these blocks is automatically handled by the Quartus IP generation flow, which ensures that the internal memory access timing meets the specified clock frequency.
+
+The memory addressing logic uses simple combinational bit slicing to convert byte addresses to word addresses:
+\begin{verbatim}
+assign imem_addr = avm_instr_read_adr[15:2];  // Drop lower 2 bits
+assign dmem_addr = avm_data_adr[17:2];
+\end{verbatim}
+
+This addressing computation has minimal propagation delay and does not create timing bottlenecks.
+
+\subsubsection{Design for Testability Considerations}
+
+Several design-for-test features were incorporated into the pin assignment and timing strategy:
+
+\begin{itemize}
+    \item \textbf{Accessible test points}: All inter-FPGA communication signals are routed through the GPIO header, making them easily accessible with logic analyzers or oscilloscopes for debugging
+    
+    \item \textbf{Visual feedback}: The seven-segment display provides immediate visual confirmation of system operation without requiring external test equipment
+    
+    \item \textbf{Reset control}: The dedicated reset button allows manual system reinitialization without power cycling, facilitating rapid debug iterations
+    
+    \item \textbf{Clock forwarding visibility}: The forwarded clock signal could optionally be monitored to verify synchronization between the two FPGAs
+\end{itemize}
+
+These features proved invaluable during system bring-up, particularly when debugging protocol handshaking issues and verifying correct memory initialization.
 
 \FloatBarrier
 \section{FPGA Communication} 
