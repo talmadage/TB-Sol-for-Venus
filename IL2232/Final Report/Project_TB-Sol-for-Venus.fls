@@ -358,6 +358,11 @@ INPUT ./images/riscvISA.png
 INPUT ./images/riscvISA.png
 INPUT ./images/riscvISA.png
 INPUT ./images/riscvISA.png
+INPUT ./images/riscv_soc.png
+INPUT ./images/riscv_soc.png
+INPUT ./images/riscv_soc.png
+INPUT ./images/riscv_soc.png
+INPUT ./images/riscv_soc.png
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/adobe/times/ptmr8t.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/adobe/times/ptmr8t.tfm
 INPUT ./images/bit_serial_demonstration.png
