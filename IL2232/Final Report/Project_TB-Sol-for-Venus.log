@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.1.6)  6 JAN 2026 19:59
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.1.6)  6 JAN 2026 21:49
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -715,9 +715,11 @@ File: images/processor_img.png Graphic file (type png)
 <use images/processor_img.png>
 Package pdftex.def Info: images/processor_img.png  used on input line 295.
 (pdftex.def)             Requested size: 358.50229pt x 298.19725pt.
- [16 <./images/processor_img.png>]
-Overfull \hbox (62.46121pt too wide) in paragraph at lines 328--328
-[]   \T1/pcr/m/n/12 VARIABLE reset_shift : std_logic_vector(2 downto 0) := "000";[] 
+ [16 <./images/processor_img.png>] (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2023/02/27 1.9 listings language file
+)
+Overfull \hbox (62.4661pt too wide) in paragraph at lines 318--319
+[][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 [17] [18] [19]
@@ -755,87 +757,86 @@ Underfull \hbox (badness 10000) in paragraph at lines 574--578
 
  []
 
-[25] [26] [27]
-Underfull \hbox (badness 10000) in paragraph at lines 594--597
+[25] [26]
+<images/golden.png, id=513, 1248.665pt x 1489.565pt>
+File: images/golden.png Graphic file (type png)
+<use images/golden.png>
+Package pdftex.def Info: images/golden.png  used on input line 588.
+(pdftex.def)             Requested size: 199.1693pt x 237.58522pt.
+ [27 <./images/golden.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 602--605
 
  []
 
 [28] [29]
-Underfull \hbox (badness 10000) in paragraph at lines 611--615
+Underfull \hbox (badness 10000) in paragraph at lines 619--623
 
  []
 
-[30] [31]
-Underfull \hbox (badness 10000) in paragraph at lines 636--640
+[30] [31] [32]
+Underfull \hbox (badness 10000) in paragraph at lines 644--648
 
  []
 
-[32] [33]
-Overfull \hbox (22.52489pt too wide) in paragraph at lines 686--687
+[33]
+Overfull \hbox (22.52489pt too wide) in paragraph at lines 694--695
 []\T1/pcr/m/n/12 SEG1[6:0] \T1/ptm/m/n/12 (PIN_AE24, PIN_AD20, PIN_AG19, PIN_AG18, PIN_AC23,
  []
 
 
-Overfull \hbox (24.9968pt too wide) in paragraph at lines 692--693
+Overfull \hbox (24.9968pt too wide) in paragraph at lines 700--701
 []\T1/pcr/m/n/12 SEG2[6:0] \T1/ptm/m/n/12 (PIN_AG23, PIN_AH23, PIN_AG24, PIN_AA19, PIN_AH26,
  []
 
-
-Overfull \hbox (76.8612pt too wide) in paragraph at lines 706--706
+[34]
+Overfull \hbox (76.8612pt too wide) in paragraph at lines 714--714
 []\T1/pcr/m/n/12 create_clock -name clk_50 -period 20.000 [get_ports {FPGA_CLK_50}][] 
  []
 
-[34]
-Overfull \hbox (11.91325pt too wide) in paragraph at lines 731--732
+[35]
+Overfull \hbox (11.91325pt too wide) in paragraph at lines 739--740
 [] []\T1/ptm/b/n/12 Mem-ory Tim-ing:[] \T1/ptm/m/n/12 Both the in-struc-tion mem-ory (IMEM) and data mem-ory (DMEM)
  []
 
-[35]
-Overfull \hbox (76.8612pt too wide) in paragraph at lines 737--737
+
+Overfull \hbox (76.8612pt too wide) in paragraph at lines 745--745
 []\T1/pcr/m/n/12 assign imem_addr = avm_instr_read_adr[15:2];  // Drop lower 2 bits[] 
  []
 
 [36]
-<images/bs_interface_v1.png, id=542, 906.38625pt x 481.8pt>
+<images/bs_interface_v1.png, id=565, 906.38625pt x 481.8pt>
 File: images/bs_interface_v1.png Graphic file (type png)
 <use images/bs_interface_v1.png>
-Package pdftex.def Info: images/bs_interface_v1.png  used on input line 770.
+Package pdftex.def Info: images/bs_interface_v1.png  used on input line 778.
 (pdftex.def)             Requested size: 398.3386pt x 211.74269pt.
-<images/bs_interface_v2.png, id=543, 1202.4925pt x 532.99126pt>
+ [37]
+<images/bs_interface_v2.png, id=570, 1202.4925pt x 532.99126pt>
 File: images/bs_interface_v2.png Graphic file (type png)
 <use images/bs_interface_v2.png>
-Package pdftex.def Info: images/bs_interface_v2.png  used on input line 780.
+Package pdftex.def Info: images/bs_interface_v2.png  used on input line 788.
 (pdftex.def)             Requested size: 398.3386pt x 176.55455pt.
- [37 <./images/bs_interface_v1.png>] [38 <./images/bs_interface_v2.png>]
-<images/bs_interface_graph.png, id=557, 1406.25375pt x 956.57375pt>
+ [38 <./images/bs_interface_v1.png> <./images/bs_interface_v2.png>]
+<images/bs_interface_graph.png, id=577, 1406.25375pt x 956.57375pt>
 File: images/bs_interface_graph.png Graphic file (type png)
 <use images/bs_interface_graph.png>
-Package pdftex.def Info: images/bs_interface_graph.png  used on input line 811.
+Package pdftex.def Info: images/bs_interface_graph.png  used on input line 819.
 (pdftex.def)             Requested size: 398.3386pt x 270.9478pt.
- [39 <./images/bs_interface_graph.png>] [40]
-Overfull \hbox (14.69923pt too wide) in paragraph at lines 851--852
+ [39] [40 <./images/bs_interface_graph.png>] [41]
+Overfull \hbox (14.69923pt too wide) in paragraph at lines 859--860
 \T1/ptm/m/n/12 counter-based di-vider rather than a Phase-Locked Loop (PLL). The \T1/pcr/m/n/12 clock_divider
  []
 
-(/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
-File: lstlang1.sty 2023/02/27 1.9 listings language file
-) [41]
-Overfull \hbox (40.86588pt too wide) in paragraph at lines 880--881
+[42]
+Overfull \hbox (40.86588pt too wide) in paragraph at lines 888--889
 [][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-[42] [43]
-<images/golden.png, id=599, 1248.665pt x 1489.565pt>
-File: images/golden.png Graphic file (type png)
-<use images/golden.png>
-Package pdftex.def Info: images/golden.png  used on input line 934.
-(pdftex.def)             Requested size: 199.1693pt x 237.58522pt.
- [44] [45 <./images/golden.png>] [46]
-Underfull \hbox (badness 10000) in paragraph at lines 961--962
+[43] [44] [45] [46] [47]
+Underfull \hbox (badness 10000) in paragraph at lines 968--969
 \T1/pcr/m/n/12 tw / attachment / archive / 941 / DE0-[]Nano-[]SoC _ User _ manual _
  []
 
-[47] (./Project_TB-Sol-for-Venus.aux)
+[48] (./Project_TB-Sol-for-Venus.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
@@ -848,18 +849,18 @@ Package rerunfilecheck Info: File `Project_TB-Sol-for-Venus.out' has not changed
 (rerunfilecheck)             Checksum: CB8F90B5265B5904DC2AD3BFD322C196;11908.
  ) 
 Here is how much of TeX's memory you used:
- 25835 strings out of 474222
- 489058 string characters out of 5748734
+ 25859 strings out of 474222
+ 489387 string characters out of 5748734
  1942975 words of memory out of 5000000
- 47478 multiletter control sequences out of 15000+600000
+ 47481 multiletter control sequences out of 15000+600000
  585237 words of font info for 72 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 84i,9n,93p,1629b,1167s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 84i,9n,93p,1629b,1177s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb>
-Output written on Project_TB-Sol-for-Venus.pdf (48 pages, 5414726 bytes).
+Output written on Project_TB-Sol-for-Venus.pdf (49 pages, 5416858 bytes).
 PDF statistics:
- 710 PDF objects out of 1000 (max. 8388607)
- 623 compressed objects within 7 object streams
- 170 named destinations out of 1000 (max. 500000)
+ 739 PDF objects out of 1000 (max. 8388607)
+ 651 compressed objects within 7 object streams
+ 191 named destinations out of 1000 (max. 500000)
  570 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -155,7 +155,7 @@ The project execution followed five main phases:
   \item \textbf{Validation and Documentation}: Performing differential verification against architectural simulators, characterizing system performance, and documenting the complete design for future extension.
 \end{itemize}
 
-This report is structured to reflect the technical development progression. Section 2 presents the synthesis and timing analysis of both processor architectures, establishing their correctness and feasibility for FPGA implementation. Section 3 describes the processor implementation on FPGA 1, detailing the system architecture, clock management, reset synchronization, and the processor's internal organization including the ProGram-generated finite state machine. Section 4 documents the testbench development on FPGA 2, covering the evolution from simulation environments through synthesizable hardware implementations, including memory subsystems and execution monitoring. Section 5 details the inter-FPGA communication infrastructure, explaining the bit-serial protocol design, serialization mechanisms, and clock distribution strategy. Finally, Section 6 concludes with achieved results, lessons learned, and recommendations for future work extending this validation platform.
+This report is structured to reflect the technical development progression. Section 2 presents the synthesis and timing analysis of both processor architectures, establishing their correctness and feasibility for FPGA implementation. Section 3 describes the processor implementation on FPGA 1, detailing the system architecture, clock management, reset synchronization, and the processor's internal organization including the ProGram-generated finite state machine. Section 4 documents the testbench development on FPGA 2, covering the evolution from simulation environments through synthesizable hardware implementations, including memory subsystems and execution monitoring. Section 5 details the inter-FPGA communication infrastructure, explaining the bit-serial protocol design, serialization mechanisms, and clock distribution strategy. Finally, Section 6 concludes with achieved results and recommendations for future work extending this validation platform.
 \newpage
 \FloatBarrier
 \section{Synthesis}
@@ -313,7 +313,7 @@ The structural architecture instantiates two primary components: the \texttt{Cis
 
 A critical aspect of the design is the proper handling of asynchronous reset signals. The KEY button provides an asynchronous active-low reset, which must be synchronized to the system clock domain to prevent metastability issues. The implementation uses a three-stage shift register to synchronize the reset signal:
 
-\begin{verbatim}
+\begin{lstlisting}[language=VHDL]
 reset_sync_proc: PROCESS(CLOCK_50, reset_n)
    VARIABLE reset_shift : std_logic_vector(2 downto 0) := "000";
 BEGIN
@@ -325,7 +325,7 @@ BEGIN
       reset_sync <= NOT reset_shift(2);
    END IF;
 END PROCESS;
-\end{verbatim}
+\end{lstlisting}
 
 This synchronizer ensures that the internal reset signal (\texttt{sreset\_sig}) is properly aligned with the clock domain before being distributed to the processor core.
 
@@ -371,11 +371,11 @@ This mapping enables visual confirmation that the processor is actively communic
 
 The \texttt{clock\_divider} module implements a frequency divider that generates the 1 MHz processor clock from the 50 MHz board clock. The division is achieved using a simple counter-based approach:
 
-\begin{verbatim}
+\begin{lstlisting}[language=VHDL]
 CONSTANT DIV_VALUE : integer := 25;
 SIGNAL counter : integer range 0 to DIV_VALUE-1 := 0;
 SIGNAL clk_reg : std_logic := '0';
-\end{verbatim}
+\end{lstlisting}
 
 The divider counts to 25, then toggles the output clock. Since the output toggles every 25 input cycles, the effective division ratio is 50, producing a 1 MHz output from the 50 MHz input. This implementation ensures a 50\% duty cycle, which is important for reliable synchronous logic operation.
 
@@ -425,11 +425,11 @@ The processor maintains an extensive set of internal signals that represent the 
 
 The processor includes a 32-entry register file implemented as an internal memory array:
 
-\begin{verbatim}
+\begin{lstlisting}[language=VHDL]
 type memory_array_type is array (natural range <>) 
     of std_logic_vector(31 downto 0);
 signal regs:memory_array_type(31 downto 0);
-\end{verbatim}
+\end{lstlisting}
 
 Register writeback is controlled by a dedicated process that monitors the \texttt{writeback\_enable} signal and updates the destination register specified by \texttt{rd\_data}. The writeback logic includes special handling for load instructions, which require an additional pipeline stage to reconstruct the full word from serially received data.
 
