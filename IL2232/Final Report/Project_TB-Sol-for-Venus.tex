@@ -835,12 +835,110 @@ By avoiding internal state machines and wait-state management, the module \textt
 
 
 \FloatBarrier
+
+\newpage
+
+\subsection{Clocking Strategy and Synchronization}
+
+\subsubsection{System-Level Clocking Architecture}
+The dual-FPGA testbench system employs a source-synchronous clocking strategy where the processor FPGA (FPGA 1) serves as the clock source for both boards. This architectural decision shapes the timing characteristics and reliability of the inter-FPGA communication protocol.
+
+FPGA 1 generates a derived 1~MHz clock from a native 5~MHz clock through frequency division, which serves two purposes: it clocks the processor core and associated logic, and it is forwarded to the testbench FPGA via a dedicated GPIO pin (\texttt{clk\_out} on FPGA 1, \texttt{BS\_CLK} on FPGA 2).
+
+\subsubsection{Clock Generation on Processor FPGA}
+The clock generation on FPGA 1 is implemented through a simple, deterministic counter-based divider rather than a Phase-Locked Loop (PLL). The \texttt{clock\_divider} module implements a divide-by-50 operation:
+
+\begin{lstlisting}[language=VHDL]
+CONSTANT DIV_VALUE : integer := 25;
+SIGNAL counter : integer range 0 to DIV_VALUE-1 := 0;
+SIGNAL clk_reg : std_logic := '0';
+\end{lstlisting}
+
+The divider counts from 0 to 24, then toggles the output clock register. Since the output toggles every 25 input cycles, this produces an effective division ratio of 50, generating a 1~MHz clock from the 50~MHz input with a 50\% duty cycle. This approach was selected because:
+
+\begin{itemize}
+    \item \textbf{Simplicity and Determinism:} Counter-based division reduces complexity by removing the need for phase-locked loop lock time or complex initialization sequences.
+    \item \textbf{Reduced Jitter:} The clock divider reduces jitter relative to the output clock period.
+    \item \textbf{Simplicity:} RTL (Register-Transfer Level) design is straightforward, making it easy to implement.
+    \item \textbf{Resource Efficiency:} The divider consumes minimal FPGA fabric resources (a single counter and one flip-flop), preserving logic elements for the processor core and communication infrastructure.
+\end{itemize}
+
+\subsubsection{Clock Forwarding Rationale}
+The decision to use source-synchronous clocking strategy for FPGA 1 to FPGA 2 communications, rather than generating independent clocks on each board, simplifies challenges in bit-serial communication. The bit-serial protocol transmits 2-bit symbols on every clock edge, with both the transmitter and receiver operating on the same state machine timing. Any phase difference between independent clocks would cause symbol misalignment and protocol corruption.
+
+Clock forwarding eliminates this failure mode entirely. By distributing the same physical clock edge to both FPGAs, the system becomes source-synchronous where the data transitions and clock edges that sample them originate from the same timing domain. This guarantees that setup and hold times are determined solely by board-level propagation delays and FPGA I/O characteristics.
+
+\subsubsection{Synchronization and Metastability Considerations}
+While the inter-FPGA communication operates synchronously due to clock forwarding, the system still contains asynchronous boundaries that require careful handling:
+
+\textbf{Reset Synchronization:} The KEY button on each FPGA provides an asynchronous active-low reset. To prevent metastability, both designs implement a three-stage synchronization shift register:
+
+\begin{lstlisting}[language=VHDL]
+reset_sync_proc: PROCESS(CLOCK_50, reset_n)
+VARIABLE reset_shift : std_logic_vector(2 downto 0) := "000";
+BEGIN
+    IF reset_n = '0' THEN
+        reset_shift := "000";
+        reset_sync <= '1';
+    ELSIF rising_edge(CLOCK_50) THEN
+        reset_shift := reset_shift(1 downto 0) & '1';
+        reset_sync <= NOT reset_shift(2);
+    END IF;
+END PROCESS;
+\end{lstlisting}
+
+This synchronizer ensures that the internal reset signal transitions only on a valid clock edge, preventing metastability issues.
+
+\textbf{GPIO Signal Timing:} Although the inter-FPGA data signals (\texttt{m\_active}, \texttt{addr}, \texttt{tx\_data}, \texttt{rx\_data}) cross board boundaries, they are not truly asynchronous because they are generated and sampled using the same forwarded clock. The source-synchronous nature ensures that these signals have deterministic timing relative to the sampling clock edge.
+
+\subsubsection{Alternative Approaches Considered}
+Our initial clocking strategy attempted to generate independent 1~MHz clocks on each FPGA using identical clock divider modules. This approach was motivated by several engineering considerations that seemed reasonable at the project's outset:
+
+\begin{itemize}
+    \item \textbf{Modularity and Independent Development:} Generating clocks independently on each FPGA allowed parallel development of the processor board and testbench board without requiring physical connection during early bring-up. Each board could be developed, synthesized, and initially tested as a standalone unit. This was particularly valuable given the team structure, where different members were responsible for the processor implementation and testbench development.
+    
+    \item \textbf{Pin Budget Optimization:} In the early design phase, we aggressively tried to minimize the inter-FPGA pin count to allow more bits to be communicated simultaneously under the 12-pin constraint. Using independent clocks would have reduced the GPIO requirements by one signal, potentially allowing for additional debug visibility or future protocol extensions.
+    
+    \item \textbf{Perceived Protocol Tolerance:} Before implementing the detailed bit-serial state machine, our preliminary analysis suggested that the protocol might tolerate small phase variations between transmitter and receiver. We initially envisioned implementing handshake-based symbol synchronization that would accommodate minor clock differences.
+    
+    \item \textbf{Higher Coverage of Failure Points:} Independent clocks would have allowed us to intentionally introduce controlled frequency offsets during testing to verify the robustness of the protocol under non-ideal conditions.
+    
+    \item \textbf{Avoiding Clock Distribution Complexity:} Forwarding a clock signal between boards introduces its own set of concerns: maintaining signal integrity over board-to-board connections, managing the forwarded clock's fanout and ensuring that the forwarded clock meets the receiving FPGA's input timing requirements.
+\end{itemize}
+
+These initial assumptions were not unreasonable given typical digital design practices. However, as implementation progressed, the practical realities of the bit-serial protocol revealed that these perceived advantages were outweighed by the synchronization challenges.
+
+\textbf{Decision to Use Clock Forwarding:} After evaluating the difficulties while implementing synchronization between clocks, we made the decision to simplify the system by forwarding the clock from FPGA 1 to FPGA 2. This change provided immediate benefits:
+
+\begin{itemize}
+    \item \textbf{Simplified Debugging:} With a single clock domain, any communication failures could be confidently attributed to protocol logic or data integrity issues rather than clock synchronization problems. This dramatically reduced the debugging search space.
+    
+    \item \textbf{Guaranteed Synchronization:} By distributing the same physical clock edge to both FPGAs, the system becomes source-synchronous, that is the data transitions and clock edges that sample them originate from the same timing domain. Symbol alignment is guaranteed by construction rather than by careful timing management.
+    
+    \item \textbf{Deterministic Behavior:} Setup and hold times are now determined solely by board-level propagation delays and FPGA I/O characteristics. The system behavior became vastly deterministic and reproducible.
+\end{itemize}
 \section{Conclusion}
 
 \subsection{Conclusion}
+This project successfully completed the hardware verification phase for two RISC-V processor architectures namely a parallel and a bit-serial. Both designs were synthesized, implemented on FPGA hardware, and validated through functional testing within the severe I/O constraints imposed by high-temperature test equipment.
+
+The primary achievement of this work is the development and validation of a dual-FPGA testbench system that enables complete processor verification using only 10 inter-board connections, well within the 12-pin constraint dictated by KTH's Venus/Sol high-temperature test station. The bit-serial communication protocol, while introducing significant latency overhead compared to parallel bus architectures, proved highly effective for reliable data transfer under pin-constrained conditions.  The protocol implementation features parity-based integrity checking, deterministic state machine control, and source-synchronous clock distribution that guarantees symbol alignment between transmitter and receiver. The measured instruction execution rate of approximately 100,198 instructions per second, though modest by conventional processor standards, demonstrates that the system successfully executes real programs and validates the correctness of both processor implementations.
+The clocking strategy underwent a complete overhaul during development. Initial attempts to use independent clock generation on each FPGA, while being elegant, introduced debugging complexity and synchronization ambiguity that outweighed the minor pin count savings. The final implementation employs clock forwarding from the processor FPGA to the testbench FPGA, creating a source-synchronous system where all inter-board communication occurs within a single clock domain. This architectural decision dramatically simplified debugging, guaranteed reliable reproducable results.
+
+
+\textbf{add info about timing results}
+\textbf{ info about synthesis results of area and power}
+\textbf{ talk about what the tb covers}
+
 
 \subsection{Future Work}
-
+While this project has validated both processor implementations on FPGA hardware and implemented a functional dual-board testbench system, several opportunities exist for extending and enhancing this work:
+\begin{itemize}
+    \item \textbf{High-Temperature Hardware Validation :} The next step is deployment of the validated processor designs in KTH's Venus/Sol high-temperature test station.
+    \item \textbf{Performance Optimization :} 
+        \textbf{\textbf{ make it run faster either by speperate clocks and sync or something else}}
+    \item \textbf{a point about improving/extending the testbench}
+\end{itemize}
 
 % ==========================================================
 % REFERENCES 
