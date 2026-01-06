@@ -68,14 +68,54 @@ Stockholm, Sweden
 % Start main content
 \section{General summary of the project} 
 
-This project focused on the implementation and verification of a parallel and a bit-serial version of a Risc-V. Both processor models need to be implemented on one FPGA and be tested by an advanced testbench that will be implemented on another FPGA. So the CPU and the testbench need to communicate with physical wire. This setup is intended to operate in the extreme environments of Venus, specifically under high-temperature. This work uses KTH's experimental Silicon-on-Insulator technology, which can operate at temperatures approaching Venus's 480°C requirement. However, this test station has a constraint, it has only 12 pads available. A serialisation and a communication protocol need to be set.
+This project focused on the implementation and verification of a parallel and a bit-serial version of a RISC-V processor. Both processor models needed to be implemented on one FPGA and tested by an advanced testbench implemented on another FPGA, with the CPU and testbench communicating through physical wires. This setup is intended to operate in the extreme environments of Venus, specifically under high-temperature conditions. The work uses KTH's experimental Silicon-on-Insulator technology, which can operate at temperatures approaching Venus's 480°C requirement. However, the test station has a constraint of only 12 pads available, requiring the development of a serialization system and communication protocol.
 
-The project was carried out by dividing the work into two largely sub-projects: the testbench development with test set and implementation, and the communication system with especially the serialisation and protocol of the data transfer. This separation enabled parallel development and allowed team members to focus on different topics and architecture with at the end better efficiency. A significant portion of the work involved learning and adapting to unfamiliar tools, technologies, and design constraints. It strongly influenced both the schedule and the working methods.
+The project was carried out by dividing the work into two main sub-projects: the testbench development with test set and implementation, and the communication system with serialization and protocol for data transfer. This separation enabled parallel development and allowed team members to focus on different topics and architectures, ultimately achieving better efficiency. The team was organized into two subgroups: three members worked on the testbench (functional testing, CoreMark generation, and integration with RAM and UART), while three members focused on the bit-serial interface (frequency and pin properties, communication protocol specification, and RTL implementation). A significant portion of the work involved learning and adapting to unfamiliar tools, technologies, and design constraints, which strongly influenced both the schedule and working methods.
 
-In terms of results, the project successfully delivered a functional dual FPGA with a CPU and a Testbench connected by a bit-serial communication. The test for Cisc-V and testbench in 2 FPGAs runs successfully with a measured IPs at 100 198 approaching the 1MHz clock of the Cisc-V. The Risc-V has also been tested with our testbench but only on simulation without the bit-serial communication.
+Regarding planned versus actual outcomes, the project timeline remained largely on track despite several technical challenges. The buffer time allocated during initial planning proved valuable in absorbing unforeseen delays. From a budget perspective, as an academic project no formal budget was involved, though minor unplanned expenses occurred for purchasing power adapters and communication cables between FPGA boards, which team members handled individually. In terms of results, the project successfully delivered a functional dual-FPGA system with a CPU and testbench connected by bit-serial communication. The test for CISC-V and testbench across 2 FPGAs runs successfully with measured performance at 100,198 IPS approaching the 1MHz clock of the CISC-V. The RISC-V has also been tested with the testbench, but only in simulation without the bit-serial communication.
 
+
+Several significant problems impacted the project timeline and workflow. The initial codebase delivery was delayed, and upon receipt contained various compilation errors and bugs that were assumed to be outside the project scope and already corrected. This required the team to spend considerable time debugging and refactoring code that should have been functional. Additionally, some FPGA boards malfunctioned and needed replacement, and students had to purchase their own adapters and cables for inter-board communication. While these hardware issues were relatively minor and easily resolved, they introduced delays in the integration phase. The Christmas holiday period presented organizational challenges, as not all team members could work together in person. This necessitated a division of tasks between those working remotely and those with physical access to the two FPGA boards required for final integration. Since each member initially had one board, those who traveled left their boards with team members remaining on campus to enable dual-board testing to continue. The holiday period also reduced overall team availability, requiring careful task prioritization and remote workflow coordination. Despite these obstacles, the project maintained progress through adaptive planning, clear task division, and effective cross-team coordination.
 
 \section{Fulfillment of our goals}
+
+\subsection{Follow-up of objectives}
+
+The project successfully achieved the majority of its stated technical and business objectives, demonstrating a functional dual-FPGA validation platform despite encountering significant implementation challenges.
+
+\subsubsection{List of obtained goals}
+
+The following table summarizes the achievement status of all project objectives defined in the initial planning phase:
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{p{0.5cm}p{5.5cm}p{2.8cm}p{5.5cm}}
+\toprule
+\textbf{ID} & \textbf{Objective} & \textbf{Status} & \textbf{Notes} \\
+\midrule
+T1 & Validation of both processor architectures using a suite of at least 10 assembly-level test programs to verify core ISA functionality & Partially achieved & Both processors validated in simulation; only CISC-V validated on hardware \\
+\midrule
+T2 & Execution and verification of a complex benchmark algorithm (CoreMark), with results transmitted to the host PC & Achieved & Successfully executed in simulation for both processors \\
+\midrule
+T3 & Demonstration of stable data transfer exceeding 1,000 instructions without corruption between the two FPGAs & Achieved & Verified during CISC-V hardware testing with measured performance of 100,198 IPS \\
+\midrule
+T4 & (Optional) Collection of quantitative performance metrics such as maximum clock frequency, benchmark cycle counts, and FPGA resource utilization & Partially achieved & Maximum clock frequency measured; comprehensive resource analysis incomplete \\
+\midrule
+B1 & Complete all design, implementation, and validation phases within the planned 16-week schedule & Achieved & All major deadlines met despite technical challenges \\
+\midrule
+B2 & Strengthen teamwork, communication, and project management skills & Achieved & Effective collaboration and adaptive planning throughout the project \\
+\midrule
+B3 & Deliver a high-quality, fully functional system and comprehensive documentation & Achieved & Functional dual-FPGA system delivered with documentation \\
+\bottomrule
+\end{tabular}
+\caption{Summary of project objectives and achievement status}
+\end{table}
+
+
+The primary unfulfilled objective was the hardware validation of the RISC-V processor on the dual-FPGA platform. While the RISC-V design passed all functional tests in simulation and was verified to implement the instruction set correctly, integration with the bit-serial communication interface was not completed. This limitation stemmed directly from discrepancies in the initial codebase delivery. The project planning assumed both processor implementations would be provided as consistent black-box modules with identical external interfaces, enabling straightforward integration with the testbench through a common protocol. However, the delivered implementations featured different interface specifications, requiring significant additional integration effort that could not be accommodated within the project timeline after addressing codebase debugging needs.
+
+The successful completion of the CISC-V validation demonstrates that the project methodology is sound and that the remaining objectives are achievable with focused effort on interface standardization and systematic performance characterization.
 
 
 \section{What we learned (main part)}
