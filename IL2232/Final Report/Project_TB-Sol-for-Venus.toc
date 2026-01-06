@@ -78,7 +78,13 @@
 \contentsline {subsubsection}{\numberline {5.1.2}avm\_interface}{39}{subsubsection.5.1.2}%
 \contentsline {paragraph}{Interface and I/O description}{40}{paragraph*.25}%
 \contentsline {paragraph}{Module logic}{40}{paragraph*.26}%
-\contentsline {section}{\numberline {6}Conclusion}{40}{section.6}%
-\contentsline {subsection}{\numberline {6.1}Conclusion}{40}{subsection.6.1}%
-\contentsline {subsection}{\numberline {6.2}Future Work}{40}{subsection.6.2}%
-\contentsline {section}{\numberline {7}References}{41}{section.7}%
+\contentsline {subsection}{\numberline {5.2}Clocking Strategy and Synchronization}{41}{subsection.5.2}%
+\contentsline {subsubsection}{\numberline {5.2.1}System-Level Clocking Architecture}{41}{subsubsection.5.2.1}%
+\contentsline {subsubsection}{\numberline {5.2.2}Clock Generation on Processor FPGA}{41}{subsubsection.5.2.2}%
+\contentsline {subsubsection}{\numberline {5.2.3}Clock Forwarding Rationale}{41}{subsubsection.5.2.3}%
+\contentsline {subsubsection}{\numberline {5.2.4}Synchronization and Metastability Considerations}{42}{subsubsection.5.2.4}%
+\contentsline {subsubsection}{\numberline {5.2.5}Alternative Approaches Considered}{42}{subsubsection.5.2.5}%
+\contentsline {section}{\numberline {6}Conclusion}{44}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Conclusion}{44}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Future Work}{45}{subsection.6.2}%
+\contentsline {section}{\numberline {7}References}{46}{section.7}%

@@ -16,6 +16,8 @@
 \usepackage{hyperref}   % Essential for clickable Table of Contents and links
 \usepackage{amsmath}    % For math
 \usepackage{amssymb}    % For math symbols
+\usepackage{listings}
+
 
 % Hyperlink setup
 \hypersetup{
@@ -925,6 +927,7 @@ This project successfully completed the hardware verification phase for two RISC
 The primary achievement of this work is the development and validation of a dual-FPGA testbench system that enables complete processor verification using only 10 inter-board connections, well within the 12-pin constraint dictated by KTH's Venus/Sol high-temperature test station. The bit-serial communication protocol, while introducing significant latency overhead compared to parallel bus architectures, proved highly effective for reliable data transfer under pin-constrained conditions.  The protocol implementation features parity-based integrity checking, deterministic state machine control, and source-synchronous clock distribution that guarantees symbol alignment between transmitter and receiver. The measured instruction execution rate of approximately 100,198 instructions per second, though modest by conventional processor standards, demonstrates that the system successfully executes real programs and validates the correctness of both processor implementations.
 The clocking strategy underwent a complete overhaul during development. Initial attempts to use independent clock generation on each FPGA, while being elegant, introduced debugging complexity and synchronization ambiguity that outweighed the minor pin count savings. The final implementation employs clock forwarding from the processor FPGA to the testbench FPGA, creating a source-synchronous system where all inter-board communication occurs within a single clock domain. This architectural decision dramatically simplified debugging, guaranteed reliable reproducable results.
 
+From a synthesis perspective, both processor implementations achieved satisfactory results, especially in terms of timing. It was not a criteria of success of our project, however a performance analysis is always important for correctness and future optimisation. In particular, we made sure that processors had no negative slack and that performances were reasonable. After proper clock constraint definition, all designs met their target timing requirements. For instance: with a frequency of 50MHz, that is to say a clock of 20ns, the Brisc-V processor has a worst slack of 3.030ns for setup and 0.148ns for hold. It confirmed the feasibility of reliability of our processors. Thanks to those tests, we were able to use the processors with more serenity during our work. These synthesis results further support the viability of the Brisc-V approach as a good architecture for future high-temperature ASIC implementations. 
 
 \textbf{add info about timing results}
 \textbf{ info about synthesis results of area and power}
@@ -935,8 +938,8 @@ The clocking strategy underwent a complete overhaul during development. Initial 
 While this project has validated both processor implementations on FPGA hardware and implemented a functional dual-board testbench system, several opportunities exist for extending and enhancing this work:
 \begin{itemize}
     \item \textbf{High-Temperature Hardware Validation :} The next step is deployment of the validated processor designs in KTH's Venus/Sol high-temperature test station.
-    \item \textbf{Performance Optimization :} 
-        \textbf{\textbf{ make it run faster either by speperate clocks and sync or something else}}
+    \item \textbf{Dual-Board Performance Characterization:} Although functional correctness has been demonstrated, a future work could be to evaluate performances of the complete dual-FPGA system. This includes timing, communication latency, power consumption as well as area utilisation.
+    \item \textbf{Performance Optimization:} The current implementation prioritizes correctness and robustness over performance. Future work could investigate performance improvements by introducing for example a higher serial clock frequency or by separate clocks and sync.
     \item \textbf{a point about improving/extending the testbench}
 \end{itemize}
 
