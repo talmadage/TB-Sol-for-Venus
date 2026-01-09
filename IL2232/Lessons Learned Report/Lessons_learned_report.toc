@@ -3,4 +3,8 @@
 \contentsline {subsection}{\numberline {2.1}Follow-up of objectives}{2}{}%
 \contentsline {subsubsection}{\numberline {2.1.1}List of obtained goals}{2}{}%
 \contentsline {section}{\numberline {3}What we learned (main part)}{3}{}%
-\contentsline {section}{\numberline {4}Conclusion}{3}{}%
+\contentsline {subsection}{\numberline {3.1}Good Experiences}{3}{}%
+\contentsline {subsubsection}{\numberline {3.1.1}Successful Interface Integration}{3}{}%
+\contentsline {subsection}{\numberline {3.2}Bad Experiences}{3}{}%
+\contentsline {subsubsection}{\numberline {3.2.1}Difficulty in Project Initiation and Problem Understanding}{3}{}%
+\contentsline {section}{\numberline {4}Conclusion}{4}{}%
