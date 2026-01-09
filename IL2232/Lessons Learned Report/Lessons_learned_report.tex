@@ -167,10 +167,10 @@ One negative aspect of the project was the limited opportunity to develop strong
 
 While this structure allowed efficient parallel progress, it reduced the amount of shared problem-solving and informal knowledge exchange within the full team. As a result, some integration issues could have been identified earlier with more frequent collective working sessions. This experience highlighted that effective teamwork is not only about task completion, but also about shared presence, continuous interaction, and collective ownership of the system.
 
-\subsubsection{Communication Overhead and Coordination Friction}
-Another challenge was the communication and coordination effort required to keep all team members aligned, especially during phases with uneven availability. Differences in individual schedules, technical responsibilities, and physical access to hardware sometimes led to delays in information flow and decision-making.
+\subsubsection{The Cost of Assumptions}
+We assumed the delivered processor codebases would be functional and have identical interfaces. Both assumptions proved wrong. The code contained compilation errors and bugs requiring substantial debugging, while the different interface specifications prevented RISC-V hardware validation within our timeline.
 
-Although regular meetings helped mitigate these issues, some coordination friction remained, particularly during integration phases when rapid feedback was necessary. This experience demonstrated that complex technical projects require not only structured meetings, but also lightweight and continuous communication channels to reduce overhead and ensure timely alignment.
+ Lesson: Always include acceptance testing of third-party deliverables as an early-phase activity with contingency time allocated.
 
 
 \section{Conclusion}
