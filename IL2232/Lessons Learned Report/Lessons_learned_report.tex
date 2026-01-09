@@ -136,6 +136,16 @@ Also, the transition from simulation to synthesizable platforms highlights the s
 \subsubsection{Successful Interface Integration}
 One of the most rewarding experiences of the project was the moment when individual components were finally integrated together. The final integration was more complex and time-consuming than initially expected. So it is even more satisfying to see 2 interfaces of different people in the group join together. Seeing the result of our work is nice and it confirmed that the architectural decisions, communication protocols, and verification strategies were good choices. 
 
+\subsubsection{Agile Project Management and Risk Awareness}
+One of the most positive aspects of the project was the adoption of an agile project management approach combined with structured documentation practices. Weekly sprint planning meetings and regular technical discussions with the supervisor enabled the team to continuously reassess priorities and adapt to emerging challenges. 
+
+In particular, the early definition of a risk analysis proved to be extremely valuable. Several identified risks, such as uncertainties related to legacy code quality and integration complexity, materialized during the project. Although some risks were partially underestimated in terms of effort, having them formally documented allowed the team to react quickly and reallocate time without jeopardizing major milestones. This experience demonstrated that agile planning and explicit risk awareness are essential for managing complex engineering projects under uncertainty.
+
+\subsubsection{Effective Collaboration Despite Physical Constraints}
+Another positive experience was the team's ability to maintain effective collaboration despite significant physical and logistical constraints. The project required access to specific FPGA hardware, and during the Christmas holiday period not all team members were able to remain on campus. 
+
+The team successfully adapted by clearly separating tasks that required physical hardware access from those that could be carried out remotely, such as simulation, documentation, and protocol development. This division, combined with frequent online communication, allowed continuous progress even when the team was geographically distributed. This experience highlighted the importance of adaptability and clear task definition when working in hybrid or partially remote engineering teams.
+
 \subsection{Bad Experiences}
 
 \subsubsection{Difficulty in Project Initiation and Problem Understanding}
@@ -146,7 +156,34 @@ A major challenge at the beginning of the project was the difficulty in clearly 
 Regarding the division of labor, we initially adopted a functional structure that split our six-person team into two equal groups: three members dedicated to the test platform, and three responsible for communication, synthesis, and clock management. While this allocation seemed logical in theory, it proved less efficient in practice. The test platform workload was not constant, leading to periods of overlap and diminishing returns for the three assigned members.
 
 Afterward, we learned that a more flexible structure would have been better. Instead of a rigid 3-3 split, assigning two members to the test platform and make the third as a "mobile" support engineer would have been more effective. This role would have allowed for dynamic resource shifting to assist colleagues on the synthesis and clock generation tasks, who often had to handle high-pressure components in isolation. This experience underscored the importance of flexible team roles over static functional assignments to ensure a balanced workload across all project phases.
+
+\subsubsection{Dependency on Physical Hardware Availability}
+Another challenge was the strong dependency on physical hardware availability for final integration and validation. Since only a limited number of FPGA boards and accessories were available, delays in acquiring cables, adapters, or replacement boards directly affected progress.
+
+This dependency reduced flexibility during critical phases of the project and increased pressure on team members who had physical access to the hardware. The experience revealed the importance of planning redundancy or alternative testing strategies when hardware resources are limited.
+
+\subsubsection{Limited Team Cohesion and Shared Working Time}
+One negative aspect of the project was the limited opportunity to develop strong team cohesion. Due to the nature of the project, which did not require daily physical presence, and the differing schedules of team members, much of the work was carried out individually or in small subgroups.
+
+While this structure allowed efficient parallel progress, it reduced the amount of shared problem-solving and informal knowledge exchange within the full team. As a result, some integration issues could have been identified earlier with more frequent collective working sessions. This experience highlighted that effective teamwork is not only about task completion, but also about shared presence, continuous interaction, and collective ownership of the system.
+
+\subsubsection{Communication Overhead and Coordination Friction}
+Another challenge was the communication and coordination effort required to keep all team members aligned, especially during phases with uneven availability. Differences in individual schedules, technical responsibilities, and physical access to hardware sometimes led to delays in information flow and decision-making.
+
+Although regular meetings helped mitigate these issues, some coordination friction remained, particularly during integration phases when rapid feedback was necessary. This experience demonstrated that complex technical projects require not only structured meetings, but also lightweight and continuous communication channels to reduce overhead and ensure timely alignment.
+
+
 \section{Conclusion}
+
+This project provided a comprehensive learning experience that went far beyond the technical implementation of a processor verification platform. Working on a complex dual-FPGA system under strict physical constraints required not only solid engineering skills, but also adaptability, communication, and effective project management. The combination of legacy code, limited documentation, hardware dependency, and partial team availability made the project challenging, but also highly instructive.
+
+From a technical perspective, the project strengthened our understanding of hardware verification methodologies, interface abstraction, and the transition from simulation to real hardware. The successful hardware validation of the CISC-V processor demonstrated the effectiveness of the adopted testbench strategy and communication protocol, while the incomplete hardware integration of the RISC-V processor highlighted the importance of early interface standardization and realistic assumptions about external code quality.
+
+Equally important were the non-technical lessons learned. The experience emphasized that project success depends not only on individual competence, but also on flexible team structures, shared working time, and efficient communication. Issues related to task allocation, coordination overhead, and limited team cohesion revealed how easily organizational factors can become bottlenecks in technically sound projects. At the same time, adaptive planning, risk awareness, and clear prioritization proved essential in maintaining progress despite unforeseen obstacles.
+
+Looking forward, this experience has changed how we will approach future engineering projects. We will place greater emphasis on early project scoping, interface definition, and documentation before committing to implementation. We will also advocate for more flexible team roles, increased collective working sessions during critical phases, and proactive communication strategies to reduce coordination friction. Finally, we have learned to treat risk analysis not as a formality, but as an active tool to guide decision-making throughout the project lifecycle.
+
+In conclusion, while not all objectives were fully achieved, the project met its primary goals and delivered a functional and meaningful result. More importantly, it provided valuable insights into both technical system design and collaborative engineering practice, forming a strong foundation for future academic and professional work.
 
 
 \end{document}
