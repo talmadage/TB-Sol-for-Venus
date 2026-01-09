@@ -146,6 +146,11 @@ A major challenge at the beginning of the project was the difficulty in clearly 
 Regarding the division of labor, we initially adopted a functional structure that split our six-person team into two equal groups: three members dedicated to the test platform, and three responsible for communication, synthesis, and clock management. While this allocation seemed logical in theory, it proved less efficient in practice. The test platform workload was not constant, leading to periods of overlap and diminishing returns for the three assigned members.
 
 Afterward, we learned that a more flexible structure would have been better. Instead of a rigid 3-3 split, assigning two members to the test platform and make the third as a "mobile" support engineer would have been more effective. This role would have allowed for dynamic resource shifting to assist colleagues on the synthesis and clock generation tasks, who often had to handle high-pressure components in isolation. This experience underscored the importance of flexible team roles over static functional assignments to ensure a balanced workload across all project phases.
+\subsubsection{The Cost of Assumptions}
+We assumed the delivered processor codebases would be functional and have identical interfaces. Both assumptions proved wrong. The code contained compilation errors and bugs requiring substantial debugging, while the different interface specifications prevented RISC-V hardware validation within our timeline.
+
+ Lesson: Always include acceptance testing of third-party deliverables as an early-phase activity with contingency time allocated.
+
 \section{Conclusion}
 
 
